@@ -23,6 +23,10 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
         cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
         cameraUI.delegate = self
         
+        var loginView = FBLoginView()
+        loginView.center = self.view.center;
+        self.view.addSubview(loginView)
+        
     }
 
     
