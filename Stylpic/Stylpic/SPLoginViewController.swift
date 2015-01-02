@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPLoginViewController: UIViewController {
+class SPLoginViewController: UIViewController, UIAlertViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class SPLoginViewController: UIViewController {
     
     @IBAction func facebookLoginTouchUpInside(sender: AnyObject) {
         
-                var permissions = ["public_profile, user_friends", "email"]
+                var permissions = ["public_profile", "user_friends", "email"]
         PFFacebookUtils.logInWithPermissions(permissions, block: { (user, error) -> Void in
             if(user == nil){
                 if(error == nil){
@@ -41,6 +41,10 @@ class SPLoginViewController: UIViewController {
                 }
                 else{
                     println("An error occured: \(error)")
+                    
+                    var av2 = UIAlertView(title: "Error", message: "An Error occurred: \(error.localizedDescription)", delegate: self, cancelButtonTitle: "OK")
+                    av2.show()
+                    
                 }
             }
             else{

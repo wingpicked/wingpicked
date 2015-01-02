@@ -70,6 +70,12 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
 
     }
     
+
+    @IBAction func logoutButtonTouchUpInside(sender: AnyObject) {
+        PFUser.logOut()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
             println("Selected Image")
             self.dismissViewControllerAnimated(true, completion: nil)

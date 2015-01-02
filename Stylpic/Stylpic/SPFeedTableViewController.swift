@@ -16,16 +16,10 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         
         downloadAllImages()
         
+        //Setup Refresh Control
         var rc = UIRefreshControl()
         rc.addTarget(self, action: Selector("downloadAllImages"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
