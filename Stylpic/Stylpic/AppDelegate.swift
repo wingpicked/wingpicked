@@ -19,33 +19,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Parse.enableLocalDatastore()
-
+        
         // Initialize Parse.
         Parse.setApplicationId("RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF", clientKey: "GrzuVuRsMePNfdGF0AhyBYvEmjgeHPWfwtTb7EHx")
+
+        PFFacebookUtils.initializeFacebook()
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
         
         
-        
         // Simple way to create a user or log in the existing user
         // For your app, you will probably want to present your own login screen
         
-        var currentUser = PFUser.currentUser()
-        if(currentUser == nil)
-        {
-            var user = PFUser()
-            user.username = "Neil"
-            user.password = "password"
-            user.email = "neilb@email.arizona.edu"
-            
-            user.signUpInBackgroundWithBlock({ (succeeded, error) -> Void in
-                if(error != nil)
-                {
-                    PFUser.logInWithUsername("Neil", password: "password")
-                }
-            })
-        }
+//        var currentUser = PFUser.currentUser()
+//        if(currentUser == nil)
+//        {
+//            var user = PFUser()
+//            user.username = "Neil"
+//            user.password = "password"
+//            user.email = "neilb@email.arizona.edu"
+//            
+//            user.signUpInBackgroundWithBlock({ (succeeded, error) -> Void in
+//                if(error != nil)
+//                {
+//                    PFUser.logInWithUsername("Neil", password: "password")
+//                }
+//            })
+//        }
+        
+
+        
+        //Facebook stuff
+        
+//        var permissions = ["user_friends", "email"]
+//        
+//        PFFacebookUtils.logInWithPermissions(permissions, {
+//            (user: PFUser!, error: NSError!) -> Void in
+//            if user == nil {
+//                NSLog("Uh oh. The user cancelled the Facebook login.")
+//            } else if user.isNew {
+//                NSLog("User signed up and logged in through Facebook!")
+//            } else {
+//                NSLog("User logged in through Facebook!")
+//            }
+//        })
+//        
+//    
+//        var isLoggedIn = false
+//        var storyboardId = isLoggedIn ? "MainIdentifier" : "LoginIdentifier"
+//        self.window?.rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier(storyboardId) as UIViewController!
+        
         
         return true
     }
@@ -68,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
     FBAppEvents.activateApp()
+        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
     }
 
     func applicationWillTerminate(application: UIApplication) {

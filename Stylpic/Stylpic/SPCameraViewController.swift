@@ -12,6 +12,8 @@ import Parse
 class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var cameraUI = UIImagePickerController()//: UIImagePickerController!
+    @IBOutlet weak var profilePicImageView: UIImageView!
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +25,40 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
         cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
         cameraUI.delegate = self
         
-        var loginView = FBLoginView()
-        loginView.center = self.view.center;
-        self.view.addSubview(loginView)
+        loadFBData()
+        
+        
+//        var loginView = FBLoginView()
+//        loginView.center = self.view.center;
+//        self.view.addSubview(loginView)
         
     }
 
+    func loadFBData(){
+        var request = FBRequest.requestForMe()
+        request.startWithCompletionHandler { (connection, result, error) -> Void in
+            if(error == nil)
+            {
+                var userData = result as NSDictionary
+            
+                var facebookID = userData["id"] as String;
+                var name = userData["name"] as String;
+             
+                self.welcomeLabel.text = "Welcome: \(name)"
+                
+                var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
+                
+                var request = NSURLRequest(URL: pictureURL)
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
+                    if (connectionError == nil && data != nil) {
+                        // Set the image in the header imageView
+                        self.profilePicImageView.image = UIImage(data: data)
+                    }
+                })
+
+            }
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
