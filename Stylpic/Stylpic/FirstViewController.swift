@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Parse
 
 class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+//        var testObject = PFObject(className: "TestObject")
+//        testObject["foo"] = "bar"
+//        testObject.saveInBackgroundWithBlock(nil)
     }
 
     override func didReceiveMemoryWarning() {

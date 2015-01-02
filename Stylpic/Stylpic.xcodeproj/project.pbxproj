@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E01A560A5800191BDA /* AppDelegate.swift */; };
 		3845F7E31A560A5800191BDA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E21A560A5800191BDA /* FirstViewController.swift */; };
-		3845F7E51A560A5800191BDA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E41A560A5800191BDA /* SecondViewController.swift */; };
 		3845F7E81A560A5800191BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E61A560A5800191BDA /* Main.storyboard */; };
 		3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E91A560A5800191BDA /* Images.xcassets */; };
 		3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7EB1A560A5800191BDA /* LaunchScreen.xib */; };
@@ -22,6 +21,16 @@
 		3845F80E1A560ADD00191BDA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F80D1A560ADD00191BDA /* Accounts.framework */; };
 		3845F8101A560AE700191BDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F80F1A560AE700191BDA /* AudioToolbox.framework */; };
 		3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8111A560AF300191BDA /* CFNetwork.framework */; };
+		ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */; };
+		ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */; };
+		ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2341A560E350009FD11 /* libsqlite3.dylib */; };
+		ECB2C23C1A560E350009FD11 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2351A560E350009FD11 /* libz.dylib */; };
+		ECB2C23D1A560E350009FD11 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */; };
+		ECB2C23E1A560E350009FD11 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2371A560E350009FD11 /* QuartzCore.framework */; };
+		ECB2C23F1A560E350009FD11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2381A560E350009FD11 /* Security.framework */; };
+		ECB2C2401A560E350009FD11 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2391A560E350009FD11 /* StoreKit.framework */; };
+		ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */; };
+		ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +48,6 @@
 		3845F7DF1A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7E01A560A5800191BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3845F7E21A560A5800191BDA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3845F7E41A560A5800191BDA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3845F7E71A560A5800191BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3845F7E91A560A5800191BDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3845F7EC1A560A5800191BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -54,6 +62,16 @@
 		3845F80D1A560ADD00191BDA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3845F80F1A560AE700191BDA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3845F8111A560AF300191BDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		ECB2C2341A560E350009FD11 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		ECB2C2351A560E350009FD11 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		ECB2C2371A560E350009FD11 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ECB2C2381A560E350009FD11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		ECB2C2391A560E350009FD11 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +79,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */,
+				ECB2C23C1A560E350009FD11 /* libz.dylib in Frameworks */,
+				ECB2C23D1A560E350009FD11 /* MobileCoreServices.framework in Frameworks */,
+				ECB2C23E1A560E350009FD11 /* QuartzCore.framework in Frameworks */,
+				ECB2C23F1A560E350009FD11 /* Security.framework in Frameworks */,
+				ECB2C2401A560E350009FD11 /* StoreKit.framework in Frameworks */,
+				ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */,
+				ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */,
+				ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */,
 				3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */,
 				3845F8101A560AE700191BDA /* AudioToolbox.framework in Frameworks */,
 				3845F80E1A560ADD00191BDA /* Accounts.framework in Frameworks */,
@@ -85,9 +112,7 @@
 		3845F7D21A560A5800191BDA = {
 			isa = PBXGroup;
 			children = (
-				3845F8111A560AF300191BDA /* CFNetwork.framework */,
-				3845F80F1A560AE700191BDA /* AudioToolbox.framework */,
-				3845F80D1A560ADD00191BDA /* Accounts.framework */,
+				3845F80C1A560A9000191BDA /* Frameworks */,
 				3845F7DD1A560A5800191BDA /* Stylpic */,
 				3845F7F51A560A5800191BDA /* StylpicTests */,
 				3845F7DC1A560A5800191BDA /* Products */,
@@ -108,9 +133,8 @@
 			children = (
 				3845F7E01A560A5800191BDA /* AppDelegate.swift */,
 				3845F7E21A560A5800191BDA /* FirstViewController.swift */,
-				3845F7E41A560A5800191BDA /* SecondViewController.swift */,
+				ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */,
 				3845F7E61A560A5800191BDA /* Main.storyboard */,
-				3845F80C1A560A9000191BDA /* Frameworks */,
 				3845F7E91A560A5800191BDA /* Images.xcassets */,
 				3845F7EB1A560A5800191BDA /* LaunchScreen.xib */,
 				3845F7DE1A560A5800191BDA /* Supporting Files */,
@@ -146,6 +170,18 @@
 		3845F80C1A560A9000191BDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECB2C2341A560E350009FD11 /* libsqlite3.dylib */,
+				ECB2C2351A560E350009FD11 /* libz.dylib */,
+				ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */,
+				ECB2C2371A560E350009FD11 /* QuartzCore.framework */,
+				ECB2C2381A560E350009FD11 /* Security.framework */,
+				ECB2C2391A560E350009FD11 /* StoreKit.framework */,
+				ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */,
+				ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */,
+				ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */,
+				3845F8111A560AF300191BDA /* CFNetwork.framework */,
+				3845F80F1A560AE700191BDA /* AudioToolbox.framework */,
+				3845F80D1A560ADD00191BDA /* Accounts.framework */,
 				3845F8021A560A8800191BDA /* Bolts.framework */,
 				3845F8031A560A8800191BDA /* Parse.framework */,
 				3845F8041A560A8800191BDA /* ParseCrashReporting.framework */,
@@ -153,6 +189,7 @@
 				3845F8061A560A8800191BDA /* ParseUI.framework */,
 			);
 			name = Frameworks;
+			path = Stylpic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +241,7 @@
 				TargetAttributes = {
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = S9HWZN732E;
 					};
 					3845F7F11A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
@@ -255,8 +293,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3845F7E51A560A5800191BDA /* SecondViewController.swift in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
+				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
 				3845F7E31A560A5800191BDA /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -394,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -457,6 +497,7 @@
 				3845F7FE1A560A5800191BDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3845F7FF1A560A5800191BDA /* Build configuration list for PBXNativeTarget "StylpicTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +506,7 @@
 				3845F8011A560A5800191BDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
