@@ -37,7 +37,20 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
     func loadFBData(){
         var request = FBRequest.requestForMe()
         request.startWithCompletionHandler { (connection, result, error) -> Void in
-            if(error == nil)
+            if let cError = error{
+                if let cUserInfo = cError.userInfo{
+                    if let cError = cUserInfo["error"] as? NSDictionary{
+                        if let cType = cError["type"] as? String{
+                            if cType == "OAuthException"{
+                                println("FB Session was invalidated.")
+                                //self.logoutButtonTouchUpInside(nil)
+                            }
+                        }
+                    }
+                }
+                
+            }
+            else
             {
                 var userData = result as NSDictionary
             
@@ -57,7 +70,7 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
                 })
 
             }
-        }
+}
     }
     
     override func didReceiveMemoryWarning() {
