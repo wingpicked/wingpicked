@@ -12,6 +12,8 @@ import Parse
 class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var cameraUI = UIImagePickerController()//: UIImagePickerController!
+    var navController = UINavigationController()
+    
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     
@@ -74,10 +76,6 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
 }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func cameraButton(sender: AnyObject) {
         self.presentViewController(cameraUI, animated: true, completion:nil)
@@ -93,6 +91,14 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
             println("Selected Image")
             self.dismissViewControllerAnimated(true, completion: nil)
+        
+        var viewController = SPEditPhotoViewController(aImage: image)
+        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        
+        navController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        navController.pushViewController(viewController, animated: true)
+        
+        self.presentViewController(navController, animated: true, completion: nil)
         
         var imageData = UIImageJPEGRepresentation(image, 0.05)
         self.uploadImage(imageData)

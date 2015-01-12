@@ -24,6 +24,9 @@
 		389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */; };
 		389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389A56F11A57275E00EB0EFD /* FacebookSDK.framework */; };
 		389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56F81A57405500EB0EFD /* SPLoginViewController.swift */; };
+		38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */; };
+		38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */; };
+		38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */; };
 		ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */; };
 		ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */; };
 		ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2341A560E350009FD11 /* libsqlite3.dylib */; };
@@ -69,6 +72,9 @@
 		389A56F11A57275E00EB0EFD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		389A56F41A5727C500EB0EFD /* Stylpic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylpic-Bridging-Header.h"; sourceTree = "<group>"; };
 		389A56F81A57405500EB0EFD /* SPLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPLoginViewController.swift; sourceTree = "<group>"; };
+		38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEditPhotoViewController.swift; sourceTree = "<group>"; };
+		38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPEditPhotoStoryboard.storyboard; sourceTree = "<group>"; };
+		38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPEditPhotoViewController.xib; sourceTree = "<group>"; };
 		ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ECB2C2341A560E350009FD11 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -143,6 +149,9 @@
 				3845F7E01A560A5800191BDA /* AppDelegate.swift */,
 				389A56F81A57405500EB0EFD /* SPLoginViewController.swift */,
 				ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */,
+				38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */,
+				38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */,
+				38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */,
 				389A56EC1A564BB100EB0EFD /* SPFeed */,
 				3845F7E91A560A5800191BDA /* Images.xcassets */,
 				3845F7EB1A560A5800191BDA /* LaunchScreen.xib */,
@@ -295,6 +304,8 @@
 			files = (
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
 				3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */,
+				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
+				38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */,
 				3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +328,7 @@
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
 				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
+				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
 				389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
