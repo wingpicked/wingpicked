@@ -40,9 +40,11 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        if (buttonIndex == 0) {
+        println("Button Index: \(buttonIndex)")
+        
+        if (buttonIndex == 1) {
             self.shouldStartCameraController();
-        } else if (buttonIndex == 1) {
+        } else if (buttonIndex == 2) {
             self.shouldStartPhotoLibraryPickerController();
         }
     }
