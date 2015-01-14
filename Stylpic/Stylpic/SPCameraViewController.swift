@@ -9,10 +9,16 @@
 import UIKit
 import Parse
 
-class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate{
 
     var cameraUI = UIImagePickerController()//: UIImagePickerController!
     var navController = UINavigationController()
+    //var actionSheet : UIActionSheet
+    
+//    required init(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        
+//    }
     
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -23,9 +29,6 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
         //        var testObject = PFObject(className: "TestObject")
         //        testObject["foo"] = "bar"
         //        testObject.saveInBackgroundWithBlock(nil)
-
-        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
-        cameraUI.delegate = self
         
         loadFBData()
         
@@ -35,50 +38,99 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
 //        self.view.addSubview(loginView)
         
     }
-
-    func loadFBData(){
-        var request = FBRequest.requestForMe()
-        request.startWithCompletionHandler { (connection, result, error) -> Void in
-            //TODO: Need to test this facebook user invalidation testing out.
-            if let cError = error{
-                if let cUserInfo = cError.userInfo{
-                    if let cError = cUserInfo["error"] as? NSDictionary{
-                        if let cType = cError["type"] as? String{
-                            if cType == "OAuthException"{
-                                println("FB Session was invalidated.")
-                                //self.logoutButtonTouchUpInside(nil)
-                            }
-                        }
-                    }
-                }
-                
-            }
-            else
-            {
-                var userData = result as NSDictionary
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if (buttonIndex == 0) {
+            self.shouldStartCameraController();
+        } else if (buttonIndex == 1) {
+            self.shouldStartPhotoLibraryPickerController();
+        }
+    }
+    
+    func shouldPresentPhotoCaptureController() -> Bool{
+        
+            var presentedPhotoCaptureController = self.shouldStartCameraController()
             
-                var facebookID = userData["id"] as String;
-                var name = userData["name"] as String;
-             
-                self.welcomeLabel.text = "Welcome: \(name)"
-                
-                var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
-                
-                var request = NSURLRequest(URL: pictureURL)
-                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
-                    if (connectionError == nil && data != nil) {
-                        // Set the image in the header imageView
-                        self.profilePicImageView.image = UIImage(data: data)
-                    }
-                })
-
+            if (!presentedPhotoCaptureController) {
+                presentedPhotoCaptureController = self.shouldStartPhotoLibraryPickerController()
             }
+            
+            return presentedPhotoCaptureController;
+    }
+
+func shouldStartCameraController() -> Bool {
+    if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) == false){
+        return false;
+    }
+    
+    var cameraUI = UIImagePickerController()
+    if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
+        cameraUI.sourceType = UIImagePickerControllerSourceType.Camera
+        
+        if(UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear)){
+            cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+        }
+        else if(UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front)){
+            cameraUI.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        }
+    }
+    else{
+        return false
+    }
+
+    cameraUI.allowsEditing = true
+    cameraUI.showsCameraControls = true
+    cameraUI.delegate = self
+    
+    self.presentViewController(cameraUI, animated: true, completion: nil)
+
+    return true
 }
+
+    func shouldStartPhotoLibraryPickerController()->Bool{
+        
+        if(!UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) && !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum)){
+            return false;
+        }
+        
+        var cameraUI = UIImagePickerController()
+        
+        
+        //TODO: add controllersourcetype
+        if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)){
+            cameraUI.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            //cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+        }
+        else if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum)){
+            cameraUI.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+            //cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+        }
+        else {
+            return false;
+        }
+        
+        cameraUI.allowsEditing = true;
+        cameraUI.delegate = self;
+        
+        self.presentViewController(cameraUI, animated: true, completion: nil)
+        return true
     }
     
     
     @IBAction func cameraButton(sender: AnyObject) {
-        self.presentViewController(cameraUI, animated: true, completion:nil)
+//        self.presentViewController(cameraUI, animated: true, completion:nil)
+        
+        var cameraDeviceAvailable = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        var photoLibraryAvailable = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)
+        
+        if (cameraDeviceAvailable && photoLibraryAvailable) {
+            var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Take Photo", "Choose Photo")
+            actionSheet.showFromTabBar(self.tabBarController?.tabBar)
+        } else {
+            // if we don't have at least two options, we automatically show whichever is available (camera or roll)
+            self.shouldPresentPhotoCaptureController()
+        }
+        
 
     }
     
@@ -120,52 +172,54 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
                 })
             }
         }
-
-//        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (!error) {
-//        // Hide old HUD, show completed HUD (see example for code)
-//        
-//            // Create a PFObject around a PFFile and associate it with the current user
-//            PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
-//            [userPhoto setObject:imageFile forKey:@"imageFile"];
-//            
-//            // Set the access control list to current user for security purposes
-//            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-//            
-//            PFUser *user = [PFUser currentUser];
-//            [userPhoto setObject:user forKey:@"user"];
-//            
-//            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if (!error) {
-//            [self refresh:nil];
-//            }
-//            else{
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//            }
-//            }];
-//        }
-//        else{
-//        [HUD hide:YES];
-//        // Log details of the failure
-//        NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//        } progressBlock:^(int percentDone) {
-//        // Update your progress spinner here. percentDone will be between 0 and 100.
-//        HUD.progress = (float)percentDone/100;
-//        }];
-        
+    }
     
+    
+
+    
+    
+    
+    
+    
+    func loadFBData(){
+        var request = FBRequest.requestForMe()
+        request.startWithCompletionHandler { (connection, result, error) -> Void in
+            //TODO: Need to test this facebook user invalidation testing out.
+            if let cError = error{
+                if let cUserInfo = cError.userInfo{
+                    if let cError = cUserInfo["error"] as? NSDictionary{
+                        if let cType = cError["type"] as? String{
+                            if cType == "OAuthException"{
+                                println("FB Session was invalidated.")
+                                //self.logoutButtonTouchUpInside(nil)
+                            }
+                        }
+                    }
+                }
+                
+            }
+            else
+            {
+                var userData = result as NSDictionary
+                
+                var facebookID = userData["id"] as String;
+                var name = userData["name"] as String;
+                
+                self.welcomeLabel.text = "Welcome: \(name)"
+                
+                var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
+                
+                var request = NSURLRequest(URL: pictureURL)
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
+                    if (connectionError == nil && data != nil) {
+                        // Set the image in the header imageView
+                        self.profilePicImageView.image = UIImage(data: data)
+                    }
+                })
+                
+            }
+        }
     }
 
-   /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
