@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -98,26 +98,47 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Azy-yW-IHP" id="Bqo-5S-qqv">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LCB-fe-nUx">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCB-fe-nUx">
                                             <rect key="frame" x="8" y="8" width="304" height="213"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7G8-N6-wkN">
-                                                    <rect key="frame" x="42" y="8" width="254" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7G8-N6-wkN">
+                                                    <rect key="frame" x="42" y="8" width="254" height="20"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="6Ij-2v-PYu">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="6Ij-2v-PYu">
                                                     <rect key="frame" x="8" y="5" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="9Og-1a-QF1"/>
+                                                        <constraint firstAttribute="width" constant="24" id="pHh-Vc-yNn"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c9g-st-XrV">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c9g-st-XrV">
                                                     <rect key="frame" x="8" y="37" width="288" height="167.5"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="c9g-st-XrV" secondAttribute="trailing" constant="8" id="DUT-We-SHV"/>
+                                                <constraint firstItem="6Ij-2v-PYu" firstAttribute="leading" secondItem="LCB-fe-nUx" secondAttribute="leading" constant="8" id="UKc-lm-BMf"/>
+                                                <constraint firstItem="c9g-st-XrV" firstAttribute="top" secondItem="7G8-N6-wkN" secondAttribute="bottom" constant="9" id="ULw-E0-lYX"/>
+                                                <constraint firstItem="7G8-N6-wkN" firstAttribute="leading" secondItem="6Ij-2v-PYu" secondAttribute="trailing" constant="10" id="UaK-x7-Sqg"/>
+                                                <constraint firstItem="6Ij-2v-PYu" firstAttribute="top" secondItem="LCB-fe-nUx" secondAttribute="top" constant="5" id="fUZ-xl-ISC"/>
+                                                <constraint firstAttribute="trailing" secondItem="7G8-N6-wkN" secondAttribute="trailing" constant="8" id="jU1-ul-Tez"/>
+                                                <constraint firstItem="7G8-N6-wkN" firstAttribute="top" secondItem="LCB-fe-nUx" secondAttribute="top" constant="8" id="mD5-Rc-2FP"/>
+                                                <constraint firstItem="c9g-st-XrV" firstAttribute="leading" secondItem="LCB-fe-nUx" secondAttribute="leading" constant="8" id="x0q-cA-cNn"/>
+                                                <constraint firstAttribute="bottom" secondItem="c9g-st-XrV" secondAttribute="bottom" constant="8.5" id="yas-bm-5Ff"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="LCB-fe-nUx" firstAttribute="top" secondItem="Bqo-5S-qqv" secondAttribute="topMargin" id="GPm-Mj-ij1"/>
+                                        <constraint firstItem="LCB-fe-nUx" firstAttribute="bottom" secondItem="Bqo-5S-qqv" secondAttribute="bottomMargin" id="JUf-7h-3ZA"/>
+                                        <constraint firstItem="LCB-fe-nUx" firstAttribute="leading" secondItem="Bqo-5S-qqv" secondAttribute="leadingMargin" id="bYi-Gt-r8z"/>
+                                        <constraint firstItem="LCB-fe-nUx" firstAttribute="trailing" secondItem="Bqo-5S-qqv" secondAttribute="trailingMargin" id="t27-JI-tqc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
@@ -146,7 +167,7 @@
         <!--Explore-->
         <scene sceneID="MM6-z6-Mho">
             <objects>
-                <viewController id="ONc-03-G0L" sceneMemberID="viewController">
+                <viewController id="ONc-03-G0L" customClass="SPExploreViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gOH-Zm-ebD"/>
                         <viewControllerLayoutGuide type="bottom" id="86l-kt-6EC"/>
@@ -166,7 +187,7 @@
         <!--Profile-->
         <scene sceneID="vKo-N4-TDE">
             <objects>
-                <viewController id="LfC-JY-edx" sceneMemberID="viewController">
+                <viewController id="LfC-JY-edx" customClass="SPProfileViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oln-es-msH"/>
                         <viewControllerLayoutGuide type="bottom" id="bZY-qk-TID"/>

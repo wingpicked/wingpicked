@@ -57,7 +57,7 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
                     fCaption = "Empty Caption"
                 }
 
-                var spImage = SPImage(caption:fCaption, image: image)
+                var spImage = SPImage(caption:fCaption, image: image!)
                 
                 self.imageDataArray.append(spImage)
             }

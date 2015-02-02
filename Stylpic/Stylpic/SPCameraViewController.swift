@@ -68,7 +68,7 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
                 
                 var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
                 
-                var request = NSURLRequest(URL: pictureURL)
+                var request = NSURLRequest(URL: pictureURL!)
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
                     if (connectionError == nil && data != nil) {
                         // Set the image in the header imageView
