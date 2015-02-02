@@ -15,44 +15,13 @@ class SPTabBarViewController: UITabBarController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var z2 = self.tabBar.items![2] as UITabBarItem
-//        z2.image = nil
-//        z2.title = nil
-//
-//        var itemCount = CGFloat(self.tabBar.items!.count) //default to 131.0
-//        
-//        
-//        var cameraButton = UIButton(frame: CGRectMake(124.0, 0.0, self.tabBar.bounds.size.width / itemCount, self.tabBar.bounds.size.height))
-//        cameraButton.setImage(UIImage(named: "TakePicture"), forState: UIControlState.Normal)
-//        cameraButton.addTarget(self, action: Selector("photoCaptureButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-//        self.tabBar.addSubview(cameraButton)
-
         // Do any additional setup after loading the view.
         self.delegate = self
-    }
-//
-//
-    override func setViewControllers(viewControllers: [AnyObject], animated: Bool) {
-        super.setViewControllers(viewControllers, animated: animated)
-        
-        
-        
-        
-//        var cameraButton = UIButton(frame: CGRectMake(94.0, 0.0, 131.0, self.tabBar.bounds.size.height))
-//        cameraButton.setImage(UIImage(named: "TakePicture"), forState: UIControlState.Normal)
-//        cameraButton.addTarget(self, action: Selector("photoCaptureButtonAction:"), forControlEvents: UIControlEvents.TouchUpInside)
-//        self.tabBar.addSubview(cameraButton)
-    
-//    UISwipeGestureRecognizer *swipeUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-//    [swipeUpGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
-//    [swipeUpGestureRecognizer setNumberOfTouchesRequired:1];
-//    [cameraButton addGestureRecognizer:swipeUpGestureRecognizer];
     }
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
 
         if((viewControllers as [UIViewController])[2] == viewController){
-            println("cray")
             self.photoCaptureButtonAction()
             return false
         }
@@ -152,5 +121,40 @@ class SPTabBarViewController: UITabBarController, UIImagePickerControllerDelegat
         
         self.presentViewController(cameraUI, animated: true, completion: nil)
         return true
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        println("Selected Image")
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//        
+//        var viewController = SPEditPhotoViewController(aImage: image)
+//        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+//        
+//        navController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+//        navController.pushViewController(viewController, animated: true)
+//        
+//        self.presentViewController(navController, animated: true, completion: nil)
+        
+        var imageData = UIImageJPEGRepresentation(image, 0.05)
+        self.uploadImage(imageData)
+    }
+    
+    func uploadImage(imageData : NSData) {
+        var imageFile = PFFile(name: "Image.jpg", data: imageData)
+        
+        // Save PFFile
+        
+        imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+            if(error == nil){
+                var userPhoto = PFObject(className: "UserPhoto")
+                userPhoto.setObject(imageFile, forKey: "imageFile")
+                userPhoto.setObject("This is a hardcoded caption", forKey: "caption")
+                userPhoto.saveInBackgroundWithBlock({ (success, saveError) -> Void in
+                    if(saveError != nil){
+                        println(saveError.userInfo)
+                    }
+                })
+            }
+        }
     }
 }

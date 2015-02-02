@@ -11,7 +11,7 @@ import Parse
 
 class SPFeedTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var imageDataArray : [UIImage] = [];
+    var imageDataArray : [SPImage] = [];
 
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
 //            println("Successfully retrieved %d photos.", objects.count);
             
             
-
+            //TODO: Refactor this out to a manager	
             // Iterate over all images and get the data from the PFFile
             for (var i = 0; i < objects.count; i++) {
                 
@@ -48,8 +48,18 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
                 var theImage = eachObject["imageFile"] as PFFile
                 var imageData = theImage.getData()
                 var image = UIImage(data: imageData)
+                
+                var fCaption = ""
+                if let theCaption = eachObject["caption"] as? String{
+                    fCaption = theCaption
+                }
+                else{
+                    fCaption = "Empty Caption"
+                }
 
-                self.imageDataArray.append(image)
+                var spImage = SPImage(caption:fCaption, image: image)
+                
+                self.imageDataArray.append(spImage)
             }
             self.tableView.reloadData()
         }
@@ -74,7 +84,8 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as SPFeedViewTableViewCell
 
 //        cell.textLabel?.text = "Cell \(indexPath.row)"
-        cell.pictureImageView.image = imageDataArray[indexPath.row]
+        cell.pictureImageView.image = imageDataArray[indexPath.row].image
+        cell.caption.text = imageDataArray[indexPath.row].caption
         // Configure the cell...
 
         return cell

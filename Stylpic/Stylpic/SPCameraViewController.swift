@@ -11,32 +11,16 @@ import Parse
 
 class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate{
 
-    var cameraUI = UIImagePickerController()//: UIImagePickerController!
+    //var cameraUI = UIImagePickerController()//: UIImagePickerController!
     var navController = UINavigationController()
-    //var actionSheet : UIActionSheet
-    
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        
-//    }
     
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //        var testObject = PFObject(className: "TestObject")
-        //        testObject["foo"] = "bar"
-        //        testObject.saveInBackgroundWithBlock(nil)
         
         loadFBData()
-        
-        
-//        var loginView = FBLoginView()
-//        loginView.center = self.view.center;
-//        self.view.addSubview(loginView)
-        
     }
     
 
@@ -47,39 +31,7 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-            println("Selected Image")
-            self.dismissViewControllerAnimated(true, completion: nil)
-        
-        var viewController = SPEditPhotoViewController(aImage: image)
-        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        
-        navController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        navController.pushViewController(viewController, animated: true)
-        
-        self.presentViewController(navController, animated: true, completion: nil)
-        
-        var imageData = UIImageJPEGRepresentation(image, 0.05)
-        self.uploadImage(imageData)
-    }
-    
-    func uploadImage(imageData : NSData) {
-        var imageFile = PFFile(name: "Image.jpg", data: imageData)
-        
-        // Save PFFile
-        
-        imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
-            if(error == nil){
-                var userPhoto = PFObject(className: "UserPhoto")
-                userPhoto.setObject(imageFile, forKey: "imageFile")
-                userPhoto.saveInBackgroundWithBlock({ (success, saveError) -> Void in
-                    if(saveError != nil){
-                        println(saveError.userInfo)
-                    }
-                })
-            }
-        }
-    }
+
     
     
 
