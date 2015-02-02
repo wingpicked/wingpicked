@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Post-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="SPCameraViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                             <constraint firstItem="pxd-L2-tHG" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="tIT-Gc-cTz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Post" image="Icon_post" selectedImage="TakePicture" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="profilePicImageView" destination="Xe9-uc-6I3" id="eo7-El-qe4"/>
                         <outlet property="welcomeLabel" destination="USf-wH-sAC" id="Ekt-r2-IkA"/>
@@ -78,7 +78,7 @@
             </objects>
             <point key="canvasLocation" x="542" y="155"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="exa-p7-kCf">
             <objects>
                 <tableViewController id="vnU-Fa-5SY" customClass="SPFeedTableViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,14 +113,18 @@
                             <outlet property="delegate" destination="vnU-Fa-5SY" id="kLK-8J-jYp"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="KC7-at-5xh"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Icon_home" selectedImage="Icon_home_selected" id="KC7-at-5xh">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="Icon_home_selected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O65-rN-DHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="-605"/>
         </scene>
-        <!--Item-->
+        <!--Explore-->
         <scene sceneID="MM6-z6-Mho">
             <objects>
                 <viewController id="ONc-03-G0L" sceneMemberID="viewController">
@@ -133,14 +137,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ikZ-cJ-MZE"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="Icon_explore" id="ikZ-cJ-MZE"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0c-Xf-LrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="542" y="-472"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="vKo-N4-TDE">
             <objects>
                 <viewController id="LfC-JY-edx" sceneMemberID="viewController">
@@ -153,14 +157,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yUy-wj-i3B"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Icon_profile" id="yUy-wj-i3B"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4y-fp-OMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="542" y="779"/>
         </scene>
-        <!--Item-->
+        <!--Closet-->
         <scene sceneID="URl-Y2-SMD">
             <objects>
                 <viewController id="3KQ-uY-pIS" customClass="SPClosetViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
@@ -181,7 +185,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Gkr-Ma-gpW"/>
+                    <tabBarItem key="tabBarItem" title="Closet" image="Icon_closet" id="Gkr-Ma-gpW"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mQ-Yx-R9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -281,11 +285,18 @@
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+                <tabBarItem title="Item" id="Vea-5Y-R8Q"/>
             </objects>
             <point key="canvasLocation" x="-216" y="230"/>
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="Icon_closet" width="64" height="49"/>
+        <image name="Icon_explore" width="64" height="49"/>
+        <image name="Icon_home" width="64" height="49"/>
+        <image name="Icon_home_selected" width="64" height="49"/>
+        <image name="Icon_post" width="64" height="49"/>
+        <image name="Icon_profile" width="64" height="49"/>
+        <image name="TakePicture" width="30" height="30"/>
     </resources>
 </document>

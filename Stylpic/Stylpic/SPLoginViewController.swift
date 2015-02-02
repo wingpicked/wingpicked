@@ -25,12 +25,7 @@ class SPLoginViewController: UIViewController, UIAlertViewDelegate {
             
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+        
     @IBAction func facebookLoginTouchUpInside(sender: AnyObject) {
         
                 var permissions = ["public_profile", "user_friends", "email"]
