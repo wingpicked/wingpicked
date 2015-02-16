@@ -25,6 +25,13 @@
 		389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */; };
 		389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389A56F11A57275E00EB0EFD /* FacebookSDK.framework */; };
 		389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56F81A57405500EB0EFD /* SPLoginViewController.swift */; };
+		38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA7BF41A883E6600A75FB7 /* SPFeedDetailViewController.swift */; };
+		38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38AA7BF51A883E6600A75FB7 /* SPFeedDetailViewController.xib */; };
+		38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA7BF81A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift */; };
+		38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38AA7BF91A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib */; };
+		38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */; };
+		38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */; };
+		38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */; };
 		38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */; };
 		38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */; };
 		38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */; };
@@ -82,6 +89,13 @@
 		389A56F11A57275E00EB0EFD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		389A56F41A5727C500EB0EFD /* Stylpic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stylpic-Bridging-Header.h"; sourceTree = "<group>"; };
 		389A56F81A57405500EB0EFD /* SPLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPLoginViewController.swift; sourceTree = "<group>"; };
+		38AA7BF41A883E6600A75FB7 /* SPFeedDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedDetailViewController.swift; sourceTree = "<group>"; };
+		38AA7BF51A883E6600A75FB7 /* SPFeedDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedDetailViewController.xib; sourceTree = "<group>"; };
+		38AA7BF81A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedDetailPictureTableViewCell.swift; sourceTree = "<group>"; };
+		38AA7BF91A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedDetailPictureTableViewCell.xib; sourceTree = "<group>"; };
+		38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedDetailCommentTableViewCell.swift; sourceTree = "<group>"; };
+		38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedDetailCommentTableViewCell.xib; sourceTree = "<group>"; };
+		38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPBaseTableViewCell.swift; sourceTree = "<group>"; };
 		38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEditPhotoViewController.swift; sourceTree = "<group>"; };
 		38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPEditPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPEditPhotoViewController.xib; sourceTree = "<group>"; };
@@ -251,8 +265,15 @@
 		389A56EC1A564BB100EB0EFD /* SPFeed */ = {
 			isa = PBXGroup;
 			children = (
+				38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */,
 				389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */,
 				389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */,
+				38AA7BF41A883E6600A75FB7 /* SPFeedDetailViewController.swift */,
+				38AA7BF51A883E6600A75FB7 /* SPFeedDetailViewController.xib */,
+				38AA7BF81A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift */,
+				38AA7BF91A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib */,
+				38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */,
+				38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */,
 			);
 			name = SPFeed;
 			sourceTree = "<group>";
@@ -381,9 +402,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */,
+				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
 				3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
+				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */,
 				3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */,
 			);
@@ -411,9 +435,13 @@
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
 				38BB44511A66313C004CD444 /* SPExploreViewController.swift in Sources */,
 				385BF6BE1A7F5E14003F9790 /* SPImage.swift in Sources */,
+				38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */,
+				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,
+				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
 				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
 				389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */,
+				38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
