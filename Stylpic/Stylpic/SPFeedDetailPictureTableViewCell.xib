@@ -22,7 +22,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-WQ-p2h">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-WQ-p2h">
                         <rect key="frame" x="13" y="8" width="24" height="24"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSD-Vd-KFG">
@@ -58,4 +58,7 @@
             <point key="canvasLocation" x="139" y="329"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Icon_defaultPhoto" width="66" height="65"/>
+    </resources>
 </document>

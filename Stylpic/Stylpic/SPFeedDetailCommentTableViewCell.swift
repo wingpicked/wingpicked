@@ -19,8 +19,8 @@ class SPFeedDetailCommentTableViewCell: SPBaseTableViewCell {
         height = 200
     }
     
-    func setupCell(){
-        
+    func setupCell(comment: String){
+        commentLabel.text = comment
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

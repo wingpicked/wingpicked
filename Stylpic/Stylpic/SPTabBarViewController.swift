@@ -125,7 +125,7 @@ class SPTabBarViewController: UITabBarController, UIImagePickerControllerDelegat
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         println("Selected Image")
-//        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
 //        
 //        var viewController = SPEditPhotoViewController(aImage: image)
 //        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve

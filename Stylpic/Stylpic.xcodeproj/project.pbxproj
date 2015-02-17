@@ -270,10 +270,7 @@
 				389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */,
 				38AA7BF41A883E6600A75FB7 /* SPFeedDetailViewController.swift */,
 				38AA7BF51A883E6600A75FB7 /* SPFeedDetailViewController.xib */,
-				38AA7BF81A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift */,
-				38AA7BF91A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib */,
-				38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */,
-				38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */,
+				38FBAD411A92D0E100B8905C /* SPFeedDetailCells */,
 			);
 			name = SPFeed;
 			sourceTree = "<group>";
@@ -319,6 +316,17 @@
 				38BB44581A66318C004CD444 /* SPClosetViewController.swift */,
 			);
 			name = SPCloset;
+			sourceTree = "<group>";
+		};
+		38FBAD411A92D0E100B8905C /* SPFeedDetailCells */ = {
+			isa = PBXGroup;
+			children = (
+				38AA7BF81A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift */,
+				38AA7BF91A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib */,
+				38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */,
+				38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */,
+			);
+			name = SPFeedDetailCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -46,22 +46,25 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
                 
                 var eachObject = objects[i] as PFObject
                 var theImage = eachObject["imageFile"] as PFFile
-                var imageData = theImage.getData()
-                var image = UIImage(data: imageData)
-                
-                var fCaption = ""
-                if let theCaption = eachObject["caption"] as? String{
-                    fCaption = theCaption
-                }
-                else{
-                    fCaption = "Empty Caption"
-                }
 
-                var spImage = SPImage(caption:fCaption, image: image!)
-                
-                self.imageDataArray.append(spImage)
+                theImage.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                    var imageData = data
+                    var image = UIImage(data: imageData)
+                    
+                    var fCaption = ""
+                    if let theCaption = eachObject["caption"] as? String{
+                        fCaption = theCaption
+                    }
+                    else{
+                        fCaption = "Empty Caption"
+                    }
+                    
+                    var spImage = SPImage(caption:fCaption, image: image!)
+                    self.imageDataArray.append(spImage)
+                    self.tableView.reloadData() //TODO: Refactor this out so its not called every time there is an image.
+                })
             }
-            self.tableView.reloadData()
+
         }
         }
     }
@@ -92,18 +95,9 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var detailViewController = SPFeedDetailViewController()
+        var detailViewController = SPFeedDetailViewController(image: imageDataArray[indexPath.row].image!)
+        //self.presentViewController(detailViewController, animated: true, completion: nil)
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
