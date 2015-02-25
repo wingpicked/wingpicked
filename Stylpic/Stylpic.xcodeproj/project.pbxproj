@@ -39,6 +39,10 @@
 		38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44551A663174004CD444 /* SPProfileViewController.swift */; };
 		38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44581A66318C004CD444 /* SPClosetViewController.swift */; };
 		38BB445C1A6657B7004CD444 /* SPTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */; };
+		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
+		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
+		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
+		48B4BC911A9AA83300B06E41 /* SPFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPFlowViewController.swift */; };
 		ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */; };
 		ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */; };
 		ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2341A560E350009FD11 /* libsqlite3.dylib */; };
@@ -103,6 +107,10 @@
 		38BB44551A663174004CD444 /* SPProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileViewController.swift; sourceTree = "<group>"; };
 		38BB44581A66318C004CD444 /* SPClosetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetViewController.swift; sourceTree = "<group>"; };
 		38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTabBarViewController.swift; sourceTree = "<group>"; };
+		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
+		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
+		48B4BC901A9AA83300B06E41 /* SPFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFlowViewController.swift; sourceTree = "<group>"; };
 		ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ECB2C2341A560E350009FD11 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -121,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */,
+				481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */,
 				ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */,
 				ECB2C23C1A560E350009FD11 /* libz.dylib in Frameworks */,
 				ECB2C23D1A560E350009FD11 /* MobileCoreServices.framework in Frameworks */,
@@ -223,6 +232,7 @@
 				ECB2C2341A560E350009FD11 /* libsqlite3.dylib */,
 				ECB2C2351A560E350009FD11 /* libz.dylib */,
 				389A56F11A57275E00EB0EFD /* FacebookSDK.framework */,
+				481756011A99554D0004E1C8 /* FacebookSDK.framework */,
 				ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */,
 				ECB2C2371A560E350009FD11 /* QuartzCore.framework */,
 				ECB2C2381A560E350009FD11 /* Security.framework */,
@@ -286,10 +296,12 @@
 		38BB44531A663155004CD444 /* SPCamera */ = {
 			isa = PBXGroup;
 			children = (
+				4854A9CE1A9AC76D00164CD0 /* cameraOverlay */,
 				ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */,
 				38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */,
 				38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */,
 				38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */,
+				48B4BC901A9AA83300B06E41 /* SPFlowViewController.swift */,
 			);
 			name = SPCamera;
 			sourceTree = "<group>";
@@ -327,6 +339,15 @@
 				38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */,
 			);
 			name = SPFeedDetailCells;
+			sourceTree = "<group>";
+		};
+		4854A9CE1A9AC76D00164CD0 /* cameraOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */,
+				4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */,
+			);
+			name = cameraOverlay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,10 +399,11 @@
 				TargetAttributes = {
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = S9HWZN732E;
+						DevelopmentTeam = 3G5C2SV92X;
 					};
 					3845F7F11A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 3G5C2SV92X;
 						TestTargetID = 3845F7DA1A560A5800191BDA;
 					};
 				};
@@ -413,6 +435,7 @@
 				38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */,
 				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
+				4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */,
 				3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
@@ -435,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */,
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */,
@@ -447,6 +471,7 @@
 				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,
 				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
 				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
+				48B4BC911A9AA83300B06E41 /* SPFlowViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
 				389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */,
 				38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */,
@@ -584,7 +609,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -605,7 +630,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;

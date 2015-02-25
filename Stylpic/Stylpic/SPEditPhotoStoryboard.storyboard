@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aTH-vk-6G1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aTH-vk-6G1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -21,10 +21,10 @@
             </objects>
             <point key="canvasLocation" x="-126" y="281"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Photo View Controller-->
         <scene sceneID="99U-hN-Ntl">
             <objects>
-                <viewController id="a5b-1S-B7N" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SPEditPhotoViewController" id="a5b-1S-B7N" customClass="SPEditPhotoViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VWV-t2-hqC"/>
                         <viewControllerLayoutGuide type="bottom" id="HUf-Uo-GIA"/>
@@ -56,6 +56,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="sXF-aK-Fu4"/>
+                    <connections>
+                        <outlet property="imageViewOne" destination="Ig5-d7-HeW" id="hIH-2t-QIl"/>
+                        <outlet property="imageViewTwo" destination="qyG-dN-EtV" id="Com-Xj-s1O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RY-fw-dKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

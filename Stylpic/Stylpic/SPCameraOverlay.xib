@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SPCameraOverlay" customModule="Stylpic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-8K-j5q">
+                    <rect key="frame" x="0.0" y="320" width="320" height="248"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo 1 of 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSu-bH-3QU">
+                            <rect key="frame" x="86" y="8" width="149" height="31"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-Qi-MUR">
+                            <rect key="frame" x="91" y="209" width="139" height="33"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                            <state key="normal" title="Select From Photos">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="selectPhotosButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="o8X-FO-5DX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbY-pc-LZE">
+                            <rect key="frame" x="117" y="47" width="87" height="154"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="154" id="lr8-kF-LjR"/>
+                            </constraints>
+                            <state key="normal" image="takePhotoButton">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="takePhotoButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="ueQ-fu-bW1"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="IHL-Qi-MUR" secondAttribute="centerX" id="FSb-Hw-Y9o"/>
+                        <constraint firstAttribute="bottom" secondItem="IHL-Qi-MUR" secondAttribute="bottom" constant="6" id="QfA-60-3NK"/>
+                        <constraint firstItem="ZSu-bH-3QU" firstAttribute="top" secondItem="tPs-8K-j5q" secondAttribute="top" constant="8" id="Sbo-y3-iJM"/>
+                        <constraint firstItem="IHL-Qi-MUR" firstAttribute="top" secondItem="hbY-pc-LZE" secondAttribute="bottom" constant="8" id="Snz-6Z-ntV"/>
+                        <constraint firstItem="IHL-Qi-MUR" firstAttribute="top" secondItem="hbY-pc-LZE" secondAttribute="bottom" constant="8" id="Tw3-h4-7Gk"/>
+                        <constraint firstAttribute="centerX" secondItem="hbY-pc-LZE" secondAttribute="centerX" id="Uw7-6t-t2S"/>
+                        <constraint firstAttribute="width" secondItem="tPs-8K-j5q" secondAttribute="height" multiplier="40:31" id="kKy-wG-ejy"/>
+                        <constraint firstAttribute="centerX" secondItem="ZSu-bH-3QU" secondAttribute="centerX" id="lRY-Dg-3uh"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Snz-6Z-ntV"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tPs-8K-j5q" secondAttribute="bottom" id="ut6-KB-TgB"/>
+                <constraint firstAttribute="trailing" secondItem="tPs-8K-j5q" secondAttribute="trailing" id="v3a-hM-xEf"/>
+                <constraint firstItem="tPs-8K-j5q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yZ0-O3-MFs"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="squareCroppingView" destination="tPs-8K-j5q" id="dXu-a3-Lg4"/>
+                <outlet property="titleLabel" destination="ZSu-bH-3QU" id="9fi-BW-aLS"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="takePhotoButton" width="87" height="84"/>
+    </resources>
+</document>

@@ -59,10 +59,10 @@ class SPCameraViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             else
             {
-                var userData = result as NSDictionary
+                var userData = result as! NSDictionary
                 
-                var facebookID = userData["id"] as String;
-                var name = userData["name"] as String;
+                var facebookID = userData["id"] as! String;
+                var name = userData["name"] as! String;
                 
                 self.welcomeLabel.text = "Welcome: \(name)"
                 

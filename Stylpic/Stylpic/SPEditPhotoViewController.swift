@@ -11,11 +11,10 @@ import UIKit
 class SPEditPhotoViewController: UIViewController {
 
     var image : UIImage!
+    var imageTwo : UIImage!
+    @IBOutlet weak var imageViewOne: UIImageView!
+    @IBOutlet weak var imageViewTwo: UIImageView!
     
-    init(aImage : UIImage){
-        self.image = aImage
-        super.init()
-    }
 
     required init(coder aDecoder: NSCoder) {
 //        image = nil
@@ -24,7 +23,8 @@ class SPEditPhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.imageViewOne.image = self.image
+        self.imageViewTwo.image = self.imageTwo
         // Do any additional setup after loading the view.
     }
 

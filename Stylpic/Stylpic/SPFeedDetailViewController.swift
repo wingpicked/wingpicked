@@ -58,12 +58,12 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
         if(indexPath.row == 0){
-        let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as SPFeedDetailPictureTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
             cell.setupCell(image)
             return cell
         }
         else {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCommentTableViewCell", forIndexPath: indexPath) as SPFeedDetailCommentTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCommentTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCommentTableViewCell
             
             cell.setupCell(comments[indexPath.row])
             return cell

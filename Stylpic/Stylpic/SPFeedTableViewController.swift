@@ -24,7 +24,7 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         rc.addTarget(self, action: Selector("downloadAllImages"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
         
-        
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 52, 0)
     }
     
     func downloadAllImages(){
@@ -44,8 +44,8 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
             // Iterate over all images and get the data from the PFFile
             for (var i = 0; i < objects.count; i++) {
                 
-                var eachObject = objects[i] as PFObject
-                var theImage = eachObject["imageFile"] as PFFile
+                var eachObject = objects[i] as! PFObject
+                var theImage = eachObject["imageFile"] as! PFFile
 
                 theImage.getDataInBackgroundWithBlock({ (data, error) -> Void in
                     var imageData = data
@@ -84,7 +84,7 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     }
 
     override func tableView(tableView: UITableView , cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as SPFeedViewTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SPFeedViewTableViewCell
 
 //        cell.textLabel?.text = "Cell \(indexPath.row)"
         cell.pictureImageView.image = imageDataArray[indexPath.row].image
