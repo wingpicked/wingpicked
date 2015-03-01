@@ -16,6 +16,11 @@ class SPTabBarViewController: UITabBarController, UINavigationControllerDelegate
         
         // Do any additional setup after loading the view.
         self.delegate = self
+        if self.viewControllers != nil {
+            for viewController in self.viewControllers as! [UIViewController] {
+                var view = viewController.view;
+            }
+        }
     }
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
