@@ -13,7 +13,7 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timePostedLabel: UILabel!
-    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var mainImageView: PFImageView!
     @IBOutlet weak var profilePictureImageView: UIImageView!
     
     override func awakeFromNib() {
