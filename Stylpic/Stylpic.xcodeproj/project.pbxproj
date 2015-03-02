@@ -21,6 +21,7 @@
 		3845F8101A560AE700191BDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F80F1A560AE700191BDA /* AudioToolbox.framework */; };
 		3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8111A560AF300191BDA /* CFNetwork.framework */; };
 		385BF6BE1A7F5E14003F9790 /* SPImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385BF6BD1A7F5E14003F9790 /* SPImage.swift */; };
+		387463671AA3FA1C002E0565 /* SPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463661AA3FA1C002E0565 /* SPManager.swift */; };
 		389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */; };
 		389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */; };
 		389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389A56F11A57275E00EB0EFD /* FacebookSDK.framework */; };
@@ -88,6 +89,7 @@
 		3863A6FD1A7F6D1800AFE938 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		3863A6FE1A7F6D1800AFE938 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		3863A6FF1A7F6D1800AFE938 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		387463661AA3FA1C002E0565 /* SPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPManager.swift; sourceTree = "<group>"; };
 		389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedTableViewController.swift; sourceTree = "<group>"; };
 		389A56F11A57275E00EB0EFD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				3845F7E01A560A5800191BDA /* AppDelegate.swift */,
+				387463681AA3FA5B002E0565 /* BLL */,
 				385BF6BC1A7F5C37003F9790 /* SPModels */,
 				38BB44541A663160004CD444 /* SPLogin */,
 				389A56EC1A564BB100EB0EFD /* SPFeed */,
@@ -270,6 +273,14 @@
 				3863A6FF1A7F6D1800AFE938 /* OpenSans-Bold.ttf */,
 			);
 			name = CustomFonts;
+			sourceTree = "<group>";
+		};
+		387463681AA3FA5B002E0565 /* BLL */ = {
+			isa = PBXGroup;
+			children = (
+				387463661AA3FA1C002E0565 /* SPManager.swift */,
+			);
+			name = BLL;
 			sourceTree = "<group>";
 		};
 		389A56EC1A564BB100EB0EFD /* SPFeed */ = {
@@ -460,6 +471,7 @@
 			files = (
 				4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */,
+				387463671AA3FA1C002E0565 /* SPManager.swift in Sources */,
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */,
 				38BB445C1A6657B7004CD444 /* SPTabBarViewController.swift in Sources */,
