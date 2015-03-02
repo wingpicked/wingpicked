@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class SPTabBarViewController: UITabBarController, UINavigationControllerDelegate, UITabBarControllerDelegate {
     
@@ -21,6 +22,8 @@ class SPTabBarViewController: UITabBarController, UINavigationControllerDelegate
                 var view = viewController.view;
             }
         }
+        
+        
     }
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {

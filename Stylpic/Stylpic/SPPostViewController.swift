@@ -43,6 +43,8 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         super.viewWillAppear(animated)
         self.userPhotoOne = nil;
         self.userPhotoTwo = nil;
+        self.captionTextField.alpha = 1
+        self.captionTextField.userInteractionEnabled = true
         self.shouldStartCameraController()
     }
     
@@ -166,18 +168,24 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
 //    
     func saveImages() {
-        var imageData = UIImageJPEGRepresentation(self.userPhotoOne, 0.05)
+        var imageData = UIImageJPEGRepresentation(self.imageViewOne.image, 0.05)
         var imageFile = PFFile(name: "Image.jpg", data: imageData)
         imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
             if(error == nil){
-                var imageDataTwo = UIImageJPEGRepresentation(self.userPhotoTwo, 0.05)
+                var imageDataTwo = UIImageJPEGRepresentation(self.imageViewTwo.image, 0.05)
                 var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo)
                 imageFileTwo.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                     if(error == nil){
                         var userPhoto = PFObject(className: "UserPhoto")
                         userPhoto.setObject(imageFile, forKey: "imageFile")
                         userPhoto.setObject(imageFileTwo, forKey: "imageFile2")
-                        userPhoto.setObject("This is a hardcoded caption", forKey: "caption")
+                        
+                        if let text = self.captionTextField.text {
+                            userPhoto.setObject(text, forKey: "caption")
+                        } else {
+                            userPhoto.setObject("", forKey: "caption")
+                        }
+                        
                         userPhoto.saveInBackgroundWithBlock({ (success, saveError) -> Void in
                             if(saveError != nil){
                                 println(saveError.userInfo)
@@ -197,6 +205,11 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     @IBAction func shareButtonDidTap(sender: AnyObject) {
         println( "share button did tap" )
+        self.shareButton.userInteractionEnabled = false
+        self.shareButton.alpha = 0.4
+        self.saveImages()
     }
+    
+    
     
 }
