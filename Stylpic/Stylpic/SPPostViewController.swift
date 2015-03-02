@@ -166,11 +166,11 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
 //    
     func saveImages() {
-        var imageData = UIImageJPEGRepresentation(self.userPhotoOne, 0.05)
+        var imageData = UIImageJPEGRepresentation(self.imageViewOne.image, 0.05)
         var imageFile = PFFile(name: "Image.jpg", data: imageData)
         imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
             if(error == nil){
-                var imageDataTwo = UIImageJPEGRepresentation(self.userPhotoTwo, 0.05)
+                var imageDataTwo = UIImageJPEGRepresentation(self.imageViewTwo.image, 0.05)
                 var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo)
                 imageFileTwo.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                     if(error == nil){
@@ -197,6 +197,11 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     @IBAction func shareButtonDidTap(sender: AnyObject) {
         println( "share button did tap" )
+        self.shareButton.userInteractionEnabled = false
+        self.shareButton.alpha = 0.4
+        self.saveImages()
     }
+    
+    
     
 }

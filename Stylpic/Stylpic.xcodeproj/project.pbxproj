@@ -42,6 +42,7 @@
 		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
+		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
 		ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */; };
 		ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */; };
@@ -110,6 +111,7 @@
 		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
+		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
 		ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */,
 				389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */,
 				481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */,
 				ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */,
@@ -229,6 +232,7 @@
 		3845F80C1A560A9000191BDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4877E1101AA3E6D1006587CE /* Social.framework */,
 				ECB2C2341A560E350009FD11 /* libsqlite3.dylib */,
 				ECB2C2351A560E350009FD11 /* libz.dylib */,
 				389A56F11A57275E00EB0EFD /* FacebookSDK.framework */,
