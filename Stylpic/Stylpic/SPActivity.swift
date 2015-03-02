@@ -25,6 +25,7 @@ class SPActivity: PFObject {
     @NSManaged var type : NSNumber
     @NSManaged var content : String
     @NSManaged var photo : SPPhotos
+    @NSManaged var isArchiveReady : Bool
     
     var activityType : ActivityType? {
         get {

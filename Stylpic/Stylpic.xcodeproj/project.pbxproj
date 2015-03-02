@@ -25,6 +25,8 @@
 		3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636B1AA3FFE2002E0565 /* SPUser.swift */; };
 		3874636E1AA40026002E0565 /* SPPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636D1AA40026002E0565 /* SPPhotos.swift */; };
 		387463701AA40465002E0565 /* SPNewsFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636F1AA40465002E0565 /* SPNewsFeedItem.swift */; };
+		387463741AA418AC002E0565 /* SPProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463731AA418AC002E0565 /* SPProfileInfo.swift */; };
+		387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463751AA418BA002E0565 /* SPPhotosComments.swift */; };
 		389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */; };
 		389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */; };
 		389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389A56F11A57275E00EB0EFD /* FacebookSDK.framework */; };
@@ -97,6 +99,8 @@
 		3874636B1AA3FFE2002E0565 /* SPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		3874636D1AA40026002E0565 /* SPPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotos.swift; sourceTree = "<group>"; };
 		3874636F1AA40465002E0565 /* SPNewsFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNewsFeedItem.swift; sourceTree = "<group>"; };
+		387463731AA418AC002E0565 /* SPProfileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileInfo.swift; sourceTree = "<group>"; };
+		387463751AA418BA002E0565 /* SPPhotosComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosComments.swift; sourceTree = "<group>"; };
 		389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedTableViewController.swift; sourceTree = "<group>"; };
 		389A56F11A57275E00EB0EFD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -269,10 +273,8 @@
 		385BF6BC1A7F5C37003F9790 /* SPModels */ = {
 			isa = PBXGroup;
 			children = (
-				387463691AA3FFCF002E0565 /* SPActivity.swift */,
-				3874636B1AA3FFE2002E0565 /* SPUser.swift */,
-				3874636D1AA40026002E0565 /* SPPhotos.swift */,
-				3874636F1AA40465002E0565 /* SPNewsFeedItem.swift */,
+				387463711AA412EE002E0565 /* SPParse */,
+				387463721AA412FA002E0565 /* SPViewModels */,
 			);
 			name = SPModels;
 			sourceTree = "<group>";
@@ -294,6 +296,26 @@
 				387463661AA3FA1C002E0565 /* SPManager.swift */,
 			);
 			name = BLL;
+			sourceTree = "<group>";
+		};
+		387463711AA412EE002E0565 /* SPParse */ = {
+			isa = PBXGroup;
+			children = (
+				387463691AA3FFCF002E0565 /* SPActivity.swift */,
+				3874636B1AA3FFE2002E0565 /* SPUser.swift */,
+				3874636D1AA40026002E0565 /* SPPhotos.swift */,
+			);
+			name = SPParse;
+			sourceTree = "<group>";
+		};
+		387463721AA412FA002E0565 /* SPViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3874636F1AA40465002E0565 /* SPNewsFeedItem.swift */,
+				387463731AA418AC002E0565 /* SPProfileInfo.swift */,
+				387463751AA418BA002E0565 /* SPPhotosComments.swift */,
+			);
+			name = SPViewModels;
 			sourceTree = "<group>";
 		};
 		389A56EC1A564BB100EB0EFD /* SPFeed */ = {
@@ -488,12 +510,14 @@
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */,
 				38BB445C1A6657B7004CD444 /* SPTabBarViewController.swift in Sources */,
+				387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
 				387463701AA40465002E0565 /* SPNewsFeedItem.swift in Sources */,
 				38BB44511A66313C004CD444 /* SPExploreViewController.swift in Sources */,
 				38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */,
 				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,
+				387463741AA418AC002E0565 /* SPProfileInfo.swift in Sources */,
 				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
 				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
 				3874636A1AA3FFCF002E0565 /* SPActivity.swift in Sources */,

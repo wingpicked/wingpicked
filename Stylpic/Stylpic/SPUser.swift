@@ -14,6 +14,7 @@ class SPUser: PFUser, PFSubclassing {
     @NSManaged var facebookId : String
     @NSManaged var facebookFriends : [SPUser]
     @NSManaged var channel : String
+    @NSManaged var isFollowing : Bool
     
     
     override class func initialize() {

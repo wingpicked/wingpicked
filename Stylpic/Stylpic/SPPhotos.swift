@@ -13,6 +13,7 @@ class SPPhotos: PFObject, PFSubclassing {
     @NSManaged var imageTwo : PFFile
     @NSManaged var thumbnailOne : PFFile
     @NSManaged var thumbnailTwo : PFFile
+    @NSManaged var caption : String
     @NSManaged var user : SPUser
     
     override class func initialize() {
