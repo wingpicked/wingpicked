@@ -42,7 +42,7 @@
 		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
-		48B4BC911A9AA83300B06E41 /* SPFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPFlowViewController.swift */; };
+		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
 		ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */; };
 		ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */; };
 		ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2341A560E350009FD11 /* libsqlite3.dylib */; };
@@ -110,7 +110,7 @@
 		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
-		48B4BC901A9AA83300B06E41 /* SPFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFlowViewController.swift; sourceTree = "<group>"; };
+		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
 		ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ECB2C2341A560E350009FD11 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -301,7 +301,7 @@
 				38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */,
 				38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */,
 				38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */,
-				48B4BC901A9AA83300B06E41 /* SPFlowViewController.swift */,
+				48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */,
 			);
 			name = SPCamera;
 			sourceTree = "<group>";
@@ -471,7 +471,7 @@
 				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,
 				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
 				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
-				48B4BC911A9AA83300B06E41 /* SPFlowViewController.swift in Sources */,
+				48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
 				389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */,
 				38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */,
