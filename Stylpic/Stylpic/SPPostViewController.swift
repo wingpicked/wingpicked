@@ -43,6 +43,8 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         super.viewWillAppear(animated)
         self.userPhotoOne = nil;
         self.userPhotoTwo = nil;
+        self.captionTextField.alpha = 1
+        self.captionTextField.userInteractionEnabled = true
         self.shouldStartCameraController()
     }
     
@@ -177,7 +179,13 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
                         var userPhoto = PFObject(className: "UserPhoto")
                         userPhoto.setObject(imageFile, forKey: "imageFile")
                         userPhoto.setObject(imageFileTwo, forKey: "imageFile2")
-                        userPhoto.setObject("This is a hardcoded caption", forKey: "caption")
+                        
+                        if let text = self.captionTextField.text {
+                            userPhoto.setObject(text, forKey: "caption")
+                        } else {
+                            userPhoto.setObject("", forKey: "caption")
+                        }
+                        
                         userPhoto.saveInBackgroundWithBlock({ (success, saveError) -> Void in
                             if(saveError != nil){
                                 println(saveError.userInfo)
