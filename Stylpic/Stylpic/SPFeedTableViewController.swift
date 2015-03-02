@@ -11,7 +11,7 @@ import Parse
 
 class SPFeedTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var imageDataArray : [SPImage] = [];
+    //var imageDataArray : [SPImage] = [];
     var allPictureObjects : [PFObject] = [];
     
 //    init (){
@@ -44,7 +44,7 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             self.refreshControl?.endRefreshing()
-            self.imageDataArray.removeAll(keepCapacity: false)
+            //self.imageDataArray.removeAll(keepCapacity: false)
 
             if(error == nil){
                 self.allPictureObjects = objects as! [PFObject]

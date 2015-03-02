@@ -8,8 +8,15 @@
 
 import UIKit
 
+
+class SPNewsFeedItem: NSObject {
+
+}
+
+
 class SPManager: NSObject {
    
-    
+//    -getFeedItems (obj(photo1: SPPhoto, photo2: SPPhoto, caption: String, likesCount: Int, commentsCount: Int, Username: String, userFriendlyTimestamp: String, userProfilePicture: PFFile))
+//    -
     
 }
