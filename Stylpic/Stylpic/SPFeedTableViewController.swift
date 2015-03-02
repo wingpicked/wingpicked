@@ -12,7 +12,7 @@ import Parse
 class SPFeedTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
     var imageDataArray : [SPImage] = [];
-
+    var allPictureObjects : [PFObject] = [];
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,33 +37,38 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
 
             if(error == nil)
          {
+            
+            self.allPictureObjects = objects as! [PFObject]
+            self.tableView.reloadData()
 //            println("Successfully retrieved %d photos.", objects.count);
             
             
             //TODO: Refactor this out to a manager	
             // Iterate over all images and get the data from the PFFile
-            for (var i = 0; i < objects.count; i++) {
-                
-                var eachObject = objects[i] as! PFObject
-                var theImage = eachObject["imageFile"] as! PFFile
-
-                theImage.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                    var imageData = data
-                    var image = UIImage(data: imageData)
-                    
-                    var fCaption = ""
-                    if let theCaption = eachObject["caption"] as? String{
-                        fCaption = theCaption
-                    }
-                    else{
-                        fCaption = "Empty Caption"
-                    }
-                    
-                    var spImage = SPImage(caption:fCaption, image: image!)
-                    self.imageDataArray.append(spImage)
-                    self.tableView.reloadData() //TODO: Refactor this out so its not called every time there is an image.
-                })
-            }
+//            for (var i = 0; i < objects.count; i++) {
+//                
+//                var eachObject = objects[i] as! PFObject
+//                var theImage = eachObject["imageFile"] as! PFFile
+//                println(theImage.url)
+//                
+//
+//                theImage.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//                    var imageData = data
+//                    var image = UIImage(data: imageData)
+//                    
+//                    var fCaption = ""
+//                    if let theCaption = eachObject["caption"] as? String{
+//                        fCaption = theCaption
+//                    }
+//                    else{
+//                        fCaption = "Empty Caption"
+//                    }
+//                    
+//                    var spImage = SPImage(caption:fCaption, image: image!)
+//                    self.imageDataArray.append(spImage)
+//                    self.tableView.reloadData() //TODO: Refactor this out so its not called every time there is an image.
+//                })
+//            }
 
         }
         }
@@ -80,15 +85,32 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return imageDataArray.count
+        //return imageDataArray.count
+        return allPictureObjects.count
     }
 
     override func tableView(tableView: UITableView , cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SPFeedViewTableViewCell
 
+            
+        var o = self.allPictureObjects[indexPath.row] as PFObject
+
+        var f = o["imageFile"] as? PFFile
+        var f2 = o["imageFile2"] as? PFFile
+        if let cf = f, cf2 = f2 {
+            cell.pictureImageView.file = cf
+            cell.pictureImageView2.file = cf2
+            cell.pictureImageView.loadInBackground(nil)
+            cell.pictureImageView2.loadInBackground(nil)
+        }
+
+        
+        
+
+        
 //        cell.textLabel?.text = "Cell \(indexPath.row)"
-        cell.pictureImageView.image = imageDataArray[indexPath.row].image
-        cell.caption.text = imageDataArray[indexPath.row].caption
+        //cell.pictureImageView.image = imageDataArray[indexPath.row].image
+        //cell.caption.text = imageDataArray[indexPath.row].caption
         // Configure the cell...
 
         return cell

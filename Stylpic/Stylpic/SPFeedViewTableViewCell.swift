@@ -10,11 +10,12 @@ import UIKit
 
 class SPFeedViewTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var pictureImageView: UIImageView!
+    @IBOutlet weak var pictureImageView: PFImageView!
     @IBOutlet weak var caption: UILabel!
     
     @IBOutlet weak var actualContentView: UIView!
     
+    @IBOutlet weak var pictureImageView2: PFImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
