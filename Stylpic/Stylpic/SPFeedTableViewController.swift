@@ -11,9 +11,21 @@ import Parse
 
 class SPFeedTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var imageDataArray : [SPImage] = [];
+    //var imageDataArray : [SPImage] = [];
     var allPictureObjects : [PFObject] = [];
     
+//    init (){
+//        super.init(style: UITableViewStyle.Plain, className: "UserPhoto")
+//        //super.init(className: "UserPhoto")
+//        self.parseClassName = "UserPhoto"
+//    }
+//
+//    required init(coder aDecoder: NSCoder) {
+//        super.init(style: UITableViewStyle.Plain, className: "UserPhoto")
+//        self.parseClassName = "UserPhoto"
+//    }
+    
+    //MARK: View Lifecycle    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,49 +42,17 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     func downloadAllImages(){
         var query = PFQuery(className: "UserPhoto")
         
-        
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             self.refreshControl?.endRefreshing()
-            self.imageDataArray.removeAll(keepCapacity: false)
+            //self.imageDataArray.removeAll(keepCapacity: false)
 
-            if(error == nil)
-         {
-            
-            self.allPictureObjects = objects as! [PFObject]
-            self.tableView.reloadData()
-//            println("Successfully retrieved %d photos.", objects.count);
-            
-            
-            //TODO: Refactor this out to a manager	
-            // Iterate over all images and get the data from the PFFile
-//            for (var i = 0; i < objects.count; i++) {
-//                
-//                var eachObject = objects[i] as! PFObject
-//                var theImage = eachObject["imageFile"] as! PFFile
-//                println(theImage.url)
-//                
-//
-//                theImage.getDataInBackgroundWithBlock({ (data, error) -> Void in
-//                    var imageData = data
-//                    var image = UIImage(data: imageData)
-//                    
-//                    var fCaption = ""
-//                    if let theCaption = eachObject["caption"] as? String{
-//                        fCaption = theCaption
-//                    }
-//                    else{
-//                        fCaption = "Empty Caption"
-//                    }
-//                    
-//                    var spImage = SPImage(caption:fCaption, image: image!)
-//                    self.imageDataArray.append(spImage)
-//                    self.tableView.reloadData() //TODO: Refactor this out so its not called every time there is an image.
-//                })
-//            }
-
-        }
+            if(error == nil){
+                self.allPictureObjects = objects as! [PFObject]
+                self.tableView.reloadData()
+            }
         }
     }
+    
     
     // MARK: - Table view data source
 
@@ -97,11 +77,13 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
 
         var f = o["imageFile"] as? PFFile
         var f2 = o["imageFile2"] as? PFFile
-        if let cf = f, cf2 = f2 {
-            cell.pictureImageView.file = cf
-            cell.pictureImageView2.file = cf2
+        var caption = o["caption"] as? String
+        if let f = f, f2 = f2, caption = caption {
+            cell.pictureImageView.file = f
+            cell.pictureImageView2.file = f2
             cell.pictureImageView.loadInBackground(nil)
             cell.pictureImageView2.loadInBackground(nil)
+            cell.caption.text = caption
         }
 
         
@@ -117,9 +99,9 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var detailViewController = SPFeedDetailViewController(image: imageDataArray[indexPath.row].image!)
-        //self.presentViewController(detailViewController, animated: true, completion: nil)
-        self.navigationController?.pushViewController(detailViewController, animated: true)
+//        var detailViewController = SPFeedDetailViewController(image: imageDataArray[indexPath.row].image!)
+//        //self.presentViewController(detailViewController, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 
 }
