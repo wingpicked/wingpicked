@@ -24,9 +24,8 @@ class SPUser: PFUser, PFSubclassing {
         }
     }
     
-    override static func parseClassName() -> String! {
-        return "User"
-    }
-    
-    
+//    override static func parseClassName() -> String! {
+//        return "_User"
+//    }
+
 }

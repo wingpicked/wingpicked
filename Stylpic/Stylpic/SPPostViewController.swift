@@ -43,8 +43,9 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         super.viewWillAppear(animated)
         self.userPhotoOne = nil;
         self.userPhotoTwo = nil;
-        self.captionTextField.alpha = 1
-        self.captionTextField.userInteractionEnabled = true
+        self.captionTextField.text = ""
+        self.shareButton.alpha = 1
+        self.shareButton.userInteractionEnabled = true
         self.shouldStartCameraController()
     }
     
@@ -167,36 +168,18 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     
 //    
-    func saveImages() {
-        var imageData = UIImageJPEGRepresentation(self.imageViewOne.image, 0.05)
-        var imageFile = PFFile(name: "Image.jpg", data: imageData)
-        imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
-            if(error == nil){
-                var imageDataTwo = UIImageJPEGRepresentation(self.imageViewTwo.image, 0.05)
-                var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo)
-                imageFileTwo.saveInBackgroundWithBlock { (succeeded, error) -> Void in
-                    if(error == nil){
-                        var userPhoto = PFObject(className: "UserPhoto")
-                        userPhoto.setObject(imageFile, forKey: "imageFile")
-                        userPhoto.setObject(imageFileTwo, forKey: "imageFile2")
-                        
-                        if let text = self.captionTextField.text {
-                            userPhoto.setObject(text, forKey: "caption")
-                        } else {
-                            userPhoto.setObject("", forKey: "caption")
-                        }
-                        
-                        userPhoto.saveInBackgroundWithBlock({ (success, saveError) -> Void in
-                            if(saveError != nil){
-                                println(saveError.userInfo)
-                            }
-                        })
-                        
-                    }
-                }
+    func shareAndPostPhotos( resultsBlock: PFBooleanResultBlock ) {
+//        
+        SPManager.sharedInstance.saveImages(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
+            if error == nil {
+                var photos = SPPhotos(imageOne: imageOne!, thumbnailImageOne: imageOneThumbnail!, imageTwo: imageTwo!, thumbnailImageTwo: imageTwoThumbnail!, postCaption: self.captionTextField.text!, postingUser: SPUser.currentUser()! )
+                photos.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    resultsBlock( success, error )
+                })
+            } else {
+                println( error )
             }
         }
-        
     }
     
     @IBAction func viewDidTap(sender: AnyObject) {
@@ -207,7 +190,13 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         println( "share button did tap" )
         self.shareButton.userInteractionEnabled = false
         self.shareButton.alpha = 0.4
-        self.saveImages()
+        self.shareAndPostPhotos { (success, error) -> Void in
+            if error == nil {
+                println( success )
+            } else {
+                println( error )
+            }
+        }
     }
     
     

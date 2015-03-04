@@ -16,6 +16,16 @@ class SPPhotos: PFObject, PFSubclassing {
     @NSManaged var caption : String
     @NSManaged var user : SPUser
     
+    init( imageOne: PFFile, thumbnailImageOne: PFFile, imageTwo: PFFile, thumbnailImageTwo: PFFile, postCaption: String, postingUser: SPUser ) {
+        super.init()
+        self.imageOne = imageOne
+        self.imageTwo = imageTwo
+        self.thumbnailOne = thumbnailImageOne
+        self.thumbnailTwo = thumbnailImageTwo
+        self.caption = postCaption
+        self.user = postingUser
+    }
+    
     override class func initialize() {
         var onceToken : dispatch_once_t = 0;
         dispatch_once(&onceToken) {
@@ -24,7 +34,7 @@ class SPPhotos: PFObject, PFSubclassing {
     }
     
     static func parseClassName() -> String! {
-        return "Photo"
+        return "Photos"
     }
     
 }
