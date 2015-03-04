@@ -8,12 +8,28 @@
 
 import UIKit
 
+///--------------------------------------
+/// @name Blocks
+///--------------------------------------
+typealias SPFeedItemsResultBlock = ( feedItems: [SPNewsFeedItem], error: NSError?) -> Void
+typealias SPSaveImagesResultsBlock = (imageOne: PFFile?, imageOneThumbnail: PFFile?, imageTwo: PFFile?, imageTwoThumbnail: PFFile?, error: NSError?) -> Void
+
 class SPManager: NSObject {
-   
-    //MARK: Items
-    func getFeedItems() -> [SPNewsFeedItem]{
-        return [SPNewsFeedItem()]
+    
+    class var sharedInstance: SPManager {
+        struct Static {
+            static let instance: SPManager = SPManager()
+        }
+        return Static.instance
     }
+    //MARK: Items
+//    the Feed subclasses PFQueryTableViewController which has a delegate method -(PFQuery *)queryForTable
+//    func getFeedItems( resultsBlock: SPFeedItemsResultBlock ) {
+//        var photosQuery = PFQuery( className: "Photos" )
+//        photosQuery.includeKey( "User" )
+//        photosQuery.
+//        
+//    }
     
     func getExploreItems() -> [SPNewsFeedItem]{
         return [SPNewsFeedItem()]
@@ -59,8 +75,10 @@ class SPManager: NSObject {
         return SPProfileInfo()
     }
     
-    func postPhotosToFeed(photos : SPPhotos) {
-        
+    func postPhotosToFeed(photos : SPPhotos, block: PFBooleanResultBlock ) {
+        photos.saveInBackgroundWithBlock { (success, error) -> Void in
+            block( success, error )
+        }
     }
     
     func postPhotoToCloset(photos : SPPhotos) {
@@ -80,5 +98,42 @@ class SPManager: NSObject {
     }
     
     
+//   returns 4 PFFiles for the images. an image and thumbnail for each image param
+    func saveImages( imageOne: UIImage?, imageTwo: UIImage?, resultsBlock: SPSaveImagesResultsBlock ) {
+        if let imageOne = imageOne, imageTwo = imageTwo {
+            var isImageOneSaved = false
+            var isImageTwoSaved = false
+            var imageData = UIImageJPEGRepresentation(imageOne, 0.05)
+            var imageFile = PFFile(name: "Image.jpg", data: imageData)
+            var imageDataTwo = UIImageJPEGRepresentation(imageTwo, 0.05)
+            var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo)
+            imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+                if error == nil {
+                    isImageOneSaved = true
+                    if isImageTwoSaved {
+                        resultsBlock(imageOne: imageFile, imageOneThumbnail: imageFile, imageTwo: imageFileTwo, imageTwoThumbnail: imageFileTwo, error: nil )
+                    }
+                } else {
+                    resultsBlock(imageOne: nil, imageOneThumbnail: nil, imageTwo: nil, imageTwoThumbnail: nil, error: error )
+                }
+            }
+
+            
+            imageFileTwo.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+                if error == nil {
+                    isImageTwoSaved = true
+                    if isImageOneSaved {
+                        resultsBlock(imageOne: imageFile, imageOneThumbnail: imageFile, imageTwo: imageFileTwo, imageTwoThumbnail: imageFileTwo, error: nil )
+                    }
+                } else {
+                    resultsBlock(imageOne: nil, imageOneThumbnail: nil, imageTwo: nil, imageTwoThumbnail: nil, error: error )
+                }
+            }
+        } else {
+            var errorMessage = "ERROR: one or the other image is nil passed to saveImages so can't save images"
+            println( errorMessage )
+            resultsBlock(imageOne: nil, imageOneThumbnail: nil, imageTwo: nil, imageTwoThumbnail: nil, error: NSError(domain:"com.stylpic", code: -1001, userInfo:[ "error": errorMessage ] )  )
+        }
+    }
     
 }
