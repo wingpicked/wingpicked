@@ -29,19 +29,17 @@ class SPPhotosQueryTableViewController: PFQueryTableViewController {
             self.paginationEnabled = true;
             
             // The number of objects to show per page
-            self.objectsPerPage = 25;
+            self.objectsPerPage = 3;
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-    }
+        }
 
-//    override func queryForTable() -> PFQuery! {
-//        return PFQuery(className: "className")
-//    }
+    override func queryForTable() -> PFQuery! {
+        return PFQuery(className: "className")
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> PFTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
