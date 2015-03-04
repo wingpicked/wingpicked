@@ -45,6 +45,7 @@
 		38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44551A663174004CD444 /* SPProfileViewController.swift */; };
 		38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44581A66318C004CD444 /* SPClosetViewController.swift */; };
 		38BB445C1A6657B7004CD444 /* SPTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */; };
+		38E7F82F1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E7F82E1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift */; };
 		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
@@ -120,6 +121,7 @@
 		38BB44551A663174004CD444 /* SPProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileViewController.swift; sourceTree = "<group>"; };
 		38BB44581A66318C004CD444 /* SPClosetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetViewController.swift; sourceTree = "<group>"; };
 		38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTabBarViewController.swift; sourceTree = "<group>"; };
+		38E7F82E1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosQueryTableViewController.swift; sourceTree = "<group>"; };
 		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				38BB44501A66313C004CD444 /* SPExploreViewController.swift */,
+				38E7F82E1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift */,
 			);
 			name = SPExplore;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */,
 				3874636E1AA40026002E0565 /* SPPhotos.swift in Sources */,
 				389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */,
+				38E7F82F1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift in Sources */,
 				38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,8 +655,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joshua Bell (U44J7HKN4P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -661,7 +665,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
+				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -673,7 +677,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -682,7 +686,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
+				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;

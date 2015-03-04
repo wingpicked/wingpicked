@@ -211,6 +211,19 @@
                     <view key="view" contentMode="scaleToFill" id="ovd-aZ-mzy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="im2-KL-vbV">
+                                <rect key="frame" x="0.0" y="123" width="320" height="445"/>
+                                <connections>
+                                    <segue destination="SPM-7S-1JU" kind="embed" identifier="tableViewController" id="FEB-Kj-M8o"/>
+                                </connections>
+                            </containerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kkq-Jj-vdZ">
+                                <rect key="frame" x="16" y="78" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="Icon_explore" id="ikZ-cJ-MZE"/>
@@ -219,6 +232,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0c-Xf-LrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="542" y="-472"/>
+        </scene>
+        <!--Photos Query Table View Controller-->
+        <scene sceneID="rMT-iP-sMz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGA-CX-Xwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="SPM-7S-1JU" customClass="SPPhotosQueryTableViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oje-U8-gVT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="445"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="9LR-an-kDb" customClass="PFTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9LR-an-kDb" id="Zxo-Ub-YWQ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="988" y="-472.5"/>
         </scene>
         <!--Profile-->
         <scene sceneID="vKo-N4-TDE">
