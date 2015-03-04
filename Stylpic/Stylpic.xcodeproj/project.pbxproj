@@ -46,6 +46,7 @@
 		38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44581A66318C004CD444 /* SPClosetViewController.swift */; };
 		38BB445C1A6657B7004CD444 /* SPTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */; };
 		38E7F82F1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E7F82E1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift */; };
+		38E7F8311AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E7F8301AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib */; };
 		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
@@ -122,6 +123,7 @@
 		38BB44581A66318C004CD444 /* SPClosetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetViewController.swift; sourceTree = "<group>"; };
 		38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTabBarViewController.swift; sourceTree = "<group>"; };
 		38E7F82E1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosQueryTableViewController.swift; sourceTree = "<group>"; };
+		38E7F8301AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedViewTableViewCell.xib; sourceTree = "<group>"; };
 		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
@@ -324,11 +326,10 @@
 			isa = PBXGroup;
 			children = (
 				38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */,
-				389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */,
 				389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */,
 				38AA7BF41A883E6600A75FB7 /* SPFeedDetailViewController.swift */,
 				38AA7BF51A883E6600A75FB7 /* SPFeedDetailViewController.xib */,
-				38FBAD411A92D0E100B8905C /* SPFeedDetailCells */,
+				38FBAD411A92D0E100B8905C /* SPFeedTableViewCells */,
 			);
 			name = SPFeed;
 			sourceTree = "<group>";
@@ -379,15 +380,17 @@
 			name = SPCloset;
 			sourceTree = "<group>";
 		};
-		38FBAD411A92D0E100B8905C /* SPFeedDetailCells */ = {
+		38FBAD411A92D0E100B8905C /* SPFeedTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */,
+				38E7F8301AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib */,
 				38AA7BF81A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift */,
 				38AA7BF91A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib */,
 				38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */,
 				38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */,
 			);
-			name = SPFeedDetailCells;
+			name = SPFeedTableViewCells;
 			sourceTree = "<group>";
 		};
 		4854A9CE1A9AC76D00164CD0 /* cameraOverlay */ = {
@@ -484,6 +487,7 @@
 				38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */,
 				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
+				38E7F8311AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib in Resources */,
 				4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */,
 				3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,

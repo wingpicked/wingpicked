@@ -25,11 +25,4 @@ class SPFeedViewTableViewCell: UITableViewCell {
         self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 5.0);
         self.actualContentView.layer.shadowOpacity = 0.5;
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
