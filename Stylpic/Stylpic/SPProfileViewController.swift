@@ -12,17 +12,7 @@ class SPProfileViewController: UIViewController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        var tabBar = SPTabBarViewController()
-        var closetVC = SPClosetViewController()
-        tabBar.viewControllers = [closetVC]
-//        tabBar.setViewControllers([closetVC], animated: true)
-        tabBar.delegate = self
         
-//        var z = tabBar.tabBar.items[2]
-
-        
-        self.view.addSubview(tabBar.view)
         // Do any additional setup after loading the view.
     }
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SPClosetCollectionViewCell" id="gTV-IL-0wX" customClass="SPClosetCollectionViewCell" customModule="Stylpic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="107" height="107"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="107" height="107"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="9oR-aC-ccT">
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="107"/>
+                        <color key="backgroundColor" cyan="0.85999999999999999" magenta="0.0" yellow="0.16" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" cyan="0.0" magenta="0.0" yellow="1" black="0.075416286499999999" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9oR-aC-ccT" secondAttribute="bottom" id="6iT-vP-9FL"/>
+                <constraint firstItem="9oR-aC-ccT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NVj-MZ-qB7"/>
+                <constraint firstItem="9oR-aC-ccT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="c7g-yR-ktH"/>
+                <constraint firstAttribute="trailing" secondItem="9oR-aC-ccT" secondAttribute="trailing" id="nRr-gL-Nmg"/>
+            </constraints>
+            <size key="customSize" width="107" height="107"/>
+            <connections>
+                <outlet property="imageView" destination="9oR-aC-ccT" id="80D-uv-v3G"/>
+            </connections>
+            <point key="canvasLocation" x="267.5" y="238.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Melanie-Iglesias" width="500" height="600"/>
+    </resources>
+</document>

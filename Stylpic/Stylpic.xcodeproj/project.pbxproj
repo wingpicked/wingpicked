@@ -20,6 +20,8 @@
 		3845F80E1A560ADD00191BDA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F80D1A560ADD00191BDA /* Accounts.framework */; };
 		3845F8101A560AE700191BDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F80F1A560AE700191BDA /* AudioToolbox.framework */; };
 		3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8111A560AF300191BDA /* CFNetwork.framework */; };
+		386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B7A801AA82ECD00115147 /* SPClosetDetailViewController.swift */; };
+		386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386B7A811AA82ECD00115147 /* SPClosetDetailViewController.xib */; };
 		387463671AA3FA1C002E0565 /* SPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463661AA3FA1C002E0565 /* SPManager.swift */; };
 		3874636A1AA3FFCF002E0565 /* SPActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463691AA3FFCF002E0565 /* SPActivity.swift */; };
 		3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636B1AA3FFE2002E0565 /* SPUser.swift */; };
@@ -38,6 +40,8 @@
 		38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */; };
 		38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */; };
 		38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */; };
+		38AC45161AA8212700199935 /* SPClosetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AC45141AA8212700199935 /* SPClosetCollectionViewCell.swift */; };
+		38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38AC45151AA8212700199935 /* SPClosetCollectionViewCell.xib */; };
 		38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */; };
 		38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */; };
 		38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */; };
@@ -96,6 +100,8 @@
 		3863A6FD1A7F6D1800AFE938 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		3863A6FE1A7F6D1800AFE938 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		3863A6FF1A7F6D1800AFE938 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		386B7A801AA82ECD00115147 /* SPClosetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetDetailViewController.swift; sourceTree = "<group>"; };
+		386B7A811AA82ECD00115147 /* SPClosetDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPClosetDetailViewController.xib; sourceTree = "<group>"; };
 		387463661AA3FA1C002E0565 /* SPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPManager.swift; sourceTree = "<group>"; };
 		387463691AA3FFCF002E0565 /* SPActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPActivity.swift; sourceTree = "<group>"; };
 		3874636B1AA3FFE2002E0565 /* SPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 		38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedDetailCommentTableViewCell.swift; sourceTree = "<group>"; };
 		38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedDetailCommentTableViewCell.xib; sourceTree = "<group>"; };
 		38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPBaseTableViewCell.swift; sourceTree = "<group>"; };
+		38AC45141AA8212700199935 /* SPClosetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetCollectionViewCell.swift; sourceTree = "<group>"; };
+		38AC45151AA8212700199935 /* SPClosetCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPClosetCollectionViewCell.xib; sourceTree = "<group>"; };
 		38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEditPhotoViewController.swift; sourceTree = "<group>"; };
 		38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPEditPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPEditPhotoViewController.xib; sourceTree = "<group>"; };
@@ -182,7 +190,6 @@
 		3845F7D21A560A5800191BDA = {
 			isa = PBXGroup;
 			children = (
-				3845F7E61A560A5800191BDA /* Main.storyboard */,
 				3845F80C1A560A9000191BDA /* Frameworks */,
 				3845F7DD1A560A5800191BDA /* Stylpic */,
 				3845F7F51A560A5800191BDA /* StylpicTests */,
@@ -202,7 +209,7 @@
 		3845F7DD1A560A5800191BDA /* Stylpic */ = {
 			isa = PBXGroup;
 			children = (
-				3845F7E01A560A5800191BDA /* AppDelegate.swift */,
+				3845F7E61A560A5800191BDA /* Main.storyboard */,
 				387463681AA3FA5B002E0565 /* BLL */,
 				385BF6BC1A7F5C37003F9790 /* SPModels */,
 				38BB44541A663160004CD444 /* SPLogin */,
@@ -224,6 +231,7 @@
 		3845F7DE1A560A5800191BDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3845F7E01A560A5800191BDA /* AppDelegate.swift */,
 				3845F7DF1A560A5800191BDA /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -325,7 +333,6 @@
 		389A56EC1A564BB100EB0EFD /* SPFeed */ = {
 			isa = PBXGroup;
 			children = (
-				38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */,
 				389A56EA1A564BAC00EB0EFD /* SPFeedTableViewController.swift */,
 				38AA7BF41A883E6600A75FB7 /* SPFeedDetailViewController.swift */,
 				38AA7BF51A883E6600A75FB7 /* SPFeedDetailViewController.xib */,
@@ -376,6 +383,10 @@
 			isa = PBXGroup;
 			children = (
 				38BB44581A66318C004CD444 /* SPClosetViewController.swift */,
+				38AC45141AA8212700199935 /* SPClosetCollectionViewCell.swift */,
+				38AC45151AA8212700199935 /* SPClosetCollectionViewCell.xib */,
+				386B7A801AA82ECD00115147 /* SPClosetDetailViewController.swift */,
+				386B7A811AA82ECD00115147 /* SPClosetDetailViewController.xib */,
 			);
 			name = SPCloset;
 			sourceTree = "<group>";
@@ -383,6 +394,7 @@
 		38FBAD411A92D0E100B8905C /* SPFeedTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				38AA7C001A88A42B00A75FB7 /* SPBaseTableViewCell.swift */,
 				389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */,
 				38E7F8301AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib */,
 				38AA7BF81A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift */,
@@ -492,7 +504,9 @@
 				3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
+				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
 				38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */,
+				38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */,
 				3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +527,8 @@
 			files = (
 				4854A9D21A9AC7E800164CD0 /* shareButton.swift in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */,
+				386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */,
+				38AC45161AA8212700199935 /* SPClosetCollectionViewCell.swift in Sources */,
 				387463671AA3FA1C002E0565 /* SPManager.swift in Sources */,
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */,
@@ -563,7 +579,6 @@
 				3845F7E71A560A5800191BDA /* Base */,
 			);
 			name = Main.storyboard;
-			path = Stylpic;
 			sourceTree = "<group>";
 		};
 		3845F7EB1A560A5800191BDA /* LaunchScreen.xib */ = {
@@ -594,6 +609,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -614,6 +630,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -636,6 +653,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -659,8 +677,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -680,8 +698,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -700,7 +718,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joshua Bell (U44J7HKN4P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -712,7 +730,7 @@
 				INFOPLIST_FILE = StylpicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stylpic.app/Stylpic";
 			};
 			name = Debug;
@@ -721,6 +739,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -728,7 +748,7 @@
 				INFOPLIST_FILE = StylpicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stylpic.app/Stylpic";
 			};
 			name = Release;

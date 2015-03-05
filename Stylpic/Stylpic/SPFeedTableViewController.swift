@@ -14,16 +14,6 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     //var imageDataArray : [SPImage] = [];
     var allPictureObjects : [PFObject] = [];
     
-//    init (){
-//        super.init(style: UITableViewStyle.Plain, className: "UserPhoto")
-//        //super.init(className: "UserPhoto")
-//        self.parseClassName = "UserPhoto"
-//    }
-//
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(style: UITableViewStyle.Plain, className: "UserPhoto")
-//        self.parseClassName = "UserPhoto"
-//    }
     
     //MARK: View Lifecycle    
     override func viewDidLoad() {
@@ -37,6 +27,8 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         self.refreshControl = rc;
         
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 52, 0)
+        
+        tableView.registerNib(UINib(nibName: "SPFeedViewTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedViewTableViewCell")
     }
     
     func downloadAllImages(){
@@ -70,7 +62,9 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     }
 
     override func tableView(tableView: UITableView , cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SPFeedViewTableViewCell
+        
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedViewTableViewCell", forIndexPath: indexPath) as! SPFeedViewTableViewCell
 
             
         var o = self.allPictureObjects[indexPath.row] as PFObject
