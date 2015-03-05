@@ -22,9 +22,9 @@ class SPTabBarViewController: UITabBarController, UINavigationControllerDelegate
 //                var view = viewController.view;
 //            }
 //        }
-        SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
-            println("hi")
-        })
+//        SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
+//            println("hi")
+//        })
 
     }
 
