@@ -9,12 +9,10 @@
 import UIKit
 
 class SPPhotosQueryTableViewController: PFQueryTableViewController {
-
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
             // The className to query on
-            self.parseClassName = "Foo";
+            self.parseClassName = "UserPhoto";
         
             // The key of the PFObject to display in the label of the default cell style
             self.textKey = "text";
@@ -35,22 +33,36 @@ class SPPhotosQueryTableViewController: PFQueryTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+            tableView.registerNib(UINib(nibName: "SPFeedViewTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedViewTableViewCell")
+        
         }
 
     override func queryForTable() -> PFQuery! {
-        return PFQuery(className: "className")
+        return PFQuery(className: "UserPhoto")
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> PFTableViewCell {
+//    override func objectAtIndexPath(indexPath: NSIndexPath!) -> PFObject! {
+//        var z = self.objectAtIndexPath(indexPath)
+//        return z
+//    }
+    
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
-        cell.textLabel!.text = "hi"
-        return cell
+        
+        cell.textLabel?.text = object.objectForKey("caption") as? String
+        return PFTableViewCell()
     }
     
-    // MARK: - Table view data source
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 3
-    }
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> PFTableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PFTableViewCell
+//        cell.textLabel!.text = "hi"
+//        return cell
+//    }
+//
+//    // MARK: - Table view data source
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete method implementation.
+//        // Return the number of rows in the section.
+//        return 3
+//    }
 }

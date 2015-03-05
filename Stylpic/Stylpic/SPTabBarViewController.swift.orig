@@ -17,15 +17,25 @@ class SPTabBarViewController: UITabBarController, UINavigationControllerDelegate
         
         // Do any additional setup after loading the view.
         self.delegate = self
+<<<<<<< HEAD
+        if self.viewControllers != nil {
+            for viewController in self.viewControllers as! [UIViewController] {
+                var view = viewController.view
+            }
+        }
+        SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
+            println("hi")
+        })
+
+=======
 //        if self.viewControllers != nil {
 //            for viewController in self.viewControllers as! [UIViewController] {
 //                var view = viewController.view;
 //            }
 //        }
-        SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
-            println("hi")
-        })
-
+        
+        
+>>>>>>> 95eb77630ebdb1105c8472be8341c59a7e54d305
     }
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {

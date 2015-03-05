@@ -463,7 +463,7 @@
 				TargetAttributes = {
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 3G5C2SV92X;
+						DevelopmentTeam = S9HWZN732E;
 					};
 					3845F7F11A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
@@ -677,8 +677,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+<<<<<<< HEAD
+				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joshua Bell (U44J7HKN4P)";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
+>>>>>>> 95eb77630ebdb1105c8472be8341c59a7e54d305
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -699,7 +704,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joshua Bell (U44J7HKN4P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
