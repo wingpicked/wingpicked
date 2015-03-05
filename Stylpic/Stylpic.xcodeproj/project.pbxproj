@@ -22,6 +22,7 @@
 		3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8111A560AF300191BDA /* CFNetwork.framework */; };
 		386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B7A801AA82ECD00115147 /* SPClosetDetailViewController.swift */; };
 		386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 386B7A811AA82ECD00115147 /* SPClosetDetailViewController.xib */; };
+		386B7A861AA8361F00115147 /* TTTTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 386B7A851AA8361F00115147 /* TTTTimeIntervalFormatter.m */; };
 		387463671AA3FA1C002E0565 /* SPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463661AA3FA1C002E0565 /* SPManager.swift */; };
 		3874636A1AA3FFCF002E0565 /* SPActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463691AA3FFCF002E0565 /* SPActivity.swift */; };
 		3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636B1AA3FFE2002E0565 /* SPUser.swift */; };
@@ -102,6 +103,8 @@
 		3863A6FF1A7F6D1800AFE938 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		386B7A801AA82ECD00115147 /* SPClosetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetDetailViewController.swift; sourceTree = "<group>"; };
 		386B7A811AA82ECD00115147 /* SPClosetDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPClosetDetailViewController.xib; sourceTree = "<group>"; };
+		386B7A841AA8361F00115147 /* TTTTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTTimeIntervalFormatter.h; sourceTree = "<group>"; };
+		386B7A851AA8361F00115147 /* TTTTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		387463661AA3FA1C002E0565 /* SPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPManager.swift; sourceTree = "<group>"; };
 		387463691AA3FFCF002E0565 /* SPActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPActivity.swift; sourceTree = "<group>"; };
 		3874636B1AA3FFE2002E0565 /* SPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 		3845F7DE1A560A5800191BDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				386B7A841AA8361F00115147 /* TTTTimeIntervalFormatter.h */,
+				386B7A851AA8361F00115147 /* TTTTimeIntervalFormatter.m */,
 				3845F7E01A560A5800191BDA /* AppDelegate.swift */,
 				3845F7DF1A560A5800191BDA /* Info.plist */,
 			);
@@ -541,6 +546,7 @@
 				38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */,
 				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,
 				387463741AA418AC002E0565 /* SPProfileInfo.swift in Sources */,
+				386B7A861AA8361F00115147 /* TTTTimeIntervalFormatter.m in Sources */,
 				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
 				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
 				3874636A1AA3FFCF002E0565 /* SPActivity.swift in Sources */,

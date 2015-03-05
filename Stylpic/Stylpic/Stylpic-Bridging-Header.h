@@ -7,3 +7,4 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ParseUI/ParseUI.h>
 #import <Parse/PFObject+Subclass.h>
+#import "TTTTimeIntervalFormatter.h"

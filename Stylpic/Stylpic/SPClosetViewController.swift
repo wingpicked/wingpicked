@@ -30,7 +30,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println(indexPath.row)
         
-        var detailViewController = SPClosetDetailViewController()
+        var detailViewController = SPClosetDetailViewController(nibName: "SPClosetDetailViewController", bundle: nil)
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
