@@ -172,7 +172,14 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
 //        
         SPManager.sharedInstance.saveImages(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
             if error == nil {
-                var photos = SPPhotos(imageOne: imageOne!, thumbnailImageOne: imageOneThumbnail!, imageTwo: imageTwo!, thumbnailImageTwo: imageTwoThumbnail!, postCaption: self.captionTextField.text!, postingUser: SPUser.currentUser()! )
+                var photos = SPPhotosPair()
+                photos.imageOne = imageOne
+                photos.imageTwo = imageTwo
+                photos.thumbnailOne = imageOneThumbnail
+                photos.thumbnailTwo = imageTwoThumbnail
+                photos.caption = self.captionTextField.text!
+                photos.user = SPUser.currentUser()
+
                 photos.saveInBackgroundWithBlock({ (success, error) -> Void in
                     resultsBlock( success, error )
                 })

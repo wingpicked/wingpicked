@@ -11,7 +11,7 @@ import UIKit
 ///--------------------------------------
 /// @name Blocks
 ///--------------------------------------
-typealias SPFeedItemsResultBlock = ( feedItems: [SPNewsFeedItem], error: NSError?) -> Void
+typealias SPFeedItemsResultBlock = ( feedItems: [SPFeedItem]!, error: NSError?) -> Void
 typealias SPSaveImagesResultsBlock = (imageOne: PFFile?, imageOneThumbnail: PFFile?, imageTwo: PFFile?, imageTwoThumbnail: PFFile?, error: NSError?) -> Void
 
 class SPManager: NSObject {
@@ -22,25 +22,54 @@ class SPManager: NSObject {
         }
         return Static.instance
     }
+    
     //MARK: Items
-//    the Feed subclasses PFQueryTableViewController which has a delegate method -(PFQuery *)queryForTable
-//    func getFeedItems( resultsBlock: SPFeedItemsResultBlock ) {
-//        var photosQuery = PFQuery( className: "Photos" )
-//        photosQuery.includeKey( "User" )
-//        photosQuery.
-//        
-//    }
-    
-    func getExploreItems() -> [SPNewsFeedItem]{
-        return [SPNewsFeedItem()]
+    func getFeedItems( page: UInt, resultsBlock: SPFeedItemsResultBlock ) {
+        var params = [ "page": page ]
+        PFCloud.callFunctionInBackground( "getFeedItemsForPage", withParameters: params) { (responseObject:AnyObject!, error:NSError!) -> Void in
+            println( responseObject )
+//            function: "getFeedItemsForPage", withParameters: params, block:
+            var photos : [PFObject] = responseObject! as! [PFObject]
+            var feedItems = [SPFeedItem]()
+            if error == nil {
+                for photo in photos {
+                    // TEMP
+                    var feedItem = SPFeedItem()
+                    println( photo.objectForKey("caption"))
+                    feedItem.photos = photo
+                    feedItem.likesCountOne = 0
+                    feedItem.likesCountTwo = 0
+                    feedItem.commentsCountOne = 0
+                    feedItem.commentsCountTwo = 0
+                    feedItem.percentageLikedOne = 0
+                    feedItem.username = SPUser.currentUser().username
+                    let createdAtString = photo.createdAt
+                    
+//                    feedItem.userFriendlyTimestamp = createdAtString
+                    feedItem.userProfilePicture = nil
+                    feedItem.photoUserLikes = .NoPhotoLiked
+                    feedItem.comments = SPPhotosComments()
+                    feedItems.append( feedItem )
+                }
+                
+                resultsBlock(feedItems:feedItems, error: nil)
+            } else {
+                println( error )
+            }
+        }
+        
     }
     
-    func getProfileItems() -> [SPNewsFeedItem] {
-        return [SPNewsFeedItem()]
+    func getExploreItems() -> [SPFeedItem]{
+        return [SPFeedItem()]
     }
     
-    func getMyClosetItems() -> [SPNewsFeedItem] {
-        return [SPNewsFeedItem()]
+    func getProfileItems() -> [SPFeedItem] {
+        return [SPFeedItem()]
+    }
+    
+    func getMyClosetItems() -> [SPFeedItem] {
+        return [SPFeedItem()]
     }
 
     
@@ -75,13 +104,13 @@ class SPManager: NSObject {
         return SPProfileInfo()
     }
     
-    func postPhotosToFeed(photos : SPPhotos, block: PFBooleanResultBlock ) {
+    func postPhotosToFeed(photos : SPPhotosPair, block: PFBooleanResultBlock ) {
         photos.saveInBackgroundWithBlock { (success, error) -> Void in
             block( success, error )
         }
     }
     
-    func postPhotoToCloset(photos : SPPhotos) {
+    func postPhotoToCloset(photos : SPPhotosPair) {
         
     }
     

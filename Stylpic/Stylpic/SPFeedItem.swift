@@ -14,8 +14,8 @@ enum PhotoUserLikes{
     case SecondPhotoLiked
 }
 
-class SPNewsFeedItem: NSObject {
-    var photos : SPPhotos!
+class SPFeedItem: NSObject {
+    var photos : PFObject!
     var caption : String!
     var likesCountOne: Int!
     var likesCountTwo: Int!

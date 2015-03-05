@@ -23,8 +23,8 @@
 		387463671AA3FA1C002E0565 /* SPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463661AA3FA1C002E0565 /* SPManager.swift */; };
 		3874636A1AA3FFCF002E0565 /* SPActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463691AA3FFCF002E0565 /* SPActivity.swift */; };
 		3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636B1AA3FFE2002E0565 /* SPUser.swift */; };
-		3874636E1AA40026002E0565 /* SPPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636D1AA40026002E0565 /* SPPhotos.swift */; };
-		387463701AA40465002E0565 /* SPNewsFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636F1AA40465002E0565 /* SPNewsFeedItem.swift */; };
+		3874636E1AA40026002E0565 /* SPPhotosPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636D1AA40026002E0565 /* SPPhotosPair.swift */; };
+		387463701AA40465002E0565 /* SPFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636F1AA40465002E0565 /* SPFeedItem.swift */; };
 		387463741AA418AC002E0565 /* SPProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463731AA418AC002E0565 /* SPProfileInfo.swift */; };
 		387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463751AA418BA002E0565 /* SPPhotosComments.swift */; };
 		389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */; };
@@ -98,8 +98,8 @@
 		387463661AA3FA1C002E0565 /* SPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPManager.swift; sourceTree = "<group>"; };
 		387463691AA3FFCF002E0565 /* SPActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPActivity.swift; sourceTree = "<group>"; };
 		3874636B1AA3FFE2002E0565 /* SPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
-		3874636D1AA40026002E0565 /* SPPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotos.swift; sourceTree = "<group>"; };
-		3874636F1AA40465002E0565 /* SPNewsFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPNewsFeedItem.swift; sourceTree = "<group>"; };
+		3874636D1AA40026002E0565 /* SPPhotosPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosPair.swift; sourceTree = "<group>"; };
+		3874636F1AA40465002E0565 /* SPFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedItem.swift; sourceTree = "<group>"; };
 		387463731AA418AC002E0565 /* SPProfileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileInfo.swift; sourceTree = "<group>"; };
 		387463751AA418BA002E0565 /* SPPhotosComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosComments.swift; sourceTree = "<group>"; };
 		389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 			children = (
 				387463691AA3FFCF002E0565 /* SPActivity.swift */,
 				3874636B1AA3FFE2002E0565 /* SPUser.swift */,
-				3874636D1AA40026002E0565 /* SPPhotos.swift */,
+				3874636D1AA40026002E0565 /* SPPhotosPair.swift */,
 			);
 			name = SPParse;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 		387463721AA412FA002E0565 /* SPViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3874636F1AA40465002E0565 /* SPNewsFeedItem.swift */,
+				3874636F1AA40465002E0565 /* SPFeedItem.swift */,
 				387463731AA418AC002E0565 /* SPProfileInfo.swift */,
 				387463751AA418BA002E0565 /* SPPhotosComments.swift */,
 			);
@@ -516,7 +516,7 @@
 				387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
-				387463701AA40465002E0565 /* SPNewsFeedItem.swift in Sources */,
+				387463701AA40465002E0565 /* SPFeedItem.swift in Sources */,
 				38BB44511A66313C004CD444 /* SPExploreViewController.swift in Sources */,
 				38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */,
 				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,
@@ -527,7 +527,7 @@
 				48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
 				3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */,
-				3874636E1AA40026002E0565 /* SPPhotos.swift in Sources */,
+				3874636E1AA40026002E0565 /* SPPhotosPair.swift in Sources */,
 				389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */,
 				38E7F82F1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift in Sources */,
 				38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */,
@@ -656,7 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joshua Bell (U44J7HKN4P)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -665,7 +665,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
+				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -686,7 +686,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
+				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;

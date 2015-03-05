@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "StylPic": {
+            "applicationId": "RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF", 
+            "masterKey": "pmDscLU4KihyJNdxBqvzcmk6KlWLYq8NXvnoDV4X"
+        }, 
+        "_default": {
+            "link": "StylPic"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}
