@@ -26,8 +26,8 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
         return height!;
     }
     
-    func setupCell(image : UIImage){
-        mainImageView.image = image
+    func setupCell(imageFile : PFFile){
+        mainImageView.file = imageFile
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

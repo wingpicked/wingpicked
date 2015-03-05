@@ -28,14 +28,15 @@ class SPManager: NSObject {
         var params = [ "page": page ]
         PFCloud.callFunctionInBackground( "getFeedItemsForPage", withParameters: params) { (responseObject:AnyObject!, error:NSError!) -> Void in
             println( responseObject )
-//            function: "getFeedItemsForPage", withParameters: params, block:
-            var photos : [PFObject] = responseObject! as! [PFObject]
+
             var feedItems = [SPFeedItem]()
             if error == nil {
+            var photos : [PFObject] = responseObject! as! [PFObject]
                 for photo in photos {
                     // TEMP
                     var feedItem = SPFeedItem()
                     println( photo.objectForKey("caption"))
+                    feedItem.caption = photo.objectForKey("caption") as! String
                     feedItem.photos = photo
                     feedItem.likesCountOne = 0
                     feedItem.likesCountTwo = 0

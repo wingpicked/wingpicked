@@ -24,12 +24,12 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var commentTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
-    var image : UIImage
+    var imageFile : PFFile
 
     
     
-    init(image : UIImage){
-        self.image = image
+    init(imageFile : PFFile){
+        self.imageFile = imageFile
         super.init(nibName: "SPFeedDetailViewController", bundle: nil)
     }
     
@@ -38,7 +38,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 //    }
 
     required init(coder aDecoder: NSCoder) {
-        self.image = UIImage() //TODO: Place default image here.
+        self.imageFile = PFFile() //TODO: Place default image here.
         super.init(coder: aDecoder)
     }
     
@@ -59,7 +59,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
         if(indexPath.row == 0){
         let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
-            cell.setupCell(image)
+            cell.setupCell(imageFile)
             return cell
         }
         else {
