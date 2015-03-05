@@ -293,6 +293,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6CB-EA-CKV">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LgE-3i-AHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="8Jg-Wl-y6v" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kVW-ww-bvv">
@@ -303,7 +304,6 @@
                         <segue destination="49e-Tb-3d3" kind="relationship" relationship="rootViewController" id="wqT-Qe-Z4q"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LgE-3i-AHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-630" y="230"/>
         </scene>
