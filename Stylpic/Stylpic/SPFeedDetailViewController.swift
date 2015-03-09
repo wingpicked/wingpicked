@@ -76,7 +76,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.row == 0){
-            return 236;
+            return 382;
         }
         else{
             return 44;
