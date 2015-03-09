@@ -20,9 +20,9 @@ class SPFeedViewTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.actualContentView.layer.cornerRadius = 5.0
-        self.actualContentView.layer.shadowRadius = 5.0
-        self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 5.0);
-        self.actualContentView.layer.shadowOpacity = 0.5;
+        self.actualContentView.layer.cornerRadius = 3.0
+        self.actualContentView.layer.shadowRadius = 2.0
+        self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 2.0);
+        self.actualContentView.layer.shadowOpacity = 0.3;
     }
 }

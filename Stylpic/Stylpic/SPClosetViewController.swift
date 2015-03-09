@@ -24,7 +24,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         return cell
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15;
+        return 13;
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

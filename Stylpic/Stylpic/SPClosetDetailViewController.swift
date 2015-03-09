@@ -10,9 +10,15 @@ import UIKit
 
 class SPClosetDetailViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //self.automaticallyAdjustsScrollViewInsets = true
+        
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func removePicture(sender: AnyObject) {
     }
 }

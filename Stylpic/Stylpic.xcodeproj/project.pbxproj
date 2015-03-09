@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380671731AAD6EC30001527F /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FC1A7F6D1800AFE938 /* OpenSans-Semibold.ttf */; };
+		380671741AAD6ED00001527F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FD1A7F6D1800AFE938 /* OpenSans-Regular.ttf */; };
+		380671751AAD6ED00001527F /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FE1A7F6D1800AFE938 /* OpenSans-Light.ttf */; };
+		380671761AAD6ED00001527F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FF1A7F6D1800AFE938 /* OpenSans-Bold.ttf */; };
 		3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E01A560A5800191BDA /* AppDelegate.swift */; };
 		3845F7E81A560A5800191BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E61A560A5800191BDA /* Main.storyboard */; };
 		3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E91A560A5800191BDA /* Images.xcassets */; };
@@ -501,6 +505,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380671731AAD6EC30001527F /* OpenSans-Semibold.ttf in Resources */,
+				380671741AAD6ED00001527F /* OpenSans-Regular.ttf in Resources */,
+				380671751AAD6ED00001527F /* OpenSans-Light.ttf in Resources */,
+				380671761AAD6ED00001527F /* OpenSans-Bold.ttf in Resources */,
 				38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */,
 				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
@@ -683,7 +691,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joshua Bell (U44J7HKN4P)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -693,7 +701,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
+				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -714,7 +722,7 @@
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1769ac97-521c-49de-8490-012fc37aa3c0";
+				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;
