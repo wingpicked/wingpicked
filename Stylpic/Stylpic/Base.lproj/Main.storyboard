@@ -77,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1526" y="-419"/>
+            <point key="canvasLocation" x="2058" y="-419"/>
         </scene>
         <!--Post-->
         <scene sceneID="Wvm-rO-ekk">
@@ -96,7 +96,7 @@
             </objects>
             <point key="canvasLocation" x="542" y="171"/>
         </scene>
-        <!--Home-->
+        <!--Feed Table View Controller-->
         <scene sceneID="exa-p7-kCf">
             <objects>
                 <tableViewController id="vnU-Fa-5SY" customClass="SPFeedTableViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
@@ -110,16 +110,12 @@
                             <outlet property="delegate" destination="vnU-Fa-5SY" id="kLK-8J-jYp"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Home" image="Icon_home" selectedImage="Icon_home_selected" id="KC7-at-5xh">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="Icon_home_selected"/>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="hUw-SP-dL8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O65-rN-DHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="-605"/>
+            <point key="canvasLocation" x="670" y="-605"/>
         </scene>
         <!--Explore-->
         <scene sceneID="MM6-z6-Mho">
@@ -152,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0c-Xf-LrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="-472"/>
+            <point key="canvasLocation" x="1074" y="-472"/>
         </scene>
         <!--Photos Query Table View Controller-->
         <scene sceneID="rMT-iP-sMz">
@@ -174,7 +170,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGA-CX-Xwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="-472.5"/>
+            <point key="canvasLocation" x="1520" y="-472.5"/>
         </scene>
         <!--Profile-->
         <scene sceneID="vKo-N4-TDE">
@@ -302,7 +298,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vnU-Fa-5SY" kind="relationship" relationship="viewControllers" id="m67-Q2-Xyo"/>
+                        <segue destination="WBU-hL-3lH" kind="relationship" relationship="viewControllers" id="m67-Q2-Xyo"/>
                         <segue destination="ONc-03-G0L" kind="relationship" relationship="viewControllers" id="d4E-3C-0PG"/>
                         <segue destination="dDh-a7-zVa" kind="relationship" relationship="viewControllers" id="g0w-lB-cbX"/>
                         <segue destination="LfC-JY-edx" kind="relationship" relationship="viewControllers" id="l86-GX-6pl"/>
@@ -433,6 +429,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeT-wD-4sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100" y="1062"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="ho4-eG-4xY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WBU-hL-3lH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="Icon_home" selectedImage="Icon_home_selected" id="KC7-at-5xh">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="Icon_home_selected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jCA-nf-CBt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vnU-Fa-5SY" kind="relationship" relationship="rootViewController" id="rIe-n1-FsY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Sc-zA-Hc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="-605"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,12 @@
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -31,7 +37,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="muZ-pc-q7f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -62,7 +68,7 @@
                                     <constraint firstAttribute="height" constant="16" id="HLh-sn-1ms"/>
                                     <constraint firstAttribute="width" constant="189" id="hoT-xz-J5B"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -75,6 +81,84 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDm-O0-Eb2">
+                                <rect key="frame" x="159" y="138" width="44" height="44"/>
+                                <state key="normal" image="Button_like_feed">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="imageTwoLiked:" destination="45Z-me-hP9" eventType="touchUpInside" id="nAV-A4-H5j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8j-gi-lM7">
+                                <rect key="frame" x="8" y="138" width="44" height="44"/>
+                                <state key="normal" image="Button_like_feed">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="imageOneLiked:" destination="45Z-me-hP9" eventType="touchUpInside" id="8Us-jB-xsQ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKV-SP-X2t">
+                                <rect key="frame" x="0.0" y="190" width="304" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYS-qL-hzc">
+                                        <rect key="frame" x="39" y="2" width="24" height="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDO-Kj-14J">
+                                        <rect key="frame" x="127" y="2" width="21" height="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_feed" translatesAutoresizingMaskIntoConstraints="NO" id="uX3-0k-I3W">
+                                        <rect key="frame" x="24" y="4" width="12" height="12"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Button_like_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Btd-xq-Br7">
+                                        <rect key="frame" x="71" y="4" width="12" height="12"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Y7M-rw-fyJ">
+                                        <rect key="frame" x="112" y="4" width="12" height="12"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-yA-xag">
+                                        <rect key="frame" x="185" y="2" width="24" height="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrT-dt-MD7">
+                                        <rect key="frame" x="232" y="2" width="19" height="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT2-QU-RrO">
+                                        <rect key="frame" x="273" y="2" width="21" height="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_feed" translatesAutoresizingMaskIntoConstraints="NO" id="9PQ-gt-oyG">
+                                        <rect key="frame" x="170" y="4" width="12" height="12"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Button_like_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="OxM-NY-kvy">
+                                        <rect key="frame" x="217" y="4" width="12" height="12"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="FTp-9p-Efi">
+                                        <rect key="frame" x="258" y="4" width="12" height="12"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxH-m6-ivH">
+                                        <rect key="frame" x="86" y="2" width="19" height="15"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -87,13 +171,17 @@
                             <constraint firstItem="BIz-kS-R6e" firstAttribute="width" secondItem="j2k-Eb-5oZ" secondAttribute="height" multiplier="1:1" id="Loo-IO-thv"/>
                             <constraint firstAttribute="trailing" secondItem="A5q-fU-0fX" secondAttribute="trailing" constant="8" id="O3e-B2-NzI"/>
                             <constraint firstItem="JrS-La-wCe" firstAttribute="top" secondItem="mr3-3f-4JW" secondAttribute="top" constant="12" id="O5r-Md-eCX"/>
+                            <constraint firstItem="rKV-SP-X2t" firstAttribute="leading" secondItem="mr3-3f-4JW" secondAttribute="leading" id="Rgl-oJ-vkg"/>
                             <constraint firstItem="A5q-fU-0fX" firstAttribute="top" secondItem="mr3-3f-4JW" secondAttribute="top" constant="6" id="VnE-a0-l95"/>
                             <constraint firstItem="cYK-8x-s5p" firstAttribute="top" secondItem="mr3-3f-4JW" secondAttribute="top" constant="4" id="WH3-4v-87k"/>
                             <constraint firstItem="ayW-Uc-psM" firstAttribute="top" secondItem="mr3-3f-4JW" secondAttribute="top" constant="4" id="XhU-PA-9d1"/>
                             <constraint firstItem="JrS-La-wCe" firstAttribute="leading" secondItem="ayW-Uc-psM" secondAttribute="trailing" constant="10" id="ao9-aH-gYa"/>
+                            <constraint firstAttribute="trailing" secondItem="rKV-SP-X2t" secondAttribute="trailing" id="ara-ch-Jc9"/>
                             <constraint firstItem="JrS-La-wCe" firstAttribute="top" secondItem="cYK-8x-s5p" secondAttribute="bottom" id="bBb-BT-xLa"/>
                             <constraint firstAttribute="trailing" secondItem="cYK-8x-s5p" secondAttribute="trailing" constant="20" id="bmI-Vh-QzM"/>
                             <constraint firstItem="j2k-Eb-5oZ" firstAttribute="leading" secondItem="BIz-kS-R6e" secondAttribute="trailing" constant="2" id="gf6-yi-ZdZ"/>
+                            <constraint firstItem="rKV-SP-X2t" firstAttribute="top" secondItem="BIz-kS-R6e" secondAttribute="bottom" id="i6N-Mh-wYd"/>
+                            <constraint firstAttribute="bottom" secondItem="rKV-SP-X2t" secondAttribute="bottom" id="iAr-vi-p3B"/>
                             <constraint firstItem="cYK-8x-s5p" firstAttribute="leading" secondItem="ayW-Uc-psM" secondAttribute="trailing" constant="10" id="mP9-RE-oRT"/>
                             <constraint firstItem="A5q-fU-0fX" firstAttribute="leading" secondItem="cYK-8x-s5p" secondAttribute="trailing" constant="-5" id="pvi-Ie-h9h"/>
                             <constraint firstItem="j2k-Eb-5oZ" firstAttribute="top" secondItem="JrS-La-wCe" secondAttribute="bottom" constant="4" id="rGF-32-nOi"/>
@@ -123,13 +211,26 @@
             <connections>
                 <outlet property="actualContentView" destination="mr3-3f-4JW" id="csS-W1-3Oa"/>
                 <outlet property="caption" destination="JrS-La-wCe" id="Apz-nP-4g9"/>
+                <outlet property="imageOneCommentLabel" destination="sDO-Kj-14J" id="r4j-zE-oXh"/>
+                <outlet property="imageOneLikeButton" destination="Y8j-gi-lM7" id="hXX-dT-Vkx"/>
+                <outlet property="imageOneLikeLabel" destination="yxH-m6-ivH" id="H6m-az-BFi"/>
+                <outlet property="imageOnePercentLabel" destination="zYS-qL-hzc" id="9Wy-LW-yMJ"/>
+                <outlet property="imageTwoCommentLabel" destination="NT2-QU-RrO" id="rdV-qk-HiU"/>
+                <outlet property="imageTwoLikeButton" destination="XDm-O0-Eb2" id="zKV-Rc-aWq"/>
+                <outlet property="imageTwoLikeLabel" destination="wrT-dt-MD7" id="Ico-Dg-R3j"/>
+                <outlet property="imageTwoPercentLabel" destination="5e7-yA-xag" id="Jn7-G3-FgN"/>
                 <outlet property="pictureImageView" destination="BIz-kS-R6e" id="GzA-Xg-Mtc"/>
                 <outlet property="pictureImageView2" destination="j2k-Eb-5oZ" id="CTn-p8-IhW"/>
+                <outlet property="postedTimeLabel" destination="A5q-fU-0fX" id="fCr-IE-C7I"/>
             </connections>
             <point key="canvasLocation" x="274" y="329.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Button_like_feed" width="54" height="56"/>
+        <image name="Button_like_transparent" width="48" height="44"/>
+        <image name="Icon_comments_rounded_onPostedPhoto_Profile" width="17" height="16"/>
         <image name="Icon_defaultPhoto" width="66" height="65"/>
+        <image name="Icon_percent_feed" width="17" height="18"/>
     </resources>
 </document>
