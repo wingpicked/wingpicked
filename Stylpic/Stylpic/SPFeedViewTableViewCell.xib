@@ -48,14 +48,6 @@
                                     <constraint firstAttribute="height" constant="24" id="myq-G9-OhW"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-kS-R6e" customClass="PFImageView">
-                                <rect key="frame" x="1" y="40" width="150" height="150"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="ax3-g2-FKj"/>
-                                    <constraint firstAttribute="width" constant="150" id="eIx-tC-sMX"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2k-Eb-5oZ" customClass="PFImageView">
                                 <rect key="frame" x="153" y="40" width="150" height="150"/>
                                 <gestureRecognizers/>
@@ -161,6 +153,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-kS-R6e" customClass="PFImageView">
+                                <rect key="frame" x="1" y="40" width="150" height="150"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ax3-g2-FKj"/>
+                                    <constraint firstAttribute="width" constant="150" id="eIx-tC-sMX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

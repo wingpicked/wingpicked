@@ -48,10 +48,11 @@ class SPFeedViewTableViewCell: UITableViewCell {
         self.actualContentView.layer.shadowOpacity = 0.3;
         
         pictureImageView.userInteractionEnabled = true
+        pictureImageView2.userInteractionEnabled = true
         var tap1 = UITapGestureRecognizer(target: self, action: Selector("imageOneTapped:"))
         pictureImageView.addGestureRecognizer(tap1)
         var tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
-        pictureImageView.addGestureRecognizer(tap2)
+        pictureImageView2.addGestureRecognizer(tap2)
 
         
     }
@@ -77,11 +78,13 @@ class SPFeedViewTableViewCell: UITableViewCell {
         imageOneLikeButton.hidden = true
     }
     func imageOneTapped(sender: AnyObject) {
-        if let feedItem = self.feedItem {            self.delegate?.didTapPhotoOne(feedItem)
+        if let feedItem = self.feedItem {
+            self.delegate?.didTapPhotoOne(feedItem)
         }
     }
     func imageTwoTapped(sender: AnyObject) {
-        if let feedItem = self.feedItem {            self.delegate?.didTapPhotoTwo(feedItem)
+        if let feedItem = self.feedItem {
+            self.delegate?.didTapPhotoTwo(feedItem)
         }
     }
     
