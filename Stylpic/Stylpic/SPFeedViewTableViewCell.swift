@@ -69,6 +69,7 @@ class SPFeedViewTableViewCell: UITableViewCell {
     }
     
     @IBAction func imageOneLiked(sender: AnyObject) {
+        println( "in imageOneliked" )
         imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
         imageTwoLikeButton.hidden = true
 
@@ -86,6 +87,7 @@ class SPFeedViewTableViewCell: UITableViewCell {
     }
 
     @IBAction func imageTwoLiked(sender: AnyObject) {
+        println( "in imageTwoliked" )
         imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
         imageOneLikeButton.hidden = true
         
