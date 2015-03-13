@@ -80,7 +80,7 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         //var o = self.allPictureObjects[indexPath.row] as PFObject
         
         var feedItem = self.feedItems[indexPath.row]
-        
+
         cell.caption.text = feedItem.caption
         
         cell.pictureImageView.file = feedItem.photos.objectForKey("imageOne") as! PFFile

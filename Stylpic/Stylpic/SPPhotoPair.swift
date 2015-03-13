@@ -8,8 +8,7 @@
 
 import UIKit
 
-
-class SPPhotosPair: PFObject, PFSubclassing {
+class SPPhotoPair: PFObject, PFSubclassing {
     @NSManaged var imageOne : PFFile?
     @NSManaged var imageTwo : PFFile?
     @NSManaged var thumbnailOne : PFFile?

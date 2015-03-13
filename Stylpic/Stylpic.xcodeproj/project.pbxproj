@@ -30,7 +30,7 @@
 		387463671AA3FA1C002E0565 /* SPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463661AA3FA1C002E0565 /* SPManager.swift */; };
 		3874636A1AA3FFCF002E0565 /* SPActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463691AA3FFCF002E0565 /* SPActivity.swift */; };
 		3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636B1AA3FFE2002E0565 /* SPUser.swift */; };
-		3874636E1AA40026002E0565 /* SPPhotosPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636D1AA40026002E0565 /* SPPhotosPair.swift */; };
+		3874636E1AA40026002E0565 /* SPPhotoPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636D1AA40026002E0565 /* SPPhotoPair.swift */; };
 		387463701AA40465002E0565 /* SPFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636F1AA40465002E0565 /* SPFeedItem.swift */; };
 		387463741AA418AC002E0565 /* SPProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463731AA418AC002E0565 /* SPProfileInfo.swift */; };
 		387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463751AA418BA002E0565 /* SPPhotosComments.swift */; };
@@ -112,7 +112,7 @@
 		387463661AA3FA1C002E0565 /* SPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPManager.swift; sourceTree = "<group>"; };
 		387463691AA3FFCF002E0565 /* SPActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPActivity.swift; sourceTree = "<group>"; };
 		3874636B1AA3FFE2002E0565 /* SPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
-		3874636D1AA40026002E0565 /* SPPhotosPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosPair.swift; sourceTree = "<group>"; };
+		3874636D1AA40026002E0565 /* SPPhotoPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotoPair.swift; sourceTree = "<group>"; };
 		3874636F1AA40465002E0565 /* SPFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedItem.swift; sourceTree = "<group>"; };
 		387463731AA418AC002E0565 /* SPProfileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileInfo.swift; sourceTree = "<group>"; };
 		387463751AA418BA002E0565 /* SPPhotosComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosComments.swift; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 			children = (
 				387463691AA3FFCF002E0565 /* SPActivity.swift */,
 				3874636B1AA3FFE2002E0565 /* SPUser.swift */,
-				3874636D1AA40026002E0565 /* SPPhotosPair.swift */,
+				3874636D1AA40026002E0565 /* SPPhotoPair.swift */,
 			);
 			name = SPParse;
 			sourceTree = "<group>";
@@ -561,7 +561,7 @@
 				48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
 				3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */,
-				3874636E1AA40026002E0565 /* SPPhotosPair.swift in Sources */,
+				3874636E1AA40026002E0565 /* SPPhotoPair.swift in Sources */,
 				389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */,
 				38E7F82F1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift in Sources */,
 				38AA7C011A88A42B00A75FB7 /* SPBaseTableViewCell.swift in Sources */,

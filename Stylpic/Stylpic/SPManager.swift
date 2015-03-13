@@ -13,6 +13,7 @@ import UIKit
 ///--------------------------------------
 typealias SPFeedItemsResultBlock = ( feedItems: [SPFeedItem]!, error: NSError?) -> Void
 typealias SPSaveImagesResultsBlock = (imageOne: PFFile?, imageOneThumbnail: PFFile?, imageTwo: PFFile?, imageTwoThumbnail: PFFile?, error: NSError?) -> Void
+typealias SPBoolResultBlock = ( success: Bool, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -82,8 +83,20 @@ class SPManager: NSObject {
         
     }
 
-    func likePhoto(comment: String) {
-        
+    func likePhoto( activityType: ActivityType, photoPair: SPPhotoPair, fromUser:SPUser, toUser: SPUser, content: NSString, resultBlock: SPBoolResultBlock ) {
+        var activity = SPActivity()
+        activity.fromUser = fromUser
+        activity.toUser = toUser
+        activity.photoPair = photoPair
+        activity.isArchiveReady = false
+        activity.type = activityType.rawValue
+        activity.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                resultBlock(success: success, error: error)
+            } else {
+                println( error )
+            }
+        }
     }
     
     func followUser(user: PFUser) {
@@ -105,13 +118,13 @@ class SPManager: NSObject {
         return SPProfileInfo()
     }
     
-    func postPhotosToFeed(photos : SPPhotosPair, block: PFBooleanResultBlock ) {
+    func postPhotosToFeed(photos : SPPhotoPair, block: PFBooleanResultBlock ) {
         photos.saveInBackgroundWithBlock { (success, error) -> Void in
             block( success, error )
         }
     }
     
-    func postPhotoToCloset(photos : SPPhotosPair) {
+    func postPhotoToCloset(photos : SPPhotoPair) {
         
     }
     
