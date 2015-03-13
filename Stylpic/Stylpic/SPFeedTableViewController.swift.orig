@@ -51,9 +51,40 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedViewTableViewCell", forIndexPath: indexPath) as! SPFeedViewTableViewCell
         
         var feedItem = self.feedItems[indexPath.row]
+<<<<<<< HEAD
+
+        cell.caption.text = feedItem.caption
+        
+        cell.pictureImageView.file = feedItem.photos.objectForKey("imageOne") as! PFFile
+        cell.pictureImageView2.file = feedItem.photos.objectForKey("imageTwo") as! PFFile
+        cell.pictureImageView2.loadInBackground(nil)
+        cell.pictureImageView.loadInBackground(nil)
+
+//        var f = o["imageFile"] as? PFFile
+//        var f2 = o["imageFile2"] as? PFFile
+//        var caption = o["caption"] as? String
+//        if let f = f, f2 = f2, caption = caption {
+//            cell.pictureImageView.file = f
+//            cell.pictureImageView2.file = f2
+//            cell.pictureImageView.loadInBackground(nil)
+//            cell.pictureImageView2.loadInBackground(nil)
+//            cell.caption.text = caption
+//        }
+
+        
+        
+
+        
+//        cell.textLabel?.text = "Cell \(indexPath.row)"
+        //cell.pictureImageView.image = imageDataArray[indexPath.row].image
+        //cell.caption.text = imageDataArray[indexPath.row].caption
+        // Configure the cell...
+
+=======
         cell.delegate = self
         cell.setupWithFeedItem(feedItem)
-
+        
+>>>>>>> 2f6dc37ac4b41314768d3c4e6810844dc3a1f775
         return cell
     }
 

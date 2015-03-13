@@ -20,11 +20,11 @@ enum ActivityType : Int{
 
 class SPActivity: PFObject {
    
-    @NSManaged var fromUser : SPUser
-    @NSManaged var toUser : SPUser
+    @NSManaged var fromUser : PFUser
+    @NSManaged var toUser : PFUser
     @NSManaged var type : NSNumber
     @NSManaged var content : NSString
-    @NSManaged var photoPair : SPPhotoPair
+    @NSManaged var photoPair : PFObject
     @NSManaged var isArchiveReady : Bool
     
     var activityType : ActivityType? {
