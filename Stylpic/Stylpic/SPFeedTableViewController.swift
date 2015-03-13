@@ -48,12 +48,10 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     }
 
     override func tableView(tableView: UITableView , cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedViewTableViewCell", forIndexPath: indexPath) as! SPFeedViewTableViewCell
         
         var feedItem = self.feedItems[indexPath.row]
+        cell.delegate = self
         cell.setupWithFeedItem(feedItem)
         
         return cell
