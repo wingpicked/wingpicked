@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SPFeedDetailViewController" customModule="Stylpic" customModuleProvider="target">
             <connections>
-                <outlet property="commentTextField" destination="FL9-NX-SvC" id="OuK-ne-UcQ"/>
+                <outlet property="commentInputAccessoryView" destination="Z7e-eQ-ZdS" id="98g-4s-I7z"/>
                 <outlet property="tableView" destination="B0I-Iy-H9b" id="jfH-PT-vpv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,34 +16,25 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="B0I-Iy-H9b">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="474"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="B0I-Iy-H9b">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="522"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="q8z-aJ-Lxn"/>
                         <outlet property="delegate" destination="-1" id="1fg-uS-7oE"/>
                     </connections>
                 </tableView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FL9-NX-SvC">
-                    <rect key="frame" x="8" y="474" width="304" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="cXc-Fz-mMy"/>
-                    </connections>
-                </textField>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7e-eQ-ZdS" customClass="CommentInputAccessoryView" customModule="Stylpic" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="FL9-NX-SvC" secondAttribute="bottom" constant="64" id="G4m-Pd-Y0r"/>
-                <constraint firstItem="FL9-NX-SvC" firstAttribute="top" secondItem="B0I-Iy-H9b" secondAttribute="bottom" id="XRa-CZ-gp6"/>
                 <constraint firstItem="B0I-Iy-H9b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fyp-ei-g5w"/>
                 <constraint firstItem="B0I-Iy-H9b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hut-tA-hpp"/>
-                <constraint firstItem="FL9-NX-SvC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="lvu-vY-Vma"/>
                 <constraint firstAttribute="trailing" secondItem="B0I-Iy-H9b" secondAttribute="trailing" id="vWv-jI-lyt"/>
-                <constraint firstAttribute="trailing" secondItem="FL9-NX-SvC" secondAttribute="trailing" constant="8" id="xMe-ok-P6f"/>
             </constraints>
-            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

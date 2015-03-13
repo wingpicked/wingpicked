@@ -10,18 +10,11 @@ import UIKit
 
 class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
     var comments = ["Hello", "hahaha", "you look nice!"]
-    lazy var inputAccessoryViewz : UIView = {
-        var av = UIView()
-        
-            var accessFrame = CGRectMake(0, 0, self.view.frame.width, 77)
-            av = UIView(frame: accessFrame)
-            av.backgroundColor = UIColor.blueColor()
-        
-        return av
-    }()
+    lazy var inputAccessoryViewz : UIView = CommentInputAccessoryView()
 
-    @IBOutlet weak var commentTextField: UITextField!
+    //@IBOutlet weak var commentTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     var imageFile : PFFile
@@ -49,7 +42,8 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
         tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
 
-        commentTextField.inputAccessoryView = self.inputAccessoryViewz
+        
+        //commentTextField.inputAccessoryView = self.inputAccessoryViewz
     }
 
     

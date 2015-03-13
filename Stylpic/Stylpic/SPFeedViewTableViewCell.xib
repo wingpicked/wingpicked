@@ -48,6 +48,14 @@
                                     <constraint firstAttribute="height" constant="24" id="myq-G9-OhW"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-kS-R6e" customClass="PFImageView">
+                                <rect key="frame" x="1" y="40" width="150" height="150"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ax3-g2-FKj"/>
+                                    <constraint firstAttribute="width" constant="150" id="eIx-tC-sMX"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2k-Eb-5oZ" customClass="PFImageView">
                                 <rect key="frame" x="153" y="40" width="150" height="150"/>
                                 <gestureRecognizers/>
@@ -82,15 +90,6 @@
                                 </state>
                                 <connections>
                                     <action selector="imageTwoLiked:" destination="45Z-me-hP9" eventType="touchUpInside" id="nAV-A4-H5j"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8j-gi-lM7">
-                                <rect key="frame" x="8" y="138" width="44" height="44"/>
-                                <state key="normal" image="Button_like_feed">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="imageOneLiked:" destination="45Z-me-hP9" eventType="touchUpInside" id="8Us-jB-xsQ"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKV-SP-X2t">
@@ -153,14 +152,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-kS-R6e" customClass="PFImageView">
-                                <rect key="frame" x="1" y="40" width="150" height="150"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="ax3-g2-FKj"/>
-                                    <constraint firstAttribute="width" constant="150" id="eIx-tC-sMX"/>
-                                </constraints>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8j-gi-lM7">
+                                <rect key="frame" x="8" y="138" width="44" height="44"/>
+                                <state key="normal" image="Button_like_feed">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="imageOneLiked:" destination="45Z-me-hP9" eventType="touchUpInside" id="8Us-jB-xsQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
