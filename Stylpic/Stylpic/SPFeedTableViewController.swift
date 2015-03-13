@@ -56,13 +56,6 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
 
         return cell
     }
-
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var detailViewController = SPFeedDetailViewController(imageFile: self.feedItems[indexPath.row].photos.objectForKey("imageOne") as! PFFile) 
-//        self.navigationController?.pushViewController(detailViewController, animated: true)
-//    }
-    
-
     
     func didTapPhotoOne(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(imageFile: feedItem.photos.objectForKey("imageOne") as! PFFile)
