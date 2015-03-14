@@ -11,8 +11,8 @@ import UIKit
 enum ActivityType : Int{
     case CommentImageOne
     case CommentImageTwo
-    case LikeImageOne
-    case LikeImageTwo
+    case LikeImageOne // 2
+    case LikeImageTwo // 3
     case Follow
     case Join
 }

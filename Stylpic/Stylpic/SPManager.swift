@@ -27,9 +27,9 @@ class SPManager: NSObject {
     //MARK: Items
     func getFeedItems( page: UInt, resultsBlock: SPFeedItemsResultBlock ) {
         var params = [ "page": page ]
-        PFCloud.callFunctionInBackground( "getFeedItemsForPage", withParameters: params) { (responseObject:AnyObject!, error:NSError!) -> Void in
-            println( responseObject )
-
+        PFCloud.callFunctionInBackground( "getFeedItemsForPage", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
+            println( payload )
+            var responseObject = payload[ "photoPairs" ]
             var feedItems = [SPFeedItem]()
             if error == nil {
             var photos : [PFObject] = responseObject! as! [PFObject]

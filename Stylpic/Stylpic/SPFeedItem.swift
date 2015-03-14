@@ -9,9 +9,9 @@
 import UIKit
 
 enum PhotoUserLikes{
-    case NoPhotoLiked
-    case FirstPhotoLiked
-    case SecondPhotoLiked
+    case NoPhotoLiked // 0
+    case FirstPhotoLiked // 1
+    case SecondPhotoLiked // 2
 }
 
 class SPFeedItem: NSObject {
