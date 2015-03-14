@@ -8,10 +8,13 @@
 
 import UIKit
 
-class SPProfileViewController: UIViewController, UITabBarControllerDelegate {
+class SPProfileViewController: UIViewController, UITabBarControllerDelegate, CommentInputAccessoryViewDelegate {
 
+    @IBOutlet weak var commentView: CommentInputAccessoryView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        commentView.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -19,6 +22,14 @@ class SPProfileViewController: UIViewController, UITabBarControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func didTapLikeButton() {
+        println("Like")
+    }
+    
+    func didTapSendButtonWithText(text: String) {
+        println("Text")
     }
     
 

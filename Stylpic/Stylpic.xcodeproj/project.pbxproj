@@ -61,6 +61,7 @@
 		4854A9D21A9AC7E800164CD0 /* shareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* shareButton.swift */; };
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
+		EC56C2461AB2B0F7002C36F7 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56C2451AB2B0F7002C36F7 /* CommentInputAccessoryView.swift */; };
 		ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */; };
 		ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */; };
 		ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2341A560E350009FD11 /* libsqlite3.dylib */; };
@@ -144,6 +145,7 @@
 		4854A9D11A9AC7E800164CD0 /* shareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shareButton.swift; sourceTree = "<group>"; };
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
+		EC56C2451AB2B0F7002C36F7 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ECB2C2341A560E350009FD11 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -218,6 +220,7 @@
 			children = (
 				3845F7E61A560A5800191BDA /* Main.storyboard */,
 				387463681AA3FA5B002E0565 /* BLL */,
+				EC56C2471AB2B0FB002C36F7 /* SPCommonComponents */,
 				385BF6BC1A7F5C37003F9790 /* SPModels */,
 				38BB44541A663160004CD444 /* SPLogin */,
 				389A56EC1A564BB100EB0EFD /* SPFeed */,
@@ -423,6 +426,14 @@
 			name = cameraOverlay;
 			sourceTree = "<group>";
 		};
+		EC56C2471AB2B0FB002C36F7 /* SPCommonComponents */ = {
+			isa = PBXGroup;
+			children = (
+				EC56C2451AB2B0F7002C36F7 /* CommentInputAccessoryView.swift */,
+			);
+			name = SPCommonComponents;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -558,6 +569,7 @@
 				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
 				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
 				3874636A1AA3FFCF002E0565 /* SPActivity.swift in Sources */,
+				EC56C2461AB2B0F7002C36F7 /* CommentInputAccessoryView.swift in Sources */,
 				48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
 				3874636C1AA3FFE2002E0565 /* SPUser.swift in Sources */,
