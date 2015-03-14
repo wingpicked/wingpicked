@@ -11,7 +11,7 @@ Parse.Cloud.define("getFeedItemsForPage", function(request, response) {
 	query.skip( itemsPerPage * getPage );
 	var photosPromise = query.find();
 	photosPromise.then( function( feedItems ) {
-
+		
 		response.success(feedItems);
 	}, function( error ) {
 		response.eror( error );

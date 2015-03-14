@@ -13,6 +13,7 @@ import UIKit
 ///--------------------------------------
 typealias SPFeedItemsResultBlock = ( feedItems: [SPFeedItem]!, error: NSError?) -> Void
 typealias SPSaveImagesResultsBlock = (imageOne: PFFile?, imageOneThumbnail: PFFile?, imageTwo: PFFile?, imageTwoThumbnail: PFFile?, error: NSError?) -> Void
+typealias SPBoolResultBlock = ( success: Bool, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -82,7 +83,28 @@ class SPManager: NSObject {
         
     }
 
-    func likePhoto(comment: String) {
+    func likePhoto( activityType: ActivityType, photoPair: PFObject?, content: NSString?, resultBlock: SPBoolResultBlock ) {
+        if let photoPair = photoPair {
+            var photosOwner:PFUser = photoPair.objectForKey( "user" ) as! PFUser
+            var fromUser = SPUser.currentUser()
+            var activity = SPActivity()
+            activity.fromUser = fromUser
+            activity.toUser = photosOwner
+            activity.photoPair = photoPair
+            activity.isArchiveReady = false
+            activity.type = activityType.rawValue
+            activity.saveInBackgroundWithBlock { (success, error) -> Void in
+                if error == nil {
+                    resultBlock(success: success, error: error)
+                } else {
+                    println( error )
+                }
+            }
+        } else {
+            var userInfo = [ "message": "could not save photo because photopair did not exist" ]
+            var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
+            resultBlock( success: false, error: error )
+        }
         
     }
     
@@ -105,13 +127,13 @@ class SPManager: NSObject {
         return SPProfileInfo()
     }
     
-    func postPhotosToFeed(photos : SPPhotosPair, block: PFBooleanResultBlock ) {
+    func postPhotosToFeed(photos : SPPhotoPair, block: PFBooleanResultBlock ) {
         photos.saveInBackgroundWithBlock { (success, error) -> Void in
             block( success, error )
         }
     }
     
-    func postPhotoToCloset(photos : SPPhotosPair) {
+    func postPhotoToCloset(photos : SPPhotoPair) {
         
     }
     

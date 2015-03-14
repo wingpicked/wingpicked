@@ -172,7 +172,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
 //        
         SPManager.sharedInstance.saveImages(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
             if error == nil {
-                var photos = SPPhotosPair()
+                var photos = SPPhotoPair()
                 photos.imageOne = imageOne
                 photos.imageTwo = imageTwo
                 photos.thumbnailOne = imageOneThumbnail

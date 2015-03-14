@@ -69,13 +69,39 @@ class SPFeedViewTableViewCell: UITableViewCell {
     }
     
     @IBAction func imageOneLiked(sender: AnyObject) {
+        println( "in imageOneliked" )
         imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
         imageTwoLikeButton.hidden = true
+
+        SPManager.sharedInstance.likePhoto(ActivityType.LikeImageOne, photoPair: self.feedItem?.photos, content: nil) { (success, error) -> Void in
+            if success {
+                println( "saving like was a success" )
+            } else {
+                println( "save like failed" )
+            }
+            
+            if error != nil {
+                println( error )
+            }
+        }
     }
 
     @IBAction func imageTwoLiked(sender: AnyObject) {
+        println( "in imageTwoliked" )
         imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
         imageOneLikeButton.hidden = true
+        
+        SPManager.sharedInstance.likePhoto(ActivityType.LikeImageTwo, photoPair: self.feedItem?.photos, content: nil) { (success, error) -> Void in
+            if success {
+                println( "saving like was a success" )
+            } else {
+                println( "save like failed" )
+            }
+            
+            if error != nil {
+                println( error )
+            }
+        }
     }
     func imageOneTapped(sender: AnyObject) {
         if let feedItem = self.feedItem {
