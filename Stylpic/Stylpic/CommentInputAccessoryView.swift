@@ -34,6 +34,7 @@ class CommentInputAccessoryView: UIView, UITextFieldDelegate {
         
         textField.backgroundColor = UIColor.whiteColor()
         textField.placeholder = placeholderText
+        textField.autocorrectionType = UITextAutocorrectionType.No
         textField.inputAccessoryView = CommentInputAccessoryView()
         
         self.addSubview(textField)
