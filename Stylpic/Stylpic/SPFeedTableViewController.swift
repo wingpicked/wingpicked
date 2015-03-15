@@ -57,6 +57,10 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 227
+    }
+    
     func didTapPhotoOne(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(imageFile: feedItem.photos?.objectForKey("imageOne") as! PFFile)
         detailViewController.hidesBottomBarWhenPushed = true

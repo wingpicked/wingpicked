@@ -20,8 +20,8 @@ class SPExploreViewController: UIViewController {//, UITableViewDataSource, UITa
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "tableViewController"){
-            tableViewController = segue.destinationViewController as! SPPhotosQueryTableViewController
-        }
+//        if (segue.identifier == "tableViewController"){
+//            tableViewController = segue.destinationViewController as! SPFeedTableViewController
+//        }
     }
 }

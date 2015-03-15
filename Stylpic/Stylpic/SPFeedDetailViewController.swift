@@ -85,6 +85,10 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         return true
     }
     
+    @IBAction func addComment(sender: AnyObject) {
+        var commentsViewController = SPCommentsViewController()
+        self.navigationController?.pushViewController(commentsViewController, animated: true)
+    }
     //Lazy load input accessory view
 
     //    - (UIView *)inputAccessoryView {

@@ -10,12 +10,13 @@ import UIKit
 
 class SPUser: PFUser, PFSubclassing {
     @NSManaged var displayName : String
-    @NSManaged var profilePictureSmall : PFFile
+    @NSManaged var profilePicture : PFFile
     @NSManaged var facebookId : String
     @NSManaged var facebookFriends : [SPUser]
     @NSManaged var channel : String
     @NSManaged var isFollowing : Bool
-    
+    @NSManaged var firstName : String
+    @NSManaged var lastName : String
     
     override class func initialize() {
         var onceToken : dispatch_once_t = 0;
@@ -23,9 +24,4 @@ class SPUser: PFUser, PFSubclassing {
             self.registerSubclass()
         }
     }
-    
-//    override static func parseClassName() -> String! {
-//        return "_User"
-//    }
-
 }
