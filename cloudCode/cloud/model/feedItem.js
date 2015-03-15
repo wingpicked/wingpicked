@@ -53,7 +53,7 @@ var addLikeActivity = function( anActivity ) {
 			var fromUser = anActivity.get( 'fromUser' );
 			var currentUser = Parse.User.current();
 			if ( _.isEqual( fromUser.id, currentUser.id) ) {
-				this.userLikesPhoto = PhotoUserLikes.FirstPhotoLiked;
+				this.photoUserLikes = PhotoUserLikes.FirstPhotoLiked;
 			}
 		} 
 	} else if ( _.isEqual( activityType, ActivityType.LikeImageTwo ) ) {
@@ -62,7 +62,7 @@ var addLikeActivity = function( anActivity ) {
 			var fromUserTwo = anActivity.get( 'fromUser' );
 			var currentUserTwo = Parse.User.current();
 			if ( _.isEqual( fromUserTwo.id, currentUserTwo.id) ) {
-				this.userLikesPhoto = PhotoUserLikes.SecondPhotoLiked;
+				this.photoUserLikes = PhotoUserLikes.SecondPhotoLiked;
 			}
 		} 
 	} else {
