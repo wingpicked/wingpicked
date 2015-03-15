@@ -8,24 +8,63 @@
 
 import UIKit
 
-class SPProfileViewController: UIViewController, UITabBarControllerDelegate, CommentInputAccessoryViewDelegate {
+class SPProfileViewController: UITableViewController{
 
-    @IBOutlet weak var commentView: CommentInputAccessoryView!
+    var toolBarView : UIView!
+    var headerView : UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
+        self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        toolBarView.layer.borderColor = UIColor.darkGrayColor().CGColor
+        toolBarView.layer.borderWidth = 2.0
+        
+        tableView.tableHeaderView = self.headerView
+        
+        var rc = UIRefreshControl()
+        rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = rc;
     }
     
-    func didTapLikeButton() {
-        println("Like")
+    func refreshTableView(){
+        println("Refreshed")
+        self.refreshControl?.endRefreshing()
+        
     }
     
-    func didTapSendButtonWithText(text: String) {
-        println("Text")
+    
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel?.text = "What up"
+        return cell
     }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        button1.addTarget(self, action: Selector("buttonPushed"), forControlEvents: UIControlEvents.TouchUpInside)
+//        view.addSubview(button1)
+        return self.toolBarView
+    }
+    
+    func buttonPushed(){
+        println("Button Pushed")
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 46
+    }
+    
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 3
+//    }
+
+    
 }
