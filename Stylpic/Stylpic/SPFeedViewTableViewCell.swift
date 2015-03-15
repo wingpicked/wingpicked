@@ -34,6 +34,8 @@ class SPFeedViewTableViewCell: UITableViewCell {
     @IBOutlet weak var imageTwoLikeLabel: UILabel!
     @IBOutlet weak var imageTwoCommentLabel: UILabel!
     
+    @IBOutlet weak var profilePictureImageView: PFImageView!
+    
     var feedItem : SPFeedItem?
     
     var delegate : SPFeedViewTableViewCellDelegate?
@@ -65,6 +67,20 @@ class SPFeedViewTableViewCell: UITableViewCell {
         self.pictureImageView2.file = feedItem.photos.objectForKey("imageTwo") as! PFFile
         self.pictureImageView2.loadInBackground(nil)
         self.pictureImageView.loadInBackground(nil)
+
+        
+    
+        if let user = feedItem.photos["user"] as? PFUser {
+            user.fetchIfNeededInBackgroundWithBlock({ (obj, error) -> Void in
+                if let profilePicture = user.objectForKey("profilePicture") as? PFFile {
+                    self.profilePictureImageView.file = profilePicture
+                    self.profilePictureImageView.loadInBackground(nil)
+                }
+                else {
+                    self.profilePictureImageView = nil
+                }
+            })
+        }
 
     }
     

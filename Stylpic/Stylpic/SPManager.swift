@@ -188,4 +188,67 @@ class SPManager: NSObject {
         }
     }
     
+    func loginWithFacebook(completionHander : SPBoolResultBlock){
+        let permissions = ["public_profile", "user_friends", "email"]
+        PFFacebookUtils.logInWithPermissions(permissions, block: { (user, error) -> Void in
+            if(user == nil){
+                if(error == nil){
+                    completionHander(success: false, error: nil) //User cancelled facebook login
+                }
+                else{
+                    completionHander(success: false, error: error) //User cancelled facebook login
+                    
+//                    var av2 = UIAlertView(title: "Error", message: "An Error occurred: \(error.localizedDescription)", delegate: self, cancelButtonTitle: "OK")
+//                    av2.show()
+                }
+            }
+            else{
+                self.loadFBDataForUser(user)
+                completionHander(success: true, error: nil)
+            }
+        })
+    }
+    
+    func loadFBDataForUser(user: PFUser){
+        var request = FBRequest.requestForMe()
+        request.startWithCompletionHandler { (connection, result, error) -> Void in
+            //TODO: Need to test this facebook user invalidation testing out.
+            if let error = error{
+                if let userInfo = error.userInfo{
+                    if let cError = userInfo["error"] as? NSDictionary{
+                        if let type = cError["type"] as? String{
+                            if type == "OAuthException"{
+                                println("FB Session was invalidated.")
+                                //self.logoutButtonTouchUpInside(nil)
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var userData = result as! NSDictionary
+                var facebookID = userData["id"] as! String
+                user.setObject(userData["first_name"], forKey: "firstName")
+                user.setObject(userData["last_name"], forKey: "lastName")
+                var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
+                var request = NSURLRequest(URL: pictureURL!)
+                NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
+                    if (connectionError == nil && data != nil) {
+                        var profilePicture = PFFile(name: "ProfilePicture", data: data)
+                        user.setObject(profilePicture, forKey: "profilePicture")
+                        user.saveInBackgroundWithBlock({ (success, error) -> Void in
+                            if(error != nil){
+                                println(error)
+                            }
+                        })
+                    }
+                })
+            }
+        }
+    }
+
+    
+    
+    
 }

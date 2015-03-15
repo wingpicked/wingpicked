@@ -41,7 +41,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ayW-Uc-psM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ayW-Uc-psM" customClass="PFImageView">
                                 <rect key="frame" x="8" y="4" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="Vag-8P-qAl"/>
@@ -224,6 +224,7 @@
                 <outlet property="pictureImageView" destination="BIz-kS-R6e" id="GzA-Xg-Mtc"/>
                 <outlet property="pictureImageView2" destination="j2k-Eb-5oZ" id="CTn-p8-IhW"/>
                 <outlet property="postedTimeLabel" destination="A5q-fU-0fX" id="fCr-IE-C7I"/>
+                <outlet property="profilePictureImageView" destination="ayW-Uc-psM" id="W5C-9u-VAM"/>
             </connections>
             <point key="canvasLocation" x="274" y="329.5"/>
         </tableViewCell>
