@@ -17,6 +17,8 @@ typealias SPBoolResultBlock = ( success: Bool, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
+    var x = 0
+    
     class var sharedInstance: SPManager {
         struct Static {
             static let instance: SPManager = SPManager()
@@ -27,37 +29,22 @@ class SPManager: NSObject {
     //MARK: Items
     func getFeedItems( page: UInt, resultsBlock: SPFeedItemsResultBlock ) {
         var params = [ "page": page ]
-        PFCloud.callFunctionInBackground( "getFeedItemsForPage", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
-            println( payload )
-            var responseObject = payload[ "photoPairs" ]
-            var feedItems = [SPFeedItem]()
+        PFCloud.callFunctionInBackground( "getFeedItemsForPage2", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
             if error == nil {
-            var photos : [PFObject] = responseObject! as! [PFObject]
-                for photo in photos {
-                    // TEMP
+                var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
+                println( payloadObject )
+                
+                var serverFeedItems: Array = payloadObject[ "feedItems" ]!
+                var feedItems = Array<SPFeedItem>()
+                for aServerFeedItem in serverFeedItems {                    
                     var feedItem = SPFeedItem()
-                    println( photo.objectForKey("caption"))
-                    feedItem.caption = photo.objectForKey("caption") as! String
-                    feedItem.photos = photo
-                    feedItem.likesCountOne = 0
-                    feedItem.likesCountTwo = 0
-                    feedItem.commentsCountOne = 0
-                    feedItem.commentsCountTwo = 0
-                    feedItem.percentageLikedOne = 0
-                    feedItem.username = SPUser.currentUser().username
-                    let createdAtString = photo.createdAt
-                    
-//                    feedItem.userFriendlyTimestamp = createdAtString
-                    feedItem.userProfilePicture = nil
-                    feedItem.photoUserLikes = .NoPhotoLiked
-                    feedItem.comments = SPPhotosComments()
+                    feedItem.setupWithServerFeedItem( aServerFeedItem )
                     feedItems.append( feedItem )
                 }
                 
                 resultsBlock(feedItems:feedItems, error: nil)
-            } else {
-                println( error )
             }
+        
         }
         
     }
@@ -83,7 +70,7 @@ class SPManager: NSObject {
         
     }
 
-    func likePhoto( activityType: ActivityType, photoPair: PFObject?, content: NSString?, resultBlock: SPBoolResultBlock ) {
+    func likePhoto( activityType: ActivityType, photoPair: PFObject?, resultBlock: SPBoolResultBlock ) {
         if let photoPair = photoPair {
             var photosOwner:PFUser = photoPair.objectForKey( "user" ) as! PFUser
             var fromUser = SPUser.currentUser()

@@ -8,25 +8,44 @@
 
 import UIKit
 
-enum PhotoUserLikes{
+enum PhotoUserLikes: Int {
     case NoPhotoLiked // 0
     case FirstPhotoLiked // 1
     case SecondPhotoLiked // 2
 }
 
 class SPFeedItem: NSObject {
-    var photos : PFObject!
-    var caption : String!
-    var likesCountOne: Int!
-    var likesCountTwo: Int!
-    var commentsCountOne : Int!
-    var commentsCountTwo : Int!
-    var percentageLikedOne : Float!
-    var percentageLikedTwo : Float!
-    var username: String!
-    var userFriendlyTimestamp: String!
+    var photos : PFObject?
+    var caption = ""
+    var likesCountOne = 0
+    var likesCountTwo = 0
+    var commentsCountOne = 0
+    var commentsCountTwo = 0
+    var percentageLikedOne = 0.0
+    var percentageLikedTwo = 0.0
+    var username = ""
+    var userFriendlyTimestamp: String?
     var userProfilePicture : PFFile?
-    var photoUserLikes : PhotoUserLikes!
-    var comments : SPPhotosComments?
+    var photoUserLikes = PhotoUserLikes.NoPhotoLiked
+    var comments = SPPhotosComments()
     
+    func setupWithServerFeedItem( serverFeedItem: Dictionary<String, AnyObject> ) {
+        self.caption = serverFeedItem[ "caption" ] as! String
+        var comments = serverFeedItem[ "comments" ] as! Dictionary<String, AnyObject>
+        var commentsPhoto1 = comments[ "commentsPhoto1" ] as! Array<PFObject>
+        self.comments.commentsPhotoOne = commentsPhoto1
+        var commentsPhoto2 = comments[ "commentsPhoto2" ] as! Array<PFObject>
+        self.comments.commentsPhotoTwo = commentsPhoto2
+        
+        self.photos = serverFeedItem[ "photoPair" ] as! PFObject
+        self.commentsCountOne = serverFeedItem[ "commentsCountOne" ] as! Int
+        self.commentsCountTwo = serverFeedItem[ "commentsCountTwo" ] as! Int
+        self.likesCountOne = serverFeedItem[ "likesCountOne" ] as! Int
+        self.likesCountTwo = serverFeedItem[ "likesCountTwo" ] as! Int
+        self.percentageLikedOne = serverFeedItem[ "percentageLikedOne" ] as! Double
+        self.percentageLikedTwo = serverFeedItem[ "percentageLikedTwo" ] as! Double
+        self.username = serverFeedItem[ "username" ] as! String
+        let photoUserLikes = serverFeedItem[ "photoUserLikes" ] as! Int
+        self.photoUserLikes = PhotoUserLikes( rawValue: photoUserLikes )!
+    }
 }

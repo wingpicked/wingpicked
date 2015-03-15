@@ -61,48 +61,66 @@ class SPFeedViewTableViewCell: UITableViewCell {
         self.feedItem = feedItem
         self.caption.text = feedItem.caption
         
-        self.pictureImageView.file = feedItem.photos.objectForKey("imageOne") as! PFFile
-        self.pictureImageView2.file = feedItem.photos.objectForKey("imageTwo") as! PFFile
+        self.pictureImageView.file = feedItem.photos?.objectForKey("imageOne") as! PFFile
+        self.pictureImageView2.file = feedItem.photos?.objectForKey("imageTwo") as! PFFile
         self.pictureImageView2.loadInBackground(nil)
         self.pictureImageView.loadInBackground(nil)
 
+        self.imageOnePercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedOne ) as String
+        self.imageTwoPercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedTwo ) as String
+        self.imageOneLikeLabel.text =  String(feedItem.likesCountOne)
+        self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
+        self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
+        self.imageTwoCommentLabel.text =  String( feedItem.commentsCountTwo )
     }
     
     @IBAction func imageOneLiked(sender: AnyObject) {
         println( "in imageOneliked" )
-        imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
-        imageTwoLikeButton.hidden = true
+        if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
+            imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            imageTwoLikeButton.hidden = true
 
-        SPManager.sharedInstance.likePhoto(ActivityType.LikeImageOne, photoPair: self.feedItem?.photos, content: nil) { (success, error) -> Void in
-            if success {
-                println( "saving like was a success" )
-            } else {
-                println( "save like failed" )
+            SPManager.sharedInstance.likePhoto(ActivityType.LikeImageOne, photoPair: self.feedItem?.photos) { (success, error) -> Void in
+                if success {
+                    println( "saving like was a success" )
+                } else {
+                    println( "save like failed" )
+                }
+                
+                if error != nil {
+                    println( error )
+                }
             }
             
-            if error != nil {
-                println( error )
-            }
+            self.feedItem?.photoUserLikes = PhotoUserLikes.FirstPhotoLiked
+        } else {
+            UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
     }
 
     @IBAction func imageTwoLiked(sender: AnyObject) {
         println( "in imageTwoliked" )
-        imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
-        imageOneLikeButton.hidden = true
-        
-        SPManager.sharedInstance.likePhoto(ActivityType.LikeImageTwo, photoPair: self.feedItem?.photos, content: nil) { (success, error) -> Void in
-            if success {
-                println( "saving like was a success" )
-            } else {
-                println( "save like failed" )
+        if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
+            self.imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            self.imageOneLikeButton.hidden = true
+            SPManager.sharedInstance.likePhoto(ActivityType.LikeImageTwo, photoPair: self.feedItem?.photos) { (success, error) -> Void in
+                if success {
+                    println( "saving like was a success" )
+                } else {
+                    println( "save like failed" )
+                }
+                
+                if error != nil {
+                    println( error )
+                }
             }
             
-            if error != nil {
-                println( error )
-            }
+            self.feedItem?.photoUserLikes = PhotoUserLikes.SecondPhotoLiked
+        } else {
+            UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
     }
+    
     func imageOneTapped(sender: AnyObject) {
         if let feedItem = self.feedItem {
             self.delegate?.didTapPhotoOne(feedItem)
