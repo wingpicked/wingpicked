@@ -19,7 +19,7 @@ class SPFeedItem: NSObject {
     var caption = ""
     var likesCountOne = 0
     var likesCountTwo = 0
-    var commentsCountOne = 0
+    var commentsCountOne: Int! = 0
     var commentsCountTwo = 0
     var percentageLikedOne = 0.0
     var percentageLikedTwo = 0.0

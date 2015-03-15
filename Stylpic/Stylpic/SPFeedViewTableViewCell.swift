@@ -82,12 +82,26 @@ class SPFeedViewTableViewCell: UITableViewCell {
             })
         }
 
+        self.imageOneLikeButton.hidden = false
+        self.imageTwoLikeButton.hidden = false
+        self.imageOneLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
+        self.imageTwoLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
+        
         self.imageOnePercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedOne ) as String
         self.imageTwoPercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedTwo ) as String
         self.imageOneLikeLabel.text =  String(feedItem.likesCountOne)
         self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
         self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
         self.imageTwoCommentLabel.text =  String( feedItem.commentsCountTwo )
+        if self.feedItem?.photoUserLikes == PhotoUserLikes.FirstPhotoLiked {
+            imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            imageTwoLikeButton.hidden = true
+        }
+        
+        if self.feedItem?.photoUserLikes == PhotoUserLikes.SecondPhotoLiked {
+            imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            imageOneLikeButton.hidden = true
+        }
     }
     
     @IBAction func imageOneLiked(sender: AnyObject) {
@@ -109,6 +123,9 @@ class SPFeedViewTableViewCell: UITableViewCell {
             }
             
             self.feedItem?.photoUserLikes = PhotoUserLikes.FirstPhotoLiked
+            self.feedItem?.likesCountOne++
+            self.imageOneLikeLabel.text = "\(self.feedItem?.likesCountOne)"
+            self.updatePercentages()
         } else {
             UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
@@ -130,11 +147,28 @@ class SPFeedViewTableViewCell: UITableViewCell {
                     println( error )
                 }
             }
+            if let feedItem = self.feedItem {
+                
+                feedItem.photoUserLikes = PhotoUserLikes.SecondPhotoLiked
+                feedItem.likesCountTwo++
+                self.imageTwoLikeLabel.text = "\(feedItem.likesCountTwo)"
+            }
             
-            self.feedItem?.photoUserLikes = PhotoUserLikes.SecondPhotoLiked
+            self.updatePercentages()
         } else {
             UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
+    }
+    
+    func updatePercentages() {
+        if let feedItem = self.feedItem {
+            var totalLikes = Double(feedItem.likesCountOne + feedItem.likesCountTwo)
+            feedItem.percentageLikedOne = 100.0 * Double(feedItem.likesCountOne) / totalLikes
+            feedItem.percentageLikedTwo = 100.0 * Double(feedItem.likesCountTwo) / totalLikes
+            self.imageOnePercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedOne ) as String
+            self.imageTwoPercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedTwo ) as String
+        }
+        
     }
     
     func imageOneTapped(sender: AnyObject) {
