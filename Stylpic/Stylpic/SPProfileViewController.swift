@@ -8,10 +8,24 @@
 
 import UIKit
 
-class SPProfileViewController: UITableViewController{
+enum SPProfileActiveViewState {
+    case Posts
+    case Followers
+    case Following
+    case Notifications
+}
 
-    var toolBarView : UIView!
-    var headerView : UIView!
+class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate{
+
+    var currentViewState = SPProfileActiveViewState.Posts
+    var toolBarView : SPProfileToolBarView!
+    var headerView : SPProfileHeaderView!
+    
+    var profileInfo : SPProfileInfo?
+    
+    var dataArray : [String] = []
+    let array1 = ["Hey", "Whats", "UP"]
+    let array2 = ["SUP ARRAY 2!", "Yee", "This is fo followers"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +33,19 @@ class SPProfileViewController: UITableViewController{
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
         self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
+        tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")
 
-        toolBarView.layer.borderColor = UIColor.darkGrayColor().CGColor
-        toolBarView.layer.borderWidth = 2.0
+        self.toolBarView.delegate = self
+        toolBarView.addTopBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
+        toolBarView.addBottomBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
         
         tableView.tableHeaderView = self.headerView
         
         var rc = UIRefreshControl()
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
+        
+        self.dataArray = array1
     }
     
     func refreshTableView(){
@@ -36,21 +54,31 @@ class SPProfileViewController: UITableViewController{
         
     }
     
-    
-    
+    //MARK: Tableview Datasource and Delegate Methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = "What up"
-        return cell
+
+        switch currentViewState {
+        case .Posts:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
+            //cell.textLabel?.text = dataArray[indexPath.row]
+            return cell
+//        case .Followers:
+//            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
+//            cell.textLabel?.text = dataArray[indexPath.row]
+//            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
+            cell.textLabel?.text = dataArray[indexPath.row]
+            return cell
+        }
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return dataArray.count
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        button1.addTarget(self, action: Selector("buttonPushed"), forControlEvents: UIControlEvents.TouchUpInside)
-//        view.addSubview(button1)
         return self.toolBarView
     }
     
@@ -62,9 +90,41 @@ class SPProfileViewController: UITableViewController{
         return 46
     }
     
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 3
-//    }
-
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if(array1 == dataArray){
+            return 136
+        }
+        else if (array2 == dataArray){
+            return 44
+        }
+        else{
+            return 64
+        }
+    }
+    
+    //MARK: SPProfile Toolbar Delegate
+    func postsButtonTapped() {
+        println("posts")
+        currentViewState = .Posts
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        dataArray = array1
+        self.tableView.reloadData()
+    }
+    func followersButtonTapped() {
+        println("followers")
+        currentViewState = .Followers
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        dataArray = array2
+        self.tableView.reloadData()
+    }
+    func followingButtonTapped() {
+        println("following")
+        dataArray = ["hey"]
+        self.tableView.reloadData()
+    }
+    func notificationsButtonTapped() {
+        println("notif")
+    }
+    
     
 }

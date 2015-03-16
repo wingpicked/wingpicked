@@ -8,14 +8,27 @@
 
 import UIKit
 
+protocol SPProfileToolBarViewDelegate {
+    func postsButtonTapped()
+    func followersButtonTapped()
+    func followingButtonTapped()
+    func notificationsButtonTapped()
+}
+
 class SPProfileToolBarView: UIView {
+    
+    var delegate : SPProfileToolBarViewDelegate?
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    @IBAction func postsButtonTapped(sender: AnyObject) {
+        self.delegate?.postsButtonTapped()
     }
-    */
-
+    @IBAction func followersButtonTapped(sender: AnyObject) {
+        self.delegate?.followersButtonTapped()
+    }
+    @IBAction func followingButtonTapped(sender: AnyObject) {
+        self.delegate?.followingButtonTapped()
+    }
+    @IBAction func notificationsButtonTapped(sender: AnyObject) {
+        self.delegate?.notificationsButtonTapped()
+    }
 }

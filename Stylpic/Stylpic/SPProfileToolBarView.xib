@@ -23,18 +23,27 @@
                     <state key="normal" title="28">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="postsButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aa0-0J-KvI"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbh-LE-ua4">
                     <rect key="frame" x="145" y="0.0" width="30" height="30"/>
                     <state key="normal" title="35">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="followingButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="580-3M-YyH"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiw-Cn-MIn">
                     <rect key="frame" x="264" y="0.0" width="30" height="30"/>
                     <state key="normal" title="4">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="notificationsButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="bIY-cD-xf9"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzO-al-9V9">
                     <rect key="frame" x="17" y="23" width="28" height="15"/>
@@ -63,6 +72,9 @@
                     <state key="normal" title="43">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="followersButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="J3D-HY-NKV"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Followers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlW-tD-CGp">
                     <rect key="frame" x="72" y="23" width="49" height="15"/>

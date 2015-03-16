@@ -13,4 +13,9 @@ class SPProfileInfo: NSObject {
     var followersCount : Int = 0
     var followingCount : Int = 0
     var isFollowing : Bool = false
+    
+    var posts : [SPFeedItem] = []
+    var followers : [SPUser] = []
+    var following : [SPUser] = []
+    var notifications : [SPActivity] = []
 }
