@@ -62,14 +62,14 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     }
     
     func didTapPhotoOne(feedItem: SPFeedItem) {
-        var detailViewController = SPFeedDetailViewController(imageFile: feedItem.photos?.objectForKey("imageOne") as! PFFile)
+        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
         detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
 
     }
     
     func didTapPhotoTwo(feedItem: SPFeedItem) {
-        var detailViewController = SPFeedDetailViewController(imageFile: feedItem.photos?.objectForKey("imageTwo") as! PFFile)
+        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
         detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
