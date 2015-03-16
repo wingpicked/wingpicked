@@ -131,8 +131,28 @@ class SPManager: NSObject {
         
     }
     
-    func followUser(user: PFUser) {
-        
+    func followUser(user: PFUser?, resultBlock: SPPFObjectResultsBlock ) {
+        if let user = user {
+            var photosOwner:PFUser = photoPair.objectForKey( "user" ) as! PFUser
+            var fromUser = SPUser.currentUser()
+            var activity = SPActivity()
+            activity.fromUser = fromUser
+            activity.toUser = photosOwner
+            activity.photoPair = photoPair
+            activity.isArchiveReady = false
+            activity.type = activityType.rawValue
+            activity.content = comment
+            activity.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if error == nil {
+                    println( "saved comment activity" )
+                    resultBlock( savedObject: activity, error: error )
+                } else {
+                    println( error )
+                }
+            })
+
+            
+        }
     }
 
     
