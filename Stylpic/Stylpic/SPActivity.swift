@@ -44,5 +44,20 @@ class SPActivity: PFObject {
         return "Activity"
     }
     
-    
+    //TODO: Finish putting all display messages here..
+    func displayMessage() -> String {
+        var message = ""
+        if let activityType = activityType{
+            switch activityType {
+            case .CommentImageOne, .CommentImageTwo:
+                message = "\(fromUser) commented on your photo"
+            break
+            case .LikeImageOne, .LikeImageTwo:
+                message = "\(fromUser) liked your photo"
+            default:
+                break
+            }
+        }
+        return message
+    }
 }
