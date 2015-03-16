@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ImageIdentifier: Int {
+    case ImageOne
+    case ImageTwo
+}
+
 class SPPhotoPair: PFObject, PFSubclassing {
     @NSManaged var imageOne : PFFile?
     @NSManaged var imageTwo : PFFile?

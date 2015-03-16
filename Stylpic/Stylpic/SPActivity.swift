@@ -23,7 +23,7 @@ class SPActivity: PFObject {
     @NSManaged var fromUser : PFUser
     @NSManaged var toUser : PFUser
     @NSManaged var type : NSNumber
-    @NSManaged var content : NSString
+    @NSManaged var content : NSString?
     @NSManaged var photoPair : PFObject
     @NSManaged var isArchiveReady : Bool
     

@@ -12,15 +12,17 @@ class SPFeedDetailCommentTableViewCell: SPBaseTableViewCell {
 
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!
-    
+    var commentActivity: PFObject? // really an SPActivity
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         height = 200
     }
     
-    func setupCell(comment: String){
-        commentLabel.text = comment
+    func setupCell(commentActivity: PFObject){
+        self.commentActivity = commentActivity
+        commentLabel.text = self.commentActivity?.objectForKey( "content" ) as! String
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

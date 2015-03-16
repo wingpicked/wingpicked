@@ -8,21 +8,31 @@
 
 import UIKit
 
+
 class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
-    var comments = ["Hello", "hahaha", "you look nice!"]
+//    var comments = ["Hello", "hahaha", "you look nice!"]
     lazy var inputAccessoryViewz : UIView = CommentInputAccessoryView()
 
     //@IBOutlet weak var commentTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
     var imageFile : PFFile
-
+    var feedItem: SPFeedItem
+    var imageTapped : ImageIdentifier
     
-    
-    init(imageFile : PFFile){
-        self.imageFile = imageFile
+    init(feedItem : SPFeedItem, imageTapped: ImageIdentifier) {
+        self.imageTapped = imageTapped
+        self.feedItem = feedItem
+        
+        
+        var imageTapedKey = "imageTwo"
+        if imageTapped == ImageIdentifier.ImageOne {
+            imageTapedKey = "imageOne"
+        }
+        
+        self.imageFile = self.feedItem.photos?.objectForKey(imageTapedKey) as! PFFile
         super.init(nibName: "SPFeedDetailViewController", bundle: nil)
     }
     
@@ -32,6 +42,8 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     required init(coder aDecoder: NSCoder) {
         self.imageFile = PFFile() //TODO: Place default image here.
+        self.feedItem = SPFeedItem()
+        self.imageTapped = ImageIdentifier.ImageOne
         super.init(coder: aDecoder)
     }
     
@@ -39,33 +51,46 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
 
         //tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
-        tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
-        tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
+        self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
+        self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
 
         
         //commentTextField.inputAccessoryView = self.inputAccessoryViewz
     }
 
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear( animated)
+//        self.tableView.reloadData()
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
         if(indexPath.row == 0){
-        let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
             cell.setupCell(imageFile)
             return cell
         }
         else {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCommentTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCommentTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCommentTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCommentTableViewCell
+            var comments = self.feedItem.comments.commentsPhotoTwo
+            if self.imageTapped == ImageIdentifier.ImageOne {
+                comments = self.feedItem.comments.commentsPhotoOne
+            }
             
-            cell.setupCell(comments[indexPath.row])
+            cell.setupCell(comments[indexPath.row - 1])
             return cell
         }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+        var comments = self.feedItem.comments.commentsPhotoTwo
+        if self.imageTapped == ImageIdentifier.ImageOne {
+            comments = self.feedItem.comments.commentsPhotoOne
+        }
+
+        return comments.count + 1
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -77,16 +102,17 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         
     }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        comments.append(textField.text)
-        self.tableView.reloadData()
-        textField.resignFirstResponder()
-        return true
-    }
+//    
+//    func textFieldShouldReturn(textField: UITextField) -> Bool { posting a comment happens in the comment view
+////        comments.append(textField.text)
+//        self.tableView.reloadData()
+//        textField.resignFirstResponder()
+//        return true
+//    }
     
     @IBAction func addComment(sender: AnyObject) {
         var commentsViewController = SPCommentsViewController()
+        commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
         self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
     //Lazy load input accessory view

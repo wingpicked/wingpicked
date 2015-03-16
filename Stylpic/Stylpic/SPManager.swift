@@ -14,6 +14,8 @@ import UIKit
 typealias SPFeedItemsResultBlock = ( feedItems: [SPFeedItem]!, error: NSError?) -> Void
 typealias SPSaveImagesResultsBlock = (imageOne: PFFile?, imageOneThumbnail: PFFile?, imageTwo: PFFile?, imageTwoThumbnail: PFFile?, error: NSError?) -> Void
 typealias SPBoolResultBlock = ( success: Bool, error: NSError? ) -> Void
+typealias SPPFObjectArrayResultBlock = ( comments: Array<PFObject>?, error: NSError?) -> Void
+typealias SPPFObjectResultsBlock = ( savedObject: PFObject?, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -62,11 +64,45 @@ class SPManager: NSObject {
     }
 
     
-    func getPhotosComments() -> SPPhotosComments{
-        return SPPhotosComments()
+    func fetchComments(photoPair: PFObject, imageTapped: ActivityType, resultBlock: SPPFObjectArrayResultBlock) {
+
+        var commentQuery = PFQuery( className: "Activity" )
+        commentQuery.whereKey( "type", equalTo: imageTapped.rawValue )
+        commentQuery.whereKey( "photoPair", equalTo: photoPair )
+        commentQuery.orderByDescending( "createdAt" )
+        commentQuery.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                println( objects )
+                var arrayPFObject = objects as! Array<PFObject>
+                resultBlock(comments: arrayPFObject, error: nil)
+            } else {
+                println( error )
+            }
+        }
     }
     
-    func postComment(comment: String) {
+    func postComment( activityType: ActivityType, photoPair:PFObject?,  comment: String?, resultBlock: SPPFObjectResultsBlock) {
+        if let photoPair = photoPair {
+            var photosOwner:PFUser = photoPair.objectForKey( "user" ) as! PFUser
+            var fromUser = SPUser.currentUser()
+            var activity = SPActivity()
+            activity.fromUser = fromUser
+            activity.toUser = photosOwner
+            activity.photoPair = photoPair
+            activity.isArchiveReady = false
+            activity.type = activityType.rawValue
+            activity.content = comment
+            activity.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if error == nil {
+                    println( "saved comment activity" )
+                    resultBlock( savedObject: activity, error: error )
+                } else {
+                    println( error )
+                }
+            })
+        }
+        
         
     }
 
