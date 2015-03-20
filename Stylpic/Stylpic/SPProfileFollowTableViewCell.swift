@@ -24,8 +24,8 @@ class SPProfileFollowTableViewCell: UITableViewCell {
         updateIsFollowing(isFollowing)
     }
     
-    func setupCell(following : Bool){
-        isFollowing = following
+    func setupCell(user : SPUser){
+        isFollowing = user.isFollowing
         updateIsFollowing(isFollowing)
     }
     

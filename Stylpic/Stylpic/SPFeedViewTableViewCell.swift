@@ -8,37 +8,29 @@
 
 import UIKit
 
-protocol SPFeedViewTableViewCellDelegate {
-    func didTapPhotoOne(feedItem : SPFeedItem)
-    func didTapPhotoTwo(feedItem : SPFeedItem)
-}
 
-class SPFeedViewTableViewCell: UITableViewCell {
+class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
 
-    @IBOutlet weak var pictureImageView: PFImageView!
-    @IBOutlet weak var caption: UILabel!
+//    @IBOutlet weak var pictureImageView: PFImageView!
+//    @IBOutlet weak var pictureImageView2: PFImageView!
+//
+//    @IBOutlet weak var imageOnePercentLabel: UILabel!
+//    @IBOutlet weak var imageOneLikeLabel: UILabel!
+//    @IBOutlet weak var imageOneCommentLabel: UILabel!
+//    
+//    @IBOutlet weak var imageTwoPercentLabel: UILabel!
+//    @IBOutlet weak var imageTwoLikeLabel: UILabel!
+//    @IBOutlet weak var imageTwoCommentLabel: UILabel!
     
+    @IBOutlet weak var caption: UILabel!
     @IBOutlet weak var actualContentView: UIView!
     
     @IBOutlet weak var imageOneLikeButton: UIButton!
     @IBOutlet weak var imageTwoLikeButton: UIButton!
-    @IBOutlet weak var pictureImageView2: PFImageView!
     
     @IBOutlet weak var postedTimeLabel: UILabel!
     
-    @IBOutlet weak var imageOnePercentLabel: UILabel!
-    @IBOutlet weak var imageOneLikeLabel: UILabel!
-    @IBOutlet weak var imageOneCommentLabel: UILabel!
-    
-    @IBOutlet weak var imageTwoPercentLabel: UILabel!
-    @IBOutlet weak var imageTwoLikeLabel: UILabel!
-    @IBOutlet weak var imageTwoCommentLabel: UILabel!
-    
     @IBOutlet weak var profilePictureImageView: PFImageView!
-    
-    var feedItem : SPFeedItem?
-    
-    var delegate : SPFeedViewTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,16 +51,10 @@ class SPFeedViewTableViewCell: UITableViewCell {
         
     }
     
-    func setupWithFeedItem(feedItem: SPFeedItem){
-        self.feedItem = feedItem
+    override func setupWithFeedItem(feedItem: SPFeedItem){
+        super.setupWithFeedItem(feedItem) //Does a lot of heavy lifting that is in common with SPFeedViewTableViewCell and SPProfileFeedTableViewCell
+        
         self.caption.text = feedItem.caption
-        
-        self.pictureImageView.file = feedItem.photos?.objectForKey("imageOne") as! PFFile
-        self.pictureImageView2.file = feedItem.photos?.objectForKey("imageTwo") as! PFFile
-        self.pictureImageView2.loadInBackground(nil)
-        self.pictureImageView.loadInBackground(nil)
-
-        
     
         if let user = feedItem.photos?["user"] as? PFUser {
             user.fetchIfNeededInBackgroundWithBlock({ (obj, error) -> Void in
@@ -82,17 +68,6 @@ class SPFeedViewTableViewCell: UITableViewCell {
             })
         }
 
-        self.imageOneLikeButton.hidden = false
-        self.imageTwoLikeButton.hidden = false
-        self.imageOneLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
-        self.imageTwoLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
-        
-        self.imageOnePercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedOne ) as String
-        self.imageTwoPercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedTwo ) as String
-        self.imageOneLikeLabel.text =  String(feedItem.likesCountOne)
-        self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
-        self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
-        self.imageTwoCommentLabel.text =  String( feedItem.commentsCountTwo )
         if self.feedItem?.photoUserLikes == PhotoUserLikes.FirstPhotoLiked {
             imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
@@ -171,15 +146,5 @@ class SPFeedViewTableViewCell: UITableViewCell {
         
     }
     
-    func imageOneTapped(sender: AnyObject) {
-        if let feedItem = self.feedItem {
-            self.delegate?.didTapPhotoOne(feedItem)
-        }
-    }
-    func imageTwoTapped(sender: AnyObject) {
-        if let feedItem = self.feedItem {
-            self.delegate?.didTapPhotoTwo(feedItem)
-        }
-    }
     
 }
