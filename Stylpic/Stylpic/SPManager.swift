@@ -131,30 +131,55 @@ class SPManager: NSObject {
         
     }
     
+    
     func followUser(user: PFUser?, resultBlock: SPPFObjectResultsBlock ) {
         if let user = user {
-            var photosOwner:PFUser = photoPair.objectForKey( "user" ) as! PFUser
             var fromUser = SPUser.currentUser()
             var activity = SPActivity()
             activity.fromUser = fromUser
-            activity.toUser = photosOwner
-            activity.photoPair = photoPair
+            activity.toUser = user
             activity.isArchiveReady = false
-            activity.type = activityType.rawValue
-            activity.content = comment
+            activity.type = ActivityType.Follow.rawValue
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println( "saved comment activity" )
+                    println( "saved follow ativity" )
                     resultBlock( savedObject: activity, error: error )
                 } else {
                     println( error )
+                    resultBlock( savedObject: nil, error: error )
                 }
             })
-
-            
+        } else {
+            println( "user was nil" )
+            var userInfo = [ "message": "follow did not happen because user was nil" ]
+            var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
+            resultBlock( savedObject: nil, error: error )
         }
     }
 
+    
+    func unfollowUser( user: PFUser?, resultBlock:PFBooleanResultBlock ) {
+        if let user = user {
+            var fromUser = SPUser.currentUser()
+            var activityQuery = PFQuery( className: "Activity" )
+            activityQuery.whereKey( "fromUser", equalTo: fromUser )
+            activityQuery.whereKey( "toUser", equalTo: user )
+            activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
+            activityQuery.findObjectsInBackgroundWithBlock({ (payloadObjects, error) -> Void in
+                for activity in payloadObjects as! [PFObject] {
+                    activity.setObject( true, forKey: "isArchiveReady" )
+                }
+                
+                PFObject.saveAllInBackground(payloadObjects, block: resultBlock)
+            })
+        } else {
+            println( "user was nil" )
+            var userInfo = [ "message": "follow did not happen because user was nil" ]
+            var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
+            resultBlock( false, error )
+        }
+    }
+    
     
     //Low priority
     func getFacebookFriendsWithApp() -> [SPUser]?{
