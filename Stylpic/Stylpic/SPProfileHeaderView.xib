@@ -13,10 +13,20 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="syP-rm-wMA">
                     <rect key="frame" x="128" y="8" width="64" height="64"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vI3-kv-fVW">
+                    <rect key="frame" x="200" y="25" width="112" height="30"/>
+                    <state key="normal" title="Follow">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapFollowButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="hCh-D3-eYm"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="followButton" destination="vI3-kv-fVW" id="Bw5-b9-cBT"/>
                 <outlet property="profilePictureImageView" destination="syP-rm-wMA" id="TBc-qJ-TkF"/>
             </connections>
             <point key="canvasLocation" x="236" y="604"/>

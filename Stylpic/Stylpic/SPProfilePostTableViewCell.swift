@@ -21,4 +21,8 @@ class SPProfilePostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell(feedItem : SPFeedItem){
+        
+    }
+    
 }

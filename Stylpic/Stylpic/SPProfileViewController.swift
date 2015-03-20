@@ -23,9 +23,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     var profileInfo : SPProfileInfo?
     
-    var dataArray : [String] = []
+    //var dataArray : [String] = []
+    var dataArray : [AnyObject] = []
     let array1 = ["Hey", "Whats", "UP"]
     let array2 = ["SUP ARRAY 2!", "Yee", "This is fo followers"]
+    
+    var profileInfoViewModel = SPProfileInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
         self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
         tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")
+        tableView.registerNib(UINib(nibName: "SPProfileFollowTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileFollowTableViewCell")
 
         self.toolBarView.delegate = self
         toolBarView.addTopBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
@@ -60,22 +64,31 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         switch currentViewState {
         case .Posts:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
-            //cell.textLabel?.text = dataArray[indexPath.row]
+            cell.setupCell(profileInfoViewModel.posts[indexPath.row])
             return cell
-//        case .Followers:
-//            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-//            cell.textLabel?.text = dataArray[indexPath.row]
-//            return cell
+        case .Followers:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
+            cell.setupCell(profileInfoViewModel.followers[indexPath.row].isFollowing)
+            return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel?.text = dataArray[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
+            cell.setupCell(profileInfoViewModel.followers[indexPath.row].isFollowing)
             return cell
         }
         
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        switch currentViewState {
+        case .Posts:
+            return profileInfoViewModel.posts.count
+        case .Followers:
+            return profileInfoViewModel.followers.count
+        case .Following:
+            return profileInfoViewModel.following.count
+        case .Notifications:
+            return profileInfoViewModel.notifications.count
+        }
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -91,16 +104,27 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(array1 == dataArray){
-            return 136
-        }
-        else if (array2 == dataArray){
+        switch currentViewState {
+        case .Posts:
+            return 11
+        case .Followers:
+            return 22
+        case .Following:
+            return 33
+        case .Notifications:
             return 44
         }
-        else{
-            return 64
-        }
+//        if(array1 == dataArray){
+//            return 136
+//        }
+//        else if (array2 == dataArray){
+//            return 44
+//        }
+//        else{
+//            return 64
+//        }
     }
+
     
     //MARK: SPProfile Toolbar Delegate
     func postsButtonTapped() {
