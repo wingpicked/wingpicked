@@ -63,6 +63,7 @@ class SPManager: NSObject {
             PFCloud.callFunctionInBackground( "fetchProfileInfo", withParameters: params) { (payload, error) -> Void in
                 if error == nil {
                     println( payload )
+                    //println( payload as! SPProfileInfo)
                     
                     
                 } else {

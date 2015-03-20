@@ -41,6 +41,17 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
         
+        SPManager.sharedInstance.getProfileInfo(SPUser.currentUser(), resultBlock: { (profileObject, error) -> Void in
+            if(error == nil){
+                if let profileObject = profileObject {
+                    self.profileInfoViewModel = profileObject
+                }
+            }
+            else{
+                println(error!.localizedDescription)
+            }
+        })
+        
     }
     
     func refreshTableView(){
@@ -53,7 +64,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         switch currentViewState {
         case .Posts:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
-            cell.setupCell(profileInfoViewModel.posts[indexPath.row])
+            cell.setupWithFeedItem(profileInfoViewModel.posts[indexPath.row])
             return cell
         case .Followers:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
