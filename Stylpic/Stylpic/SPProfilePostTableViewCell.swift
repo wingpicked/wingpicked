@@ -8,21 +8,8 @@
 
 import UIKit
 
-class SPProfilePostTableViewCell: UITableViewCell {
+class SPProfilePostTableViewCell: SPBaseFeedViewTableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    func setupCell(feedItem : SPFeedItem){
+    //Overrides will go here if any.. currently this implementation matches up exactly with the SPBaseFeedViewTableViewCell...
         
-    }
-    
 }
