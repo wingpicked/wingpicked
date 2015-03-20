@@ -23,9 +23,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     var profileInfo : SPProfileInfo?
     
-    var dataArray : [String] = []
+    //var dataArray : [String] = []
+    var dataArray : [AnyObject] = []
     let array1 = ["Hey", "Whats", "UP"]
     let array2 = ["SUP ARRAY 2!", "Yee", "This is fo followers"]
+    
+    var profileInfoViewModel = SPProfileInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,20 +60,21 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     //MARK: Tableview Datasource and Delegate Methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        switch currentViewState {
-        case .Posts:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
-            //cell.textLabel?.text = dataArray[indexPath.row]
-            return cell
+        return UITableViewCell()
+//        switch currentViewState {
+//        case .Posts:
+//            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
+//            cell.setupCell(profileInfoViewModel.posts[indexPath.row])
+//            return cell
 //        case .Followers:
 //            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
 //            cell.textLabel?.text = dataArray[indexPath.row]
 //            return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel?.text = dataArray[indexPath.row]
-            return cell
-        }
+//        default:
+//            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
+//            cell.textLabel?.text = dataArray[indexPath.row]
+//            return cell
+//        }
         
     }
     
@@ -90,17 +94,18 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         return 46
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(array1 == dataArray){
-            return 136
-        }
-        else if (array2 == dataArray){
-            return 44
-        }
-        else{
-            return 64
-        }
-    }
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if(array1 == dataArray){
+//            return 136
+//        }
+//        else if (array2 == dataArray){
+//            return 44
+//        }
+//        else{
+//            return 64
+//        }
+//    }
+
     
     //MARK: SPProfile Toolbar Delegate
     func postsButtonTapped() {
