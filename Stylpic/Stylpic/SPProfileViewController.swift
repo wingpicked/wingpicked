@@ -37,6 +37,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
         self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
         tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")
+        tableView.registerNib(UINib(nibName: "SPProfileFollowTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileFollowTableViewCell")
 
         self.toolBarView.delegate = self
         toolBarView.addTopBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
@@ -60,26 +61,34 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     //MARK: Tableview Datasource and Delegate Methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        return UITableViewCell()
-//        switch currentViewState {
-//        case .Posts:
-//            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
-//            cell.setupCell(profileInfoViewModel.posts[indexPath.row])
-//            return cell
-//        case .Followers:
-//            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-//            cell.textLabel?.text = dataArray[indexPath.row]
-//            return cell
-//        default:
-//            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-//            cell.textLabel?.text = dataArray[indexPath.row]
-//            return cell
-//        }
+        switch currentViewState {
+        case .Posts:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
+            cell.setupCell(profileInfoViewModel.posts[indexPath.row])
+            return cell
+        case .Followers:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
+            cell.setupCell(profileInfoViewModel.followers[indexPath.row].isFollowing)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
+            cell.setupCell(profileInfoViewModel.followers[indexPath.row].isFollowing)
+            return cell
+        }
         
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        switch currentViewState {
+        case .Posts:
+            return profileInfoViewModel.posts.count
+        case .Followers:
+            return profileInfoViewModel.followers.count
+        case .Following:
+            return profileInfoViewModel.following.count
+        case .Notifications:
+            return profileInfoViewModel.notifications.count
+        }
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -94,7 +103,17 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         return 46
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch currentViewState {
+        case .Posts:
+            return 11
+        case .Followers:
+            return 22
+        case .Following:
+            return 33
+        case .Notifications:
+            return 44
+        }
 //        if(array1 == dataArray){
 //            return 136
 //        }
@@ -104,7 +123,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 //        else{
 //            return 64
 //        }
-//    }
+    }
 
     
     //MARK: SPProfile Toolbar Delegate

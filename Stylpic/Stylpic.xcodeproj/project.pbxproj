@@ -476,8 +476,6 @@
 			isa = PBXGroup;
 			children = (
 				38BB44551A663174004CD444 /* SPProfileViewController.swift */,
-				38EAD45F1AB63BBB00A6FD81 /* SPProfileToolBarView.xib */,
-				38EAD4611AB63BCA00A6FD81 /* SPProfileToolBarView.swift */,
 				38EAD46F1AB66D9600A6FD81 /* Cells */,
 			);
 			name = SPProfile;
@@ -509,6 +507,8 @@
 			children = (
 				38EAD4651AB63DF000A6FD81 /* SPProfileHeaderView.xib */,
 				38EAD4631AB63DE700A6FD81 /* SPProfileHeaderView.swift */,
+				38EAD45F1AB63BBB00A6FD81 /* SPProfileToolBarView.xib */,
+				38EAD4611AB63BCA00A6FD81 /* SPProfileToolBarView.swift */,
 				38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */,
 				38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */,
 				EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */,
