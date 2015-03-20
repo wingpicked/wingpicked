@@ -17,5 +17,5 @@ class SPProfileInfo: NSObject {
     var posts : [SPFeedItem] = []
     var followers : [SPUser] = []
     var following : [SPUser] = []
-    var notifications : [SPActivity] = []
+    var notifications : [PFObject] = [] // SPActivity
 }

@@ -20,12 +20,14 @@ enum ActivityType : Int{
 
 class SPActivity: PFObject {
    
+    
     @NSManaged var fromUser : PFUser
     @NSManaged var toUser : PFUser
     @NSManaged var type : NSNumber
     @NSManaged var content : NSString?
     @NSManaged var photoPair : PFObject
     @NSManaged var isArchiveReady : Bool
+    @NSManaged var notificationViewed : Bool
     
     var activityType : ActivityType? {
         get {
@@ -49,13 +51,13 @@ class SPActivity: PFObject {
         var message = ""
         if let activityType = activityType{
             switch activityType {
-            case .CommentImageOne, .CommentImageTwo:
-                message = "\(fromUser) commented on your photo"
-            break
-            case .LikeImageOne, .LikeImageTwo:
-                message = "\(fromUser) liked your photo"
-            default:
+                case .CommentImageOne, .CommentImageTwo:
+                    message = "\(fromUser) commented on your photo"
                 break
+                case .LikeImageOne, .LikeImageTwo:
+                    message = "\(fromUser) liked your photo"
+                default:
+                    break
             }
         }
         return message
