@@ -81,7 +81,7 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 });
 
 
-Parse.CLoud.define( "fetchProfileInfo", function( request, response ) {
+Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 	var userObjectId = request.params.userObjectId;
 	var profileInfo = new profileInfo.ProfileInfo();
     var Photos = Parse.Object.extend( 'Photos' );
@@ -133,7 +133,7 @@ Parse.CLoud.define( "fetchProfileInfo", function( request, response ) {
 		followingQuery.include( 'toUser' );
 		followingQuery.limit( MAX_QUERY_LIMIT );
 		followingQuery.equalTo( 'fromUser', mockUser );
-		followingQuery.equalTo( 'type', ActivityType.Follow );
+		followingQuery.equalTo( 'type', feedItem.ActivityType.Follow );
 
 		var followersQuery = new Parse.Query( Activity );
 		followersQuery.include( 'photoPair' );
@@ -141,7 +141,7 @@ Parse.CLoud.define( "fetchProfileInfo", function( request, response ) {
 		followersQuery.include( 'toUser' );
 		followersQuery.limit( MAX_QUERY_LIMIT );
 		followersQuery.equalTo( 'toUser', mockUser );
-		followersQuery.equalTo( 'type', ActivityType.Follow );
+		followersQuery.equalTo( 'type', feedItem.ActivityType.Follow );
 
 		return Parse.Query.or( followingQuery, followersQuery ).find();
 	}).then( function( followEventActivities ) {
@@ -159,12 +159,18 @@ Parse.CLoud.define( "fetchProfileInfo", function( request, response ) {
 		});
 
 		// get notifications
+		var allNotificationsQuery = profileInfo.queryForNotificationsWithUser( mockUser, feedItem );
+		return allNotificationsQuery.find();
+	}).then( function( allNotificationsForUser ) {
+		if ( 0 < allNotificationsForUser.length ) {
+			var notificationsSortedByCreatedDate = _.sortBy(allNotificationsForUser, function (aNotification) {
+				return -(aNotification.createdAt.getTime() );
+			});
 
-		var notificationsQuery = new Parse.Query( Activity );
-		// notificationsQuery.
+			profileInfo.notifications = notificationsSortedByCreatedDate
+		}
 
-	}).then( function( someNotifications ) {
-
+		response.success( { profileInfo: profileInfo } );
 	}, function( error ) {
 		response.error( error );
 	});
