@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Background_LoginScreen_640x960_IPhone3,4.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "Melanie-Iglesias.jpg"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

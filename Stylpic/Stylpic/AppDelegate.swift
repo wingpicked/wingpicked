@@ -27,7 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
-        
+                
+
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
+        UINavigationBar.appearance().tintColor = UIColor.blackColor()
+        UIBarButtonItem.appearance().tintColor = UIColor.blackColor()
         
         // Simple way to create a user or log in the existing user
         // For your app, you will probably want to present your own login screen

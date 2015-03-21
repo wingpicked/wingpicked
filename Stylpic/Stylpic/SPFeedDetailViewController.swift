@@ -54,7 +54,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
 
-        
         //commentTextField.inputAccessoryView = self.inputAccessoryViewz
     }
 
