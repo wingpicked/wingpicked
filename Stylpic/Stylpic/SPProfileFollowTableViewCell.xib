@@ -13,15 +13,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="o6O-IC-goj">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="o6O-IC-goj" customClass="PFImageView">
                         <rect key="frame" x="8" y="7" width="30" height="30"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4J-yv-r1d">
-                        <rect key="frame" x="46" y="11" width="228" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNx-KU-wer">
                         <rect key="frame" x="282" y="7" width="30" height="30"/>
                         <state key="normal" title="Button" image="Icon_follow">
@@ -31,10 +25,18 @@
                             <action selector="followButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ayv-rI-lZp"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4J-yv-r1d">
+                        <rect key="frame" x="46" y="11" width="228" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="followButton" destination="tNx-KU-wer" id="Tl2-nF-aga"/>
+                <outlet property="label" destination="Y4J-yv-r1d" id="bBR-K5-iXd"/>
+                <outlet property="profilePictureImageView" destination="o6O-IC-goj" id="kmi-Ge-5d3"/>
             </connections>
         </tableViewCell>
     </objects>

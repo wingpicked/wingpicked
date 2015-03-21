@@ -11,7 +11,9 @@ import UIKit
 class SPProfileFollowTableViewCell: UITableViewCell {
 
     @IBOutlet weak var followButton: UIButton!
-    
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var profilePictureImageView: PFImageView!
+
     var isFollowing = false
     
     override func awakeFromNib() {
@@ -27,6 +29,9 @@ class SPProfileFollowTableViewCell: UITableViewCell {
     func setupCell(user : SPUser){
         isFollowing = user.isFollowing
         updateIsFollowing(isFollowing)
+        label.text = user.username
+        profilePictureImageView.file = user.profilePicture
+        profilePictureImageView.loadInBackground(nil)
     }
     
     func updateIsFollowing(isFollowing : Bool){
