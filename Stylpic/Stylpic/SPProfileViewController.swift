@@ -50,6 +50,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             if(error == nil){
                 if let profileObject = profileObject {
                     self.profileInfoViewModel = profileObject
+                    self.headerView.setupCell(self.profileInfoViewModel.isFollowing, user: user )
                     self.headerView.followButton.hidden = ( PFUser.currentUser().objectId == user.objectId)
                     
                     self.updateToolbarUI()
@@ -173,5 +174,13 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 
-    
+    func didRequestUserProfile( feedItem: SPFeedItem ) {
+        if let user = feedItem.photos?["user"] as? PFUser {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+            profileViewController.showWithUser(user)
+        }
+        
+    }
 }

@@ -14,7 +14,10 @@ class SPProfileHeaderView: UIView {
     @IBOutlet weak var profilePictureImageView: UIImageView!
     
     var isFollowing = false
-
+    var user: PFUser?
+    
+//    var delegate: SPProfileHeaderViewDelegate?
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
@@ -24,11 +27,24 @@ class SPProfileHeaderView: UIView {
         self.isFollowing = !self.isFollowing
         updateIsFollowing(self.isFollowing)
         
+        if self.isFollowing {
+            SPManager.sharedInstance.followUser(self.user, resultBlock: { (savedObject, error) -> Void in
+                println( "followed user with \(error)" )
+                
+            })
+        } else {
+            SPManager.sharedInstance.unfollowUser(self.user, resultBlock: { (savedObject, error) -> Void in
+                println( "unfollowed user with error \(error)" )
+                
+            })
+        }
     }
     
-    func setupCell(following : Bool){
+    func setupCell(following : Bool, user: PFUser ){
         self.isFollowing = following
         updateIsFollowing(isFollowing)
+        self.user = user
+        
     }
     
     func updateIsFollowing(isFollowing : Bool){
