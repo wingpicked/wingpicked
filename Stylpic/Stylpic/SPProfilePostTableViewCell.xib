@@ -23,10 +23,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="BvZ-GW-Z5p">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="BvZ-GW-Z5p" customClass="PFImageView">
                         <rect key="frame" x="55" y="24" width="100" height="87"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="pVg-Do-VV0">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="pVg-Do-VV0" customClass="PFImageView">
                         <rect key="frame" x="163" y="24" width="100" height="87"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cB-Nb-m2c">
@@ -83,8 +83,24 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE7-6s-qaU">
+                        <rect key="frame" x="28" y="42" width="24" height="15"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imageOneCommentLabel" destination="Xr2-h4-uhv" id="e9G-Ly-Vvg"/>
+                <outlet property="imageOneLikeLabel" destination="4cB-Nb-m2c" id="sP6-Sb-opG"/>
+                <outlet property="imageOnePercentLabel" destination="rE7-6s-qaU" id="3Xl-cl-KqC"/>
+                <outlet property="imageTwoCommentLabel" destination="JKq-xX-cIZ" id="wWT-hz-SP5"/>
+                <outlet property="imageTwoLikeLabel" destination="vla-P9-c8a" id="KMR-mL-9bH"/>
+                <outlet property="imageTwoPercentLabel" destination="FBN-jl-8BQ" id="Bkj-Yd-ITT"/>
+                <outlet property="pictureImageView" destination="BvZ-GW-Z5p" id="CJU-DD-yct"/>
+                <outlet property="pictureImageView2" destination="pVg-Do-VV0" id="WdB-jD-6uh"/>
+            </connections>
             <point key="canvasLocation" x="139" y="291"/>
         </tableViewCell>
     </objects>

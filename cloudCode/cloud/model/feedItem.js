@@ -17,25 +17,6 @@ var PhotoUserLikes = {
 };
 
 
-// var payload = function() {
-// 	var payloadObject = {
-// 		photoPair: this.photoPair,
-// 		caption: this.caption,
-// 		likesCountOne: this.likesCountOne,
-// 		likesCountTwo: this.likesCountTwo,
-// 		commentsCountOne: this.commentsCountOne,
-// 		commentsCountTwo: this.commentsCountTwo,
-// 		percentageLikedOne: this.percentageLikedOne,
-// 		percentageLikedTwo: this.percentageLikedTwo,
-// 		username: this.username,
-// 		userProfilePicture: this.userProfilePicture,
-// 		photoUserLikes: this.photoUserLikes,
-// 		comments: this.comments,
-// 	};
-
-// };
-
-
 var calculateLikePercentages = function() {
 	var totalLikes = this.likesCountOne + this.likesCountTwo;
 	if ( totalLikes > 0 ) {
@@ -127,7 +108,7 @@ var FeedItem = function( aPhotoPair ) {
 };
 
 exports.FeedItem = FeedItem;
-
+exports.ActivityType = ActivityType;
 
 
 

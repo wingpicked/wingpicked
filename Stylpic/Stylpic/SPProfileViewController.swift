@@ -21,19 +21,15 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     var toolBarView : SPProfileToolBarView!
     var headerView : SPProfileHeaderView!
     
-    var profileInfo : SPProfileInfo?
-    
-    var dataArray : [String] = []
-    let array1 = ["Hey", "Whats", "UP"]
-    let array2 = ["SUP ARRAY 2!", "Yee", "This is fo followers"]
+    var profileInfoViewModel = SPProfileInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
         self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
         tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")
+        tableView.registerNib(UINib(nibName: "SPProfileFollowTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileFollowTableViewCell")
 
         self.toolBarView.delegate = self
         toolBarView.addTopBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
@@ -45,13 +41,21 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
         
-        self.dataArray = array1
+        SPManager.sharedInstance.getProfileInfo(SPUser.currentUser(), resultBlock: { (profileObject, error) -> Void in
+            if(error == nil){
+                if let profileObject = profileObject {
+                    self.profileInfoViewModel = profileObject
+                }
+            }
+            else{
+                println(error!.localizedDescription)
+            }
+        })
+        
     }
     
     func refreshTableView(){
-        println("Refreshed")
         self.refreshControl?.endRefreshing()
-        
     }
     
     //MARK: Tableview Datasource and Delegate Methods
@@ -60,22 +64,34 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         switch currentViewState {
         case .Posts:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
-            //cell.textLabel?.text = dataArray[indexPath.row]
+            cell.setupWithFeedItem(profileInfoViewModel.posts[indexPath.row])
             return cell
-//        case .Followers:
-//            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-//            cell.textLabel?.text = dataArray[indexPath.row]
-//            return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel?.text = dataArray[indexPath.row]
+        case .Followers:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
+            cell.setupCell(profileInfoViewModel.followers[indexPath.row])
+            return cell
+        case .Following:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
+            cell.setupCell(profileInfoViewModel.following[indexPath.row])
+            return cell
+        case .Notifications:
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
+            //cell.setupCell(profileInfoViewModel.notifications[indexPath.row])
             return cell
         }
-        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        switch currentViewState {
+        case .Posts:
+            return profileInfoViewModel.posts.count
+        case .Followers:
+            return profileInfoViewModel.followers.count
+        case .Following:
+            return profileInfoViewModel.following.count
+        case .Notifications:
+            return profileInfoViewModel.notifications.count
+        }
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -91,39 +107,38 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(array1 == dataArray){
+        switch currentViewState {
+        case .Posts:
             return 136
-        }
-        else if (array2 == dataArray){
+        case .Followers:
             return 44
-        }
-        else{
+        case .Following:
             return 64
+        case .Notifications:
+            return 44
         }
     }
     
     //MARK: SPProfile Toolbar Delegate
     func postsButtonTapped() {
-        println("posts")
         currentViewState = .Posts
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        dataArray = array1
         self.tableView.reloadData()
     }
     func followersButtonTapped() {
-        println("followers")
         currentViewState = .Followers
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        dataArray = array2
         self.tableView.reloadData()
     }
     func followingButtonTapped() {
-        println("following")
-        dataArray = ["hey"]
+        currentViewState = .Following
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.tableView.reloadData()
     }
     func notificationsButtonTapped() {
-        println("notif")
+        currentViewState = .Notifications
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.tableView.reloadData()
     }
     
     

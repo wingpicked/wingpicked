@@ -23,6 +23,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="followButton" destination="vI3-kv-fVW" id="Bw5-b9-cBT"/>
                 <outlet property="profilePictureImageView" destination="syP-rm-wMA" id="TBc-qJ-TkF"/>
             </connections>
             <point key="canvasLocation" x="236" y="604"/>

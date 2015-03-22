@@ -20,12 +20,14 @@ enum ActivityType : Int{
 
 class SPActivity: PFObject {
    
+    
     @NSManaged var fromUser : PFUser
     @NSManaged var toUser : PFUser
     @NSManaged var type : NSNumber
     @NSManaged var content : NSString?
     @NSManaged var photoPair : PFObject
     @NSManaged var isArchiveReady : Bool
+    @NSManaged var notificationViewed : Bool
     
     var activityType : ActivityType? {
         get {
@@ -56,6 +58,10 @@ class SPActivity: PFObject {
                 message = "\(fromUser.username) liked your photo"
             default:
                 break
+                case .LikeImageOne, .LikeImageTwo:
+                    message = "\(fromUser) liked your photo"
+                default:
+                    break
             }
         }
         return message
