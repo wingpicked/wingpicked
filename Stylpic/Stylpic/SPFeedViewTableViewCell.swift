@@ -41,13 +41,6 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 2.0);
         self.actualContentView.layer.shadowOpacity = 0.3;
         
-        pictureImageView.userInteractionEnabled = true
-        pictureImageView2.userInteractionEnabled = true
-        var tap1 = UITapGestureRecognizer(target: self, action: Selector("imageOneTapped:"))
-        pictureImageView.addGestureRecognizer(tap1)
-        var tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
-        pictureImageView2.addGestureRecognizer(tap2)
-
         
     }
     
