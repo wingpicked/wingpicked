@@ -31,6 +31,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     @IBOutlet weak var postedTimeLabel: UILabel!
     
     @IBOutlet weak var profilePictureImageView: PFImageView!
+    @IBOutlet weak var userDisplayName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,7 +42,13 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 2.0);
         self.actualContentView.layer.shadowOpacity = 0.3;
         
+        profilePictureImageView.userInteractionEnabled = true
+        var tap1 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
+        profilePictureImageView.addGestureRecognizer(tap1)
         
+        userDisplayName.userInteractionEnabled = true
+        var tap2 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
+        userDisplayName.addGestureRecognizer(tap2)
     }
     
     override func setupWithFeedItem(feedItem: SPFeedItem){
@@ -71,6 +78,14 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
             imageOneLikeButton.hidden = true
         }
     }
+    
+    
+    func userInfoDidTap( sender: AnyObject ) {
+        if let feedItem = self.feedItem {
+            self.delegate?.didRequestUserProfile(feedItem)
+        }
+    }
+    
     
     @IBAction func imageOneLiked(sender: AnyObject) {
         println( "in imageOneliked" )

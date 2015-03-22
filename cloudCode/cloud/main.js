@@ -163,6 +163,9 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 			}
 		});
 
+		profileInfo.followingCount = profileInfo.following.length;
+		profileInfo.followersCount = profileInfo.followers.length;
+
 		// get notifications
 		var allNotificationsQuery = profileInfoUtils.queryForNotificationsWithUser( mockUser, feedItem );
 		return allNotificationsQuery.find();

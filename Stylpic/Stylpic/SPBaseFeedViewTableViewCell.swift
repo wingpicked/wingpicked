@@ -11,6 +11,7 @@ import UIKit
 protocol SPFeedViewTableViewCellDelegate {
     func didTapPhotoOne(feedItem : SPFeedItem)
     func didTapPhotoTwo(feedItem : SPFeedItem)
+    func didRequestUserProfile( feedItem: SPFeedItem )
 }
 
 class SPBaseFeedViewTableViewCell: UITableViewCell {
@@ -39,6 +40,7 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         pictureImageView.addGestureRecognizer(tap1)
         var tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
         pictureImageView2.addGestureRecognizer(tap2)
+        
     }
 
     func setupWithFeedItem(feedItem: SPFeedItem){

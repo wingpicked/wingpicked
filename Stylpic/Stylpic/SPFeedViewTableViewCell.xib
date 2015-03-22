@@ -42,8 +42,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ayW-Uc-psM" customClass="PFImageView">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ayW-Uc-psM" customClass="PFImageView">
                                 <rect key="frame" x="8" y="4" width="24" height="24"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="Vag-8P-qAl"/>
                                     <constraint firstAttribute="height" constant="24" id="myq-G9-OhW"/>
@@ -65,7 +66,7 @@
                                     <constraint firstAttribute="height" constant="150" id="mBF-pG-uZv"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYK-8x-s5p">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYK-8x-s5p">
                                 <rect key="frame" x="42" y="4" width="189" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="HLh-sn-1ms"/>
@@ -226,6 +227,7 @@
                 <outlet property="pictureImageView2" destination="j2k-Eb-5oZ" id="CTn-p8-IhW"/>
                 <outlet property="postedTimeLabel" destination="A5q-fU-0fX" id="fCr-IE-C7I"/>
                 <outlet property="profilePictureImageView" destination="ayW-Uc-psM" id="W5C-9u-VAM"/>
+                <outlet property="userDisplayName" destination="cYK-8x-s5p" id="2kc-t7-3Ph"/>
             </connections>
             <point key="canvasLocation" x="274" y="329.5"/>
         </tableViewCell>
