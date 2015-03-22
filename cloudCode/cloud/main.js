@@ -1,7 +1,7 @@
 
 var _ = require( 'underscore' ),
 	feedItem = require( 'cloud/model/feedItem' ),
-	profileInfo = require( 'cloud/model/profileInfo' );
+	profileInfoUtils = require( 'cloud/model/profileInfo' );
 
 
 var itemsPerPage = 10;
@@ -83,7 +83,7 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 
 Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 	var userObjectId = request.params.userObjectId;
-	var profileInfo = new profileInfo.ProfileInfo();
+	var profileInfo = new profileInfoUtils.ProfileInfo();
     var Photos = Parse.Object.extend( 'Photos' );
 	var query = new Parse.Query( Photos );
 	query.include( 'user' );	
@@ -91,7 +91,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 	query.limit( itemsPerPage );
 	var mockUser = new Parse.User();
 	mockUser.id = userObjectId;
-	query.equalTo( 'user', userObjectId );
+	query.equalTo( 'user', mockUser );
 	var Activity = Parse.Object.extend( 'Activity' );
 	var photosPromise = query.find();
 	photosPromise.then( function( feedPhotos ) {
@@ -127,6 +127,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		return feedPhotoPairsPromise;
 	}).then( function( profileItems ) {
 		profileInfo.posts = profileItems;
+		profileInfo.postsCount = profileItems.length;
 		var followingQuery = new Parse.Query( Activity );
 		followingQuery.include( 'photoPair' );
 		followingQuery.include( 'fromUser' );
@@ -146,6 +147,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		return Parse.Query.or( followingQuery, followersQuery ).find();
 	}).then( function( followEventActivities ) {
 		// add follow events
+		var currentUserObjectId = request.user.id;
 		_.each( followEventActivities, function( aFollowEvent ) {
 			if ( aFollowEvent.has( 'fromUser' ) && aFollowEvent.has( 'toUser' ) ) {
 				var fromUser = aFollowEvent.get( 'fromUser' );
@@ -154,12 +156,15 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 					profileInfo.following.push( toUser );
 				} else if ( _.isEqual( toUser.id, userObjectId ) ) {
 					profileInfo.followers.push( fromUser );
+					if ( _.isEqual(currentUserObjectId, fromUser.id ) ) {
+						profileInfo.isFollowing = true;
+					}
 				}
 			}
 		});
 
 		// get notifications
-		var allNotificationsQuery = profileInfo.queryForNotificationsWithUser( mockUser, feedItem );
+		var allNotificationsQuery = profileInfoUtils.queryForNotificationsWithUser( mockUser, feedItem );
 		return allNotificationsQuery.find();
 	}).then( function( allNotificationsForUser ) {
 		if ( 0 < allNotificationsForUser.length ) {

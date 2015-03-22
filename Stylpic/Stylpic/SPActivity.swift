@@ -49,17 +49,23 @@ class SPActivity: PFObject {
     //TODO: Finish putting all display messages here..
     func displayMessage() -> String {
         var message = ""
+        var spUser = fromUser as! SPUser
+        var userName = spUser.spDisplayName()
         if let activityType = activityType{
             switch activityType {
                 case .CommentImageOne, .CommentImageTwo:
-                    message = "\(fromUser) commented on your photo"
-                break
+                    message = "\(userName) commented on your photo"
+                    break
                 case .LikeImageOne, .LikeImageTwo:
-                    message = "\(fromUser) liked your photo"
+                    message = "\(userName) liked your photo"
+                    break
+            case .Follow:
+                    message = "\(userName) followed you"
                 default:
                     break
             }
         }
+        
         return message
     }
 }

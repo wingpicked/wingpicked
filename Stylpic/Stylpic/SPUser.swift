@@ -24,4 +24,9 @@ class SPUser: PFUser, PFSubclassing {
             self.registerSubclass()
         }
     }
+    
+    func spDisplayName() -> String {
+        var lastInitial = (self.lastName as NSString).substringToIndex( 1 )
+        return "\(self.firstName) \(lastInitial)."
+    }
 }

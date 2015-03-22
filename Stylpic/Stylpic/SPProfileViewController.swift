@@ -76,7 +76,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             return cell
         case .Notifications:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
-            //cell.setupCell(profileInfoViewModel.notifications[indexPath.row])
+//            cell.setupCell(profileInfoViewModel.notifications[indexPath.row])
             return cell
         }
     }

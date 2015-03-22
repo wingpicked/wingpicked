@@ -64,10 +64,14 @@ class SPManager: NSObject {
                 if error == nil {
                     println( payload )
                     //println( payload as! SPProfileInfo)
-                    
+                    var serverProfileInfo = payload[ "profileInfo" ] as! [String: AnyObject]
+                    var profileInfo = SPProfileInfo()
+                    profileInfo.setupWithServerInfo( serverProfileInfo )
+                    resultBlock(profileObject: profileInfo, error: nil )
                     
                 } else {
                     println( error )
+                    resultBlock( profileObject: nil, error: error)
                 }
                 
                 

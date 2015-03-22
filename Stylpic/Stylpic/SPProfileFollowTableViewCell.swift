@@ -26,11 +26,12 @@ class SPProfileFollowTableViewCell: UITableViewCell {
         updateIsFollowing(isFollowing)
     }
     
-    func setupCell(user : SPUser){
-        isFollowing = user.isFollowing
+    func setupCell(user :PFUser){
+        var aUser = user as! SPUser
+        isFollowing = aUser.isFollowing
         updateIsFollowing(isFollowing)
         label.text = user.username
-        profilePictureImageView.file = user.profilePicture
+        profilePictureImageView.file = aUser.profilePicture
         profilePictureImageView.loadInBackground(nil)
     }
     
