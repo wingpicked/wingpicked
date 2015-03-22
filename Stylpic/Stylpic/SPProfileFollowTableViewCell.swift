@@ -27,12 +27,12 @@ class SPProfileFollowTableViewCell: UITableViewCell {
     }
     
     func setupCell(user :PFUser){
-        var aUser = user as! SPUser
-        isFollowing = aUser.isFollowing
-        updateIsFollowing(isFollowing)
-        label.text = user.username
-        profilePictureImageView.file = aUser.profilePicture
-        profilePictureImageView.loadInBackground(nil)
+//        var aUser = user as! SPUser
+//        isFollowing = aUser.isFollowing
+//        updateIsFollowing(isFollowing)
+//        label.text = user.username
+//        profilePictureImageView.file = aUser.profilePicture
+//        profilePictureImageView.loadInBackground(nil)
     }
     
     func updateIsFollowing(isFollowing : Bool){
@@ -40,13 +40,4 @@ class SPProfileFollowTableViewCell: UITableViewCell {
         followButton.setImage(img, forState: .Normal)
 
     }
-
-    
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }
