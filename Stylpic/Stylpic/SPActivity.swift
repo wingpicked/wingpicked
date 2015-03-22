@@ -58,10 +58,6 @@ class SPActivity: PFObject {
                 message = "\(fromUser.username) liked your photo"
             default:
                 break
-                case .LikeImageOne, .LikeImageTwo:
-                    message = "\(fromUser) liked your photo"
-                default:
-                    break
             }
         }
         return message

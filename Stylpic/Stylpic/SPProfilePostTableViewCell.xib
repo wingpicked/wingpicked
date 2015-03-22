@@ -38,13 +38,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_feed" translatesAutoresizingMaskIntoConstraints="NO" id="wBG-d5-2NG">
                         <rect key="frame" x="8" y="45" width="12" height="12"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE7-6s-qaU">
-                        <rect key="frame" x="28" y="42" width="24" height="15"/>
-                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_grey" translatesAutoresizingMaskIntoConstraints="NO" id="6Z8-IZ-8eY">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="6Z8-IZ-8eY">
                         <rect key="frame" x="8" y="85" width="12" height="12"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Button_like_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="5bo-bR-Km1">
