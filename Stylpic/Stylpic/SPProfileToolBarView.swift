@@ -17,6 +17,14 @@ protocol SPProfileToolBarViewDelegate {
 
 class SPProfileToolBarView: UIView {
     
+
+    @IBOutlet weak var postsButton: UIButton!
+    @IBOutlet weak var followersButton: UIButton!
+    @IBOutlet weak var followingButton: UIButton!
+    @IBOutlet weak var notificationsButton: UIButton!
+
+    
+    
     var delegate : SPProfileToolBarViewDelegate?
 
     @IBAction func postsButtonTapped(sender: AnyObject) {

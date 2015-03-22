@@ -17,28 +17,20 @@ class SPTabBarViewController: UITabBarController, UINavigationControllerDelegate
         
         // Do any additional setup after loading the view.
         self.delegate = self
-//        if self.viewControllers != nil {
-//            for viewController in self.viewControllers as! [UIViewController] {
-//                var view = viewController.view;
-//            }
-//        }
-//        SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
-//            println("hi")
-//        })
-
     }
 
-    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-
-//        if((viewControllers as! [UIViewController])[2] == viewController){
-//            self.prompTo()
-//            return false
-//        }
-        return true
-    }
+//    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+//
+////        if((viewControllers as! [UIViewController])[2] == viewController){
+////            self.prompTo()
+////            return false
+////        }
+//        return true
+//    }
     
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
         if((self.viewControllers as! [UIViewController])[3] == viewController){
             var profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
             profileViewController.showWithUser( SPUser.currentUser() )            

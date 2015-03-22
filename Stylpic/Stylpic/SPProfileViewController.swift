@@ -22,7 +22,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     var headerView : SPProfileHeaderView!
     
     var profileInfoViewModel = SPProfileInfo()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +30,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
         tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")
         tableView.registerNib(UINib(nibName: "SPProfileFollowTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileFollowTableViewCell")
+        tableView.registerNib(UINib(nibName: "SPProfileNotificationsTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileNotificationsTableViewCell")
 
+        
         self.toolBarView.delegate = self
         toolBarView.addTopBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
         toolBarView.addBottomBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
@@ -49,6 +51,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 if let profileObject = profileObject {
                     self.profileInfoViewModel = profileObject
                     self.headerView.followButton.hidden = ( PFUser.currentUser().objectId == user.objectId)
+                    
+                    self.updateToolbarUI()
+                    
                     self.tableView.reloadData()
                 }
             }
@@ -60,6 +65,13 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     func refreshTableView(){
         self.refreshControl?.endRefreshing()
+    }
+    
+    func updateToolbarUI(){
+        self.toolBarView.postsButton.setTitle("\(self.profileInfoViewModel.postsCount)", forState: .Normal)
+        self.toolBarView.followersButton.setTitle("\(self.profileInfoViewModel.followersCount)", forState: .Normal)
+        self.toolBarView.followingButton.setTitle("\(self.profileInfoViewModel.followingCount)", forState: .Normal)
+        self.toolBarView.notificationsButton.setTitle("\(self.profileInfoViewModel.notifications.count)", forState: .Normal)
     }
     
     //MARK: Tableview Datasource and Delegate Methods
@@ -80,8 +92,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             cell.setupCell(profileInfoViewModel.following[indexPath.row])
             return cell
         case .Notifications:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
-//            cell.setupCell(profileInfoViewModel.notifications[indexPath.row])
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileNotificationsTableViewCell", forIndexPath: indexPath) as! SPProfileNotificationsTableViewCell
+//            profileInfoViewModel.notifications[indexPath.row] as! SPActivity
+            //cell.setupCell(profileInfoViewModel.notifications[indexPath.row])
             return cell
         }
     }

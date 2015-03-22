@@ -20,6 +20,8 @@
 		38160A341AB50F95005504AD /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38160A2D1AB50F95005504AD /* UIView+SLKAdditions.m */; };
 		38160A351AB50F95005504AD /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38160A311AB50F95005504AD /* UIScrollView+SLKAdditions.m */; };
 		38160A371AB51E1F005504AD /* SPCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38160A361AB51E1F005504AD /* SPCommentsViewController.swift */; };
+		381B47691ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */; };
+		381B476A1ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */; };
 		3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E01A560A5800191BDA /* AppDelegate.swift */; };
 		3845F7E81A560A5800191BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E61A560A5800191BDA /* Main.storyboard */; };
 		3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E91A560A5800191BDA /* Images.xcassets */; };
@@ -121,6 +123,8 @@
 		38160A311AB50F95005504AD /* UIScrollView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SLKAdditions.m"; sourceTree = "<group>"; };
 		38160A321AB50F95005504AD /* UIScrollView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SLKAdditions.h"; sourceTree = "<group>"; };
 		38160A361AB51E1F005504AD /* SPCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCommentsViewController.swift; sourceTree = "<group>"; };
+		381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileNotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileNotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		3845F7DB1A560A5800191BDA /* Stylpic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylpic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F7DF1A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7E01A560A5800191BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -512,6 +516,8 @@
 				38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */,
 				EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */,
 				EC3B4BC71ABBC28200E76121 /* SPProfileFollowTableViewCell.xib */,
+				381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */,
+				381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				38EAD4601AB63BBB00A6FD81 /* SPProfileToolBarView.xib in Resources */,
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
+				381B476A1ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib in Resources */,
 				38E7F8311AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib in Resources */,
 				4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */,
 				38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */,
@@ -667,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4854A9D21A9AC7E800164CD0 /* shareButton.swift in Sources */,
+				381B47691ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPFeedTableViewController.swift in Sources */,
 				38160A341AB50F95005504AD /* UIView+SLKAdditions.m in Sources */,
 				386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */,
