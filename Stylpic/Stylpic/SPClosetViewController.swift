@@ -15,6 +15,8 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         
         collectionView.registerNib(UINib(nibName: "SPClosetCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SPClosetCollectionViewCell")
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
     }
 
     

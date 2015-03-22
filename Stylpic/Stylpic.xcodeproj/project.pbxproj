@@ -23,7 +23,6 @@
 		3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E01A560A5800191BDA /* AppDelegate.swift */; };
 		3845F7E81A560A5800191BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E61A560A5800191BDA /* Main.storyboard */; };
 		3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E91A560A5800191BDA /* Images.xcassets */; };
-		3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7EB1A560A5800191BDA /* LaunchScreen.xib */; };
 		3845F7F91A560A5800191BDA /* StylpicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7F81A560A5800191BDA /* StylpicTests.swift */; };
 		3845F8071A560A8800191BDA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8021A560A8800191BDA /* Bolts.framework */; };
 		3845F8081A560A8800191BDA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8031A560A8800191BDA /* Parse.framework */; };
@@ -127,7 +126,6 @@
 		3845F7E01A560A5800191BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3845F7E71A560A5800191BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3845F7E91A560A5800191BDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3845F7EC1A560A5800191BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3845F7F21A560A5800191BDA /* StylpicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StylpicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F7F71A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7F81A560A5800191BDA /* StylpicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylpicTests.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 				38BB445A1A6631B8004CD444 /* SPCloset */,
 				38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */,
 				3845F7E91A560A5800191BDA /* Images.xcassets */,
-				3845F7EB1A560A5800191BDA /* LaunchScreen.xib */,
 				3863A7001A7F6D1C00AFE938 /* CustomFonts */,
 				38160A1A1AB508DC005504AD /* Third Party Libraries */,
 				3845F7DE1A560A5800191BDA /* Supporting Files */,
@@ -644,7 +641,6 @@
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
 				38E7F8311AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib in Resources */,
 				4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */,
-				3845F7ED1A560A5800191BDA /* LaunchScreen.xib in Resources */,
 				38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
@@ -743,14 +739,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		3845F7EB1A560A5800191BDA /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3845F7EC1A560A5800191BDA /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -838,6 +826,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -847,6 +836,7 @@
 					/Users/Neilb/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -859,6 +849,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -868,6 +859,7 @@
 					/Users/Neilb/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

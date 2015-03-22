@@ -113,7 +113,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Button_like_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Btd-xq-Br7">
                                         <rect key="frame" x="71" y="4" width="12" height="12"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Y7M-rw-fyJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_grey" translatesAutoresizingMaskIntoConstraints="NO" id="Y7M-rw-fyJ">
                                         <rect key="frame" x="112" y="4" width="12" height="12"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-yA-xag">
@@ -140,7 +140,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Button_like_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="OxM-NY-kvy">
                                         <rect key="frame" x="217" y="4" width="12" height="12"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="FTp-9p-Efi">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_grey" translatesAutoresizingMaskIntoConstraints="NO" id="FTp-9p-Efi">
                                         <rect key="frame" x="258" y="4" width="12" height="12"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxH-m6-ivH">
@@ -232,7 +232,7 @@
     <resources>
         <image name="Button_like_feed" width="54" height="56"/>
         <image name="Button_like_transparent" width="48" height="44"/>
-        <image name="Icon_comments_rounded_onPostedPhoto_Profile" width="17" height="16"/>
+        <image name="Icon_comments_rounded_grey" width="30" height="31"/>
         <image name="Icon_defaultPhoto" width="66" height="65"/>
         <image name="Icon_percent_feed" width="17" height="18"/>
     </resources>

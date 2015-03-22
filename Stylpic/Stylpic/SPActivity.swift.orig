@@ -53,16 +53,26 @@ class SPActivity: PFObject {
         var userName = spUser.spDisplayName()
         if let activityType = activityType{
             switch activityType {
-            case .CommentImageOne, .CommentImageTwo:
+<<<<<<< HEAD
+                case .CommentImageOne, .CommentImageTwo:
                     message = "\(userName) commented on your photo"
                     break
-            case .LikeImageOne, .LikeImageTwo:
+                case .LikeImageOne, .LikeImageTwo:
                     message = "\(userName) liked your photo"
                     break
             case .Follow:
                     message = "\(userName) followed you"
+                default:
+                    break
+=======
+            case .CommentImageOne, .CommentImageTwo:
+                message = "\(fromUser.username) commented on your photo"
+            break
+            case .LikeImageOne, .LikeImageTwo:
+                message = "\(fromUser.username) liked your photo"
             default:
                 break
+>>>>>>> d452caa97782cacfc8d11396d9f4f51f99f79984
             }
         }
         
