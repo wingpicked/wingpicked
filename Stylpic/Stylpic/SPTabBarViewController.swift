@@ -37,4 +37,12 @@ class SPTabBarViewController: UITabBarController, UINavigationControllerDelegate
         return true
     }
     
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        if((self.viewControllers as! [UIViewController])[3] == viewController){
+            var profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
+            profileViewController.showWithUser( SPUser.currentUser() )            
+        }
+    }
+
 }

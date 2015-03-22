@@ -40,18 +40,22 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         var rc = UIRefreshControl()
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
-        
-        SPManager.sharedInstance.getProfileInfo(SPUser.currentUser(), resultBlock: { (profileObject, error) -> Void in
+
+    }
+    
+    func showWithUser( user: PFUser ) {
+        SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
                     self.profileInfoViewModel = profileObject
+                    self.headerView.followButton.hidden = ( PFUser.currentUser().objectId == user.objectId)
+                    self.tableView.reloadData()
                 }
             }
             else{
                 println(error!.localizedDescription)
             }
         })
-        
     }
     
     func refreshTableView(){
