@@ -32,10 +32,19 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        pictureImageView.userInteractionEnabled = true
+        pictureImageView2.userInteractionEnabled = true
+        var tap1 = UITapGestureRecognizer(target: self, action: Selector("imageOneTapped:"))
+        pictureImageView.addGestureRecognizer(tap1)
+        var tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
+        pictureImageView2.addGestureRecognizer(tap2)
     }
 
     func setupWithFeedItem(feedItem: SPFeedItem){
 
+        self.feedItem = feedItem
+        
         self.pictureImageView.file = feedItem.photos?.objectForKey("imageOne") as! PFFile
         self.pictureImageView2.file = feedItem.photos?.objectForKey("imageTwo") as! PFFile
         self.pictureImageView2.loadInBackground(nil)

@@ -15,7 +15,7 @@ enum SPProfileActiveViewState {
     case Notifications
 }
 
-class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate{
+class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate{
 
     var currentViewState = SPProfileActiveViewState.Posts
     var toolBarView : SPProfileToolBarView!
@@ -69,6 +69,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         case .Posts:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
             cell.setupWithFeedItem(profileInfoViewModel.posts[indexPath.row])
+            cell.delegate = self
             return cell
         case .Followers:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
@@ -145,5 +146,19 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.tableView.reloadData()
     }
     
+    //MARK: SPProfilePostTableViewCell Delegate Methods
+    func didTapPhotoOne(feedItem: SPFeedItem) {
+        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
+        detailViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+        
+    }
+    
+    func didTapPhotoTwo(feedItem: SPFeedItem) {
+        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
+        detailViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
+
     
 }
