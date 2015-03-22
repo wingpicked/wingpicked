@@ -30,13 +30,8 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 52, 0)
         
         tableView.registerNib(UINib(nibName: "SPFeedViewTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedViewTableViewCell")
-                
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "TopBarWithStylpicTitle"), forBarMetrics: UIBarMetrics.Default)
     }
-    
-//    func leftBarButtonItemTapped(sender : AnyObject){
-//        println("Hey")
-//    }
     
     func downloadAllImages(){
 
