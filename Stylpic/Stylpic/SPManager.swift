@@ -100,7 +100,7 @@ class SPManager: NSObject {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 println( objects )
-                var arrayPFObject = objects as! Array<PFObject>
+                var arrayPFObject = objects as! Array<SPActivity>
                 resultBlock(comments: arrayPFObject, error: nil)
             } else {
                 println( error )
@@ -115,7 +115,7 @@ class SPManager: NSObject {
             var activity = SPActivity()
             activity.fromUser = fromUser
             activity.toUser = photosOwner
-            activity.photoPair = photoPair
+            activity.photoPair = photoPair as! SPPhotoPair
             activity.notificationViewed = false
             activity.isArchiveReady = false
             activity.type = activityType.rawValue
@@ -140,7 +140,7 @@ class SPManager: NSObject {
             var activity = SPActivity()
             activity.fromUser = fromUser
             activity.toUser = photosOwner
-            activity.photoPair = photoPair
+            activity.photoPair = photoPair as! SPPhotoPair
             activity.isArchiveReady = false
             activity.notificationViewed = false
             activity.type = activityType.rawValue

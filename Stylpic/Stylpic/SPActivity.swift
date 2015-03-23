@@ -43,29 +43,29 @@ class SPActivity: PFObject {
     }
     
     static func parseClassName() -> String! {
-        return "Activity"
+        return "hello"//"Activity"
     }
     
     //TODO: Finish putting all display messages here..
-    func displayMessage() -> String {
-        var message = ""
-        var spUser = fromUser as! SPUser
-        var userName = spUser.spDisplayName()
-        if let activityType = activityType{
-            switch activityType {
-            case .CommentImageOne, .CommentImageTwo:
-                    message = "\(userName) commented on your photo"
-                    break
-            case .LikeImageOne, .LikeImageTwo:
-                    message = "\(userName) liked your photo"
-                    break
-            case .Follow:
-                    message = "\(userName) followed you"
-            default:
-                break
-            }
-        }
-        
-        return message
-    }
+//    func displayMessage() -> String {
+//        var message = ""
+//        var spUser = fromUser as! SPUser
+//        var userName = spUser.spDisplayName()
+//        if let activityType = activityType{
+//            switch activityType {
+//            case .CommentImageOne, .CommentImageTwo:
+//                    message = "\(userName) commented on your photo"
+//                    break
+//            case .LikeImageOne, .LikeImageTwo:
+//                    message = "\(userName) liked your photo"
+//                    break
+//            case .Follow:
+//                    message = "\(userName) followed you"
+//            default:
+//                break
+//            }
+//        }
+//        
+//        return message
+//    }
 }

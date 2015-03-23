@@ -11,3 +11,7 @@
 #import "SLKTextViewController.h"
 #import "SLKInputAccessoryView.h"
 #import "UIView+Borders.h"
+#import "SPPhotoPair.h"
+#import "SPUser.h"
+#import "SPActivity.h"
+
