@@ -45,7 +45,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 
     }
     
-    func showWithUser( user: PFUser ) {
+    func showWithUser( user: SPUser ) {
         SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
@@ -95,7 +95,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         case .Notifications:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileNotificationsTableViewCell", forIndexPath: indexPath) as! SPProfileNotificationsTableViewCell
 //            profileInfoViewModel.notifications[indexPath.row] as! SPActivity
-            //cell.setupCell(profileInfoViewModel.notifications[indexPath.row])
+            cell.setupCell(profileInfoViewModel.notifications[indexPath.row])
             return cell
         }
     }
@@ -175,7 +175,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
 
     func didRequestUserProfile( feedItem: SPFeedItem ) {
-        if let user = feedItem.photos?["user"] as? PFUser {
+        if let user = feedItem.photos?["user"] as? SPUser {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
             self.navigationController?.pushViewController(profileViewController, animated: true)

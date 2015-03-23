@@ -76,7 +76,7 @@ class SPFeedTableViewController: UITableViewController, UITableViewDataSource, U
     }
     
     func didRequestUserProfile( feedItem: SPFeedItem ) {
-        if let user = feedItem.photos?["user"] as? PFUser {
+        if let user = feedItem.photos?["user"] as? SPUser {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
             self.navigationController?.pushViewController(profileViewController, animated: true)

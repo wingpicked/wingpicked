@@ -11,6 +11,7 @@ import UIKit
 
 extension NSDictionary {
     
+    //TODO: Refactor out this extension
     
     /**
     Always return a value
@@ -61,7 +62,7 @@ extension NSDictionary {
             var value: AnyObject? = self.objectForKey( key )
             if let value: AnyObject = value {
                 if value is [AnyObject] {
-                    safeArray = value as! NSArray
+                    safeArray = value as! Array<AnyObject>
                 }
             }
         }
@@ -78,9 +79,9 @@ class SPProfileInfo: NSObject {
     var isFollowing : Bool = false
     
     var posts : [SPFeedItem] = []
-    var followers : [PFUser] = []
-    var following : [PFUser] = []
-    var notifications : [PFObject] = [] // SPActivity
+    var followers : [SPUser] = []
+    var following : [SPUser] = []
+    var notifications : [SPActivity] = [] // SPActivity
     
     /**
     inits this class with server data
@@ -101,9 +102,9 @@ class SPProfileInfo: NSObject {
             self.posts.append(feedItem)
         }
         
-        self.followers = profileInfo.safeArrayForKey( "followers" ) as! [PFUser]
-        self.following = profileInfo.safeArrayForKey( "following" ) as! [PFUser]
-        self.notifications = profileInfo.safeArrayForKey( "notifications" ) as! [PFObject]
+        self.followers = profileInfo.safeArrayForKey( "followers" ) as NSArray as! [SPUser]
+        self.following = profileInfo.safeArrayForKey( "following" ) as NSArray as! [SPUser] //as [AnyObject]
+        self.notifications = profileInfo.safeArrayForKey( "notifications" ) as NSArray as! [SPActivity]
         
     }
     

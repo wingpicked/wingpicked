@@ -21,32 +21,26 @@
 }
 
 - (NSString *)displayMessage {
-        return @"TODO: finish";
+    NSString *message;
+    switch ([self.type intValue]) {
+        case CommentImageOne:
+        case CommentImageTwo:
+            message = [NSString stringWithFormat:@"%@ commented on your photo", [self.fromUser spDisplayName]];
+            break;
+        case LikeImageOne:
+        case LikeImageTwo:
+            message = [NSString stringWithFormat:@"%@ liked your photo", [self.fromUser spDisplayName]];
+            break;
+        case Follow:
+            message = [NSString stringWithFormat:@"%@ followed you", [self.fromUser spDisplayName]];
+            break;
+        default:
+            message = @"Unknown Notification";
+            break;
+    }
+    
+    return message;
+    
 }
-
-
-//
-//func displayMessage() -> String {
-//    var message = ""
-//    var spUser = fromUser as! SPUser
-//    var userName = spUser.spDisplayName()
-//    if let activityType = activityType{
-//        switch activityType {
-//        case .CommentImageOne, .CommentImageTwo:
-//            message = "\(userName) commented on your photo"
-//            break
-//        case .LikeImageOne, .LikeImageTwo:
-//            message = "\(userName) liked your photo"
-//            break
-//        case .Follow:
-//            message = "\(userName) followed you"
-//        default:
-//            break
-//        }
-//    }
-//    
-//    return message
-//}
-
 
 @end

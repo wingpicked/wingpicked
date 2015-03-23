@@ -110,7 +110,7 @@ class SPManager: NSObject {
     
     func postComment( activityType: ActivityType, photoPair:PFObject?,  comment: String?, resultBlock: SPPFObjectResultsBlock) {
         if let photoPair = photoPair {
-            var photosOwner:PFUser = photoPair.objectForKey( "user" ) as! PFUser
+            var photosOwner = photoPair.objectForKey( "user" ) as! SPUser
             var fromUser = SPUser.currentUser()
             var activity = SPActivity()
             activity.fromUser = fromUser
@@ -135,7 +135,7 @@ class SPManager: NSObject {
 
     func likePhoto( activityType: ActivityType, photoPair: PFObject?, resultBlock: SPBoolResultBlock ) {
         if let photoPair = photoPair {
-            var photosOwner:PFUser = photoPair.objectForKey( "user" ) as! PFUser
+            var photosOwner = photoPair.objectForKey( "user" ) as! SPUser
             var fromUser = SPUser.currentUser()
             var activity = SPActivity()
             activity.fromUser = fromUser
@@ -160,7 +160,7 @@ class SPManager: NSObject {
     }
     
     
-    func followUser(user: PFUser?, resultBlock: SPPFObjectResultsBlock ) {
+    func followUser(user: SPUser?, resultBlock: SPPFObjectResultsBlock ) {
         if let user = user {
             var fromUser = SPUser.currentUser()
             var activity = SPActivity()
