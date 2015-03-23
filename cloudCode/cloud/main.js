@@ -1,51 +1,37 @@
 
 var _ = require( 'underscore' ),
 	feedItem = require( 'cloud/model/feedItem' ),
-	profileInfoUtils = require( 'cloud/model/profileInfo' );
+	profileInfoUtils = require( 'cloud/model/profileInfo' ),
+	userUtils = require( 'cloud/utils/userUtils' );
 
 
 var itemsPerPage = 10;
 var MAX_QUERY_LIMIT = 1000; 
 
 
-Parse.Cloud.define("getFeedItemsForPage", function(request, response) {
-    var getPage = request.params.page;
-    var Photos = Parse.Object.extend( 'Photos' );
-    var query = new Parse.Query( Photos );
-    query.descending( 'createdAt' );
-    query.limit( itemsPerPage );
-    query.skip( itemsPerPage * getPage );
-    var photosPromise = query.find();
-    photosPromise.then( function( feedPhotos ) {
-        var Activity = Parse.Object.extend( 'Activity' );
-        var activityQuery = new Parse.Query( Activity );
-        activityQuery.limit( MAX_QUERY_LIMIT );
-        activityQuery.containedIn( 'photoPair', feedPhotos );
-        var activityPromise = activityQuery.find();
-        activityPromise.then( function( someActivities ) {      
-            var payload = { photoPairs: feedPhotos, activities: someActivities };
-            response.success( payload );
-        }, function( error ) {
-            response.error( { error: error } );
-        });
- 
-    }, function( error ) {
-        response.error( error );
-    });
-     
-});
-
 
 Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 	var getPage = request.params.page;
-	var Photos = Parse.Object.extend( 'Photos' );
-	var query = new Parse.Query( Photos );
-	query.include( 'user' );	
-	query.descending( 'createdAt' );
-	query.limit( itemsPerPage );
-	query.skip( itemsPerPage * getPage );
-	var photosPromise = query.find();
-	photosPromise.then( function( feedPhotos ) {
+	var followingQuery = userUtils.queryWithFollowingActivities( request.user, feedItem.ActivityType.Follow );
+	var followingPromise = followingQuery.find();
+	followingPromise.then( function( followingActivities ) {
+		var followingUsers = [request.user];
+		_.each(followingActivities, function (aFollowActivity) {
+			if (aFollowActivity.has('toUser')) {
+				var followingUser = aFollowActivity.get('toUser');
+				followingUsers.push(followingUser);
+			}
+		});
+
+		var Photos = Parse.Object.extend('Photos');
+		var query = new Parse.Query(Photos);
+		query.include('user');
+		query.descending('createdAt');
+		query.limit(itemsPerPage);
+		query.containedIn('user', followingUsers);
+		query.skip(itemsPerPage * getPage);
+		return query.find();
+	}).then( function( feedPhotos ) {
 		var Activity = Parse.Object.extend( 'Activity' );
 		var activityQuery = new Parse.Query( Activity );
 		activityQuery.include( 'photoPair' );
@@ -68,6 +54,7 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 					aFeedItem.addActivity( anActivity );
 				}
 			});
+
 			var payload = { feedItems: _.values( feedItemValuesForPhotoPairObjectId ) };
 			response.success( payload );
 		}, function( error ) {
@@ -82,24 +69,31 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 
 
 Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
+	var currentUser = request.user;
+	var queryWithFollowingAndFollowers = userUtils.queryWithFollowingAndFollowers( currentUser, feedItem.ActivityType.Follow );
+	var followersAndFollowing = queryWithFollowingAndFollowers.find();
 	var userObjectId = request.params.userObjectId;
 	var profileInfo = new profileInfoUtils.ProfileInfo();
-    var Photos = Parse.Object.extend( 'Photos' );
-	var query = new Parse.Query( Photos );
-	query.include( 'user' );	
-	query.descending( 'createdAt' );
-	query.limit( itemsPerPage );
+	var scopedVars = {};
+	var Activity = Parse.Object.extend('Activity');
 	var mockUser = new Parse.User();
 	mockUser.id = userObjectId;
-	query.equalTo( 'user', mockUser );
-	var Activity = Parse.Object.extend( 'Activity' );
-	var photosPromise = query.find();
-	photosPromise.then( function( feedPhotos ) {
+	followersAndFollowing.then( function( followersAndFollowing ) {
+		scopedVars.followersAndFollowing = followersAndFollowing;
+		var Photos = Parse.Object.extend('Photos');
+		var query = new Parse.Query(Photos);
+		query.include('user');
+		query.descending('createdAt');
+		query.limit(itemsPerPage);
+		query.equalTo('user', mockUser);
+		return query.find();
+	}).then( function( feedPhotos ) {
 		var feedPhotoPairsPromise = new Parse.Promise();
 		var activityQuery = new Parse.Query( Activity );
 		activityQuery.include( 'photoPair' );
 		activityQuery.include( 'fromUser' );
 		activityQuery.include( 'toUser' );
+		activityQuery.equalTo( 'isArchiveReady', false );
 		activityQuery.limit( MAX_QUERY_LIMIT );
 		activityQuery.containedIn( 'photoPair', feedPhotos );
 		var activityPromise = activityQuery.find();
@@ -135,6 +129,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		followingQuery.limit( MAX_QUERY_LIMIT );
 		followingQuery.equalTo( 'fromUser', mockUser );
 		followingQuery.equalTo( 'type', feedItem.ActivityType.Follow );
+		followingQuery.equalTo( 'isArchiveReady', false );
 
 		var followersQuery = new Parse.Query( Activity );
 		followersQuery.include( 'photoPair' );
@@ -143,6 +138,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		followersQuery.limit( MAX_QUERY_LIMIT );
 		followersQuery.equalTo( 'toUser', mockUser );
 		followersQuery.equalTo( 'type', feedItem.ActivityType.Follow );
+		followersQuery.equalTo( 'isArchiveReady', false );
 
 		return Parse.Query.or( followingQuery, followersQuery ).find();
 	}).then( function( followEventActivities ) {
@@ -153,8 +149,12 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 				var fromUser = aFollowEvent.get( 'fromUser' );
 				var toUser = aFollowEvent.get( 'toUser' );
 				if ( _.isEqual( fromUser.id, userObjectId ) ) {
+					var isFollowing = userUtils.isFollowingUserWithFollowActivities( toUser, scopedVars.followersAndFollowing );
+					toUser.set( 'isFollowing', isFollowing );
 					profileInfo.following.push( toUser );
 				} else if ( _.isEqual( toUser.id, userObjectId ) ) {
+					var isFollowing = userUtils.isFollowingUserWithFollowActivities( fromUser, scopedVars.followersAndFollowing );
+					fromUser.set( 'isFollowing', isFollowing );
 					profileInfo.followers.push( fromUser );
 					if ( _.isEqual(currentUserObjectId, fromUser.id ) ) {
 						profileInfo.isFollowing = true;

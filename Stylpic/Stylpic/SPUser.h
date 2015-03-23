@@ -15,9 +15,8 @@
 @property (nonatomic) NSString *firstName;
 @property (nonatomic) NSString *lastName;
 @property (nonatomic) PFFile *profilePicture;
-@property (nonatomic) NSNumber *isFollowing; // BOOL
 @property (nonatomic) NSArray *facebookFriends; // array of SPUser
-
+@property (nonatomic) NSNumber *isFollowing;
 
 -(NSString *)spDisplayName;
 

@@ -30,7 +30,7 @@ class SPLoginViewController: UIViewController, UIAlertViewDelegate {
 
         
         SPManager.sharedInstance.loginWithFacebook { (success, error) -> Void in
-            if(error == nil && success == true){
+            if(error == nil && success == true) {                
                 self.performSegueWithIdentifier("loggedInSegue", sender: self)
             }
             else {
