@@ -11,7 +11,9 @@
 
 @implementation SPUser
 
-@dynamic firstName, lastName, profilePicture, facebookId, facebookFriends, channel, isFollowing;
+@synthesize isFollowing;
+
+@dynamic firstName, lastName, profilePicture, facebookId, facebookFriends, channel;
 
 + (void)load {
     [self registerSubclass];

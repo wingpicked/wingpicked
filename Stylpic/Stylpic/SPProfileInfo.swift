@@ -102,8 +102,26 @@ class SPProfileInfo: NSObject {
             self.posts.append(feedItem)
         }
         
-        self.followers = profileInfo.safeArrayForKey( "followers" ) as NSArray as! [SPUser]
-        self.following = profileInfo.safeArrayForKey( "following" ) as NSArray as! [SPUser] //as [AnyObject]
+        let serverFollower = profileInfo.safeArrayForKey( "followers" ) as NSArray as! [[String: AnyObject]]
+        for aServerFollower in serverFollower {
+            var spUser = aServerFollower[ "user" ] as! SPUser
+            var currentUserFollows = aServerFollower[ "isFollowing" ] as! NSNumber
+            spUser.isFollowing = currentUserFollows
+            self.followers.append( spUser )
+        }
+        
+//        [[String: [String: AnyObject]] ]
+//        user.isFollowing
+        let serverFollowing = profileInfo.safeArrayForKey( "following" ) as NSArray as! [[String: AnyObject]]
+        
+        for aServerFollowing in serverFollowing {
+            var spUser = aServerFollowing[ "user" ] as! SPUser
+            var currentUserFollows = aServerFollowing[ "isFollowing" ] as! NSNumber
+            spUser.isFollowing = currentUserFollows
+            self.following.append( spUser )
+        }
+        
+        
         self.notifications = profileInfo.safeArrayForKey( "notifications" ) as NSArray as! [SPActivity]
         
     }
