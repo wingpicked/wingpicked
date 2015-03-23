@@ -14,7 +14,7 @@ class SPProfileHeaderView: UIView {
     @IBOutlet weak var profilePictureImageView: PFImageView!
     
     var isFollowing = false
-    var user: PFUser?
+    var user: SPUser?
     
 //    var delegate: SPProfileHeaderViewDelegate?
     
@@ -40,7 +40,7 @@ class SPProfileHeaderView: UIView {
         }
     }
     
-    func setupCell(following : Bool, user: PFUser ){
+    func setupCell(following : Bool, user: SPUser ){
         self.isFollowing = following
         updateIsFollowing(isFollowing)
         self.user = user

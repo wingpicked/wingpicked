@@ -1,4 +1,4 @@
-//
+ //
 //  SPProfileFollowTableViewCell.swift
 //  Stylpic
 //
@@ -26,13 +26,12 @@ class SPProfileFollowTableViewCell: UITableViewCell {
         updateIsFollowing(isFollowing)
     }
     
-    func setupCell(user :PFUser){
-//        var aUser = user as! SPUser
-//        isFollowing = aUser.isFollowing
-//        updateIsFollowing(isFollowing)
-//        label.text = user.username
-//        profilePictureImageView.file = aUser.profilePicture
-//        profilePictureImageView.loadInBackground(nil)
+    func setupCell(user :SPUser){
+//        isFollowing =  user.isFollowing.boolValue
+//        updateIsFollowing(user.isFollowing.boolValue)
+        label.text = user.spDisplayName()
+        profilePictureImageView.file = user.profilePicture
+        profilePictureImageView.loadInBackground(nil)
     }
     
     func updateIsFollowing(isFollowing : Bool){

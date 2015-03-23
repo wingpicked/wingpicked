@@ -19,11 +19,9 @@ class SPProfileNotificationsTableViewCell: UITableViewCell {
     }
 
     func setupCell(activity :SPActivity){
-//        var a = activity.objectForKey("fromUser") as! PFUser
-//        var fromUser = activity.fromUser as! SPUser
-//        label.text = activity.displayMessage()
-//        profilePictureImageView.file = a.profilePicture
-//        profilePictureImageView.loadInBackground(nil)
+        label.text = activity.displayMessage()
+        profilePictureImageView.file = activity.fromUser.profilePicture
+        profilePictureImageView.loadInBackground(nil)
     }
 
 }
