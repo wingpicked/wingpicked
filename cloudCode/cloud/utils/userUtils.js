@@ -74,3 +74,7 @@ exports.queryWithFollowingAndFollowers = queryWithFollowingAndFollowers;
 exports.isFollowingUserWithFollowActivities = isFollowingUserWithFollowActivities;
 exports.isFollowerUserWithFollowActivities = isFollowerUserWithFollowActivities;
 
+//
+//{  user: { isFollowing: true,
+//            spuser: thespuser}}
+

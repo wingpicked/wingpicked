@@ -150,12 +150,12 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 				var toUser = aFollowEvent.get( 'toUser' );
 				if ( _.isEqual( fromUser.id, userObjectId ) ) {
 					var isFollowing = userUtils.isFollowingUserWithFollowActivities( toUser, scopedVars.followersAndFollowing );
-					toUser.set( 'isFollowing', isFollowing );
-					profileInfo.following.push( toUser );
+					var userDictionary = { user: toUser, isFollowing: isFollowing };
+					profileInfo.following.push( userDictionary );
 				} else if ( _.isEqual( toUser.id, userObjectId ) ) {
 					var isFollowing = userUtils.isFollowingUserWithFollowActivities( fromUser, scopedVars.followersAndFollowing );
-					fromUser.set( 'isFollowing', isFollowing );
-					profileInfo.followers.push( fromUser );
+					var userDictionary = { user: fromUser, isFollowing: isFollowing };
+					profileInfo.followers.push( userDictionary );
 					if ( _.isEqual(currentUserObjectId, fromUser.id ) ) {
 						profileInfo.isFollowing = true;
 					}
