@@ -11,7 +11,7 @@ import UIKit
 class SPProfileHeaderView: UIView {
 
     @IBOutlet weak var followButton: UIButton!
-    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var profilePictureImageView: PFImageView!
     
     var isFollowing = false
     var user: PFUser?
@@ -44,6 +44,9 @@ class SPProfileHeaderView: UIView {
         self.isFollowing = following
         updateIsFollowing(isFollowing)
         self.user = user
+        self.profilePictureImageView.file = user["profilePicture"] as! PFFile
+        self.profilePictureImageView.loadInBackground(nil)
+        
         
     }
     
