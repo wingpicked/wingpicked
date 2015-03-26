@@ -2,12 +2,13 @@
 var _ = require( 'underscore' ),
 	feedItem = require( 'cloud/model/feedItem' ),
 	profileInfoUtils = require( 'cloud/model/profileInfo' ),
-	userUtils = require( 'cloud/utils/userUtils' );
+	userUtils = require( 'cloud/utils/userUtils'),
+	activityUtils = require( 'cloud/utils/activityUtils'),
+	exploreCalculator = require( 'cloud/utils/exploreCalculator' );
 
 
 var itemsPerPage = 10;
 var MAX_QUERY_LIMIT = 1000; 
-
 
 
 Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
@@ -67,6 +68,17 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 	
 });
 
+
+Parse.Cloud.define( 'fetchExploreInfo', function( request, response ) {
+	var activityPromise = activityUtils.queryForExploreActivities( feedItem.ActivityType );
+	activityPromise.then( function( likesPhotoOne, likesPhotoTwo, commentsPhotoOne, commentsPhotoTwo ) {
+	var exploreCalculated = new exploreCalculator.ExploreCalculator( likesPhotoOne, likesPhotoTwo, commentsPhotoOne, commentsPhotoTwo );
+		var payload = { feedItems: exploreCalculated.feedItemsPayload };
+		response.success( payload );
+	}, function( error ) {
+		response.error( error );
+	});
+});
 
 Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 	var currentUser = request.user;

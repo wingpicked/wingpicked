@@ -53,8 +53,25 @@ class SPManager: NSObject {
         
     }
     
-    func getExploreItems() -> [SPFeedItem]{
-        return [SPFeedItem()]
+    func getExploreItems( resultsBlock: SPFeedItemsResultBlock ) {
+        let params = [NSObject : AnyObject]();
+        PFCloud.callFunctionInBackground( "fetchExploreInfo", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
+            if error == nil {
+                var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
+                println( payloadObject )
+                
+                var serverFeedItems: Array = payloadObject[ "feedItems" ]!
+                var feedItems = Array<SPFeedItem>()
+                for aServerFeedItem in serverFeedItems {
+                    var feedItem = SPFeedItem()
+                    feedItem.setupWithServerFeedItem( aServerFeedItem )
+                    feedItems.append( feedItem )
+                }
+                
+                resultsBlock(feedItems:feedItems, error: nil)
+            }
+            
+        }
     }
     
     func getProfileInfo( user: PFUser?, resultBlock:(SPProfileInfoResultsBlock) ) {
