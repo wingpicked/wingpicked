@@ -1,18 +1,18 @@
 //
-//  SPFeedTableViewController.swift
+//  SPExploreViewController.swift
 //  Stylpic
 //
-//  Created by Joshua Bell on 3/25/15.
+//  Created by Neil Bhargava on 1/13/15.
 //  Copyright (c) 2015 Neil Bhargava. All rights reserved.
 //
 
 import UIKit
 
-class SPFeedTableViewController: SPBaseTableViewController {
+class SPExploreTableViewController: SPBaseTableViewController {//, UITableViewDataSource, UITableViewDelegate {
 
-    override func downloadAllImages(){
+    override func downloadAllImages() {
         
-        SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
+        SPManager.sharedInstance.getExploreItems( { (feedItems, error) -> Void in
             if(error == nil){
                 self.feedItems = feedItems
                 self.tableView.reloadData()
@@ -21,5 +21,4 @@ class SPFeedTableViewController: SPBaseTableViewController {
         })
     }
     
-
 }

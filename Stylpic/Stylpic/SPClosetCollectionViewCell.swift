@@ -10,10 +10,15 @@ import UIKit
 
 class SPClosetCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: PFImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setupWithPFFile( pfFile: PFFile ) {
+        self.imageView.file = pfFile
+        self.imageView.loadInBackground(nil)
     }
 
 }

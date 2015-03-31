@@ -73,8 +73,10 @@ var addActivity = function( anActivity ) {
 	var activityType = anActivity.get( 'type' );
 	if ( _.isEqual( activityType, ActivityType.CommentImageOne ) || _.isEqual( activityType, ActivityType.CommentImageTwo ) ) {
 		this.addCommentActivity( anActivity );
+		this.score = this.score + 1;
 	} else if ( _.isEqual( activityType, ActivityType.LikeImageOne ) || _.isEqual( activityType, ActivityType.LikeImageTwo ) ) {
 		this.addLikeActivity( anActivity );
+		this.score = this.score + 5;
 	} else {
 		console.error( 'tried to add activity to FeedItem that was not a comment or like type' );
 	}
@@ -90,6 +92,7 @@ var FeedItem = function( aPhotoPair ) {
 	this.commentsCountTwo = 0;
 	this.percentageLikedOne = 0.0;
 	this.percentageLikedTwo = 0.0;
+	this.score = 0;
 	this.userLikesPhoto = PhotoUserLikes.NoPhotoLiked;
 	this.username = aPhotoPair.has( 'user' ) ? aPhotoPair.get( 'user' ).getUsername() : '';
 
