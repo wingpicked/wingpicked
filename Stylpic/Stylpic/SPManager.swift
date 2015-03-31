@@ -17,6 +17,7 @@ typealias SPBoolResultBlock = ( success: Bool, error: NSError? ) -> Void
 typealias SPPFObjectArrayResultBlock = ( comments: Array<PFObject>?, error: NSError?) -> Void
 typealias SPPFObjectResultsBlock = ( savedObject: PFObject?, error: NSError? ) -> Void
 typealias SPProfileInfoResultsBlock = ( profileObject: SPProfileInfo?, error: NSError? ) -> Void
+typealias SPPFFilesResultBlock = ( pfFiles: [PFFile]?, error: NSError? ) -> Void
 
 
 class SPManager: NSObject {
@@ -102,8 +103,28 @@ class SPManager: NSObject {
         
     }
     
-    func getMyClosetItems() -> [SPFeedItem] {
-        return [SPFeedItem()]
+    func getMyClosetItemsWithResultBlock( resultBlock:SPPFFilesResultBlock) {
+        var usersPhotosQuery = PFQuery( className: "Photos" )
+        usersPhotosQuery.includeKey( "user" )
+        usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser() )
+        usersPhotosQuery.limit = 1000;
+        usersPhotosQuery.orderByDescending("updatedAt")
+        usersPhotosQuery.findObjectsInBackgroundWithBlock { (somePhotos, anError) -> Void in
+            if anError == nil && somePhotos != nil {
+                var pfFiles = [PFFile]()
+                for aPhotos in somePhotos {
+                    var photo1 = aPhotos.objectForKey( "imageOne" ) as! PFFile
+                    var photo2 = aPhotos.objectForKey( "imageTwo" ) as! PFFile
+                    pfFiles.append( photo1 )
+                    pfFiles.append( photo2 )
+                }
+                
+                resultBlock( pfFiles: pfFiles, error: nil )
+            } else {
+                resultBlock(pfFiles: nil, error: anError )
+            }
+        }
+        
     }
 
     
@@ -112,6 +133,7 @@ class SPManager: NSObject {
         var commentQuery = PFQuery( className: "Activity" )
         commentQuery.whereKey( "type", equalTo: imageTapped.rawValue )
         commentQuery.whereKey( "photoPair", equalTo: photoPair )
+        commentQuery.limit = 1000;
         commentQuery.orderByDescending( "createdAt" )
         commentQuery.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
