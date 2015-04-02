@@ -11,7 +11,7 @@ import UIKit
 class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var pfFiles = [PFFile]()
+    var pfFiles : [PFFile]? //= [PFFile]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +19,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView.registerNib(UINib(nibName: "SPClosetCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SPClosetCollectionViewCell")
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        
         SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (somePFFiles, error) -> Void in
             if error != nil {
                 println(error)
@@ -34,19 +31,27 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
                 
             }
         }
-        
+
     }
+
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//    }
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SPClosetCollectionViewCell", forIndexPath: indexPath) as! SPClosetCollectionViewCell
-        cell.setupWithPFFile( pfFiles[indexPath.row] )
+        
+        if let pfFiles = pfFiles {
+            cell.setupWithPFFile( pfFiles[indexPath.row] )
+        }
         return cell
     }
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pfFiles.count;
+        return pfFiles != nil ? pfFiles!.count : 0;
     }
     
     
@@ -54,14 +59,14 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         println(indexPath.row)
         
         var detailViewController = SPClosetDetailViewController(nibName: "SPClosetDetailViewController", bundle: nil)
-        self.navigationController?.pushViewController(detailViewController, animated: true)
+
+    
+        if let pfFiless = pfFiles{
+            println(pfFiless.count)
+            //detailViewController.imageView.file = pfFiles![indexPath.row];
+                self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
         
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if(segue.identifier == "didSelectCell"){
-//            segue.
-//            segue.destinationViewController 
-//        }
-//    }
 }
