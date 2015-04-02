@@ -25,6 +25,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     @IBOutlet weak var caption: UILabel!
     @IBOutlet weak var actualContentView: UIView!
     
+    @IBOutlet weak var statsArea: UIView!
     @IBOutlet weak var imageOneLikeButton: UIButton!
     @IBOutlet weak var imageTwoLikeButton: UIButton!
     
@@ -71,12 +72,20 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         if self.feedItem?.photoUserLikes == PhotoUserLikes.FirstPhotoLiked {
             imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
+            imageOneLikeButton.hidden = false
+        } else if self.feedItem?.photoUserLikes == PhotoUserLikes.SecondPhotoLiked {
+            imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            imageTwoLikeButton.hidden = false
+            imageOneLikeButton.hidden = true
+        } else {
+            imageTwoLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
+            imageOneLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
+            imageTwoLikeButton.hidden = false
+            imageOneLikeButton.hidden = false            
         }
         
-        if self.feedItem?.photoUserLikes == PhotoUserLikes.SecondPhotoLiked {
-            imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
-            imageOneLikeButton.hidden = true
-        }
+        let hideUI = self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked
+        statsArea.hidden = hideUI
     }
     
     

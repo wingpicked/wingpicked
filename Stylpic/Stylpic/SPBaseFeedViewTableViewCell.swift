@@ -58,6 +58,7 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
         self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
         self.imageTwoCommentLabel.text =  String( feedItem.commentsCountTwo )
+
     }
     
     func imageOneTapped(sender: AnyObject) {
