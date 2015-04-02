@@ -84,8 +84,9 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
             imageOneLikeButton.hidden = false            
         }
         
-        let hideUI = self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked
-        statsArea.hidden = hideUI
+        let noPhotoLiked = self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked
+        let usersOwnPhotoPair = self.feedItem?.photos?.user.objectId == PFUser.currentUser().objectId
+        statsArea.hidden = !usersOwnPhotoPair && noPhotoLiked
     }
     
     
