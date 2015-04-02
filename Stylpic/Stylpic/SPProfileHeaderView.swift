@@ -51,8 +51,10 @@ class SPProfileHeaderView: UIView {
     }
     
     func updateIsFollowing(isFollowing : Bool){
-        var text = isFollowing ? "Following" : "Follow"
-        followButton.setTitle(text, forState: .Normal)
+//        var text = isFollowing ? "Following" : "Follow"
+//        followButton.setTitle(text, forState: .Normal)
+        var img = isFollowing ? UIImage(named: "Button_following") : UIImage(named: "Button_follow")
+        followButton.setImage(img, forState: .Normal)
     }
     /*
     // Only override drawRect: if you perform custom drawing.

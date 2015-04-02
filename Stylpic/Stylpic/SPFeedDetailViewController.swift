@@ -56,11 +56,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
         //commentTextField.inputAccessoryView = self.inputAccessoryViewz
     }
-
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear( animated)
-//        self.tableView.reloadData()
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         

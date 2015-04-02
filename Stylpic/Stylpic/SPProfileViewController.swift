@@ -129,11 +129,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         switch currentViewState {
         case .Posts:
             return 136
-        case .Followers:
-            return 44
-        case .Following:
-            return 64
-        case .Notifications:
+        case .Followers, .Following, .Notifications:
             return 44
         }
     }
