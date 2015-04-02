@@ -15,7 +15,7 @@ enum PhotoUserLikes: Int {
 }
 
 class SPFeedItem: NSObject {
-    var photos : PFObject?
+    var photos : SPPhotoPair?
     var caption = ""
     var likesCountOne = 0
     var likesCountTwo = 0
@@ -37,7 +37,7 @@ class SPFeedItem: NSObject {
         var commentsPhoto2 = comments[ "commentsPhoto2" ] as! Array<PFObject>
         self.comments.commentsPhotoTwo = commentsPhoto2
         
-        self.photos = serverFeedItem[ "photoPair" ] as! PFObject
+        self.photos = serverFeedItem[ "photoPair" ] as? SPPhotoPair
         self.commentsCountOne = serverFeedItem[ "commentsCountOne" ] as! Int
         self.commentsCountTwo = serverFeedItem[ "commentsCountTwo" ] as! Int
         self.likesCountOne = serverFeedItem[ "likesCountOne" ] as! Int

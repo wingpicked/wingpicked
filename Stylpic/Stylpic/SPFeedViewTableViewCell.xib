@@ -227,6 +227,7 @@
                 <outlet property="pictureImageView2" destination="j2k-Eb-5oZ" id="CTn-p8-IhW"/>
                 <outlet property="postedTimeLabel" destination="A5q-fU-0fX" id="fCr-IE-C7I"/>
                 <outlet property="profilePictureImageView" destination="ayW-Uc-psM" id="W5C-9u-VAM"/>
+                <outlet property="statsArea" destination="rKV-SP-X2t" id="75J-pH-GV0"/>
                 <outlet property="userDisplayName" destination="cYK-8x-s5p" id="2kc-t7-3Ph"/>
             </connections>
             <point key="canvasLocation" x="274" y="329.5"/>
