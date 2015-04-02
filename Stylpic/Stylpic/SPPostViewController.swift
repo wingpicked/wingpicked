@@ -34,7 +34,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         self.curImagePickerController?.delegate = self
         self.curImagePickerController?.allowsEditing = false
         
-        self.overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
+        self.overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as? SPCameraOverlay
         overlayView?.delegate = self
 
     }

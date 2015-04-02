@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Post-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="SPCameraViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="SPCamera2ViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -79,23 +79,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2590" y="-419"/>
-        </scene>
-        <!--Post-->
-        <scene sceneID="Wvm-rO-ekk">
-            <objects>
-                <navigationController id="dDh-a7-zVa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Post" image="Icon_post" id="Dwc-eb-2kM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ohy-hg-kZ1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="4Tx-ef-NtT" kind="relationship" relationship="rootViewController" id="lZK-3L-DRq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mZL-76-VWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="542" y="171"/>
         </scene>
         <!--Feed Table View Controller-->
         <scene sceneID="exa-p7-kCf">
@@ -238,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mQ-Yx-R9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="1320"/>
+            <point key="canvasLocation" x="549" y="1409"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="aNF-9j-iAr">
@@ -288,10 +271,10 @@
             </objects>
             <point key="canvasLocation" x="-595" y="230"/>
         </scene>
-        <!--Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="MainIdentifier" id="49e-Tb-3d3" customClass="SPTabBarViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainIdentifier" id="49e-Tb-3d3" customClass="SPTabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="rx2-xQ-mqf"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -302,7 +285,7 @@
                     <connections>
                         <segue destination="WBU-hL-3lH" kind="relationship" relationship="viewControllers" id="m67-Q2-Xyo"/>
                         <segue destination="CBW-lU-2c6" kind="relationship" relationship="viewControllers" id="d4E-3C-0PG"/>
-                        <segue destination="dDh-a7-zVa" kind="relationship" relationship="viewControllers" id="g0w-lB-cbX"/>
+                        <segue destination="4Tx-ef-NtT" kind="relationship" relationship="viewControllers" id="iGZ-l3-B0q"/>
                         <segue destination="hbp-gv-JRx" kind="relationship" relationship="viewControllers" id="lrI-0u-jxb"/>
                         <segue destination="YbY-Te-pSr" kind="relationship" relationship="viewControllers" id="Sty-jC-fz6"/>
                     </connections>
@@ -310,7 +293,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
                 <tabBarItem title="Item" id="Vea-5Y-R8Q"/>
             </objects>
-            <point key="canvasLocation" x="-216" y="230"/>
+            <point key="canvasLocation" x="-214" y="238"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="gmy-Jc-wF3">
@@ -324,7 +307,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hlM-dN-Ffy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlM-dN-Ffy">
                                 <rect key="frame" x="164" y="72" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="4y5-G0-6IW"/>
@@ -360,7 +343,7 @@
                                     <outlet property="delegate" destination="4Tx-ef-NtT" id="bUK-TX-kFY"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2T9-mm-Kdu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2T9-mm-Kdu">
                                 <rect key="frame" x="16" y="72" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2T9-mm-Kdu" secondAttribute="height" multiplier="1:1" id="4XT-eV-qSK"/>
@@ -395,6 +378,7 @@
                             <outletCollection property="gestureRecognizers" destination="nN0-bm-jv3" appends="YES" id="ZaC-j6-fG3"/>
                         </connections>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" id="Cxl-EB-JFt"/>
                     <navigationItem key="navigationItem" id="Ubp-Oq-QP2"/>
                     <connections>
                         <outlet property="captionTextField" destination="H3w-08-V3Q" id="fQR-vT-5g6"/>

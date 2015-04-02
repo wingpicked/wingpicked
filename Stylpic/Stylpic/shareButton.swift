@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SPCameraOverlayDelegate {
+@objc protocol SPCameraOverlayDelegate {
     func selectPhotosDidTap()
     func takePhotoButtonDidTap()
 }

@@ -70,6 +70,8 @@
 		38EAD4691AB651A500A6FD81 /* UIView+Borders.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD4671AB651A500A6FD81 /* UIView+Borders.m */; };
 		38EAD46D1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */; };
 		38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */; };
+		38F70B451ACCFF7E0039E5E9 /* SPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F70B441ACCFF7E0039E5E9 /* SPTabBarController.m */; };
+		38F70B471ACD18CD0039E5E9 /* SPCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F70B461ACD18CD0039E5E9 /* SPCameraViewController.swift */; };
 		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C21ABF8A470076331C /* SPPhotoPair.m */; };
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
@@ -93,7 +95,7 @@
 		ECB2C23F1A560E350009FD11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2381A560E350009FD11 /* Security.framework */; };
 		ECB2C2401A560E350009FD11 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2391A560E350009FD11 /* StoreKit.framework */; };
 		ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */; };
-		ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */; };
+		ECB2C2431A5632220009FD11 /* SPCamera2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB2C2421A5632220009FD11 /* SPCamera2ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +188,9 @@
 		38EAD4681AB651A500A6FD81 /* UIView+Borders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Borders.h"; sourceTree = "<group>"; };
 		38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfilePostTableViewCell.swift; sourceTree = "<group>"; };
 		38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfilePostTableViewCell.xib; sourceTree = "<group>"; };
+		38F70B431ACCFF7E0039E5E9 /* SPTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTabBarController.h; sourceTree = "<group>"; };
+		38F70B441ACCFF7E0039E5E9 /* SPTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTabBarController.m; sourceTree = "<group>"; };
+		38F70B461ACD18CD0039E5E9 /* SPCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraViewController.swift; sourceTree = "<group>"; };
 		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		483097C11ABF8A470076331C /* SPPhotoPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhotoPair.h; sourceTree = "<group>"; };
 		483097C21ABF8A470076331C /* SPPhotoPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhotoPair.m; sourceTree = "<group>"; };
@@ -212,7 +217,7 @@
 		ECB2C2381A560E350009FD11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		ECB2C2391A560E350009FD11 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraViewController.swift; sourceTree = "<group>"; };
+		ECB2C2421A5632220009FD11 /* SPCamera2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCamera2ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +334,8 @@
 				38BB44571A66317E004CD444 /* SPProfile */,
 				38BB445A1A6631B8004CD444 /* SPCloset */,
 				38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */,
+				38F70B431ACCFF7E0039E5E9 /* SPTabBarController.h */,
+				38F70B441ACCFF7E0039E5E9 /* SPTabBarController.m */,
 				3845F7E91A560A5800191BDA /* Images.xcassets */,
 				3863A7001A7F6D1C00AFE938 /* CustomFonts */,
 				38160A1A1AB508DC005504AD /* Third Party Libraries */,
@@ -470,7 +477,8 @@
 			isa = PBXGroup;
 			children = (
 				4854A9CE1A9AC76D00164CD0 /* cameraOverlay */,
-				ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */,
+				38F70B461ACD18CD0039E5E9 /* SPCameraViewController.swift */,
+				ECB2C2421A5632220009FD11 /* SPCamera2ViewController.swift */,
 				38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */,
 				38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */,
 				38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */,
@@ -703,6 +711,8 @@
 				387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */,
 				38160A281AB50F34005504AD /* SLKTextInputbar.m in Sources */,
 				38160A2A1AB50F34005504AD /* SLKInputAccessoryView.m in Sources */,
+				38F70B471ACD18CD0039E5E9 /* SPCameraViewController.swift in Sources */,
+				38F70B451ACCFF7E0039E5E9 /* SPTabBarController.m in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
 				38EAD4641AB63DE700A6FD81 /* SPProfileHeaderView.swift in Sources */,
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
@@ -723,7 +733,7 @@
 				386B7A861AA8361F00115147 /* TTTTimeIntervalFormatter.m in Sources */,
 				483097CB1ABF93780076331C /* Constants.swift in Sources */,
 				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
-				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
+				ECB2C2431A5632220009FD11 /* SPCamera2ViewController.swift in Sources */,
 				EC56C2461AB2B0F7002C36F7 /* CommentInputAccessoryView.swift in Sources */,
 				48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
