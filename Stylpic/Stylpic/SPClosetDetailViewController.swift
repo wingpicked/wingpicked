@@ -10,10 +10,11 @@ import UIKit
 
 class SPClosetDetailViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: PFImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        imageView.loadInBackground(nil)
         //self.automaticallyAdjustsScrollViewInsets = true
         
         // Do any additional setup after loading the view.
