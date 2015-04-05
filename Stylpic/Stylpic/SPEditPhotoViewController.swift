@@ -48,4 +48,8 @@ class SPEditPhotoViewController: UIViewController {
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.captionTextfield.resignFirstResponder()
+    }
 }

@@ -15,6 +15,8 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
     @IBOutlet weak var timePostedLabel: UILabel!
     @IBOutlet weak var mainImageView: PFImageView!
     @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var percentLikedLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
