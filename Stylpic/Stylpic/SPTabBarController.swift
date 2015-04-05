@@ -13,8 +13,13 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
     
-    var tabBarHidden = false
-    var centerButton : UIButton?
+    var tabBarHidden = false {
+        didSet{
+            self.centerButton.hidden = tabBarHidden;
+            self.tabBar.hidden = tabBarHidden;
+        }
+    }
+    var centerButton : UIButton!
     
     var userPhotoOne : UIImage?
     var userPhotoTwo : UIImage?
@@ -89,7 +94,9 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.presentViewController(imagePickerViewController, animated: true, completion: nil)
     }
 
-    
+//    override func tabBarHidden() -> Bool {
+//        return self.centerButton.hidden && self.tabBar.hidden;
+//    }
     
     func selectPhotosDidTap() {
             println("A")
