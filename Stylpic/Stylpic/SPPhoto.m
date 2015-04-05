@@ -12,7 +12,7 @@
 @implementation SPPhoto
 
 @dynamic photo, photoThumbnail;
-
+    
 + (void)load {
     [self registerSubclass];
 }
