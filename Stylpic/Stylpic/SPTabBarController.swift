@@ -13,12 +13,6 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
     
-    var tabBarHidden = false {
-        didSet{
-            self.centerButton.hidden = tabBarHidden;
-            self.tabBar.hidden = tabBarHidden;
-        }
-    }
     var centerButton : UIButton!
     
     var userPhotoOne : UIImage?
@@ -58,24 +52,18 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         var button = UIButton()
         button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
         
-        
         button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height)
         
         button.setBackgroundImage(buttonImage, forState: .Normal)
         button.setBackgroundImage(highlightImage, forState: .Highlighted)
         
-        var heightDifference : CGFloat = buttonImage.size.height - self.tabBar.frame.size.height;
-        if (heightDifference < 0) {
-            button.center = self.tabBar.center;
-        } else {
-            var center = self.tabBar.center;
-            center.y = center.y - heightDifference/2.0;
+        var center = self.tabBar.center;
+        center.y = self.tabBar.frame.size.height / 2.0;
             button.center = center;
-        }
         
         button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
 
-        self.view.addSubview(button)
+        self.tabBar.addSubview(button)
         self.centerButton = button;
 
     }
@@ -93,10 +81,6 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         
         self.presentViewController(imagePickerViewController, animated: true, completion: nil)
     }
-
-//    override func tabBarHidden() -> Bool {
-//        return self.centerButton.hidden && self.tabBar.hidden;
-//    }
     
     func selectPhotosDidTap() {
             println("A")
@@ -130,6 +114,13 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
             postPhotoViewController.imageTwo = capturedImages[1];
             self.imagePickerViewController.pushViewController(postPhotoViewController, animated: true)
         }
+    }
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        if(viewController.restorationIdentifier == "SPEditPhotoViewController"){
+            return false
+        }
+        return true
     }
 
 }
