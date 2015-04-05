@@ -234,11 +234,60 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionView" destination="GIA-2t-s3d" id="phc-o0-lfh"/>
+                        <segue destination="2sJ-Tt-e3I" kind="show" identifier="SPClosetDetailViewController" id="JpS-yO-CFH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mQ-Yx-R9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="542" y="1320"/>
+        </scene>
+        <!--Closet Detail View Controller-->
+        <scene sceneID="Q2y-TC-boY">
+            <objects>
+                <viewController id="2sJ-Tt-e3I" customClass="SPClosetDetailViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pKC-oz-gHx"/>
+                        <viewControllerLayoutGuide type="bottom" id="fvd-vN-GPi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X8r-FJ-VLX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="ney-kS-ikC" customClass="PFImageView">
+                                <rect key="frame" x="0.0" y="65" width="320" height="320"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ney-kS-ikC" secondAttribute="height" multiplier="1:1" id="e3e-96-Bcb"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCC-zX-YXI">
+                                <rect key="frame" x="7" y="401" width="172" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.016378450610000001" blue="0.094208114189999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Remove From Closet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removePicture:" destination="2sJ-Tt-e3I" eventType="touchUpInside" id="Lzc-GB-vJg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ney-kS-ikC" firstAttribute="top" secondItem="pKC-oz-gHx" secondAttribute="bottom" constant="1" id="7T3-wc-U93"/>
+                            <constraint firstItem="ney-kS-ikC" firstAttribute="width" secondItem="ney-kS-ikC" secondAttribute="height" multiplier="1:1" id="LAH-ld-yKi"/>
+                            <constraint firstItem="ney-kS-ikC" firstAttribute="leading" secondItem="X8r-FJ-VLX" secondAttribute="leading" id="ObJ-P3-rfQ"/>
+                            <constraint firstAttribute="trailing" secondItem="ney-kS-ikC" secondAttribute="trailing" id="VVI-D0-zEh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="ney-kS-ikC" id="1BM-f5-cya"/>
+                        <outlet property="removeFromClosetButton" destination="nCC-zX-YXI" id="cqQ-wC-99B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4sA-2h-tTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1109" y="1563"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="aNF-9j-iAr">
@@ -501,6 +550,7 @@
         <image name="Icon_home_selected" width="64" height="49"/>
         <image name="Icon_post" width="64" height="49"/>
         <image name="Icon_profile" width="64" height="49"/>
+        <image name="Melanie-Iglesias" width="500" height="600"/>
         <image name="TakePicture" width="30" height="30"/>
     </resources>
 </document>

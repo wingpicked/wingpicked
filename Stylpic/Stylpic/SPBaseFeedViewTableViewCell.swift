@@ -47,8 +47,8 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
 
         self.feedItem = feedItem
         
-        self.pictureImageView.file = feedItem.photos?.objectForKey("imageOne") as! PFFile
-        self.pictureImageView2.file = feedItem.photos?.objectForKey("imageTwo") as! PFFile
+        self.pictureImageView.file = feedItem.photos?.photoOne.photo
+        self.pictureImageView2.file = feedItem.photos?.photoTwo.photo
         self.pictureImageView2.loadInBackground(nil)
         self.pictureImageView.loadInBackground(nil)
         

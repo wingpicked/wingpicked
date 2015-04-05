@@ -79,6 +79,8 @@
 		4854A9D21A9AC7E800164CD0 /* shareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* shareButton.swift */; };
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
+		48BCBACC1AD0939D001A60AB /* SPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACB1AD0939D001A60AB /* SPPhoto.m */; };
+		48BCBACF1AD09448001A60AB /* SPClosetPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACE1AD09448001A60AB /* SPClosetPhoto.m */; };
 		48D5C7211AC3C79B00D3EBA9 /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5C7201AC3C79B00D3EBA9 /* SPFeedTableViewController.swift */; };
 		EC3B4BC81ABBC28200E76121 /* SPProfileFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */; };
 		EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3B4BC71ABBC28200E76121 /* SPProfileFollowTableViewCell.xib */; };
@@ -198,6 +200,10 @@
 		4854A9D11A9AC7E800164CD0 /* shareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shareButton.swift; sourceTree = "<group>"; };
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
+		48BCBACA1AD0939D001A60AB /* SPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhoto.h; sourceTree = "<group>"; };
+		48BCBACB1AD0939D001A60AB /* SPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhoto.m; sourceTree = "<group>"; };
+		48BCBACD1AD09448001A60AB /* SPClosetPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPClosetPhoto.h; sourceTree = "<group>"; };
+		48BCBACE1AD09448001A60AB /* SPClosetPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPClosetPhoto.m; sourceTree = "<group>"; };
 		48D5C7201AC3C79B00D3EBA9 /* SPFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedTableViewController.swift; sourceTree = "<group>"; };
 		EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileFollowTableViewCell.swift; sourceTree = "<group>"; };
 		EC3B4BC71ABBC28200E76121 /* SPProfileFollowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileFollowTableViewCell.xib; sourceTree = "<group>"; };
@@ -430,6 +436,10 @@
 				483097C51ABF8B990076331C /* SPUser.m */,
 				483097C71ABF8DDB0076331C /* SPActivity.h */,
 				483097C81ABF8DDB0076331C /* SPActivity.m */,
+				48BCBACA1AD0939D001A60AB /* SPPhoto.h */,
+				48BCBACB1AD0939D001A60AB /* SPPhoto.m */,
+				48BCBACD1AD09448001A60AB /* SPClosetPhoto.h */,
+				48BCBACE1AD09448001A60AB /* SPClosetPhoto.m */,
 			);
 			name = SPParse;
 			sourceTree = "<group>";
@@ -693,6 +703,7 @@
 				386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */,
 				38160A331AB50F95005504AD /* SLKTextView+SLKAdditions.m in Sources */,
 				38AC45161AA8212700199935 /* SPClosetCollectionViewCell.swift in Sources */,
+				48BCBACC1AD0939D001A60AB /* SPPhoto.m in Sources */,
 				387463671AA3FA1C002E0565 /* SPManager.swift in Sources */,
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */,
@@ -717,6 +728,7 @@
 				38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */,
 				38160A291AB50F34005504AD /* SLKTypingIndicatorView.m in Sources */,
 				38EAD4691AB651A500A6FD81 /* UIView+Borders.m in Sources */,
+				48BCBACF1AD09448001A60AB /* SPClosetPhoto.m in Sources */,
 				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,
 				EC3B4BCB1ABBDDF500E76121 /* SPBaseFeedViewTableViewCell.swift in Sources */,
 				387463741AA418AC002E0565 /* SPProfileInfo.swift in Sources */,

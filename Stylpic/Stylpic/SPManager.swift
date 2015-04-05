@@ -18,7 +18,7 @@ typealias SPPFObjectArrayResultBlock = ( comments: Array<PFObject>?, error: NSEr
 typealias SPPFObjectResultsBlock = ( savedObject: PFObject?, error: NSError? ) -> Void
 typealias SPProfileInfoResultsBlock = ( profileObject: SPProfileInfo?, error: NSError? ) -> Void
 typealias SPPFFilesResultBlock = ( pfFiles: [PFFile]?, error: NSError? ) -> Void
-
+typealias SPClosetPhotosResultBlock = ( closetPhotos: [SPClosetPhoto]?, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -34,7 +34,7 @@ class SPManager: NSObject {
     //MARK: Items
     func getFeedItems( page: UInt, resultsBlock: SPFeedItemsResultBlock ) {
         var params = [ "page": page ]
-        PFCloud.callFunctionInBackground( "getFeedItemsForPage2", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
+        PFCloud.callFunctionInBackground( "getFeedItemsForPageV3", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
             if error == nil {
                 var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
                 println( payloadObject )
@@ -103,25 +103,18 @@ class SPManager: NSObject {
         
     }
     
-    func getMyClosetItemsWithResultBlock( resultBlock:SPPFFilesResultBlock) {
-        var usersPhotosQuery = PFQuery( className: "Photos" )
+    func getMyClosetItemsWithResultBlock( resultBlock:SPClosetPhotosResultBlock ) {
+        var usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
         usersPhotosQuery.includeKey( "user" )
         usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser() )
         usersPhotosQuery.limit = 1000;
         usersPhotosQuery.orderByDescending("updatedAt")
-        usersPhotosQuery.findObjectsInBackgroundWithBlock { (somePhotos, anError) -> Void in
-            if anError == nil && somePhotos != nil {
-                var pfFiles = [PFFile]()
-                for aPhotos in somePhotos {
-                    var photo1 = aPhotos.objectForKey( "imageOne" ) as! PFFile
-                    var photo2 = aPhotos.objectForKey( "imageTwo" ) as! PFFile
-                    pfFiles.append( photo1 )
-                    pfFiles.append( photo2 )
-                }
-                
-                resultBlock( pfFiles: pfFiles, error: nil )
+        usersPhotosQuery.findObjectsInBackgroundWithBlock { (someClosetPhotos, anError) -> Void in
+            if anError == nil && someClosetPhotos != nil {
+                var spClosetPhotos = someClosetPhotos as! [SPClosetPhoto]
+                resultBlock( closetPhotos: spClosetPhotos, error: nil )
             } else {
-                resultBlock(pfFiles: nil, error: anError )
+                resultBlock( closetPhotos: nil, error: anError )
             }
         }
         

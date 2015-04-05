@@ -169,24 +169,24 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
 //    
     func shareAndPostPhotos( resultsBlock: PFBooleanResultBlock ) {
-//        
-        SPManager.sharedInstance.saveImages(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
-            if error == nil {
-                var photos = SPPhotoPair()
-                photos.imageOne = imageOne
-                photos.imageTwo = imageTwo
-                photos.thumbnailOne = imageOneThumbnail
-                photos.thumbnailTwo = imageTwoThumbnail
-                photos.caption = self.captionTextField.text!
-                photos.user = SPUser.currentUser()
-
-                photos.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    resultsBlock( success, error )
-                })
-            } else {
-                println( error )
-            }
-        }
+        
+//        SPManager.sharedInstance.saveImages(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
+//            if error == nil {
+//                var photos = SPPhotoPair()
+//                photos.imageOne = imageOne
+//                photos.imageTwo = imageTwo
+//                photos.thumbnailOne = imageOneThumbnail
+//                photos.thumbnailTwo = imageTwoThumbnail
+//                photos.caption = self.captionTextField.text!
+//                photos.user = SPUser.currentUser()
+//                photos.hidePhotoEnum = 0
+//                photos.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                    resultsBlock( success, error )
+//                })
+//            } else {
+//                println( error )
+//            }
+//        }
     }
     
     @IBAction func viewDidTap(sender: AnyObject) {

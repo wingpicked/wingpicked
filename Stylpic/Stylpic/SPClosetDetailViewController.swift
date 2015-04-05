@@ -9,17 +9,24 @@
 import UIKit
 
 class SPClosetDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: PFImageView!
+    @IBOutlet weak var removeFromClosetButton: UIButton!
+    
+    var closetPhoto : SPClosetPhoto?
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        imageView.loadInBackground(nil)
-        //self.automaticallyAdjustsScrollViewInsets = true
-        
-        // Do any additional setup after loading the view.
+        if let closetPhoto = self.closetPhoto {
+            self.imageView.file = closetPhoto.photo.photo
+            self.imageView.loadInBackground(nil)
+        }
     }
     
     @IBAction func removePicture(sender: AnyObject) {
+        
+    }
+    
+    func setupWithClosetPhoto( closetPhoto: SPClosetPhoto ) {
+        self.closetPhoto = closetPhoto
     }
 }

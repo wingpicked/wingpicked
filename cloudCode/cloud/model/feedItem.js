@@ -93,7 +93,6 @@ var FeedItem = function( aPhotoPair ) {
 	this.percentageLikedOne = 0.0;
 	this.percentageLikedTwo = 0.0;
 	this.score = 0;
-	this.userLikesPhoto = PhotoUserLikes.NoPhotoLiked;
 	this.username = aPhotoPair.has( 'user' ) ? aPhotoPair.get( 'user' ).getUsername() : '';
 
 	// var userFriendlyTimestamp = new Date(); determined on client

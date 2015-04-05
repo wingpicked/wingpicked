@@ -8,16 +8,13 @@
 
 #import <Parse/Parse.h>
 
-@class SPUser;
+@class SPUser, SPPhoto;
 
 @interface SPPhotoPair : PFObject <PFSubclassing>
 
-@property (nonatomic) PFFile *imageOne;
-@property (nonatomic) PFFile *imageTwo;
-@property (nonatomic) PFFile *thumbnailOne;
-@property (nonatomic) PFFile *thumbnailTwo;
+@property (nonatomic) SPPhoto *photoOne;
+@property (nonatomic) SPPhoto *photoTwo;
 @property (nonatomic) NSString *caption;
 @property (nonatomic) SPUser *user;
-
 
 @end

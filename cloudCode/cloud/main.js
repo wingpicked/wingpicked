@@ -10,8 +10,7 @@ var _ = require( 'underscore' ),
 var itemsPerPage = 10;
 var MAX_QUERY_LIMIT = 1000; 
 
-
-Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
+Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 	var getPage = request.params.page;
 	var followingQuery = userUtils.queryWithFollowingActivities( request.user, feedItem.ActivityType.Follow );
 	var followingPromise = followingQuery.find();
@@ -24,9 +23,11 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 			}
 		});
 
-		var Photos = Parse.Object.extend('Photos');
+		var Photos = Parse.Object.extend('PhotoPair');
 		var query = new Parse.Query(Photos);
 		query.include('user');
+		query.include( 'photoOne' );
+		query.include( 'photoTwo' );
 		query.descending('createdAt');
 		query.limit(itemsPerPage);
 		query.containedIn('user', followingUsers);
@@ -41,7 +42,7 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 		activityQuery.limit( MAX_QUERY_LIMIT );
 		activityQuery.containedIn( 'photoPair', feedPhotos );
 		var activityPromise = activityQuery.find();
-		activityPromise.then( function( someActivities ) {		
+		activityPromise.then( function( someActivities ) {
 			var feedItemValuesForPhotoPairObjectId = {};
 			_.each( feedPhotos, function( aPhotoPair) {
 				var aFeedItem = new feedItem.FeedItem( aPhotoPair );
@@ -65,7 +66,7 @@ Parse.Cloud.define( "getFeedItemsForPage2", function( request, response ) {
 	}, function( error ) {
 		response.error( error );
 	});
-	
+
 });
 
 
@@ -92,9 +93,11 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 	mockUser.id = userObjectId;
 	followersAndFollowing.then( function( followersAndFollowing ) {
 		scopedVars.followersAndFollowing = followersAndFollowing;
-		var Photos = Parse.Object.extend('Photos');
+		var Photos = Parse.Object.extend('PhotoPair');
 		var query = new Parse.Query(Photos);
 		query.include('user');
+		query.include( 'photoOne' );
+		query.include( 'photoTwo' );
 		query.descending('createdAt');
 		query.limit(itemsPerPage);
 		query.equalTo('user', mockUser);

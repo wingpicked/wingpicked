@@ -11,7 +11,8 @@ import UIKit
 class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var pfFiles : [PFFile]? //= [PFFile]()
+    var closetPhotos : [SPClosetPhoto]? //= [PFFile]()
+    var lastTappedRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +21,12 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
         
-        SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (somePFFiles, error) -> Void in
+        SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
             if error != nil {
                 println(error)
             } else {
-                if let somePFFiles = somePFFiles {
-                    self.pfFiles = somePFFiles
+                if let someClosetPhotosAgain = someClosetPhotos {
+                    self.closetPhotos = someClosetPhotosAgain
                     self.collectionView.reloadData()
                 }
                 
@@ -43,30 +44,37 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SPClosetCollectionViewCell", forIndexPath: indexPath) as! SPClosetCollectionViewCell
         
-        if let pfFiles = pfFiles {
-            cell.setupWithPFFile( pfFiles[indexPath.row] )
+        if let closetPhotos = self.closetPhotos {
+            let closetPhoto = closetPhotos[indexPath.row]
+            let aFile = closetPhoto.photo.photoThumbnail
+            cell.setupWithPFFile( aFile )
         }
         return cell
     }
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pfFiles != nil ? pfFiles!.count : 0;
+        return self.closetPhotos != nil ? self.closetPhotos!.count : 0;
     }
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println(indexPath.row)
-        
-        var detailViewController = SPClosetDetailViewController(nibName: "SPClosetDetailViewController", bundle: nil)
-
-    
-        if let pfFiless = pfFiles{
-            println(pfFiless.count)
-            //detailViewController.imageView.file = pfFiles![indexPath.row];
-                self.navigationController?.pushViewController(detailViewController, animated: true)
-        }
-        
+        self.lastTappedRow = indexPath.row
+//        var detailViewController = SPClosetDetailViewController( aPFFile: self.pfFiles![indexPath.row] )
+//        self.navigationController?.pushViewController(detailViewController, animated: true)
+        self.performSegueWithIdentifier("SPClosetDetailViewController", sender: self);
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Make sure your segue name in storyboard is the same as this line
+        if segue.identifier == "SPClosetDetailViewController" {
+            // Get reference to the destination view controller
+            let viewController = segue.destinationViewController as! SPClosetDetailViewController
+            
+            // Pass any objects to the view controller here, like...
+            let closetPhoto = self.closetPhotos![self.lastTappedRow]
+            viewController.setupWithClosetPhoto( closetPhoto )
+        }
+    }
 }
