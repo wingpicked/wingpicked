@@ -27,12 +27,14 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.feedItem = feedItem
         
         
-        var imageTapedKey = "imageTwo"
+        var imageTapedKey = "photoTwo"
         if imageTapped == ImageIdentifier.ImageOne {
-            imageTapedKey = "imageOne"
+            imageTapedKey = "photoOne"
         }
         
-        self.imageFile = self.feedItem.photos?.objectForKey(imageTapedKey) as! PFFile
+        let photo = self.feedItem.photos?.objectForKey(imageTapedKey) as! SPPhoto
+        
+        self.imageFile = photo.photo
         super.init(nibName: "SPFeedDetailViewController", bundle: nil)
     }
     
