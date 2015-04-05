@@ -206,5 +206,9 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         }
     }
     
+    func dismissCamera() {
+        println("AYYY")
+    }
+    
     
 }
