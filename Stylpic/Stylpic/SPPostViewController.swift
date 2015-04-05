@@ -34,7 +34,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         self.curImagePickerController?.delegate = self
         self.curImagePickerController?.allowsEditing = false
         
-        self.overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
+        self.overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as? SPCameraOverlay
         overlayView?.delegate = self
 
     }
@@ -169,8 +169,8 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
 //    
     func shareAndPostPhotos( resultsBlock: PFBooleanResultBlock ) {
-        
-//        SPManager.sharedInstance.saveImages(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
+//        SPManager.sharedInstance.
+//        SPManager.sharedInstance.save(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
 //            if error == nil {
 //                var photos = SPPhotoPair()
 //                photos.imageOne = imageOne
@@ -206,6 +206,9 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         }
     }
     
+    func dismissCamera() {
+        println("AYYY")
+    }
     
     
 }

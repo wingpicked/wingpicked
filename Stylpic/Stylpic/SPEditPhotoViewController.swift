@@ -15,12 +15,8 @@ class SPEditPhotoViewController: UIViewController {
     @IBOutlet weak var imageViewOne: UIImageView!
     @IBOutlet weak var imageViewTwo: UIImageView!
     
+    @IBOutlet weak var captionTextfield: UITextField!
 
-    required init(coder aDecoder: NSCoder) {
-//        image = nil
-        super.init(coder: aDecoder)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imageViewOne.image = self.image
@@ -28,20 +24,31 @@ class SPEditPhotoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func shareImages(sender: AnyObject) {
+        SPManager.sharedInstance.saveAndPostImages(self.image, imageTwo: imageTwo, caption: self.captionTextfield.text) { (success, error) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+//        SPManager.sharedInstance.saveImages(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
+//            if error == nil {
+//                var photos = SPPhotoPair()
+//                photos.imageOne = imageOne
+//                photos.imageTwo = imageTwo
+//                photos.thumbnailOne = imageOneThumbnail
+//                photos.thumbnailTwo = imageTwoThumbnail
+//                photos.caption = self.captionTextfield.text!
+//                photos.user = SPUser.currentUser()
+//                
+//                photos.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                    resultsBlock( success, error )
+//                })
+//            } else {
+//                println( error )
+//            }
+//            
+//            self.dismissViewControllerAnimated(true, completion: nil)
+//
+//        }
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

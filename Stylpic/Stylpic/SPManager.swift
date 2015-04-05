@@ -279,8 +279,53 @@ class SPManager: NSObject {
     }
     
     
-//   returns 4 PFFiles for the images. an image and thumbnail for each image param
-    func saveImages( imageOne: UIImage?, imageTwo: UIImage?, resultsBlock: SPSaveImagesResultsBlock ) {
+    func finishPostingWithFileOne( fileOne:PFFile, fileTwo:PFFile, caption: String, resultsBlock:PFBooleanResultBlock ) {
+        var photoOne = SPPhoto()
+        photoOne.photo = fileOne
+        photoOne.photoThumbnail = fileOne
+        
+        var photoTwo = SPPhoto()
+        photoTwo.photo = fileTwo
+        photoTwo.photoThumbnail = fileTwo
+
+        
+        var pfObjects = [photoOne, photoTwo]
+        PFObject.saveAllInBackground(pfObjects, block: { (success, error) -> Void in
+            if error == nil {
+                
+                var photoPair = SPPhotoPair()
+                photoPair.photoOne = photoOne
+                photoPair.photoTwo = photoTwo
+                photoPair.caption = caption
+                photoPair.user = SPUser.currentUser()
+                
+                
+                var closetPhotoOne = SPClosetPhoto()
+                closetPhotoOne.isVisible = true
+                closetPhotoOne.user = SPUser.currentUser()
+                closetPhotoOne.photo = photoOne
+                
+                var closetPhotoTwo = SPClosetPhoto()
+                closetPhotoTwo.isVisible = true
+                closetPhotoTwo.user = SPUser.currentUser()
+                closetPhotoTwo.photo = photoOne
+                
+                var morePFObjects = [ photoPair, closetPhotoOne, closetPhotoTwo ]
+                PFObject.saveAllInBackground(morePFObjects, block: { (success, error) -> Void in
+                    resultsBlock( success, error )
+                })
+            } else {
+                println( error )
+            }
+        })
+
+        
+        
+        
+    }
+    
+
+    func saveAndPostImages( imageOne: UIImage?, imageTwo: UIImage?, caption: String, resultsBlock: PFBooleanResultBlock ) {
         if let imageOne = imageOne, imageTwo = imageTwo {
             var isImageOneSaved = false
             var isImageTwoSaved = false
@@ -288,14 +333,20 @@ class SPManager: NSObject {
             var imageFile = PFFile(name: "Image.jpg", data: imageData)
             var imageDataTwo = UIImageJPEGRepresentation(imageTwo, 0.05)
             var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo)
+            
             imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                 if error == nil {
+                    
+                    
                     isImageOneSaved = true
                     if isImageTwoSaved {
-                        resultsBlock(imageOne: imageFile, imageOneThumbnail: imageFile, imageTwo: imageFileTwo, imageTwoThumbnail: imageFileTwo, error: nil )
+                        
+                        self.finishPostingWithFileOne(imageFile, fileTwo: imageFileTwo, caption: caption, resultsBlock: { (success, error) -> Void in
+                            resultsBlock( success, error );
+                        })
                     }
                 } else {
-                    resultsBlock(imageOne: nil, imageOneThumbnail: nil, imageTwo: nil, imageTwoThumbnail: nil, error: error )
+                    println( error )
                 }
             }
 
@@ -304,18 +355,22 @@ class SPManager: NSObject {
                 if error == nil {
                     isImageTwoSaved = true
                     if isImageOneSaved {
-                        resultsBlock(imageOne: imageFile, imageOneThumbnail: imageFile, imageTwo: imageFileTwo, imageTwoThumbnail: imageFileTwo, error: nil )
+                        self.finishPostingWithFileOne(imageFile, fileTwo: imageFileTwo, caption: caption, resultsBlock: { (success, error) -> Void in
+                            resultsBlock( success, error );
+                        })
                     }
                 } else {
-                    resultsBlock(imageOne: nil, imageOneThumbnail: nil, imageTwo: nil, imageTwoThumbnail: nil, error: error )
+                    println( error )
                 }
             }
         } else {
             var errorMessage = "ERROR: one or the other image is nil passed to saveImages so can't save images"
             println( errorMessage )
-            resultsBlock(imageOne: nil, imageOneThumbnail: nil, imageTwo: nil, imageTwoThumbnail: nil, error: NSError(domain:"com.stylpic", code: -1001, userInfo:[ "error": errorMessage ] )  )
+            resultsBlock( false, NSError(domain:"com.stylpic", code: -1001, userInfo:[ "error": errorMessage ] ) )
         }
     }
+    
+    
     
     func loginWithFacebook(completionHander : SPBoolResultBlock){
         let permissions = ["public_profile", "user_friends", "email"]

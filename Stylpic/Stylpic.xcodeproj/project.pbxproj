@@ -11,6 +11,8 @@
 		380671741AAD6ED00001527F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FD1A7F6D1800AFE938 /* OpenSans-Regular.ttf */; };
 		380671751AAD6ED00001527F /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FE1A7F6D1800AFE938 /* OpenSans-Light.ttf */; };
 		380671761AAD6ED00001527F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FF1A7F6D1800AFE938 /* OpenSans-Bold.ttf */; };
+		3811EA8A1AD0967300F234AF /* SPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811EA891AD0967300F234AF /* SPTabBarController.swift */; };
+		3811EA8D1AD09D2700F234AF /* UIImage+BackgroundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3811EA8C1AD09D2700F234AF /* UIImage+BackgroundImage.m */; };
 		38160A261AB50F34005504AD /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38160A1C1AB50F34005504AD /* SLKTextViewController.m */; };
 		38160A271AB50F34005504AD /* SLKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38160A1D1AB50F34005504AD /* SLKTextView.m */; };
 		38160A281AB50F34005504AD /* SLKTextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 38160A1E1AB50F34005504AD /* SLKTextInputbar.m */; };
@@ -55,7 +57,6 @@
 		38AC45161AA8212700199935 /* SPClosetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AC45141AA8212700199935 /* SPClosetCollectionViewCell.swift */; };
 		38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38AC45151AA8212700199935 /* SPClosetCollectionViewCell.xib */; };
 		38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */; };
-		38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */; };
 		38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */; };
 		38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44501A66313C004CD444 /* SPExploreTableViewController.swift */; };
 		38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44551A663174004CD444 /* SPProfileViewController.swift */; };
@@ -70,13 +71,14 @@
 		38EAD4691AB651A500A6FD81 /* UIView+Borders.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD4671AB651A500A6FD81 /* UIView+Borders.m */; };
 		38EAD46D1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */; };
 		38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */; };
+		38F70B451ACCFF7E0039E5E9 /* SPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F70B441ACCFF7E0039E5E9 /* SPTabBarController.m */; };
 		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C21ABF8A470076331C /* SPPhotoPair.m */; };
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
 		483097C91ABF8DDB0076331C /* SPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C81ABF8DDB0076331C /* SPActivity.m */; };
 		483097CB1ABF93780076331C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483097CA1ABF93780076331C /* Constants.swift */; };
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
-		4854A9D21A9AC7E800164CD0 /* shareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* shareButton.swift */; };
+		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
 		48BCBACC1AD0939D001A60AB /* SPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACB1AD0939D001A60AB /* SPPhoto.m */; };
@@ -95,7 +97,6 @@
 		ECB2C23F1A560E350009FD11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2381A560E350009FD11 /* Security.framework */; };
 		ECB2C2401A560E350009FD11 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2391A560E350009FD11 /* StoreKit.framework */; };
 		ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */; };
-		ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3811EA891AD0967300F234AF /* SPTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTabBarController.swift; sourceTree = "<group>"; };
+		3811EA8B1AD09D2700F234AF /* UIImage+BackgroundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BackgroundImage.h"; sourceTree = "<group>"; };
+		3811EA8C1AD09D2700F234AF /* UIImage+BackgroundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BackgroundImage.m"; sourceTree = "<group>"; };
 		38160A1C1AB50F34005504AD /* SLKTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextViewController.m; sourceTree = "<group>"; };
 		38160A1D1AB50F34005504AD /* SLKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextView.m; sourceTree = "<group>"; };
 		38160A1E1AB50F34005504AD /* SLKTextInputbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextInputbar.m; sourceTree = "<group>"; };
@@ -172,7 +176,6 @@
 		38AC45141AA8212700199935 /* SPClosetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetCollectionViewCell.swift; sourceTree = "<group>"; };
 		38AC45151AA8212700199935 /* SPClosetCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPClosetCollectionViewCell.xib; sourceTree = "<group>"; };
 		38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEditPhotoViewController.swift; sourceTree = "<group>"; };
-		38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPEditPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPEditPhotoViewController.xib; sourceTree = "<group>"; };
 		38BB44501A66313C004CD444 /* SPExploreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPExploreTableViewController.swift; sourceTree = "<group>"; };
 		38BB44551A663174004CD444 /* SPProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 		38EAD4681AB651A500A6FD81 /* UIView+Borders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Borders.h"; sourceTree = "<group>"; };
 		38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfilePostTableViewCell.swift; sourceTree = "<group>"; };
 		38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfilePostTableViewCell.xib; sourceTree = "<group>"; };
+		38F70B431ACCFF7E0039E5E9 /* SPTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTabBarController.h; sourceTree = "<group>"; };
+		38F70B441ACCFF7E0039E5E9 /* SPTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTabBarController.m; sourceTree = "<group>"; };
 		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		483097C11ABF8A470076331C /* SPPhotoPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhotoPair.h; sourceTree = "<group>"; };
 		483097C21ABF8A470076331C /* SPPhotoPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhotoPair.m; sourceTree = "<group>"; };
@@ -197,7 +202,7 @@
 		483097C81ABF8DDB0076331C /* SPActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPActivity.m; sourceTree = "<group>"; };
 		483097CA1ABF93780076331C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
-		4854A9D11A9AC7E800164CD0 /* shareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shareButton.swift; sourceTree = "<group>"; };
+		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
 		48BCBACA1AD0939D001A60AB /* SPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhoto.h; sourceTree = "<group>"; };
@@ -218,7 +223,6 @@
 		ECB2C2381A560E350009FD11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		ECB2C2391A560E350009FD11 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,12 +263,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3811EA8E1AD09D2B00F234AF /* UIImage+BackgroundImage */ = {
+			isa = PBXGroup;
+			children = (
+				3811EA8B1AD09D2700F234AF /* UIImage+BackgroundImage.h */,
+				3811EA8C1AD09D2700F234AF /* UIImage+BackgroundImage.m */,
+			);
+			name = "UIImage+BackgroundImage";
+			sourceTree = "<group>";
+		};
 		38160A1A1AB508DC005504AD /* Third Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				38EAD46A1AB651AA00A6FD81 /* UIVIew+Borders */,
 				38160A2B1AB50F38005504AD /* SlackInputAccessoryView */,
 				38160A1B1AB50F27005504AD /* TTTimeFormatter */,
+				3811EA8E1AD09D2B00F234AF /* UIImage+BackgroundImage */,
 			);
 			name = "Third Party Libraries";
 			sourceTree = "<group>";
@@ -335,6 +349,9 @@
 				38BB44571A66317E004CD444 /* SPProfile */,
 				38BB445A1A6631B8004CD444 /* SPCloset */,
 				38BB445B1A6657B7004CD444 /* SPTabBarViewController.swift */,
+				3811EA891AD0967300F234AF /* SPTabBarController.swift */,
+				38F70B431ACCFF7E0039E5E9 /* SPTabBarController.h */,
+				38F70B441ACCFF7E0039E5E9 /* SPTabBarController.m */,
 				3845F7E91A560A5800191BDA /* Images.xcassets */,
 				3863A7001A7F6D1C00AFE938 /* CustomFonts */,
 				38160A1A1AB508DC005504AD /* Third Party Libraries */,
@@ -480,8 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				4854A9CE1A9AC76D00164CD0 /* cameraOverlay */,
-				ECB2C2421A5632220009FD11 /* SPCameraViewController.swift */,
-				38BB444C1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard */,
 				38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */,
 				38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */,
 				48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */,
@@ -563,7 +578,7 @@
 			isa = PBXGroup;
 			children = (
 				4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */,
-				4854A9D11A9AC7E800164CD0 /* shareButton.swift */,
+				4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */,
 			);
 			name = cameraOverlay;
 			sourceTree = "<group>";
@@ -675,7 +690,6 @@
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
-				38BB444D1A63BB6A004CD444 /* SPEditPhotoStoryboard.storyboard in Resources */,
 				38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */,
 				3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */,
 			);
@@ -695,9 +709,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4854A9D21A9AC7E800164CD0 /* shareButton.swift in Sources */,
+				4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */,
 				381B47691ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPBaseTableViewController.swift in Sources */,
+				3811EA8D1AD09D2700F234AF /* UIImage+BackgroundImage.m in Sources */,
 				483097C91ABF8DDB0076331C /* SPActivity.m in Sources */,
 				38160A341AB50F95005504AD /* UIView+SLKAdditions.m in Sources */,
 				386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */,
@@ -707,6 +722,7 @@
 				387463671AA3FA1C002E0565 /* SPManager.swift in Sources */,
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */,
+				3811EA8A1AD0967300F234AF /* SPTabBarController.swift in Sources */,
 				483097C61ABF8B990076331C /* SPUser.m in Sources */,
 				38BB445C1A6657B7004CD444 /* SPTabBarViewController.swift in Sources */,
 				38160A271AB50F34005504AD /* SLKTextView.m in Sources */,
@@ -714,6 +730,7 @@
 				387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */,
 				38160A281AB50F34005504AD /* SLKTextInputbar.m in Sources */,
 				38160A2A1AB50F34005504AD /* SLKInputAccessoryView.m in Sources */,
+				38F70B451ACCFF7E0039E5E9 /* SPTabBarController.m in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
 				38EAD4641AB63DE700A6FD81 /* SPProfileHeaderView.swift in Sources */,
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
@@ -735,7 +752,6 @@
 				386B7A861AA8361F00115147 /* TTTTimeIntervalFormatter.m in Sources */,
 				483097CB1ABF93780076331C /* Constants.swift in Sources */,
 				38AA7BF61A883E6600A75FB7 /* SPFeedDetailViewController.swift in Sources */,
-				ECB2C2431A5632220009FD11 /* SPCameraViewController.swift in Sources */,
 				EC56C2461AB2B0F7002C36F7 /* CommentInputAccessoryView.swift in Sources */,
 				48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */,
 				38BB444B1A63B7E2004CD444 /* SPEditPhotoViewController.swift in Sources */,
@@ -796,6 +812,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -840,6 +857,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -864,6 +882,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
@@ -887,6 +906,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
