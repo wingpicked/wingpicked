@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPTabBarController: UITabBarController, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate {
+class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate {
 
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
@@ -36,8 +36,19 @@ class SPTabBarController: UITabBarController, UITabBarDelegate, UIImagePickerCon
         }
 
         self.imagePickerViewController.delegate = self
+        self.delegate = self
     }
+    
+     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        if viewController.restorationIdentifier == "SPProfileNavigationController" {
+            var profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
+            profileViewController.showWithUser(SPUser.currentUser())
+        }
+    }
+//
+    
 
+    
     func addCenterButton(buttonImage: UIImage, highlightImage: UIImage, target:AnyObject, action:Selector){
         var button = UIButton()
         button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
