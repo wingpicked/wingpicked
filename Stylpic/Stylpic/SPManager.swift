@@ -295,11 +295,43 @@ class SPManager: NSObject {
             var imageFile = PFFile(name: "Image.jpg", data: imageData)
             var imageDataTwo = UIImageJPEGRepresentation(imageTwo, 0.05)
             var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo)
+            
+            var imageArray = [imageFile, imageFileTwo];
+            PFObject.saveAllInBackground(imageArray, block: { (success, error) -> Void in
+                
+                
+//TODO: Josh is gonna finish this up..
+//                var photos = SPPhotoPair()
+//                photos.imageOne = imageOne
+//                photos.imageTwo = imageTwo
+//                photos.thumbnailOne = imageOneThumbnail
+//                photos.thumbnailTwo = imageTwoThumbnail
+//                photos.caption = self.captionTextField.text!
+//                photos.user = SPUser.currentUser()
+//                
+//                photos.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                    resultsBlock( success, error )
+//                })
+
+                
+                
+            })
+            
+            
             imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                 if error == nil {
+                    
+                    
+                    
                     isImageOneSaved = true
                     if isImageTwoSaved {
-                        resultsBlock(imageOne: imageFile, imageOneThumbnail: imageFile, imageTwo: imageFileTwo, imageTwoThumbnail: imageFileTwo, error: nil )
+                        
+                        
+                        
+                        
+                        
+                        
+                        //resultsBlock(imageOne: imageFile, imageOneThumbnail: imageFile, imageTwo: imageFileTwo, imageTwoThumbnail: imageFileTwo, error: nil )
                     }
                 } else {
                     resultsBlock(imageOne: nil, imageOneThumbnail: nil, imageTwo: nil, imageTwoThumbnail: nil, error: error )

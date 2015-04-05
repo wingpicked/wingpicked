@@ -207,5 +207,4 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     }
     
     
-    
 }

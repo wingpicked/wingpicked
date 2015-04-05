@@ -15,4 +15,5 @@
 #import "SPUser.h"
 #import "SPActivity.h"
 #import "SPTabBarController.h"
+#import "UIImage+BackgroundImage.h"
 
