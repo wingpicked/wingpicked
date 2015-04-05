@@ -19,7 +19,7 @@
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwS-Ud-AMg">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo 1 of 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSu-bH-3QU">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo 1 of 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSu-bH-3QU">
                             <rect key="frame" x="105" y="8" width="110" height="26"/>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="19"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,10 +43,10 @@
                     </constraints>
                 </view>
                 <view alpha="0.89999999999999991" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-8K-j5q">
-                    <rect key="frame" x="0.0" y="378" width="320" height="190"/>
+                    <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbY-pc-LZE">
-                            <rect key="frame" x="117" y="53" width="87" height="84"/>
+                            <rect key="frame" x="117" y="33" width="87" height="84"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="84" id="Emo-wb-EUP"/>
                                 <constraint firstAttribute="width" constant="87" id="FCm-u2-Xxa"/>
@@ -59,7 +59,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-Qi-MUR">
-                            <rect key="frame" x="31" y="78" width="50" height="33"/>
+                            <rect key="frame" x="31" y="59" width="50" height="33"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                             <state key="normal" title="Photos">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,10 +72,10 @@
                     </subviews>
                     <color key="backgroundColor" red="0.094117647058823528" green="0.14509803921568629" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="IHL-Qi-MUR" firstAttribute="top" secondItem="tPs-8K-j5q" secondAttribute="top" constant="78" id="2ff-aq-H1z"/>
                         <constraint firstAttribute="centerX" secondItem="hbY-pc-LZE" secondAttribute="centerX" constant="-0.5" id="BaT-2g-UmC"/>
+                        <constraint firstAttribute="centerY" secondItem="IHL-Qi-MUR" secondAttribute="centerY" id="CQ7-En-gbc"/>
                         <constraint firstItem="IHL-Qi-MUR" firstAttribute="leading" secondItem="tPs-8K-j5q" secondAttribute="leading" constant="31" id="Huw-e4-V6g"/>
-                        <constraint firstAttribute="height" constant="190" id="Slm-6t-kus"/>
+                        <constraint firstAttribute="height" constant="150" id="Slm-6t-kus"/>
                         <constraint firstAttribute="centerY" secondItem="hbY-pc-LZE" secondAttribute="centerY" id="mrM-65-z6A"/>
                     </constraints>
                 </view>

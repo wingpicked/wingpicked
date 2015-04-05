@@ -11,6 +11,8 @@ import UIKit
 class SPTabBarController: UITabBarController, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate {
 
     let imagePickerViewController = UIImagePickerController()
+    let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
+    
     var tabBarHidden = false
     var centerButton : UIButton?
     
@@ -64,13 +66,15 @@ class SPTabBarController: UITabBarController, UITabBarDelegate, UIImagePickerCon
     
     func buttonPressed(sender:AnyObject){
         
+        //Reset Camera
         capturedImages = []
+        overlayView.titleLabel.text = "Photo \(capturedImages.count + 1) of 2"
         
         imagePickerViewController.sourceType = .Camera
         imagePickerViewController.showsCameraControls = false;
-        var overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
         overlayView.delegate = self
         imagePickerViewController.cameraOverlayView = overlayView
+        
         self.presentViewController(imagePickerViewController, animated: true, completion: nil)
     }
 
@@ -89,14 +93,18 @@ class SPTabBarController: UITabBarController, UITabBarDelegate, UIImagePickerCon
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
-        println( "original image \(originalImage)" )
         let squareRect = CGRectMake( 0, 0, originalImage.size.width, originalImage.size.width )
         var imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
         var squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: UIImageOrientation.Right)
         
+        //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
+        //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
+        
         if let squareImage = squareImage{
             capturedImages.append(squareImage)
         }
+        
+        overlayView.titleLabel.text = "Photo \(capturedImages.count + 1) of 2"
         
         if(capturedImages.count >= 2){
             var postPhotoViewController = SPEditPhotoViewController(nibName:"SPEditPhotoViewController", bundle: nil)

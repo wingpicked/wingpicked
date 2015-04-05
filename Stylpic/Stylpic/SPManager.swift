@@ -308,7 +308,7 @@ class SPManager: NSObject {
                 var closetPhotoTwo = SPClosetPhoto()
                 closetPhotoTwo.isVisible = true
                 closetPhotoTwo.user = SPUser.currentUser()
-                closetPhotoTwo.photo = photoOne
+                closetPhotoTwo.photo = photoTwo
                 
                 var morePFObjects = [ photoPair, closetPhotoOne, closetPhotoTwo ]
                 PFObject.saveAllInBackground(morePFObjects, block: { (success, error) -> Void in

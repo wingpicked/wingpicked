@@ -16,5 +16,4 @@
 #import "SPActivity.h"
 #import "SPClosetPhoto.h"
 #import "SPPhoto.h"
-#import "SPTabBarController.h"
 #import "UIImage+BackgroundImage.h"
