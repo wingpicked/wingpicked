@@ -13,6 +13,8 @@ function exploreQueryWithType( aType ) {
     var activityQuery = new Parse.Query( Activity );
     activityQuery.include( 'photoPair' );
     activityQuery.include( 'photoPair.user' );
+    activityQuery.include( 'photoPair.photoOne' );
+    activityQuery.include( 'photoPair.photoTwo' );
     activityQuery.limit( 1000 );
     activityQuery.greaterThan( 'createdAt', sevenDaysAgo.toDate() );
     activityQuery.descending( 'createdAt' );

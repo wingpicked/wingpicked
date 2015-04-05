@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol SPClosetDetailViewControllerDelegate:class {
+    func removeClosetPhoto( closetPhoto: SPClosetPhoto )
+    
+}
+
+
 class SPClosetDetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: PFImageView!
     @IBOutlet weak var removeFromClosetButton: UIButton!
+    weak var delegate:SPClosetDetailViewControllerDelegate?
     
     var closetPhoto : SPClosetPhoto?
     
@@ -23,7 +30,8 @@ class SPClosetDetailViewController: UIViewController {
     }
     
     @IBAction func removePicture(sender: AnyObject) {
-        
+        self.delegate?.removeClosetPhoto( self.closetPhoto! )
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func setupWithClosetPhoto( closetPhoto: SPClosetPhoto ) {

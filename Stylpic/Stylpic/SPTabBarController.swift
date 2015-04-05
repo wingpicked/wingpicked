@@ -13,7 +13,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
     
-    var tabBarHidden = false {
+    var tabBarHidden:Bool = false {
         didSet{
             self.centerButton.hidden = tabBarHidden;
             self.tabBar.hidden = tabBarHidden;
