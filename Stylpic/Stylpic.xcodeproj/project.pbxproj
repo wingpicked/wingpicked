@@ -70,6 +70,11 @@
 		38EAD4691AB651A500A6FD81 /* UIView+Borders.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD4671AB651A500A6FD81 /* UIView+Borders.m */; };
 		38EAD46D1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */; };
 		38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */; };
+		38F87B3C1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B3A1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift */; };
+		38F87B3D1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F87B3B1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib */; };
+		38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */; };
+		38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */; };
+		38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B441AD210AB00180602 /* TTTAttributedLabel.m */; };
 		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C21ABF8A470076331C /* SPPhotoPair.m */; };
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
@@ -188,6 +193,12 @@
 		38EAD4681AB651A500A6FD81 /* UIView+Borders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Borders.h"; sourceTree = "<group>"; };
 		38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfilePostTableViewCell.swift; sourceTree = "<group>"; };
 		38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfilePostTableViewCell.xib; sourceTree = "<group>"; };
+		38F87B3A1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedDetailCollaborationTableViewCell.swift; sourceTree = "<group>"; };
+		38F87B3B1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedDetailCollaborationTableViewCell.xib; sourceTree = "<group>"; };
+		38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCommentsSmallTableViewCell.swift; sourceTree = "<group>"; };
+		38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCommentsSmallTableViewCell.xib; sourceTree = "<group>"; };
+		38F87B431AD210AB00180602 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		38F87B441AD210AB00180602 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		483097C11ABF8A470076331C /* SPPhotoPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhotoPair.h; sourceTree = "<group>"; };
 		483097C21ABF8A470076331C /* SPPhotoPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhotoPair.m; sourceTree = "<group>"; };
@@ -270,6 +281,7 @@
 		38160A1A1AB508DC005504AD /* Third Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				38F87B421AD210AB00180602 /* TTTAttributedLabel */,
 				38EAD46A1AB651AA00A6FD81 /* UIVIew+Borders */,
 				38160A2B1AB50F38005504AD /* SlackInputAccessoryView */,
 				38160A1B1AB50F27005504AD /* TTTimeFormatter */,
@@ -551,6 +563,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		38F87B421AD210AB00180602 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				38F87B431AD210AB00180602 /* TTTAttributedLabel.h */,
+				38F87B441AD210AB00180602 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		38FBAD411A92D0E100B8905C /* SPFeedTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,6 +583,10 @@
 				38AA7BF91A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib */,
 				38AA7BFC1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift */,
 				38AA7BFD1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib */,
+				38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */,
+				38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */,
+				38F87B3A1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift */,
+				38F87B3B1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib */,
 			);
 			name = SPFeedTableViewCells;
 			sourceTree = "<group>";
@@ -671,6 +696,7 @@
 				380671751AAD6ED00001527F /* OpenSans-Light.ttf in Resources */,
 				380671761AAD6ED00001527F /* OpenSans-Bold.ttf in Resources */,
 				38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */,
+				38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */,
 				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				38EAD4601AB63BBB00A6FD81 /* SPProfileToolBarView.xib in Resources */,
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
@@ -678,6 +704,7 @@
 				38E7F8311AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib in Resources */,
 				4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */,
 				38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */,
+				38F87B3D1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
@@ -703,7 +730,9 @@
 			files = (
 				4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */,
 				381B47691ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift in Sources */,
+				38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPBaseTableViewController.swift in Sources */,
+				38F87B3C1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift in Sources */,
 				3811EA8D1AD09D2700F234AF /* UIImage+BackgroundImage.m in Sources */,
 				483097C91ABF8DDB0076331C /* SPActivity.m in Sources */,
 				38160A341AB50F95005504AD /* UIView+SLKAdditions.m in Sources */,
@@ -728,6 +757,7 @@
 				38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */,
 				483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */,
 				38160A351AB50F95005504AD /* UIScrollView+SLKAdditions.m in Sources */,
+				38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */,
 				38EAD46D1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift in Sources */,
 				EC3B4BC81ABBC28200E76121 /* SPProfileFollowTableViewCell.swift in Sources */,
 				38160A371AB51E1F005504AD /* SPCommentsViewController.swift in Sources */,

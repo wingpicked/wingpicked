@@ -22,7 +22,7 @@ class SPFeedDetailCommentTableViewCell: SPBaseTableViewCell {
     
     func setupCell(commentActivity: PFObject){
         self.commentActivity = commentActivity
-        commentLabel.text = self.commentActivity?.objectForKey( "content" ) as! String
+        commentLabel.text = self.commentActivity?.objectForKey( "content" ) as? String
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
