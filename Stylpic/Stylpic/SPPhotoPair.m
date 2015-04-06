@@ -11,7 +11,7 @@
 
 @implementation SPPhotoPair
 
-@dynamic photoOne, photoTwo, caption, user;
+@dynamic photoOne, photoTwo, caption, user, isArchiveReady;
 
 + (void)load {
     [self registerSubclass];

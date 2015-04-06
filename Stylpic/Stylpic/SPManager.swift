@@ -127,6 +127,7 @@ class SPManager: NSObject {
         var commentQuery = PFQuery( className: "Activity" )
         commentQuery.whereKey( "type", equalTo: imageTapped.rawValue )
         commentQuery.whereKey( "photoPair", equalTo: photoPair )
+        commentQuery.whereKey( "isArchiveReady", equalTo: false )
         commentQuery.limit = 1000;
         commentQuery.orderByDescending( "createdAt" )
         commentQuery.findObjectsInBackgroundWithBlock {
@@ -227,6 +228,7 @@ class SPManager: NSObject {
             activityQuery.whereKey( "fromUser", equalTo: fromUser )
             activityQuery.whereKey( "toUser", equalTo: user )
             activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
+            activityQuery.whereKey( "isArchiveReady", equalTo: false )
             activityQuery.findObjectsInBackgroundWithBlock({ (payloadObjects, error) -> Void in
                 for activity in payloadObjects as! [PFObject] {
                     activity.setObject( true, forKey: "isArchiveReady" )
@@ -253,7 +255,7 @@ class SPManager: NSObject {
         }
     }
     
-    func removeFeedItemWithPhotoPairObjectId( photoPairObjectId: String ) {
+    func removePostWithPhotoPairObjectId( photoPairObjectId: String ) {
         var params = [ "photoPairObjectId": photoPairObjectId ]
         PFCloud.callFunctionInBackground( "removeFeedItem", withParameters: params) { (payload, error) -> Void in
             if error == nil {
@@ -320,12 +322,12 @@ class SPManager: NSObject {
                 photoPair.photoTwo = photoTwo
                 photoPair.caption = caption
                 photoPair.user = SPUser.currentUser()
-                
+                photoPair.isArchiveReady = false
                 
                 var closetPhotoOne = SPClosetPhoto()
                 closetPhotoOne.isVisible = true
                 closetPhotoOne.user = SPUser.currentUser()
-                closetPhotoOne.photo = photoOne
+                closetPhotoOne.photo = photoOne                
                 
                 var closetPhotoTwo = SPClosetPhoto()
                 closetPhotoTwo.isVisible = true

@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol SPProfilePostTableViewCellDelegate : class {
+    func deleteFeedItem( feedItem: SPFeedItem )
+}
+
 class SPProfilePostTableViewCell: SPBaseFeedViewTableViewCell {
     @IBOutlet weak var statsArea: UIView!
 
     @IBOutlet weak var optionsButton: UIButton!
     //Overrides will go here if any.. currently this implementation matches up exactly with the SPBaseFeedViewTableViewCell...
+    
+    weak var profilePostDelegate : SPProfilePostTableViewCellDelegate?
+    
     override func setupWithFeedItem(feedItem: SPFeedItem){
         super.setupWithFeedItem(feedItem) //Does a lot of heavy lifting that is in common with SPFeedViewTableViewCell and SPProfileFeedTableViewCell
         
@@ -23,5 +30,6 @@ class SPProfilePostTableViewCell: SPBaseFeedViewTableViewCell {
     }
     @IBAction func optionsButtonTapped(sender: AnyObject) {
         println("XC0DE SUX0RZ")
+        self.profilePostDelegate?.deleteFeedItem( self.feedItem! )
     }
 }
