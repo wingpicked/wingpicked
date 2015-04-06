@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7515.2" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7512"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Regular.ttf">
@@ -81,6 +81,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffp-yf-A83">
+                                <rect key="frame" x="283" y="22" width="24" height="17"/>
+                                <state key="normal" image="3 points">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="optionsButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gQu-d1-Uir"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -99,6 +108,7 @@
                 <outlet property="imageTwoCommentLabel" destination="JKq-xX-cIZ" id="wWT-hz-SP5"/>
                 <outlet property="imageTwoLikeLabel" destination="vla-P9-c8a" id="KMR-mL-9bH"/>
                 <outlet property="imageTwoPercentLabel" destination="FBN-jl-8BQ" id="Bkj-Yd-ITT"/>
+                <outlet property="optionsButton" destination="ffp-yf-A83" id="9Ze-9W-W3j"/>
                 <outlet property="pictureImageView" destination="BvZ-GW-Z5p" id="CJU-DD-yct"/>
                 <outlet property="pictureImageView2" destination="pVg-Do-VV0" id="WdB-jD-6uh"/>
                 <outlet property="statsArea" destination="eq7-1i-u6o" id="03t-3S-chJ"/>
@@ -107,6 +117,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="3 points" width="127" height="100"/>
         <image name="Button_like_transparent" width="48" height="44"/>
         <image name="Icon_comments_rounded_grey" width="30" height="31"/>
         <image name="Icon_percent_feed" width="17" height="18"/>
