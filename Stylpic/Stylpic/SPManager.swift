@@ -253,6 +253,17 @@ class SPManager: NSObject {
         }
     }
     
+    func removeFeedItemWithPhotoPairObjectId( photoPairObjectId: String ) {
+        var params = [ "photoPairObjectId": photoPairObjectId ]
+        PFCloud.callFunctionInBackground( "removeFeedItem", withParameters: params) { (payload, error) -> Void in
+            if error == nil {
+                println( payload )
+            } else {
+                println( error )
+            }
+        }
+    }
+    
     //Low priority
     func getFacebookFriendsWithApp() -> [SPUser]?{
         return nil

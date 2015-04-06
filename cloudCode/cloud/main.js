@@ -57,7 +57,9 @@ Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 				}
 			});
 
-			var payload = { feedItems: _.values( feedItemValuesForPhotoPairObjectId ) };
+			var items = _.values( feedItemValuesForPhotoPairObjectId );
+			_.invoke( items, 'truncateCommentsToThree' );
+			var payload = { feedItems: items };
 			response.success( payload );
 		}, function( error ) {
 			response.error( { error: error } );
@@ -201,6 +203,33 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 });
 
 
+
+Parse.Cloud.define( 'removeFeedItem', function( request, response ) {
+	var photoPairObjectId = request.params.photoPairObjectId;
+	var PhotoPair = Parse.Object.extend( 'PhotoPair' );
+	var mockPhotoPair = new PhotoPair();
+	mockPhotoPair.id = photoPairObjectId;
+
+	var Activity = Parse.Object.extend( 'Activity' );
+	var activityQuery = new Parse.Query( Activity );
+	activityQuery.include( 'photoPair' );
+	activityQuery.equalTo( 'photoPair', mockPhotoPair );
+	activityQuery.limit( MAX_QUERY_LIMIT );
+	var activityQueryPromise = activityQuery.find();
+	activityQueryPromise.then( function( activityItems ) {
+		_.each( activityItems, function( activityItem ) {
+			activityItem.set( 'isArchiveReady', true );
+		});
+
+		mockPhotoPair.set( 'isArchiveReady', true );
+		activityItems.push( mockPhotoPair );
+		return Parse.Object.saveAll( activityItems );
+	}).then( function( savedItems ) {
+		response.success({});
+	}, function( error ) {
+		response.error( error );
+	});
+});
 
 
 

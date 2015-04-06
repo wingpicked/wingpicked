@@ -17,6 +17,16 @@ var PhotoUserLikes = {
 };
 
 
+var truncateCommentsToThree = function() {
+	if ( this.comments.commentsPhoto1.length > 3 ) {
+		this.comments.commentsPhoto1 = this.comments.commentsPhoto1.slice( 3 );
+	}
+
+	if ( this.comments.commentsPhoto2.length > 3 ) {
+		this.comments.commentsPhoto2 = this.comments.commentsPhoto2.slice( 3 );
+	}
+}
+
 var calculateLikePercentages = function() {
 	var totalLikes = this.likesCountOne + this.likesCountTwo;
 	if ( totalLikes > 0 ) {
@@ -105,6 +115,7 @@ var FeedItem = function( aPhotoPair ) {
 	this.addLikeActivity = addLikeActivity;
 	this.addCommentActivity = addCommentActivity;
 	this.calculateLikePercentages = calculateLikePercentages;
+	this.truncateCommentsToThree = truncateCommentsToThree;
 	// this.payload = payload;
 
 };
