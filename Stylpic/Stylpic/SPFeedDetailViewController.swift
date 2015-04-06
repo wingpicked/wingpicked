@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate {
+class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate {
     
     @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
 //    var comments = ["Hello", "hahaha", "you look nice!"]
@@ -80,6 +80,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
+            cell.delegate = self
             
             //TODO: Refactor the photo pair model to consist of two individual entities
             var comments = []
@@ -137,6 +138,13 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     func commentButtonTapped() {
         println("Comment Button Tapped")
         self.showAllComments()
+    }
+    
+    func didSelectComment(user: SPUser) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        profileViewController.showWithUser(user)
     }
     //Lazy load input accessory view
 
