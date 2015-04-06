@@ -38,15 +38,17 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.delegate = self
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tabBar.bringSubviewToFront(self.centerButton)
+    }
+    
      func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         if viewController.restorationIdentifier == "SPProfileNavigationController" {
             var profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
             profileViewController.showWithUser(SPUser.currentUser())
         }
     }
-//
-    
-
     
     func addCenterButton(buttonImage: UIImage, highlightImage: UIImage, target:AnyObject, action:Selector){
         var button = UIButton()
@@ -65,7 +67,6 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
 
         self.tabBar.addSubview(button)
         self.centerButton = button;
-
     }
     
     func buttonPressed(sender:AnyObject){
