@@ -15,7 +15,7 @@ enum SPProfileActiveViewState {
     case Notifications
 }
 
-class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate{
+class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate {
 
     var currentViewState = SPProfileActiveViewState.Posts
     var toolBarView : SPProfileToolBarView!
@@ -83,6 +83,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
             cell.setupWithFeedItem(profileInfoViewModel.posts[indexPath.row])
             cell.delegate = self
+            cell.profilePostDelegate = self
             return cell
         case .Followers:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
@@ -179,4 +180,24 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         }
         
     }
+    
+    func deleteFeedItem( feedItem: SPFeedItem ) {
+        var feedPosts = self.profileInfoViewModel.posts
+        var indexToRemove = -1
+        for var i = feedPosts.count - 1; i >= 0; --i {
+            var searchPost = feedPosts[ i ]
+            if searchPost == feedItem {
+                indexToRemove = i
+                break
+            }
+        }
+        
+        if indexToRemove >= 0 {
+            feedPosts.removeAtIndex( indexToRemove )
+            SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId )
+            self.tableView.reloadData()
+        }
+        
+    }
+
 }

@@ -89,9 +89,11 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
         }
         
-        self.closetPhotos?.removeAtIndex( indexToRemove )
-        SPManager.sharedInstance.removeClosetPhoto( closetPhoto )
-        self.collectionView.reloadData()
+        if indexToRemove >= 0 {
+            self.closetPhotos?.removeAtIndex( indexToRemove )
+            SPManager.sharedInstance.removeClosetPhoto( closetPhoto )
+            self.collectionView.reloadData()
+        }
     }
 
 }

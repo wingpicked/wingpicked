@@ -30,6 +30,7 @@ Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 		query.include( 'photoTwo' );
 		query.descending('createdAt');
 		query.limit(itemsPerPage);
+		query.equalTo( 'isArchiveReady', false );
 		query.containedIn('user', followingUsers);
 		query.skip(itemsPerPage * getPage);
 		return query.find();
@@ -40,6 +41,7 @@ Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 		activityQuery.include( 'fromUser' );
 		activityQuery.include( 'toUser' );
 		activityQuery.limit( MAX_QUERY_LIMIT );
+		activityQuery.equalTo( 'isArchiveReady', false );
 		activityQuery.containedIn( 'photoPair', feedPhotos );
 		var activityPromise = activityQuery.find();
 		activityPromise.then( function( someActivities ) {
@@ -57,7 +59,9 @@ Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 				}
 			});
 
-			var payload = { feedItems: _.values( feedItemValuesForPhotoPairObjectId ) };
+			var items = _.values( feedItemValuesForPhotoPairObjectId );
+			_.invoke( items, 'truncateCommentsToThree' );
+			var payload = { feedItems: items };
 			response.success( payload );
 		}, function( error ) {
 			response.error( { error: error } );
@@ -100,7 +104,8 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		query.include( 'photoTwo' );
 		query.descending('createdAt');
 		query.limit(itemsPerPage);
-		query.equalTo('user', mockUser);
+		query.equalTo( 'user', mockUser);
+		query.equalTo( 'isArchiveReady', false );
 		return query.find();
 	}).then( function( feedPhotos ) {
 		var feedPhotoPairsPromise = new Parse.Promise();
@@ -201,6 +206,34 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 });
 
 
+
+Parse.Cloud.define( 'removeFeedItem', function( request, response ) {
+	var photoPairObjectId = request.params.photoPairObjectId;
+	var PhotoPair = Parse.Object.extend( 'PhotoPair' );
+	var mockPhotoPair = new PhotoPair();
+	mockPhotoPair.id = photoPairObjectId;
+
+	var Activity = Parse.Object.extend( 'Activity' );
+	var activityQuery = new Parse.Query( Activity );
+	activityQuery.include( 'photoPair' );
+	activityQuery.equalTo( 'photoPair', mockPhotoPair );
+	activityQuery.equalTo( 'isArchiveReady', false );
+	activityQuery.limit( MAX_QUERY_LIMIT );
+	var activityQueryPromise = activityQuery.find();
+	activityQueryPromise.then( function( activityItems ) {
+		_.each( activityItems, function( activityItem ) {
+			activityItem.set( 'isArchiveReady', true );
+		});
+
+		mockPhotoPair.set( 'isArchiveReady', true );
+		activityItems.push( mockPhotoPair );
+		return Parse.Object.saveAll( activityItems );
+	}).then( function( savedItems ) {
+		response.success({});
+	}, function( error ) {
+		response.error( error );
+	});
+});
 
 
 
