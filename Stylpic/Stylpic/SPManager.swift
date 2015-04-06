@@ -107,6 +107,7 @@ class SPManager: NSObject {
         var usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
         usersPhotosQuery.includeKey( "user" )
         usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser() )
+        usersPhotosQuery.whereKey("isVisible", equalTo: true )
         usersPhotosQuery.limit = 1000;
         usersPhotosQuery.orderByDescending("updatedAt")
         usersPhotosQuery.findObjectsInBackgroundWithBlock { (someClosetPhotos, anError) -> Void in
@@ -241,6 +242,16 @@ class SPManager: NSObject {
         }
     }
     
+    func removeClosetPhoto( closetPhoto:SPClosetPhoto ) {
+        closetPhoto.isVisible = NSNumber( bool: false )
+        closetPhoto.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                println( "removed closet photo" )
+            } else {
+                println( error )
+            }
+        }
+    }
     
     //Low priority
     func getFacebookFriendsWithApp() -> [SPUser]?{

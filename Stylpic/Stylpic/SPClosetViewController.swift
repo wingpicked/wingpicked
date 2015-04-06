@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var closetPhotos : [SPClosetPhoto]? //= [PFFile]()
@@ -74,7 +74,24 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
             
             // Pass any objects to the view controller here, like...
             let closetPhoto = self.closetPhotos![self.lastTappedRow]
+            viewController.delegate = self
             viewController.setupWithClosetPhoto( closetPhoto )
         }
     }
+    
+    func removeClosetPhoto( closetPhoto: SPClosetPhoto ) {
+        var indexToRemove = -1
+        for var i = self.closetPhotos!.count - 1; i >= 0; --i {
+            var aClosetPhoto = self.closetPhotos![ i ]
+            if aClosetPhoto.objectId == closetPhoto.objectId {
+                indexToRemove = i
+                break
+            }
+        }
+        
+        self.closetPhotos?.removeAtIndex( indexToRemove )
+        SPManager.sharedInstance.removeClosetPhoto( closetPhoto )
+        self.collectionView.reloadData()
+    }
+
 }
