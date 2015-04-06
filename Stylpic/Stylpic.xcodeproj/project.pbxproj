@@ -61,6 +61,8 @@
 		38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44501A66313C004CD444 /* SPExploreTableViewController.swift */; };
 		38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44551A663174004CD444 /* SPProfileViewController.swift */; };
 		38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB44581A66318C004CD444 /* SPClosetViewController.swift */; };
+		38CD696A1AD231140003F8A4 /* SPLikeCommentButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CD69691AD231140003F8A4 /* SPLikeCommentButtonView.swift */; };
+		38CD696C1AD231210003F8A4 /* SPLikeCommentButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38CD696B1AD231210003F8A4 /* SPLikeCommentButtonView.xib */; };
 		38E7F82F1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E7F82E1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift */; };
 		38E7F8311AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38E7F8301AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib */; };
 		38EAD4601AB63BBB00A6FD81 /* SPProfileToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38EAD45F1AB63BBB00A6FD81 /* SPProfileToolBarView.xib */; };
@@ -183,6 +185,8 @@
 		38BB44501A66313C004CD444 /* SPExploreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPExploreTableViewController.swift; sourceTree = "<group>"; };
 		38BB44551A663174004CD444 /* SPProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileViewController.swift; sourceTree = "<group>"; };
 		38BB44581A66318C004CD444 /* SPClosetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPClosetViewController.swift; sourceTree = "<group>"; };
+		38CD69691AD231140003F8A4 /* SPLikeCommentButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPLikeCommentButtonView.swift; sourceTree = "<group>"; };
+		38CD696B1AD231210003F8A4 /* SPLikeCommentButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPLikeCommentButtonView.xib; sourceTree = "<group>"; };
 		38E7F82E1AA6DA160084D8F0 /* SPPhotosQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosQueryTableViewController.swift; sourceTree = "<group>"; };
 		38E7F8301AA6E9160084D8F0 /* SPFeedViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedViewTableViewCell.xib; sourceTree = "<group>"; };
 		38EAD45F1AB63BBB00A6FD81 /* SPProfileToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileToolBarView.xib; sourceTree = "<group>"; };
@@ -587,6 +591,8 @@
 				38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */,
 				38F87B3A1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift */,
 				38F87B3B1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib */,
+				38CD69691AD231140003F8A4 /* SPLikeCommentButtonView.swift */,
+				38CD696B1AD231210003F8A4 /* SPLikeCommentButtonView.xib */,
 			);
 			name = SPFeedTableViewCells;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 				38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */,
 				38F87B3D1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
+				38CD696C1AD231210003F8A4 /* SPLikeCommentButtonView.xib in Resources */,
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
@@ -762,6 +769,7 @@
 				EC3B4BC81ABBC28200E76121 /* SPProfileFollowTableViewCell.swift in Sources */,
 				38160A371AB51E1F005504AD /* SPCommentsViewController.swift in Sources */,
 				38EAD4621AB63BCA00A6FD81 /* SPProfileToolBarView.swift in Sources */,
+				38CD696A1AD231140003F8A4 /* SPLikeCommentButtonView.swift in Sources */,
 				38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */,
 				38160A291AB50F34005504AD /* SLKTypingIndicatorView.m in Sources */,
 				38EAD4691AB651A500A6FD81 /* UIView+Borders.m in Sources */,

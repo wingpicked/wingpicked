@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate {
     
     @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
 //    var comments = ["Hello", "hahaha", "you look nice!"]
@@ -21,6 +21,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     var imageFile : PFFile
     var feedItem: SPFeedItem
     var imageTapped : ImageIdentifier
+    var tableViewFooterView : SPLikeCommentButtonView!
     
     init(feedItem : SPFeedItem, imageTapped: ImageIdentifier) {
         self.imageTapped = imageTapped
@@ -54,8 +55,14 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
         //tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
-        self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
-
+//        self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
+        
+        self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
+        self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
+        
+        self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
+        self.tableViewFooterView.delegate = self
+        self.tableView.tableFooterView = tableViewFooterView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,14 +74,23 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.setupCell(imageFile)
             return cell
         }
+        else if(indexPath.row == 1){
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCollaborationTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCollaborationTableViewCell
+            return cell
+        }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCommentTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCommentTableViewCell
-            var comments = self.feedItem.comments.commentsPhotoTwo
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
+            
+            //TODO: Refactor the photo pair model to consist of two individual entities
+            var comments = []
+            if self.imageTapped == ImageIdentifier.ImageTwo{
+                comments = self.feedItem.comments.commentsPhotoTwo
+            }
             if self.imageTapped == ImageIdentifier.ImageOne {
                 comments = self.feedItem.comments.commentsPhotoOne
             }
             
-            cell.setupCell(comments[indexPath.row - 1])
+            cell.setupCell(comments[indexPath.row - 2] as! SPActivity)
             return cell
         }
     }
@@ -85,15 +101,18 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             comments = self.feedItem.comments.commentsPhotoOne
         }
 
-        return comments.count + 1
+        return comments.count + 2 //for two static cells
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(indexPath.row == 0){
-            return 382;
+            return 382
+        }
+        else if(indexPath.row == 1){
+            return 44
         }
         else{
-            return 44;
+            return 23
         }
         
     }
@@ -105,10 +124,19 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 //        return true
 //    }
     
-    @IBAction func addComment(sender: AnyObject) {
+    func showAllComments() {
         var commentsViewController = SPCommentsViewController()
         commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
         self.navigationController?.pushViewController(commentsViewController, animated: true)
+    }
+    
+    func likeButtonTapped() {
+        println("Like Button Tapped")
+    }
+    
+    func commentButtonTapped() {
+        println("Comment Button Tapped")
+        self.showAllComments()
     }
     //Lazy load input accessory view
 

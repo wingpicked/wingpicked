@@ -14,6 +14,8 @@ enum PhotoUserLikes: Int {
     case SecondPhotoLiked // 2
 }
 
+
+//TODO: This model needs to be broken down into two SPPhoto's each one holding its own likes, comments, percentages, and comments
 class SPFeedItem: NSObject {
     var photos : SPPhotoPair?
     var caption = ""

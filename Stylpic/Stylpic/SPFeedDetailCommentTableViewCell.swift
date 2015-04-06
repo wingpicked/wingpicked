@@ -17,7 +17,7 @@ class SPFeedDetailCommentTableViewCell: SPBaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        height = 200
+        //height = 200
     }
     
     func setupCell(commentActivity: PFObject){

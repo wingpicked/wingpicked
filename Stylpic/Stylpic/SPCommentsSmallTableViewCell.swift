@@ -10,6 +10,7 @@ import UIKit
 
 class SPCommentsSmallTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var commentLabel: TTTAttributedLabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +21,11 @@ class SPCommentsSmallTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setupCell(commentActivity: SPActivity){
+        var comment = "\(commentActivity.fromUser.spDisplayName()) | \(commentActivity.content)"
+        commentLabel.text = comment
+    }
+
     
 }
