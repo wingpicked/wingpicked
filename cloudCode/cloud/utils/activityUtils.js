@@ -19,6 +19,7 @@ function exploreQueryWithType( aType ) {
     activityQuery.greaterThan( 'createdAt', sevenDaysAgo.toDate() );
     activityQuery.descending( 'createdAt' );
     activityQuery.equalTo( 'type', aType );
+    activityQuery.equalTo( 'isArchiveReady', false );
     return activityQuery;
 };
 

@@ -106,6 +106,7 @@ class SPManager: NSObject {
     func getMyClosetItemsWithResultBlock( resultBlock:SPClosetPhotosResultBlock ) {
         var usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
         usersPhotosQuery.includeKey( "user" )
+        usersPhotosQuery.includeKey( "photo" )
         usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser() )
         usersPhotosQuery.whereKey("isVisible", equalTo: true )
         usersPhotosQuery.limit = 1000;
