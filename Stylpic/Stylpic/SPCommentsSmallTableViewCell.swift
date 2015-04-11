@@ -21,16 +21,10 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        commentLabel.delegate = self
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setupCell(commentActivity: SPActivity){
+        commentLabel.delegate = self
         var comment : NSString = "\(commentActivity.fromUser.spDisplayName()) | \(commentActivity.content)"
         commentLabel.text = comment as String
         

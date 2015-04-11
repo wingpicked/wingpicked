@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate {
+class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate {
     
     @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
 //    var comments = ["Hello", "hahaha", "you look nice!"]
@@ -68,6 +68,19 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         else if(indexPath.row == 1){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCollaborationTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCollaborationTableViewCell
+
+            cell.delegate = self
+            
+            if self.imageTapped == ImageIdentifier.ImageOne{
+                cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) likes", forState: .Normal)
+                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountOne) comments", forState: .Normal)
+            }
+            if self.imageTapped == ImageIdentifier.ImageTwo {
+                cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) likes", forState: .Normal)
+                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountTwo) comments", forState: .Normal)
+            }
+            
+            
             return cell
         }
         else {
@@ -116,6 +129,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
     
+    //MARK - LikeCommentButton Delegate Methods
     func likeButtonTapped() {
         println("Like Button Tapped")
     }
@@ -123,6 +137,16 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     func commentButtonTapped() {
         println("Comment Button Tapped")
         self.showAllComments()
+    }
+
+    //MARK - SPFeedDetailCollaboration Delegate Methods
+    func likesButtonTapped() {
+        //TODO: Implement Likes Button Page
+        println("Implement Likes Button Page")
+    }
+    
+    func commentsButtonTapped() {
+        showAllComments()
     }
     
     func didSelectComment(user: SPUser) {

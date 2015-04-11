@@ -16,5 +16,6 @@
 @property (nonatomic) SPPhoto *photoTwo;
 @property (nonatomic) NSString *caption;
 @property (nonatomic) SPUser *user;
+@property (nonatomic) NSDate *updatedAt;
 @property (nonatomic) NSNumber *isArchiveReady;
 @end

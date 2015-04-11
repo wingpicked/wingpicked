@@ -26,10 +26,10 @@ class SPFeedItem: NSObject {
     var percentageLikedOne = 0.0
     var percentageLikedTwo = 0.0
     var username = ""
-    var userFriendlyTimestamp: String?
     var userProfilePicture : PFFile?
     var photoUserLikes = PhotoUserLikes.NoPhotoLiked
     var comments = SPPhotosComments()
+    var timeintervalSincePost : NSString?
     
     func setupWithServerFeedItem( serverFeedItem: Dictionary<String, AnyObject> ) {
         self.caption = serverFeedItem[ "caption" ] as! String
@@ -49,5 +49,12 @@ class SPFeedItem: NSObject {
         self.username = serverFeedItem[ "username" ] as! String
         let photoUserLikes = serverFeedItem[ "photoUserLikes" ] as! Int
         self.photoUserLikes = PhotoUserLikes( rawValue: photoUserLikes )!
+        
+        
+        let timeIntervalFormatter = TTTTimeIntervalFormatter()
+        let x = self.photos?.updatedAt.timeIntervalSinceNow
+        if let x = x{
+            self.timeintervalSincePost = timeIntervalFormatter.stringForTimeInterval(x)
+        }
     }
 }
