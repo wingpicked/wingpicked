@@ -124,4 +124,11 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         println("Comment Button Tapped")
         self.showAllComments()
     }
+    
+    func didSelectComment(user: SPUser) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        profileViewController.showWithUser(user)
+    }
 }
