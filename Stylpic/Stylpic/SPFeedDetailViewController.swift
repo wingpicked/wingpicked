@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate {
+class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate {
     
     @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
 //    var comments = ["Hello", "hahaha", "you look nice!"]
@@ -72,6 +72,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
+            cell.delegate = self
             
             //TODO: Refactor the photo pair model to consist of two individual entities
             var comments = []

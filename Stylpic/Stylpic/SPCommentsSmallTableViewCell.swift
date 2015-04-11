@@ -8,12 +8,20 @@
 
 import UIKit
 
-class SPCommentsSmallTableViewCell: UITableViewCell {
+protocol SPCommentsSmallTableViewCellDelegate {
+    func didSelectComment(user: SPUser)
+}
+
+class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate {
 
     @IBOutlet weak var commentLabel: TTTAttributedLabel!
+    var currentUser : SPUser?
+    var delegate : SPCommentsSmallTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        commentLabel.delegate = self
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -23,9 +31,31 @@ class SPCommentsSmallTableViewCell: UITableViewCell {
     }
     
     func setupCell(commentActivity: SPActivity){
-        var comment = "\(commentActivity.fromUser.spDisplayName()) | \(commentActivity.content)"
-        commentLabel.text = comment
+        var comment : NSString = "\(commentActivity.fromUser.spDisplayName()) | \(commentActivity.content)"
+        commentLabel.text = comment as String
+        
+        var range = comment.rangeOfString(commentActivity.fromUser.spDisplayName())
+        currentUser = commentActivity.fromUser
+        commentLabel.addLinkToURL(NSURL(string: "action://show-user"), withRange: range)
+        
     }
+    
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        if(url.scheme!.hasPrefix("action")){
+            if(url.host!.hasPrefix("show-user")){
+                println("SHOW USER!")
+                
+                if let currentUser = self.currentUser{
+                    self.delegate?.didSelectComment(currentUser)
+                }
+                
+            }
+            else {
+                println("Unhandled action")
+            }
+        }
+    }
+    
 
     
 }
