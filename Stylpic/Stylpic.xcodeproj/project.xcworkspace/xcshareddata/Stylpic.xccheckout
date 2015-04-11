@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E7C2CA97B5FBCC3B67B0D2B045A47AF46DD685C0</key>
-		<string>https://bitbucket.org/elementsrtyte/stylpic.git</string>
+		<string>bitbucket.org:elementsrtyte/stylpic.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Stylpic/Stylpic.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/elementsrtyte/stylpic.git</string>
+	<string>bitbucket.org:elementsrtyte/stylpic.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>E7C2CA97B5FBCC3B67B0D2B045A47AF46DD685C0</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Stylpic</string>
+			<string>stylpic</string>
 		</dict>
 	</array>
 </dict>

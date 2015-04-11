@@ -14,6 +14,8 @@ enum PhotoUserLikes: Int {
     case SecondPhotoLiked // 2
 }
 
+
+//TODO: This model needs to be broken down into two SPPhoto's each one holding its own likes, comments, percentages, and comments
 class SPFeedItem: NSObject {
     var photos : SPPhotoPair?
     var caption = ""
@@ -28,6 +30,7 @@ class SPFeedItem: NSObject {
     var userProfilePicture : PFFile?
     var photoUserLikes = PhotoUserLikes.NoPhotoLiked
     var comments = SPPhotosComments()
+    var isCurrentUserFollowing = true
     
     func setupWithServerFeedItem( serverFeedItem: Dictionary<String, AnyObject> ) {
         self.caption = serverFeedItem[ "caption" ] as! String
@@ -45,6 +48,7 @@ class SPFeedItem: NSObject {
         self.percentageLikedOne = serverFeedItem[ "percentageLikedOne" ] as! Double
         self.percentageLikedTwo = serverFeedItem[ "percentageLikedTwo" ] as! Double
         self.username = serverFeedItem[ "username" ] as! String
+        self.isCurrentUserFollowing = serverFeedItem[ "isCurrentUserFollowing" ] as! Bool
         let photoUserLikes = serverFeedItem[ "photoUserLikes" ] as! Int
         self.photoUserLikes = PhotoUserLikes( rawValue: photoUserLikes )!
     }

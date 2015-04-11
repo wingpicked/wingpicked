@@ -75,11 +75,26 @@ Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 
 
 Parse.Cloud.define( 'fetchExploreInfo', function( request, response ) {
-	var activityPromise = activityUtils.queryForExploreActivities( feedItem.ActivityType );
-	activityPromise.then( function( likesPhotoOne, likesPhotoTwo, commentsPhotoOne, commentsPhotoTwo ) {
-	var exploreCalculated = new exploreCalculator.ExploreCalculator( likesPhotoOne, likesPhotoTwo, commentsPhotoOne, commentsPhotoTwo );
-		var payload = { feedItems: exploreCalculated.feedItemsPayload };
-		response.success( payload );
+	var Activity = Parse.Object.extend( 'Activity' );
+	var followingQuery = new Parse.Query( Activity );
+	followingQuery.include( 'photoPair' );
+	followingQuery.include( 'photoPair.user' );
+	followingQuery.include( 'fromUser' );
+	followingQuery.include( 'toUser' );
+	followingQuery.limit( 1000 );
+	followingQuery.equalTo( 'fromUser', request.user );
+	followingQuery.equalTo( 'isArchiveReady', false );
+	followingQuery.equalTo( 'type', feedItem.ActivityType.Follow );
+	var followingPromise = followingQuery.find();
+	followingPromise.then( function( followingActivities ) {
+		var activityPromise = activityUtils.queryForExploreActivities( feedItem.ActivityType );
+		activityPromise.then( function( likesPhotoOne, likesPhotoTwo, commentsPhotoOne, commentsPhotoTwo ) {
+			var exploreCalculated = new exploreCalculator.ExploreCalculator(likesPhotoOne, likesPhotoTwo, commentsPhotoOne, commentsPhotoTwo, followingActivities);
+			var payload = {feedItems: exploreCalculated.feedItemsPayload};
+			response.success(payload);
+		}, function( error ) {
+			response.error( error );
+		});
 	}, function( error ) {
 		response.error( error );
 	});

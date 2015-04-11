@@ -17,3 +17,4 @@
 #import "SPClosetPhoto.h"
 #import "SPPhoto.h"
 #import "UIImage+BackgroundImage.h"
+#import "TTTAttributedLabel.h"

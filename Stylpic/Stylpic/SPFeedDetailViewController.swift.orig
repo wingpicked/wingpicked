@@ -50,13 +50,17 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
 
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
+<<<<<<< HEAD
+        self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
+//        self.feedItem.
+//        self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWith
+=======
         self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
         self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
-        var followButtonText = self.feedItem.isCurrentUserFollowing ? "Following" : "Follow"
-        self.navigationController!.navigationItem.rightBarButtonItem = UIBarButtonItem(title: followButtonText, style: UIBarButtonItemStyle.Plain, target: self, action: "followButtonDidTap" )
         self.tableViewFooterView.delegate = self
         self.tableView.tableFooterView = tableViewFooterView
+>>>>>>> 989dd99d2625047ae26fe69b7ac9d5657e6dd312
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -132,19 +136,5 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
         self.navigationController?.pushViewController(profileViewController, animated: true)
         profileViewController.showWithUser(user)
-    }
-    
-    func followButtonDidTap() {
-        if self.feedItem.isCurrentUserFollowing {
-            SPManager.sharedInstance.unfollowUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                println( "unfollowed User" )
-            })
-        } else {
-            SPManager.sharedInstance.followUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                println( "followed User" )
-            })
-        }
-        
-        
     }
 }
