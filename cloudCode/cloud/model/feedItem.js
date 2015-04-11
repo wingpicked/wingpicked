@@ -104,7 +104,7 @@ var FeedItem = function( aPhotoPair ) {
 	this.percentageLikedTwo = 0.0;
 	this.score = 0;
 	this.username = aPhotoPair.has( 'user' ) ? aPhotoPair.get( 'user' ).getUsername() : '';
-
+	this.isCurrentUserFollowing = true;
 	// var userFriendlyTimestamp = new Date(); determined on client
 	this.userProfilePicture = null; // pffile
 	this.photoUserLikes = PhotoUserLikes.NoPhotoLiked;
