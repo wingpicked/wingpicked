@@ -30,6 +30,7 @@ class SPFeedItem: NSObject {
     var photoUserLikes = PhotoUserLikes.NoPhotoLiked
     var comments = SPPhotosComments()
     var timeintervalSincePost : NSString?
+    var isCurrentUserFollowing = true
     
     func setupWithServerFeedItem( serverFeedItem: Dictionary<String, AnyObject> ) {
         self.caption = serverFeedItem[ "caption" ] as! String
