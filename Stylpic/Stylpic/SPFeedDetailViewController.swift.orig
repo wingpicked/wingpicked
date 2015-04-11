@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate {
+class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate {
     
     @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
 //    var comments = ["Hello", "hahaha", "you look nice!"]
@@ -50,13 +50,17 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
 
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
+<<<<<<< HEAD
+        self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
+//        self.feedItem.
+//        self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWith
+=======
         self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
         self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
-        var followButtonText = self.feedItem.isCurrentUserFollowing ? "Following" : "Follow"
-        self.navigationController!.navigationItem.rightBarButtonItem = UIBarButtonItem(title: followButtonText, style: UIBarButtonItemStyle.Plain, target: self, action: "followButtonDidTap" )
         self.tableViewFooterView.delegate = self
         self.tableView.tableFooterView = tableViewFooterView
+>>>>>>> 989dd99d2625047ae26fe69b7ac9d5657e6dd312
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -70,19 +74,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         else if(indexPath.row == 1){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCollaborationTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCollaborationTableViewCell
-
-            cell.delegate = self
-            
-            if self.imageTapped == ImageIdentifier.ImageOne{
-                cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) likes", forState: .Normal)
-                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountOne) comments", forState: .Normal)
-            }
-            if self.imageTapped == ImageIdentifier.ImageTwo {
-                cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) likes", forState: .Normal)
-                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountTwo) comments", forState: .Normal)
-            }
-            
-            
             return cell
         }
         else {
@@ -131,7 +122,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
     
-    //MARK - LikeCommentButton Delegate Methods
     func likeButtonTapped() {
         println("Like Button Tapped")
     }
@@ -140,35 +130,11 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         println("Comment Button Tapped")
         self.showAllComments()
     }
-
-    //MARK - SPFeedDetailCollaboration Delegate Methods
-    func likesButtonTapped() {
-        //TODO: Implement Likes Button Page
-        println("Implement Likes Button Page")
-    }
-    
-    func commentsButtonTapped() {
-        showAllComments()
-    }
     
     func didSelectComment(user: SPUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
         self.navigationController?.pushViewController(profileViewController, animated: true)
         profileViewController.showWithUser(user)
-    }
-    
-    func followButtonDidTap() {
-        if self.feedItem.isCurrentUserFollowing {
-            SPManager.sharedInstance.unfollowUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                println( "unfollowed User" )
-            })
-        } else {
-            SPManager.sharedInstance.followUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                println( "followed User" )
-            })
-        }
-        
-        
     }
 }

@@ -47,6 +47,7 @@ class SPFeedItem: NSObject {
         self.percentageLikedOne = serverFeedItem[ "percentageLikedOne" ] as! Double
         self.percentageLikedTwo = serverFeedItem[ "percentageLikedTwo" ] as! Double
         self.username = serverFeedItem[ "username" ] as! String
+        self.isCurrentUserFollowing = serverFeedItem[ "isCurrentUserFollowing" ] as! Bool
         let photoUserLikes = serverFeedItem[ "photoUserLikes" ] as! Int
         self.photoUserLikes = PhotoUserLikes( rawValue: photoUserLikes )!
         
