@@ -39,10 +39,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         super.init(nibName: "SPFeedDetailViewController", bundle: nil)
     }
     
-//    override init() {
-//        super.init(nibName: "SPFeedDetailViewController", bundle: nil)
-//    }
-
     required init(coder aDecoder: NSCoder) {
         self.imageFile = PFFile() //TODO: Place default image here.
         self.feedItem = SPFeedItem()
@@ -53,13 +49,9 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
-//        self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
-        
         self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
-        
         self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
         self.tableViewFooterView.delegate = self
         self.tableView.tableFooterView = tableViewFooterView
@@ -116,13 +108,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         
     }
-//    
-//    func textFieldShouldReturn(textField: UITextField) -> Bool { posting a comment happens in the comment view
-////        comments.append(textField.text)
-//        self.tableView.reloadData()
-//        textField.resignFirstResponder()
-//        return true
-//    }
     
     func showAllComments() {
         var commentsViewController = SPCommentsViewController()
@@ -138,21 +123,4 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         println("Comment Button Tapped")
         self.showAllComments()
     }
-    //Lazy load input accessory view
-
-    //    - (UIView *)inputAccessoryView {
-//    if (!inputAccessoryView) {
-//    CGRect accessFrame = CGRectMake(0.0, 0.0, 768.0, 77.0);
-//    inputAccessoryView = [[UIView alloc] initWithFrame:accessFrame];
-//    inputAccessoryView.backgroundColor = [UIColor blueColor];
-//    UIButton *compButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    compButton.frame = CGRectMake(313.0, 20.0, 158.0, 37.0);
-//    [compButton setTitle: @"Word Completions" forState:UIControlStateNormal];
-//    [compButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [compButton addTarget:self action:@selector(completeCurrentWord:)
-//    forControlEvents:UIControlEventTouchUpInside];
-//    [inputAccessoryView addSubview:compButton];
-//    }
-//    return inputAccessoryView;
-//    }
 }
