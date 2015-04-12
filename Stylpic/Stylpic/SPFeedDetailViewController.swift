@@ -11,12 +11,6 @@ import UIKit
 
 class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate {
     
-    @IBOutlet weak var commentInputAccessoryView: CommentInputAccessoryView!
-//    var comments = ["Hello", "hahaha", "you look nice!"]
-    lazy var inputAccessoryViewz : UIView = CommentInputAccessoryView()
-
-    //@IBOutlet weak var commentTextField: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
     var imageFile : PFFile
     var feedItem: SPFeedItem
