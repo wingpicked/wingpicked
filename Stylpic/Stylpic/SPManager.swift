@@ -19,6 +19,7 @@ typealias SPPFObjectResultsBlock = ( savedObject: SPActivity?, error: NSError? )
 typealias SPProfileInfoResultsBlock = ( profileObject: SPProfileInfo?, error: NSError? ) -> Void
 typealias SPPFFilesResultBlock = ( pfFiles: [PFFile]?, error: NSError? ) -> Void
 typealias SPClosetPhotosResultBlock = ( closetPhotos: [SPClosetPhoto]?, error: NSError? ) -> Void
+typealias SPActivityResultBlock = ( activities: [SPActivity]?, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -265,6 +266,21 @@ class SPManager: NSObject {
                 println( error )
             }
         }
+    }
+    
+    func getPhotoPairLikes( photoPairObjectId:String, likesPhotoIdentifier:ActivityType, resultBlock:SPActivityResultBlock ) {
+        var params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(unsignedInteger:likesPhotoIdentifier.rawValue) ]
+        PFCloud.callFunctionInBackground("photoPairLikes", withParameters: params) { (payload, error) -> Void in
+            if error == nil {
+                var likes = payload["likes"] as! [SPActivity]
+                resultBlock(activities: likes, error: nil)
+            } else {
+                println( error )
+                resultBlock( activities: nil, error: error)
+            }
+        }
+        
+        
     }
     
     //Low priority
