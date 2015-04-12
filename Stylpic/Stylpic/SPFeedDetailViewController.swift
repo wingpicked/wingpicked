@@ -53,8 +53,9 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
         self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
-        var followButtonText = self.feedItem.isCurrentUserFollowing ? "Following" : "Follow"
-        self.navigationController!.navigationItem.rightBarButtonItem = UIBarButtonItem(title: followButtonText, style: UIBarButtonItemStyle.Plain, target: self, action: "followButtonDidTap" )
+        
+        self.setupFollowButton()
+
         self.tableViewFooterView.delegate = self
         self.tableView.tableFooterView = tableViewFooterView
     }
@@ -112,6 +113,19 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
+    func setupFollowButton() {
+        
+        if self.feedItem.photos?.user.objectId != SPUser.currentUser().objectId {
+            var followButtonName = self.feedItem.isCurrentUserFollowing ? "Button_following_NavBar" : "Button_follow_NavBar"
+            var rightButtonImageView = UIImageView(image:UIImage(named:followButtonName))
+            rightButtonImageView.userInteractionEnabled = true
+            var tapRecognizer = UITapGestureRecognizer(target: self, action: "followButtonDidTap")
+            rightButtonImageView.addGestureRecognizer(tapRecognizer)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButtonImageView)
+            
+        }
+    }
+    
     func showAllComments() {
         var commentsViewController = SPCommentsViewController()
         commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
@@ -145,6 +159,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             })
         }
         
-        
+        self.feedItem.isCurrentUserFollowing = !self.feedItem.isCurrentUserFollowing
+        self.setupFollowButton()
     }
 }

@@ -26,7 +26,6 @@
 		381B476A1ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */; };
 		3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E01A560A5800191BDA /* AppDelegate.swift */; };
 		3845F7E81A560A5800191BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E61A560A5800191BDA /* Main.storyboard */; };
-		3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E91A560A5800191BDA /* Images.xcassets */; };
 		3845F7F91A560A5800191BDA /* StylpicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7F81A560A5800191BDA /* StylpicTests.swift */; };
 		3845F8071A560A8800191BDA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8021A560A8800191BDA /* Bolts.framework */; };
 		3845F8081A560A8800191BDA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8031A560A8800191BDA /* Parse.framework */; };
@@ -82,6 +81,7 @@
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
 		483097C91ABF8DDB0076331C /* SPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C81ABF8DDB0076331C /* SPActivity.m */; };
 		483097CB1ABF93780076331C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483097CA1ABF93780076331C /* Constants.swift */; };
+		484770B81AD9DC2F007045E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 484770B71AD9DC2F007045E5 /* Images.xcassets */; };
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
@@ -142,7 +142,6 @@
 		3845F7DF1A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7E01A560A5800191BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3845F7E71A560A5800191BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3845F7E91A560A5800191BDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3845F7F21A560A5800191BDA /* StylpicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StylpicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F7F71A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7F81A560A5800191BDA /* StylpicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylpicTests.swift; sourceTree = "<group>"; };
@@ -211,6 +210,7 @@
 		483097C71ABF8DDB0076331C /* SPActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPActivity.h; sourceTree = "<group>"; };
 		483097C81ABF8DDB0076331C /* SPActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPActivity.m; sourceTree = "<group>"; };
 		483097CA1ABF93780076331C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		484770B71AD9DC2F007045E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -349,6 +349,7 @@
 		3845F7DD1A560A5800191BDA /* Stylpic */ = {
 			isa = PBXGroup;
 			children = (
+				484770B71AD9DC2F007045E5 /* Images.xcassets */,
 				3845F7E61A560A5800191BDA /* Main.storyboard */,
 				387463681AA3FA5B002E0565 /* BLL */,
 				EC56C2471AB2B0FB002C36F7 /* SPCommonComponents */,
@@ -360,7 +361,6 @@
 				38BB44571A66317E004CD444 /* SPProfile */,
 				38BB445A1A6631B8004CD444 /* SPCloset */,
 				3811EA891AD0967300F234AF /* SPTabBarController.swift */,
-				3845F7E91A560A5800191BDA /* Images.xcassets */,
 				3863A7001A7F6D1C00AFE938 /* CustomFonts */,
 				38160A1A1AB508DC005504AD /* Third Party Libraries */,
 				3845F7DE1A560A5800191BDA /* Supporting Files */,
@@ -711,13 +711,13 @@
 				4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */,
 				38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */,
 				38F87B3D1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib in Resources */,
+				484770B81AD9DC2F007045E5 /* Images.xcassets in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
 				38CD696C1AD231210003F8A4 /* SPLikeCommentButtonView.xib in Resources */,
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
 				38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */,
-				3845F7EA1A560A5800191BDA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
