@@ -15,17 +15,13 @@ protocol SPFeedDetailCollaborationTableViewCellDelegate{
 
 class SPFeedDetailCollaborationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var likeCountButton: UIButton!
+    @IBOutlet weak var commentCountButton: UIButton!
     var delegate : SPFeedDetailCollaborationTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     @IBAction func likesButtonTapped(sender: AnyObject) {

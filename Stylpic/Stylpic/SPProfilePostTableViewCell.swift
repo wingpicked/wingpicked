@@ -29,7 +29,6 @@ class SPProfilePostTableViewCell: SPBaseFeedViewTableViewCell {
         self.statsArea.hidden = hideUI
     }
     @IBAction func optionsButtonTapped(sender: AnyObject) {
-        println("XC0DE SUX0RZ")
         self.profilePostDelegate?.deleteFeedItem( self.feedItem! )
     }
 }

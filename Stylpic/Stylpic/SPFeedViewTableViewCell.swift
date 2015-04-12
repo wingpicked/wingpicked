@@ -87,6 +87,13 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         let noPhotoLiked = self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked
         let usersOwnPhotoPair = self.feedItem?.photos?.user.objectId == PFUser.currentUser().objectId
         statsArea.hidden = !usersOwnPhotoPair && noPhotoLiked
+        
+        if let timeIntervalSincePost = feedItem.timeintervalSincePost{
+            postedTimeLabel.text = String(timeIntervalSincePost)
+        }
+        else{
+            postedTimeLabel.text = "NA"
+        }
     }
     
     

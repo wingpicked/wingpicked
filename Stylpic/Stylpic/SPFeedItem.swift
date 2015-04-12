@@ -26,10 +26,10 @@ class SPFeedItem: NSObject {
     var percentageLikedOne = 0.0
     var percentageLikedTwo = 0.0
     var username = ""
-    var userFriendlyTimestamp: String?
     var userProfilePicture : PFFile?
     var photoUserLikes = PhotoUserLikes.NoPhotoLiked
     var comments = SPPhotosComments()
+    var timeintervalSincePost : NSString?
     var isCurrentUserFollowing = true
     
     func setupWithServerFeedItem( serverFeedItem: Dictionary<String, AnyObject> ) {
@@ -51,5 +51,12 @@ class SPFeedItem: NSObject {
         self.isCurrentUserFollowing = serverFeedItem[ "isCurrentUserFollowing" ] as! Bool
         let photoUserLikes = serverFeedItem[ "photoUserLikes" ] as! Int
         self.photoUserLikes = PhotoUserLikes( rawValue: photoUserLikes )!
+        
+        
+        let timeIntervalFormatter = TTTTimeIntervalFormatter()
+        let x = self.photos?.updatedAt.timeIntervalSinceNow
+        if let x = x{
+            self.timeintervalSincePost = timeIntervalFormatter.stringForTimeInterval(x)
+        }
     }
 }

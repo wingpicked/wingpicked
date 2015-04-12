@@ -182,22 +182,31 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
     
     func deleteFeedItem( feedItem: SPFeedItem ) {
-        var feedPosts = self.profileInfoViewModel.posts
-        var indexToRemove = -1
-        for var i = feedPosts.count - 1; i >= 0; --i {
-            var searchPost = feedPosts[ i ]
-            if searchPost == feedItem {
-                indexToRemove = i
-                break
+        
+        let alertController = UIAlertController(title: "Are you sure you want to delete this post?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { (action) -> Void in
+            var feedPosts = self.profileInfoViewModel.posts
+            var indexToRemove = -1
+            for var i = feedPosts.count - 1; i >= 0; --i {
+                var searchPost = feedPosts[ i ]
+                if searchPost == feedItem {
+                    indexToRemove = i
+                    break
+                }
+            }
+            
+            if indexToRemove >= 0 {
+                feedPosts.removeAtIndex( indexToRemove )
+                SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId )
+                self.tableView.reloadData()
             }
         }
-        
-        if indexToRemove >= 0 {
-            feedPosts.removeAtIndex( indexToRemove )
-            SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId )
-            self.tableView.reloadData()
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
         }
-        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }
