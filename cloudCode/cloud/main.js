@@ -78,6 +78,7 @@ Parse.Cloud.define( 'fetchExploreInfo', function( request, response ) {
 	var Activity = Parse.Object.extend( 'Activity' );
 	var followingQuery = new Parse.Query( Activity );
 	followingQuery.include( 'photoPair' );
+	followingQuery.include( 'photoPair.user' );
 	followingQuery.include( 'fromUser' );
 	followingQuery.include( 'toUser' );
 	followingQuery.limit( 1000 );
@@ -98,6 +99,36 @@ Parse.Cloud.define( 'fetchExploreInfo', function( request, response ) {
 		response.error( error );
 	});
 });
+
+
+Parse.Cloud.define( 'photoPairLikes', function( request, response ) {
+	var photoPairObjectId = request.params.photoPairObjectId;
+	var likesPhotoIdentifier = request.params.likesPhotoIdentifier;
+
+	var PhotoPair = Parse.Object.extend( 'PhotoPair' );
+	var mockPhotoPair = new PhotoPair();
+	mockPhotoPair.id = photoPairObjectId;
+
+	var Activity = Parse.Object.extend( 'Activity' );
+	var likesQuery = new Parse.Query( Activity );
+	likesQuery.include( 'photoPair' );
+	likesQuery.include( 'photoPair.user' );
+	likesQuery.include( 'fromUser' );
+	likesQuery.include( 'toUser' );
+	likesQuery.limit( 1000 );
+	likesQuery.equalTo( 'photoPair', mockPhotoPair );
+	likesQuery.equalTo( 'isArchiveReady', false );
+	likesQuery.equalTo( 'type', likesPhotoIdentifier );
+	var likesPromise = likesQuery.find();
+	likesPromise.then( function( likeActivities ) {
+		var payload = { likes: likeActivities };
+		response.success(payload);
+	}, function( error ) {
+		response.error( error );
+	});
+});
+
+
 
 Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 	var currentUser = request.user;
