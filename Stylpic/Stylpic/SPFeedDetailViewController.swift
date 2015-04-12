@@ -151,8 +151,11 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     //MARK - SPFeedDetailCollaboration Delegate Methods
     func likesButtonTapped() {
-        //TODO: Implement Likes Button Page
-        println("Implement Likes Button Page")
+        let likesViewController = SPLikesViewController(nibName: "SPLikesViewController", bundle: nil)
+        likesViewController.imageTapped = self.imageTapped
+        likesViewController.feedItem = self.feedItem
+        
+        self.navigationController?.pushViewController(likesViewController, animated: true)
     }
     
     func commentsButtonTapped() {
