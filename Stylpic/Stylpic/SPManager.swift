@@ -20,6 +20,7 @@ typealias SPProfileInfoResultsBlock = ( profileObject: SPProfileInfo?, error: NS
 typealias SPPFFilesResultBlock = ( pfFiles: [PFFile]?, error: NSError? ) -> Void
 typealias SPClosetPhotosResultBlock = ( closetPhotos: [SPClosetPhoto]?, error: NSError? ) -> Void
 typealias SPActivityResultBlock = ( activities: [SPActivity]?, error: NSError? ) -> Void
+typealias SPUsersResultBlock = ( users: [SPUser]?, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -277,6 +278,23 @@ class SPManager: NSObject {
             } else {
                 println( error )
                 resultBlock( activities: nil, error: error)
+            }
+        }
+        
+        
+    }
+    
+    // parma searchTerms is a string of all the search terms seperated by spaces
+    func getUsersWithSearchTerms( searchTerms:String, resultBlock:SPUsersResultBlock ) {
+        var seperatedSearchTerms = searchTerms.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        var params = [ "searchTerms": seperatedSearchTerms ]
+        PFCloud.callFunctionInBackground("usersWithSearchTerms", withParameters: params) { (users, error) -> Void in
+            if error == nil {
+                var someUsers = users[ "users" ] as! [SPUser]
+                resultBlock( users: someUsers, error: nil )
+            } else {
+                println( error )
+                resultBlock( users: nil, error: error )
             }
         }
         

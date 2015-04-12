@@ -293,6 +293,41 @@ Parse.Cloud.define( 'removeFeedItem', function( request, response ) {
 	});
 });
 
+Parse.Cloud.define( 'usersWithSearchTerms', function( request, response ) {
+	var searchTerms = request.params.searchTerms;
+	var whenPromises = [];
+	_.each( searchTerms, function( aSearchTerm ) {
+		var userFirstNameQuery = new Query(Parse.User);
+		userFirstNameQuery.limit(50);
+		userFirstNameQuery.contains('firstName', aSearchTerm);
+		whenPromises.push( userFirstNameQuery.find() );
+
+		var userLastNameQuery = new Query(Parse.User);
+		userLastNameQuery.limit(50);
+		userLastNameQuery.contains('lastName', aSearchTerm);
+		whenPromises.push( userLastNameQuery.find() );
+	});
+
+	var allResults = Parse.Promise.when( whenPromise );
+	allResults.then( function() {
+		var results = Array.prototype.slice.call(arguments);
+		var uniqueUsers = {};
+		_.each( results, function( someUsers ) {
+			_.each( someUsers, function( aUser ) {
+				var isUserUnique = !_.has( uniqueUsers, someUser.id );
+				if ( isUserUnique ) {
+					uniqueUsers[ someUser.id ] = someUser;
+				}
+			});
+		});
+
+		var users = _.values(uniqueUsers);
+		var payload = { users: users };
+		response.success(payload);
+	}, function(error) {
+		response.error( error );
+	});
+});
 
 
 
