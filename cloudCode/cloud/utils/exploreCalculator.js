@@ -9,7 +9,7 @@ var processActivity = function( anActivity, reference, followingObjectIds ) {
     if ( anActivity.has( 'photoPair' ) ) {
         var photoPair = anActivity.get( 'photoPair' );
         var feedItemForPhotoPair = reference[ photoPair.id ];
-        var photoPairUserObjectId = photoPair.user.id;
+        var photoPairUserObjectId = photoPair.get( 'user' ).id;
         var isCurrentUserFollowing = _.indexOf( followingObjectIds, photoPairUserObjectId ) != -1;
         if ( _.isUndefined( feedItemForPhotoPair ) ) {
             var aFeedItem = new feedItem.FeedItem( photoPair );

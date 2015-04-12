@@ -78,7 +78,6 @@ Parse.Cloud.define( 'fetchExploreInfo', function( request, response ) {
 	var Activity = Parse.Object.extend( 'Activity' );
 	var followingQuery = new Parse.Query( Activity );
 	followingQuery.include( 'photoPair' );
-	followingQuery.include( 'photoPair.user' );
 	followingQuery.include( 'fromUser' );
 	followingQuery.include( 'toUser' );
 	followingQuery.limit( 1000 );
@@ -132,10 +131,23 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		activityQuery.limit( MAX_QUERY_LIMIT );
 		activityQuery.containedIn( 'photoPair', feedPhotos );
 		var activityPromise = activityQuery.find();
-		activityPromise.then( function( someActivities ) {		
+		activityPromise.then( function( someActivities ) {
+
+			var followingObjectIds = [];
+			_.each( scopedVars.followersAndFollowing, function(aFollowerOrFollowing) {
+				var fromUser = aFollowerOrFollowing.get( 'fromUser' );
+				if ( fromUser.id = currentUser.id ) {
+					var followingUserObjectId = aFollowerOrFollowing.get( 'toUser' );
+					followingObjectIds.push( followingUserObjectId );
+				}
+			});
+
 			var feedItemValuesForPhotoPairObjectId = {};
 			_.each( feedPhotos, function( aPhotoPair) {
 				var aFeedItem = new feedItem.FeedItem( aPhotoPair );
+				var photoPairUserObjectId = aPhotoPair.get('user').id;
+				var isCurrentUserFollowing = _.indexOf( followingObjectIds, photoPairUserObjectId ) != -1;
+				aFeedItem.isCurrentUserFollowing = isCurrentUserFollowing;
 				feedItemValuesForPhotoPairObjectId[ aPhotoPair.id ] = aFeedItem;
 			});
 
