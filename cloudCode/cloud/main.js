@@ -121,6 +121,8 @@ Parse.Cloud.define( 'photoPairLikes', function( request, response ) {
 	likesQuery.equalTo( 'type', likesPhotoIdentifier );
 	var likesPromise = likesQuery.find();
 	likesPromise.then( function( likeActivities ) {
+		//var isFollowing = { activity.objectId: false }
+		//var payload = { likes: likeActivities, isFollowing:  };
 		var payload = { likes: likeActivities };
 		response.success(payload);
 	}, function( error ) {
@@ -297,26 +299,26 @@ Parse.Cloud.define( 'usersWithSearchTerms', function( request, response ) {
 	var searchTerms = request.params.searchTerms;
 	var whenPromises = [];
 	_.each( searchTerms, function( aSearchTerm ) {
-		var userFirstNameQuery = new Query(Parse.User);
+		var userFirstNameQuery = new Parse.Query(Parse.User);
 		userFirstNameQuery.limit(50);
 		userFirstNameQuery.contains('firstName', aSearchTerm);
 		whenPromises.push( userFirstNameQuery.find() );
 
-		var userLastNameQuery = new Query(Parse.User);
+		var userLastNameQuery = new Parse.Query(Parse.User);
 		userLastNameQuery.limit(50);
 		userLastNameQuery.contains('lastName', aSearchTerm);
 		whenPromises.push( userLastNameQuery.find() );
 	});
 
-	var allResults = Parse.Promise.when( whenPromise );
+	var allResults = Parse.Promise.when( whenPromises );
 	allResults.then( function() {
 		var results = Array.prototype.slice.call(arguments);
 		var uniqueUsers = {};
 		_.each( results, function( someUsers ) {
 			_.each( someUsers, function( aUser ) {
-				var isUserUnique = !_.has( uniqueUsers, someUser.id );
+				var isUserUnique = !_.has( uniqueUsers, aUser.id );
 				if ( isUserUnique ) {
-					uniqueUsers[ someUser.id ] = someUser;
+					uniqueUsers[ aUser.id ] = aUser;
 				}
 			});
 		});

@@ -291,6 +291,7 @@ class SPManager: NSObject {
         PFCloud.callFunctionInBackground("usersWithSearchTerms", withParameters: params) { (users, error) -> Void in
             if error == nil {
                 var someUsers = users[ "users" ] as! [SPUser]
+                println( someUsers );
                 resultBlock( users: someUsers, error: nil )
             } else {
                 println( error )
