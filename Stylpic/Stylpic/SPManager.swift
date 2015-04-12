@@ -14,8 +14,8 @@ import UIKit
 typealias SPFeedItemsResultBlock = ( feedItems: [SPFeedItem]!, error: NSError?) -> Void
 typealias SPSaveImagesResultsBlock = (imageOne: PFFile?, imageOneThumbnail: PFFile?, imageTwo: PFFile?, imageTwoThumbnail: PFFile?, error: NSError?) -> Void
 typealias SPBoolResultBlock = ( success: Bool, error: NSError? ) -> Void
-typealias SPPFObjectArrayResultBlock = ( comments: Array<PFObject>?, error: NSError?) -> Void
-typealias SPPFObjectResultsBlock = ( savedObject: PFObject?, error: NSError? ) -> Void
+typealias SPPFObjectArrayResultBlock = ( comments: Array<SPActivity>?, error: NSError?) -> Void
+typealias SPPFObjectResultsBlock = ( savedObject: SPActivity?, error: NSError? ) -> Void
 typealias SPProfileInfoResultsBlock = ( profileObject: SPProfileInfo?, error: NSError? ) -> Void
 typealias SPPFFilesResultBlock = ( pfFiles: [PFFile]?, error: NSError? ) -> Void
 typealias SPClosetPhotosResultBlock = ( closetPhotos: [SPClosetPhoto]?, error: NSError? ) -> Void

@@ -11,7 +11,7 @@ import UIKit
 class SPPhotosComments: NSObject {
    
     // array of Activity
-    var commentsPhotoOne : [PFObject] = []
+    var commentsPhotoOne : [SPActivity] = []
     // array of Activity
-    var commentsPhotoTwo : [PFObject] = []
+    var commentsPhotoTwo : [SPActivity] = []
 }

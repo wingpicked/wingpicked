@@ -35,9 +35,9 @@ class SPFeedItem: NSObject {
     func setupWithServerFeedItem( serverFeedItem: Dictionary<String, AnyObject> ) {
         self.caption = serverFeedItem[ "caption" ] as! String
         var comments = serverFeedItem[ "comments" ] as! Dictionary<String, AnyObject>
-        var commentsPhoto1 = comments[ "commentsPhoto1" ] as! Array<PFObject>
+        var commentsPhoto1 = comments[ "commentsPhoto1" ] as! Array<SPActivity>
         self.comments.commentsPhotoOne = commentsPhoto1
-        var commentsPhoto2 = comments[ "commentsPhoto2" ] as! Array<PFObject>
+        var commentsPhoto2 = comments[ "commentsPhoto2" ] as! Array<SPActivity>
         self.comments.commentsPhotoTwo = commentsPhoto2
         
         self.photos = serverFeedItem[ "photoPair" ] as? SPPhotoPair

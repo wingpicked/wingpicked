@@ -18,7 +18,7 @@ class SPCommentsViewController: SLKTextViewController {
 //        super.init(coder: aDecoder)
 //    }
 //    var comments = ["Hey", "What's up", "Dayum Shawty"]
-    var comments: Array<PFObject>?
+    var comments: Array<SPActivity> = []
     var imageTapped: ImageIdentifier = ImageIdentifier.ImageOne
     var feedItem: SPFeedItem?
     
@@ -60,7 +60,7 @@ class SPCommentsViewController: SLKTextViewController {
                 if error == nil {
                     if let savedObject = savedObject {
                         self.tableView.beginUpdates()
-                        self.comments?.insert(savedObject, atIndex: 0)
+                        self.comments.insert(savedObject, atIndex: 0)
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.tableView.endUpdates()
                         
@@ -77,19 +77,15 @@ class SPCommentsViewController: SLKTextViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCommentTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCommentTableViewCell
         
-        var activity = comments?[indexPath.row]
-        cell.commentLabel.text = activity?.objectForKey("content") as! String
+        var activity = comments[indexPath.row]
+        cell.setupCell(activity)
+        //cell.commentLabel.text = activity.objectForKey("content") as! String
         cell.transform = self.tableView.transform;
         return cell
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var commentCount = 0
-        if let comments = comments {
-            commentCount = comments.count
-        }
-        
-        return commentCount
+        return self.comments.count
     }
     
     func setup( feedItem: SPFeedItem?, imageTapped: ImageIdentifier ) {
@@ -106,10 +102,8 @@ class SPCommentsViewController: SLKTextViewController {
             SPManager.sharedInstance.fetchComments(photoPair, imageTapped: activityType, resultBlock: { (someComments, error) -> Void in
                 if error == nil {
                     if let someComments = someComments {
-                        
                         self.comments = someComments
                         if activityType == ActivityType.CommentImageOne {
-                            
                             self.feedItem?.comments.commentsPhotoOne = someComments
                         } else {
                             self.feedItem?.comments.commentsPhotoTwo = someComments

@@ -11,18 +11,19 @@ import UIKit
 class SPFeedDetailCommentTableViewCell: SPBaseTableViewCell {
 
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var profilePictureImageView: UIImageView!
-    var commentActivity: PFObject? // really an SPActivity
-
+    @IBOutlet weak var profilePictureImageView: PFImageView!
+    var commentActivity: SPActivity?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //height = 200
     }
     
-    func setupCell(commentActivity: PFObject){
+    func setupCell(commentActivity: SPActivity){
         self.commentActivity = commentActivity
-        commentLabel.text = self.commentActivity?.objectForKey( "content" ) as? String
+        commentLabel.text = commentActivity.content
+        profilePictureImageView.file = commentActivity.fromUser.profilePicture
+        profilePictureImageView.loadInBackground(nil)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
