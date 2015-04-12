@@ -10,14 +10,6 @@ import UIKit
 
 class SPCommentsViewController: SLKTextViewController {
 
-//    override init() {
-//        super.init(tableViewStyle: UITableViewStyle.Plain)
-//    }
-//
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//    var comments = ["Hey", "What's up", "Dayum Shawty"]
     var comments: Array<SPActivity> = []
     var imageTapped: ImageIdentifier = ImageIdentifier.ImageOne
     var feedItem: SPFeedItem?
@@ -25,24 +17,14 @@ class SPCommentsViewController: SLKTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // Do any additional setup after loading the view.
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
 
         self.leftButton.setImage(UIImage(named: "Button_like_selected"), forState: UIControlState.Normal)
-        
-//        var likeButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-//        likeButton.frame = CGRectMake(8, 16, 24, 24)
-//        likeButton.setImage(UIImage(named: "Button_like_selected"), forState: UIControlState.Normal)
-//        likeButton.targetForAction(Selector("didTapLikeButton:"), withSender: self)
-//        likeButton.addTarget(self, action: Selector("didTapLikeButton:"), forControlEvents: UIControlEvents.TouchUpInside)
     }
-    
 
-    
     override func didPressLeftButton(sender: AnyObject!) {
         println("Like")
-        
     }
     
     override func didPressRightButton(sender: AnyObject!) {
