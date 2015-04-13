@@ -43,6 +43,8 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
 
+        var findFriendsImage = UIImage( named: "Icon_invite" )
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: findFriendsImage, style: UIBarButtonItemStyle.Plain, target: self, action: "findFriendButtonDidTap")
     }
     
     func showWithUser( user: SPUser ) {
@@ -209,4 +211,11 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 
+    
+    func findFriendButtonDidTap( sender:AnyObject ) {
+        
+//        self.navigationController?.pushViewController(<#viewController: UIViewController#>, animated: <#Bool#>)
+        
+        
+    }
 }

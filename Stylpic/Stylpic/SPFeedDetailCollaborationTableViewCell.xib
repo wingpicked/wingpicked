@@ -44,7 +44,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentCountButton" destination="1eg-CR-zvn" id="PD7-Zo-l0H"/>
-                <outlet property="likeCountButton" destination="QOO-xh-szz" id="rtk-Rh-S7I"/>
+                <outlet property="likeCountButton" destination="QOO-xh-szz" id="5sq-HV-jMP"/>
             </connections>
         </tableViewCell>
     </objects>
