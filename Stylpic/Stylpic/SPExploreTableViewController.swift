@@ -10,15 +10,24 @@ import UIKit
 
 class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelegate {//, UITableViewDataSource, UITableViewDelegate {
 
+    var searchBar : UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 44))
+        searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 44))
         searchBar.delegate = self
         self.tableView.tableHeaderView = searchBar
-
+        
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+        self.tableView.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
+    
+    func dismissKeyboard(sender: AnyObject?){
+        searchBar.resignFirstResponder()
+    }
     
     override func downloadAllImages() {
         
@@ -31,10 +40,14 @@ class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelega
         })
     }
     
-    // called when keyboard search button pressed
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        SPManager.sharedInstance.getUsersWithSearchTerms(searchBar.text, resultBlock: { (users, error) -> Void in
-            
-        })
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+
+        let searchResultsViewController = SPSearchResultsViewController(nibName: "SPSearchResultsViewController", bundle: nil)
+        searchResultsViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        
+        let nc = UINavigationController(rootViewController: searchResultsViewController)
+        self.presentViewController(nc, animated: true, completion: nil)
+        
+        return false
     }
 }
