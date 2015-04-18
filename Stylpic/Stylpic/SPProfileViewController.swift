@@ -44,7 +44,10 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.refreshControl = rc;
 
         var findFriendsImage = UIImage( named: "Icon_invite" )
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: findFriendsImage, style: UIBarButtonItemStyle.Plain, target: self, action: "findFriendButtonDidTap")
+        var findFriendsButton = UIButton(frame: CGRectMake( 0,0, 30,20))
+        findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
+        findFriendsButton.addTarget(self, action: "findFriendsButtonDidTap:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
     }
     
     func showWithUser( user: SPUser ) {
@@ -212,9 +215,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
 
     
-    func findFriendButtonDidTap( sender:AnyObject ) {
-        
-//        self.navigationController?.pushViewController(<#viewController: UIViewController#>, animated: <#Bool#>)
+    func findFriendsButtonDidTap( sender:AnyObject ) {
+        var findFriendsController = SPFindFriendsTableViewController()
+        self.navigationController?.pushViewController(findFriendsController, animated: true)
         
         
     }

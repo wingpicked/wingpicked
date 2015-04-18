@@ -8,12 +8,14 @@
 
 import UIKit
 
-class SPInviteFriendsTableViewController: UITableViewController {
+class SPFindFriendsTableViewController: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        SPManager.sharedInstance.getFacebookFriendsWithApp { (users, error) -> Void in
+            
+        }
         
         
     }

@@ -85,7 +85,7 @@
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
 		483097C91ABF8DDB0076331C /* SPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C81ABF8DDB0076331C /* SPActivity.m */; };
 		483097CB1ABF93780076331C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483097CA1ABF93780076331C /* Constants.swift */; };
-		4842AA341ADB56190013C726 /* SPInviteFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4842AA331ADB56190013C726 /* SPInviteFriendsTableViewController.swift */; };
+		4842AA341ADB56190013C726 /* SPFindFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4842AA331ADB56190013C726 /* SPFindFriendsTableViewController.swift */; };
 		484770B81AD9DC2F007045E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 484770B71AD9DC2F007045E5 /* Images.xcassets */; };
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
@@ -218,7 +218,7 @@
 		483097C71ABF8DDB0076331C /* SPActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPActivity.h; sourceTree = "<group>"; };
 		483097C81ABF8DDB0076331C /* SPActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPActivity.m; sourceTree = "<group>"; };
 		483097CA1ABF93780076331C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		4842AA331ADB56190013C726 /* SPInviteFriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPInviteFriendsTableViewController.swift; sourceTree = "<group>"; };
+		4842AA331ADB56190013C726 /* SPFindFriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFindFriendsTableViewController.swift; sourceTree = "<group>"; };
 		484770B71AD9DC2F007045E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
@@ -569,8 +569,8 @@
 			isa = PBXGroup;
 			children = (
 				38BB44551A663174004CD444 /* SPProfileViewController.swift */,
+				4842AA331ADB56190013C726 /* SPFindFriendsTableViewController.swift */,
 				38EAD46F1AB66D9600A6FD81 /* Cells */,
-				4842AA331ADB56190013C726 /* SPInviteFriendsTableViewController.swift */,
 			);
 			name = SPProfile;
 			sourceTree = "<group>";
@@ -768,7 +768,7 @@
 				4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */,
 				381B47691ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift in Sources */,
 				38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */,
-				4842AA341ADB56190013C726 /* SPInviteFriendsTableViewController.swift in Sources */,
+				4842AA341ADB56190013C726 /* SPFindFriendsTableViewController.swift in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPBaseTableViewController.swift in Sources */,
 				38F87B3C1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift in Sources */,
 				380671151AD9F7B10074E4FE /* SPLikesTableViewCell.swift in Sources */,
