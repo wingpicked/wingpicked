@@ -14,7 +14,8 @@ class SPProfileFollowTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var profilePictureImageView: PFImageView!
 
-    var isFollowing = false
+//    var isFollowing = false
+    var spUser: SPUser?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,15 +23,30 @@ class SPProfileFollowTableViewCell: UITableViewCell {
     }
 
     @IBAction func followButtonTouchUpInside(sender: AnyObject) {
-        isFollowing = !isFollowing
-        updateIsFollowing(isFollowing)
+        self.spUser!.isFollowing = NSNumber( bool: !(self.spUser!.isFollowing.boolValue) )
+        updateIsFollowing(self.spUser!.isFollowing.boolValue )
+        if spUser!.isFollowing.boolValue {
+            // then follow user
+            SPManager.sharedInstance.followUser(self.spUser, resultBlock: { (savedObject, error) -> Void in
+                if error == nil {
+                    println( "followed user" )
+                }
+            })
+        } else {
+            SPManager.sharedInstance.unfollowUser(self.spUser, resultBlock: { (success, error) -> Void in
+                if error == nil {
+                    println( "unfollowed user")
+                }
+            })
+        }
+        
     }
     
     func setupCell(user :SPUser){
-        isFollowing =  user.isFollowing.boolValue
-        updateIsFollowing(user.isFollowing.boolValue)
-        label.text = user.spDisplayName()
-        profilePictureImageView.file = user.profilePicture
+        self.spUser = user
+        updateIsFollowing(self.spUser!.isFollowing.boolValue)
+        label.text = self.spUser!.spDisplayName()
+        profilePictureImageView.file = self.spUser!.profilePicture
         profilePictureImageView.loadInBackground(nil)
     }
     

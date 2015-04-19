@@ -310,30 +310,77 @@ class SPManager: NSObject {
                 println( result )
                 var facebookIds = [String]()
                 var friendDatas = result["data"] as! [AnyObject]
-                for friendData in friendDatas {
-                    var aFacebookId = friendData["id"] as! String
-                    facebookIds.append( aFacebookId )
-                }
-                
-                var userQuery = PFUser.query()
-                userQuery.limit = facebookIds.count
-                userQuery.whereKey("facebookId", containedIn:facebookIds)
-                userQuery.findObjectsInBackgroundWithBlock({ (users, error) -> Void in
-                    if error == nil {
-                        var parseUsers = users as! [SPUser]
-                        
-                        
-                        
-                        
-                    } else {
-                        println( error )
+                if friendDatas.count > 0 {
+                    for friendData in friendDatas {
+                        var aFacebookId = friendData["id"] as! String
+                        facebookIds.append( aFacebookId )
                     }
-                })
-                
+                    
+                    var userQuery = PFUser.query()
+                    userQuery.limit = facebookIds.count
+                    userQuery.whereKey("facebookId", containedIn:facebookIds)
+                    userQuery.findObjectsInBackgroundWithBlock({ (users, error) -> Void in
+                        if error == nil {
+                            var parseUsers = users as! [SPUser]
+                            if parseUsers.count > 0 {
+                                var userForFollowingInfo = [String: SPUser]()
+                                for spUser in parseUsers {
+                                    spUser.isFollowing = NSNumber( bool: false )
+                                    userForFollowingInfo[ spUser.objectId ] = spUser
+                                }
+                                
+                                self.followingActivitiesWithCandidateUsers( parseUsers, resultBlock: { (followingActivities, error) -> Void in
+                                    if error == nil {
+                                        for activity in followingActivities! {
+                                            var spActivity = activity
+                                            var followingUser = spActivity.toUser
+                                            var aFollowingInfo = userForFollowingInfo[ followingUser.objectId ]
+                                            aFollowingInfo!.isFollowing = NSNumber(bool: true)
+                                        }
+                                        
+                                        resultBlock( users: parseUsers, error: nil )
+                                    } else {
+                                        println( error )
+                                        resultBlock( users: nil, error: error)
+                                    }
+                                })
+                                
+                            } else {
+                                // then no results
+                                resultBlock( users: [SPUser](), error: nil)
+                            }
+                        } else {
+                            println( error )
+                            resultBlock( users: nil, error: error)
+                        }
+                    })
+                } else {
+                    resultBlock( users: [SPUser](), error: nil)
+                }
                 
             } else {
                 println( error )
-                resultBlock(users: nil, error: error)
+                resultBlock( users: nil, error: error)
+            }
+        }
+        
+    }
+    
+    
+    func followingActivitiesWithCandidateUsers( candidateFollowingUsers: [SPUser], resultBlock: SPActivityResultBlock ) {
+        var fromUser = SPUser.currentUser()
+        var activityQuery = PFQuery( className: "Activity" )
+        activityQuery.whereKey( "fromUser", equalTo: fromUser )
+        activityQuery.whereKey( "toUser", containedIn: candidateFollowingUsers )
+        activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
+        activityQuery.whereKey( "isArchiveReady", equalTo: false )
+        activityQuery.findObjectsInBackgroundWithBlock { (activities, error) -> Void in
+            if error == nil {
+                var foundActivities = activities as! [SPActivity]
+                resultBlock( activities: foundActivities, error: error )
+            } else {
+                println( error )
+                resultBlock( activities: nil, error: error )
             }
         }
         
