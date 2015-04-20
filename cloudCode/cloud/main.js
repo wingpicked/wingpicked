@@ -351,6 +351,51 @@ function sendPushToUser( user, withMessage ) {
 	});
 }
 
+Parse.Cloud.beforeSave('Activity', function(request, response) {
+	var activity = request.object;
+	var activityType = activity.get( 'type' );
+	var photoPair = activity.get( 'photoPair' );
+	var requestUser = request.user;
+	var fromUser = activity.get( 'fromUser' );
+	switch (activityType) {
+		case feedItem.ActivityType.LikeImageOne:
+			var Activity = Parse.Object.extend('Activity');
+			var activityQuery = new Parse.Query(Activity);
+			activityQuery.equalTo('photoPair', photoPair);
+			var types = [feedItem.ActivityType.LikeImageOne, feedItem.ActivityType.LikeImageTwo];
+			activityQuery.containedIn('type', types);
+			activityQuery.equalTo( 'isArchiveReady' );
+			var activityPromise = activityQuery.find();
+			activityPromise.then( function( activities ) {
+				if ( activities > 0 ) {
+					response.error( 'you already liked a photo from this post');
+				} else {
+					response.success();
+				}
+			});
+			break;
+		case feedItem.ActivityType.LikeImageTwo:
+			var Activity = Parse.Object.extend('Activity');
+			var activityQuery = new Parse.Query(Activity);
+			activityQuery.equalTo('photoPair', photoPair);
+			var types = [feedItem.ActivityType.LikeImageOne, feedItem.ActivityType.LikeImageTwo];
+			activityQuery.containedIn('type', types);
+			activityQuery.equalTo( 'isArchiveReady' );
+			var activityPromise = activityQuery.find();
+			activityPromise.then( function( activities ) {
+				if ( activities > 0 ) {
+					response.error( 'you already liked a photo from this post');
+				} else {
+					response.success();
+				}
+			});
+			break;
+		default:
+			response.success();
+			break;
+	}
+});
+
 
 Parse.Cloud.afterSave('Activity', function(request) {
 	var activity = request.object;
