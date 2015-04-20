@@ -331,6 +331,60 @@ Parse.Cloud.define( 'usersWithSearchTerms', function( request, response ) {
 	});
 });
 
+function sendPushToUser( user, withMessage ) {
+	var query = new Parse.Query( Parse.Installation );
+	query.equalTo( 'user', user ); // Set our channel
+	Parse.Push.send({
+		where: query,
+		data: {
+			alert: withMessage
+		}
+	}, {
+		success: function() {
+			// Push was successful
+			console.log( 'push sent' );
+		},
+		error: function(error) {
+			// Handle error
+			console.error( 'pushed failed with error -> ' + error.message + ' and error code -> ' + error.code );
+		}
+	});
+}
+
+
+Parse.Cloud.afterSave('Activity', function(request) {
+	var activity = request.object;
+	var activityType = activity.get('type');
+	var requestUser = request.user;
+	var activityFromUser = activity.get( 'fromUser' );
+	var activityToUser = activity.get( 'toUser' );
+	var isArchiveReady = activity.get( 'isArchiveReady' );
+	var requestUserIsFromUser = _.isEqual( requestUser.id, activityFromUser.id );
+	var usersAreSame = _.isEqual( activityFromUser.id, activityToUser.id );
+	if ( !isArchiveReady && !usersAreSame && requestUserIsFromUser ) {
+		switch (activityType) {
+			case feedItem.ActivityType.Follow:
+				sendPushToUser( activityToUser, 'You have a new follower!');
+				break;
+			case feedItem.ActivityType.CommentImageOne:
+				sendPushToUser( activityToUser, 'You have a new comment!' );
+				break;
+			case feedItem.ActivityType.CommentImageTwo:
+				sendPushToUser( activityToUser, 'You have a new comment!' );
+				break;
+			case feedItem.ActivityType.LikeImageOne:
+				sendPushToUser( activityToUser, 'You have a new like!' );
+				break;
+			case feedItem.ActivityType.LikeImageTwo:
+				sendPushToUser( activityToUser, 'You have a new like!' );
+				break;
+			default:
+				break;
+		}
+	}
+});
+
+
 
 
 
