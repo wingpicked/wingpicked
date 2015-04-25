@@ -21,6 +21,9 @@
                     <rect key="frame" x="16" y="206" width="288" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="ocG-BL-aAW"/>
+                    </connections>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zby-9X-1Tv">
                     <rect key="frame" x="16" y="58" width="140" height="140"/>

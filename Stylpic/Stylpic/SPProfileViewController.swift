@@ -158,6 +158,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
     func notificationsButtonTapped() {
         currentViewState = .Notifications
+        self.clearNotifications()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.tableView.reloadData()
     }
@@ -218,7 +219,13 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     func findFriendsButtonDidTap( sender:AnyObject ) {
         var findFriendsController = SPFindFriendsTableViewController()
         self.navigationController?.pushViewController(findFriendsController, animated: true)
-        
-        
+    }
+    
+    func clearNotifications(){
+        let currentInstallation = PFInstallation.currentInstallation()
+        if(currentInstallation.badge != 0){
+            currentInstallation.badge = 0
+            currentInstallation.saveEventually()
+        }
     }
 }
