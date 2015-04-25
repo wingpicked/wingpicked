@@ -24,6 +24,10 @@ enum ActivityType : Int {
     
 }
 
+struct SPGlobalNotifications {
+    static let SPViewModelsNeedsRefresh = "SPModelNeedsRefresh"
+}
+
 
 class Constants: NSObject {
    
