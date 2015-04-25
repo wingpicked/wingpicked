@@ -32,9 +32,16 @@ class SPLoginViewController: UIViewController, UIAlertViewDelegate {
         SPManager.sharedInstance.loginWithFacebook { (success, error) -> Void in
             if(error == nil && success == true) {                
                 self.performSegueWithIdentifier("loggedInSegue", sender: self)
+                
+                (UIApplication.sharedApplication().delegate as! AppDelegate).registerForPushNotifications()
+            }
+            else if (error == nil && success == false){
+                let cancelMessage = "Aw, facebook login with facebook was cancelled."
+                var av = UIAlertView(title: "Login Failed", message: cancelMessage, delegate: self, cancelButtonTitle: "OK")
+                av.show()
             }
             else {
-                println("Login Failed")
+                println("Login Failed: \(error?.localizedDescription)")
                 var av = UIAlertView(title: "Login Failed", message: "Sorry, something went wrong when trying to connect with Facebook.  Please try again later.", delegate: self, cancelButtonTitle: "OK")
                 av.show()
             }

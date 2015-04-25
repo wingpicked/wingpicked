@@ -54,12 +54,17 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
-                    self.profileInfoViewModel = profileObject
+                    self.profileInfoViewModel = profileObject as SPProfileInfo
                     self.headerView.setupCell(self.profileInfoViewModel.isFollowing, user: user )
                     self.headerView.followButton.hidden = ( PFUser.currentUser().objectId == user.objectId)
                     
                     self.updateToolbarUI()
                     
+                    println("-----------")
+                    println(self.profileInfoViewModel.followers)
+                    println(self.profileInfoViewModel.following)
+            
+                    println(profileObject)
                     self.tableView.reloadData()
                 }
             }
@@ -121,10 +126,6 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return self.toolBarView
-    }
-    
-    func buttonPushed(){
-        println("Button Pushed")
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
