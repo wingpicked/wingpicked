@@ -160,6 +160,7 @@ class SPManager: NSObject {
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println( "saved comment activity" )
+//                    NSNotificationCenter.defaultCenter().postNotificationName("", object: <#AnyObject?#>)
                     resultBlock( savedObject: activity, error: error )
                 } else {
                     println( error )
