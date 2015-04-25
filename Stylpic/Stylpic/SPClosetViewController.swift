@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate {
+class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate, UIActionSheetDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var closetPhotos : [SPClosetPhoto]? //= [PFFile]()
@@ -20,6 +20,13 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView.registerNib(UINib(nibName: "SPClosetCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SPClosetCollectionViewCell")
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
+        
+        
+        var findFriendsImage = UIImage( named: "Icon_addToCloset" )
+        var findFriendsButton = UIButton(frame: CGRectMake( 0,0, 20,20))
+        findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
+        findFriendsButton.addTarget(self, action: "addImageButtonDidTap", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
         
         SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
             if error != nil {
@@ -96,4 +103,11 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
 
+    func addImageButtonDidTap() {
+        println( "addButtonDidTap" )
+//        UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "", destructiveButtonTitle: <#String?#>, otherButtonTitles: <#String#>, <#moreButtonTitles: String#>...)
+        
+        
+    }
+    
 }
