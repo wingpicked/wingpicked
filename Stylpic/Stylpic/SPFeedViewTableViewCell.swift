@@ -60,6 +60,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         if let user = feedItem.photos?["user"] as? SPUser {
             user.fetchIfNeededInBackgroundWithBlock({ (obj, error) -> Void in
                 if let profilePicture = user.profilePicture {
+                    self.userDisplayName.text = user.spDisplayName()
                     self.profilePictureImageView.file = profilePicture
                     self.profilePictureImageView.loadInBackground(nil)
                 }

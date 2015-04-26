@@ -28,6 +28,7 @@
 		38160A371AB51E1F005504AD /* SPCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38160A361AB51E1F005504AD /* SPCommentsViewController.swift */; };
 		381B47691ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */; };
 		381B476A1ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */; };
+		382FD7461AEDA7080067CD78 /* SPProfileToolBarPublicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */; };
 		3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E01A560A5800191BDA /* AppDelegate.swift */; };
 		3845F7E81A560A5800191BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E61A560A5800191BDA /* Main.storyboard */; };
 		3845F7F91A560A5800191BDA /* StylpicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7F81A560A5800191BDA /* StylpicTests.swift */; };
@@ -154,6 +155,7 @@
 		38160A361AB51E1F005504AD /* SPCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCommentsViewController.swift; sourceTree = "<group>"; };
 		381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileNotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileNotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileToolBarPublicView.xib; sourceTree = "<group>"; };
 		3845F7DB1A560A5800191BDA /* Stylpic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylpic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F7DF1A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7E01A560A5800191BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				38EAD4651AB63DF000A6FD81 /* SPProfileHeaderView.xib */,
 				38EAD4631AB63DE700A6FD81 /* SPProfileHeaderView.swift */,
 				38EAD45F1AB63BBB00A6FD81 /* SPProfileToolBarView.xib */,
+				382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */,
 				38EAD4611AB63BCA00A6FD81 /* SPProfileToolBarView.swift */,
 				38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */,
 				38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */,
@@ -779,6 +782,7 @@
 				38F87B3D1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib in Resources */,
 				484770B81AD9DC2F007045E5 /* Images.xcassets in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
+				382FD7461AEDA7080067CD78 /* SPProfileToolBarPublicView.xib in Resources */,
 				38CD696C1AD231210003F8A4 /* SPLikeCommentButtonView.xib in Resources */,
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
