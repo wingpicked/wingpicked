@@ -95,6 +95,10 @@
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
+		48B9DE4C1AEC5778008739BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE481AEC5778008739BF /* Bolts.framework */; };
+		48B9DE4D1AEC5778008739BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE491AEC5778008739BF /* FacebookSDK.framework */; };
+		48B9DE4E1AEC5778008739BF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE4A1AEC5778008739BF /* FBSDKCoreKit.framework */; };
+		48B9DE4F1AEC5778008739BF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE4B1AEC5778008739BF /* FBSDKShareKit.framework */; };
 		48BCBACC1AD0939D001A60AB /* SPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACB1AD0939D001A60AB /* SPPhoto.m */; };
 		48BCBACF1AD09448001A60AB /* SPClosetPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACE1AD09448001A60AB /* SPClosetPhoto.m */; };
 		48D5C7211AC3C79B00D3EBA9 /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5C7201AC3C79B00D3EBA9 /* SPFeedTableViewController.swift */; };
@@ -232,6 +236,10 @@
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
+		48B9DE481AEC5778008739BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		48B9DE491AEC5778008739BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		48B9DE4A1AEC5778008739BF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		48B9DE4B1AEC5778008739BF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		48BCBACA1AD0939D001A60AB /* SPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhoto.h; sourceTree = "<group>"; };
 		48BCBACB1AD0939D001A60AB /* SPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhoto.m; sourceTree = "<group>"; };
 		48BCBACD1AD09448001A60AB /* SPClosetPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPClosetPhoto.h; sourceTree = "<group>"; };
@@ -268,6 +276,9 @@
 				ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */,
 				ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */,
 				ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */,
+				48B9DE4F1AEC5778008739BF /* FBSDKShareKit.framework in Frameworks */,
+				48B9DE4D1AEC5778008739BF /* FacebookSDK.framework in Frameworks */,
+				48B9DE4E1AEC5778008739BF /* FBSDKCoreKit.framework in Frameworks */,
 				3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */,
 				3845F8101A560AE700191BDA /* AudioToolbox.framework in Frameworks */,
 				3845F80E1A560ADD00191BDA /* Accounts.framework in Frameworks */,
@@ -275,6 +286,7 @@
 				3845F8081A560A8800191BDA /* Parse.framework in Frameworks */,
 				387EAA691AEC3B490039BD88 /* FBSDKShareKit.framework in Frameworks */,
 				3845F8091A560A8800191BDA /* ParseCrashReporting.framework in Frameworks */,
+				48B9DE4C1AEC5778008739BF /* Bolts.framework in Frameworks */,
 				3845F80B1A560A8800191BDA /* ParseUI.framework in Frameworks */,
 				3845F80A1A560A8800191BDA /* ParseFacebookUtils.framework in Frameworks */,
 			);
@@ -456,6 +468,10 @@
 				4877E1101AA3E6D1006587CE /* Social.framework */,
 				ECB2C2341A560E350009FD11 /* libsqlite3.dylib */,
 				ECB2C2351A560E350009FD11 /* libz.dylib */,
+				48B9DE481AEC5778008739BF /* Bolts.framework */,
+				48B9DE491AEC5778008739BF /* FacebookSDK.framework */,
+				48B9DE4A1AEC5778008739BF /* FBSDKCoreKit.framework */,
+				48B9DE4B1AEC5778008739BF /* FBSDKShareKit.framework */,
 				387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */,
 				387EAA661AEC36450039BD88 /* Bolts.framework */,
 				387EAA641AEC344A0039BD88 /* FBSDKCoreKit.framework */,
@@ -974,6 +990,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
 					/Users/Neilb/Documents/FacebookSDK,
+					/Users/joshuabell/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -999,6 +1016,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
 					/Users/Neilb/Documents/FacebookSDK,
+					/Users/joshuabell/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -8,11 +8,14 @@
 
 import UIKit
 
-class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate {
+class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SPCameraOverlayDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var closetPhotos : [SPClosetPhoto]? //= [PFFile]()
     var lastTappedRow = 0
+    let imagePickerViewController = UIImagePickerController()
+    let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,13 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView.registerNib(UINib(nibName: "SPClosetCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SPClosetCollectionViewCell")
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
+        
+        
+        var findFriendsImage = UIImage( named: "Icon_addToCloset" )
+        var findFriendsButton = UIButton(frame: CGRectMake( 0,0, 20,20))
+        findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
+        findFriendsButton.addTarget(self, action: "addImageButtonDidTap", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
         
         SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
             if error != nil {
@@ -33,6 +43,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
         }
 
+        self.imagePickerViewController.delegate = self
     }
 
 //    override func viewWillAppear(animated: Bool) {
@@ -96,4 +107,85 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
 
+    func addImageButtonDidTap() {
+        println( "addButtonDidTap" )
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let takeNewAction = UIAlertAction(title: "Take New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
+            println( "take new photo tapped " )
+            self.overlayView.titleLabel.text = "Take a photo"
+            
+            self.imagePickerViewController.sourceType = .Camera
+            self.imagePickerViewController.showsCameraControls = false;
+            self.overlayView.delegate = self
+            self.imagePickerViewController.cameraOverlayView = self.overlayView
+            self.presentViewController(self.imagePickerViewController, animated: true, completion: nil)
+        }
+        
+        let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
+            println( "photo albumn did select")
+            self.imagePickerViewController.sourceType = .PhotoLibrary
+            self.presentViewController( self.imagePickerViewController, animated: true, completion: nil )
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            
+        }
+        
+        alertController.addAction( takeNewAction )
+        alertController.addAction( fromPhotoAlbumnAction )
+        alertController.addAction( cancelAction )
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+
+        
+        
+    }
+    
+
+    
+    func takePhotoButtonDidTap() {
+        self.imagePickerViewController.takePicture()
+    }
+    
+    func dismissCamera() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func selectPhotosDidTap() {
+        
+    }
+
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
+        let squareRect = CGRectMake( 0, 0, originalImage.size.width, originalImage.size.width )
+        var imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        var squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: UIImageOrientation.Right)
+        
+        //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
+        //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
+        
+        if let squareImage = squareImage{
+            SPManager.sharedInstance.addMyClosetItemWithImage(squareImage, resultBlock: { (success, error) -> Void in
+                if error == nil {
+                    println( "success adding closet item" )
+                    SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
+                        if error != nil {
+                            println(error)
+                        } else {
+                            if let someClosetPhotosAgain = someClosetPhotos {
+                                self.closetPhotos = someClosetPhotosAgain
+                                self.collectionView.reloadData()
+                            }
+                            
+                        }
+                    }
+                }
+            })
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }
+        
+    }
 }
