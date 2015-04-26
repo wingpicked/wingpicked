@@ -337,7 +337,8 @@ function sendPushToUser( user, withMessage ) {
 	Parse.Push.send({
 		where: query,
 		data: {
-			alert: withMessage
+			alert: withMessage,
+			badge: 'Increment'
 		}
 	}, {
 		success: function() {

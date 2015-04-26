@@ -21,6 +21,7 @@ typealias SPPFFilesResultBlock = ( pfFiles: [PFFile]?, error: NSError? ) -> Void
 typealias SPClosetPhotosResultBlock = ( closetPhotos: [SPClosetPhoto]?, error: NSError? ) -> Void
 typealias SPActivityResultBlock = ( activities: [SPActivity]?, error: NSError? ) -> Void
 typealias SPUsersResultBlock = ( users: [SPUser]?, error: NSError? ) -> Void
+typealias SPFileResultBlock = ( file: PFFile?, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -124,6 +125,33 @@ class SPManager: NSObject {
         
     }
 
+    
+    func addMyClosetItemWithImage( image:UIImage, resultBlock: PFBooleanResultBlock ) {
+        var imageData = UIImageJPEGRepresentation(image, 0.05)
+        var imageFile = PFFile(name: "Image.jpg", data: imageData)
+        imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                var photoOne = SPPhoto()
+                photoOne.photo = imageFile
+                photoOne.photoThumbnail = imageFile
+                photoOne.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if error == nil {
+                        var closetPhotoOne = SPClosetPhoto()
+                        closetPhotoOne.isVisible = true
+                        closetPhotoOne.user = SPUser.currentUser()
+                        closetPhotoOne.photo = photoOne
+                        closetPhotoOne.saveInBackgroundWithBlock({ (success, error) -> Void in
+                            if error == nil {
+                                resultBlock( true, nil )
+                            }
+                        })
+                    }
+                })
+            }
+        }    
+        
+    }
+    
     
     func fetchComments(photoPair: PFObject, imageTapped: ActivityType, resultBlock: SPPFObjectArrayResultBlock) {
 
@@ -459,10 +487,8 @@ class SPManager: NSObject {
             }
         })
 
-        
-        
-        
     }
+    
     
 
     func saveAndPostImages( imageOne: UIImage?, imageTwo: UIImage?, caption: String, resultsBlock: PFBooleanResultBlock ) {

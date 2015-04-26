@@ -54,12 +54,17 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
-                    self.profileInfoViewModel = profileObject
+                    self.profileInfoViewModel = profileObject as SPProfileInfo
                     self.headerView.setupCell(self.profileInfoViewModel.isFollowing, user: user )
                     self.headerView.followButton.hidden = ( PFUser.currentUser().objectId == user.objectId)
                     
                     self.updateToolbarUI()
                     
+                    println("-----------")
+                    println(self.profileInfoViewModel.followers)
+                    println(self.profileInfoViewModel.following)
+            
+                    println(profileObject)
                     self.tableView.reloadData()
                 }
             }
@@ -123,10 +128,6 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         return self.toolBarView
     }
     
-    func buttonPushed(){
-        println("Button Pushed")
-    }
-    
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 46
     }
@@ -158,6 +159,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
     func notificationsButtonTapped() {
         currentViewState = .Notifications
+        self.clearNotifications()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.tableView.reloadData()
     }
@@ -218,7 +220,13 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     func findFriendsButtonDidTap( sender:AnyObject ) {
         var findFriendsController = SPFindFriendsTableViewController()
         self.navigationController?.pushViewController(findFriendsController, animated: true)
-        
-        
+    }
+    
+    func clearNotifications(){
+        let currentInstallation = PFInstallation.currentInstallation()
+        if(currentInstallation.badge != 0){
+            currentInstallation.badge = 0
+            currentInstallation.saveEventually()
+        }
     }
 }

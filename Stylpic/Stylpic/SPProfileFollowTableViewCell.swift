@@ -45,17 +45,9 @@ class SPProfileFollowTableViewCell: UITableViewCell {
     func setupCell(user :SPUser){
         self.spUser = user
         updateIsFollowing(self.spUser!.isFollowing.boolValue)
-//        self.spUser?.fetchIfNeededInBackgroundWithBlock({ (pfObject, error) -> Void in
-//            if error == nil {
-                self.label.text = self.spUser!.spDisplayName()
-                self.profilePictureImageView.file = self.spUser!.profilePicture
-                self.profilePictureImageView.loadInBackground(nil)
-//            } else {
-//                self.label.text = ""
-//            }
-//
-//        })
-
+        label.text = self.spUser!.spDisplayName()
+        profilePictureImageView.file = self.spUser!.profilePicture
+        profilePictureImageView.loadInBackground(nil)
     }
     
     func updateIsFollowing(isFollowing : Bool){
