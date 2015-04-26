@@ -28,7 +28,11 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         super.viewDidLoad()
         
         self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
+        
         self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
+//        self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarPublicView", owner: self, options: nil).first as! SPProfileToolBarView
+
+        
         tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")
         tableView.registerNib(UINib(nibName: "SPProfileFollowTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileFollowTableViewCell")
         tableView.registerNib(UINib(nibName: "SPProfileNotificationsTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileNotificationsTableViewCell")

@@ -69,13 +69,25 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
             cell.delegate = self
             
-            if self.imageTapped == ImageIdentifier.ImageOne{
-                cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) likes", forState: .Normal)
-                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountOne) comments", forState: .Normal)
+            let noPhotoLiked = self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked
+            let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser().objectId
+            
+            if(!usersOwnPhotoPair && noPhotoLiked){
+                cell.percentageLabel.hidden = true
+                cell.likeCountButton.hidden = true
+                cell.commentCountButton.hidden = true
             }
-            if self.imageTapped == ImageIdentifier.ImageTwo {
-                cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) likes", forState: .Normal)
-                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountTwo) comments", forState: .Normal)
+            else{
+                if self.imageTapped == ImageIdentifier.ImageOne{
+                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne)%"
+                    cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) likes", forState: .Normal)
+                    cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountOne) comments", forState: .Normal)
+                }
+                if self.imageTapped == ImageIdentifier.ImageTwo {
+                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedTwo)%"
+                    cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) likes", forState: .Normal)
+                    cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountTwo) comments", forState: .Normal)
+                }
             }
             
             
@@ -113,7 +125,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             return 382
         }
         else if(indexPath.row == 1){
-            return 44
+            return 54
         }
         else{
             return 23
