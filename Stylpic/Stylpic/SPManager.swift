@@ -188,7 +188,7 @@ class SPManager: NSObject {
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println( "saved comment activity" )
-//                    NSNotificationCenter.defaultCenter().postNotificationName("", object: <#AnyObject?#>)
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock( savedObject: activity, error: error )
                 } else {
                     println( error )
@@ -212,6 +212,7 @@ class SPManager: NSObject {
             activity.type = activityType.rawValue
             activity.saveInBackgroundWithBlock { (success, error) -> Void in
                 if error == nil {
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock(success: success, error: error)
                 } else {
                     println( error )
@@ -238,6 +239,7 @@ class SPManager: NSObject {
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println( "saved follow ativity" )
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock( savedObject: activity, error: error )
                 } else {
                     println( error )
@@ -266,7 +268,11 @@ class SPManager: NSObject {
                     activity.setObject( true, forKey: "isArchiveReady" )
                 }
                 
-                PFObject.saveAllInBackground(payloadObjects, block: resultBlock)
+                PFObject.saveAllInBackground(payloadObjects, block: { (success, errro) -> Void in
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
+                    resultBlock( success, error )
+                })
             })
         } else {
             println( "user was nil" )

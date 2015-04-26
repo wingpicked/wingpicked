@@ -31,6 +31,17 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
         
         tableView.registerNib(UINib(nibName: "SPFeedViewTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedViewTableViewCell")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "TopBarWithStylpicTitle"), forBarMetrics: UIBarMetrics.Default)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateViewController", name: "RefreshViewControllers", object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func updateViewController() {
+        self.downloadAllImages()
+        
+        
     }
     
     func downloadAllImages(){
