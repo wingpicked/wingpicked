@@ -25,7 +25,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-WQ-p2h">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-WQ-p2h" customClass="PFImageView">
                         <rect key="frame" x="13" y="8" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="HUZ-Mg-Qcx"/>

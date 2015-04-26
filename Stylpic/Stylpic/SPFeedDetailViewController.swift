@@ -60,7 +60,8 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
-            cell.setupCell(imageFile)
+            cell.setupCell(self.feedItem, imageFile: imageFile)
+            //cell.setupCell(imageFile)
             return cell
         }
         else if(indexPath.row == 1){
