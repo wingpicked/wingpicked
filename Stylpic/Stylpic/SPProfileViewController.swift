@@ -44,25 +44,8 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
 
-        
-        let findFriendsButton = UIBarButtonItem(image: UIImage( named: "Icon_invite" ), style: .Plain, target: self, action: "findFriendsButtonDidTap:")
-        self.navigationItem.leftBarButtonItem = findFriendsButton
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
-        
-        let settingsButton = UIBarButtonItem(image: UIImage(named: "Icon_settings"), style: .Plain, target: self, action: "settingsButtonDidTap:")
-        self.navigationItem.rightBarButtonItem = settingsButton
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateView", name: "RefreshViewControllers", object: nil)
 
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        var badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
-        if badgeNum > 0 {
-            self.tabBarItem.badgeValue = "\(badgeNum)"
-        } else {
-            self.tabBarItem.badgeValue = nil
-        }
     }
     
     deinit {
@@ -77,6 +60,16 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     func showWithUser( user: SPUser ) {
         self.showForUser = user
+        if self.showForUser?.objectId == SPUser.currentUser().objectId {
+            let findFriendsButton = UIBarButtonItem(image: UIImage( named: "Icon_invite" ), style: .Plain, target: self, action: "findFriendsButtonDidTap:")
+            self.navigationItem.leftBarButtonItem = findFriendsButton
+            self.navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
+            
+            let settingsButton = UIBarButtonItem(image: UIImage(named: "Icon_settings"), style: .Plain, target: self, action: "settingsButtonDidTap:")
+            self.navigationItem.rightBarButtonItem = settingsButton
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
+        }
+        
         SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
@@ -108,7 +101,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.toolBarView.postsButton.setTitle("\(self.profileInfoViewModel.postsCount)", forState: .Normal)
         self.toolBarView.followersButton.setTitle("\(self.profileInfoViewModel.followersCount)", forState: .Normal)
         self.toolBarView.followingButton.setTitle("\(self.profileInfoViewModel.followingCount)", forState: .Normal)
-        self.toolBarView.notificationsButton.setTitle("\(self.profileInfoViewModel.notifications.count)", forState: .Normal)
+        self.toolBarView.notificationsButton.setTitle("\(UIApplication.sharedApplication().applicationIconBadgeNumber)", forState: .Normal)
     }
     
     //MARK: Tableview Datasource and Delegate Methods

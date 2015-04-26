@@ -107,7 +107,6 @@ class SPProfileInfo: NSObject {
             var spUser = aServerFollower[ "user" ] as! SPUser
             var currentUserFollows = aServerFollower[ "isFollowing" ] as! NSNumber
             spUser.isFollowing = currentUserFollows
-            println( spUser.lastName )
             self.followers.append( spUser )
         }
         
