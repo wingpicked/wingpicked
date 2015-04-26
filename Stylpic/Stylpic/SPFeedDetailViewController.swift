@@ -136,6 +136,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     func showAllComments() {
         var commentsViewController = SPCommentsViewController()
         commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
+        commentsViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
     
@@ -154,7 +155,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         let likesViewController = SPLikesViewController(nibName: "SPLikesViewController", bundle: nil)
         likesViewController.imageTapped = self.imageTapped
         likesViewController.feedItem = self.feedItem
-        
+        likesViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(likesViewController, animated: true)
     }
     

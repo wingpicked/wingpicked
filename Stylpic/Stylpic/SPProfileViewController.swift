@@ -170,14 +170,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     //MARK: SPProfilePostTableViewCell Delegate Methods
     func didTapPhotoOne(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
-        detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
     
     func didTapPhotoTwo(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
-        detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 
