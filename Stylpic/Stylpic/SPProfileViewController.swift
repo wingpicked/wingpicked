@@ -22,7 +22,8 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     var headerView : SPProfileHeaderView!
     
     var profileInfoViewModel = SPProfileInfo()
-        
+    var showForUser : SPUser?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,9 +49,22 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
         findFriendsButton.addTarget(self, action: "findFriendsButtonDidTap:", forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateView", name: "RefreshViewControllers", object: nil)
+
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func updateView() {
+        if let showForUser = self.showForUser {
+            self.showWithUser(showForUser)
+        }
     }
     
     func showWithUser( user: SPUser ) {
+        self.showForUser = user
         SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
