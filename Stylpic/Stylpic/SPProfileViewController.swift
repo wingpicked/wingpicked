@@ -56,6 +56,15 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        var badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
+        if badgeNum > 0 {
+            self.tabBarItem.badgeValue = "\(badgeNum)"
+        } else {
+            self.tabBarItem.badgeValue = nil
+        }
+    }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
