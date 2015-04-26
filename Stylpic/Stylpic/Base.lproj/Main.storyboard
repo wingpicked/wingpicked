@@ -384,7 +384,7 @@
         <image name="Icon_explore" width="64" height="49"/>
         <image name="Icon_home" width="64" height="49"/>
         <image name="Icon_home_selected" width="64" height="49"/>
-        <image name="Icon_profile" width="64" height="49"/>
+        <image name="Icon_profile" width="32" height="49"/>
         <image name="Melanie-Iglesias" width="500" height="600"/>
     </resources>
 </document>
