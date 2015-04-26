@@ -37,6 +37,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.imagePickerViewController.delegate = self
         self.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: "Badges", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     deinit {

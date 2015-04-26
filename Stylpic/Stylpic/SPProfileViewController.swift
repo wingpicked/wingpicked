@@ -45,7 +45,8 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.refreshControl = rc;
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateView", name: "RefreshViewControllers", object: nil)
-
+        self.toolBarView.notificationsBadge.layer.cornerRadius = 8
+        self.toolBarView.notificationsBadge.clipsToBounds = true
     }
     
     deinit {
@@ -101,7 +102,13 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.toolBarView.postsButton.setTitle("\(self.profileInfoViewModel.postsCount)", forState: .Normal)
         self.toolBarView.followersButton.setTitle("\(self.profileInfoViewModel.followersCount)", forState: .Normal)
         self.toolBarView.followingButton.setTitle("\(self.profileInfoViewModel.followingCount)", forState: .Normal)
-        self.toolBarView.notificationsButton.setTitle("\(UIApplication.sharedApplication().applicationIconBadgeNumber)", forState: .Normal)
+        let badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
+        if badgeNum > 0 {
+            self.toolBarView.notificationsBadge.text = "\(badgeNum)"
+            self.toolBarView.notificationsBadge.hidden = false
+        } else {        
+            self.toolBarView.notificationsBadge.hidden = true
+        }
     }
     
     //MARK: Tableview Datasource and Delegate Methods
@@ -254,5 +261,10 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             currentInstallation.badge = 0
             currentInstallation.saveEventually()
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("Badges", object: nil)
+        self.toolBarView.notificationsBadge.hidden = true
+        self.toolBarView.notificationsBadge.text = "\(UIApplication.sharedApplication().applicationIconBadgeNumber)"
+        
     }
 }
