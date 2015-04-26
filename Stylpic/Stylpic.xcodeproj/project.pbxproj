@@ -50,6 +50,8 @@
 		387EAA651AEC344A0039BD88 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387EAA641AEC344A0039BD88 /* FBSDKCoreKit.framework */; };
 		387EAA671AEC36450039BD88 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387EAA661AEC36450039BD88 /* Bolts.framework */; };
 		387EAA691AEC3B490039BD88 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */; };
+		387EAA6C1AEC5AEB0039BD88 /* SPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */; };
+		387EAA701AEC5C510039BD88 /* SPSettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */; };
 		389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */; };
 		389A56EB1A564BAC00EB0EFD /* SPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56EA1A564BAC00EB0EFD /* SPBaseTableViewController.swift */; };
 		389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389A56F11A57275E00EB0EFD /* FacebookSDK.framework */; };
@@ -179,6 +181,8 @@
 		387EAA641AEC344A0039BD88 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		387EAA661AEC36450039BD88 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPSettingsViewController.swift; sourceTree = "<group>"; };
+		387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPSettingsStoryboard.storyboard; sourceTree = "<group>"; };
 		389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		389A56EA1A564BAC00EB0EFD /* SPBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPBaseTableViewController.swift; sourceTree = "<group>"; };
 		389A56F11A57275E00EB0EFD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				38BB44571A66317E004CD444 /* SPProfile */,
 				38BB445A1A6631B8004CD444 /* SPCloset */,
 				3811EA891AD0967300F234AF /* SPTabBarController.swift */,
+				387EAA6E1AEC5AEE0039BD88 /* SPSettings */,
 				380671121AD9F3010074E4FE /* SPLikes */,
 				3806710C1AD9F20C0074E4FE /* SPComment */,
 				3863A7001A7F6D1C00AFE938 /* CustomFonts */,
@@ -528,6 +533,15 @@
 				387463751AA418BA002E0565 /* SPPhotosComments.swift */,
 			);
 			name = SPViewModels;
+			sourceTree = "<group>";
+		};
+		387EAA6E1AEC5AEE0039BD88 /* SPSettings */ = {
+			isa = PBXGroup;
+			children = (
+				387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */,
+				387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */,
+			);
+			name = SPSettings;
 			sourceTree = "<group>";
 		};
 		389A56EC1A564BB100EB0EFD /* SPFeed */ = {
@@ -754,6 +768,7 @@
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
 				38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */,
+				387EAA701AEC5C510039BD88 /* SPSettingsStoryboard.storyboard in Resources */,
 				380671111AD9F2FB0074E4FE /* SPLikesViewController.xib in Resources */,
 				380671161AD9F7B10074E4FE /* SPLikesTableViewCell.xib in Resources */,
 			);
@@ -796,6 +811,7 @@
 				38160A271AB50F34005504AD /* SLKTextView.m in Sources */,
 				48D5C7211AC3C79B00D3EBA9 /* SPFeedTableViewController.swift in Sources */,
 				387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */,
+				387EAA6C1AEC5AEB0039BD88 /* SPSettingsViewController.swift in Sources */,
 				38160A281AB50F34005504AD /* SLKTextInputbar.m in Sources */,
 				38160A2A1AB50F34005504AD /* SLKInputAccessoryView.m in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,

@@ -43,11 +43,14 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
 
-        var findFriendsImage = UIImage( named: "Icon_invite" )
-        var findFriendsButton = UIButton(frame: CGRectMake( 0,0, 30,20))
-        findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
-        findFriendsButton.addTarget(self, action: "findFriendsButtonDidTap:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
+        
+        let findFriendsButton = UIBarButtonItem(image: UIImage( named: "Icon_invite" ), style: .Plain, target: self, action: "findFriendsButtonDidTap:")
+        self.navigationItem.leftBarButtonItem = findFriendsButton
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
+        
+        let settingsButton = UIBarButtonItem(image: UIImage(named: "Icon_settings"), style: .Plain, target: self, action: "settingsButtonDidTap:")
+        self.navigationItem.rightBarButtonItem = settingsButton
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
     }
     
     func showWithUser( user: SPUser ) {
@@ -221,6 +224,15 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         var findFriendsController = SPFindFriendsTableViewController()
         self.navigationController?.pushViewController(findFriendsController, animated: true)
     }
+    
+    func settingsButtonDidTap(sender: AnyObject!){
+        println("HI!")
+        
+        let storyboard = UIStoryboard(name: "SPSettingsStoryboard", bundle: nil)
+        let settingsNavigationController = storyboard.instantiateViewControllerWithIdentifier("SPSettingsStoryboard") as! UINavigationController
+        self.presentViewController(settingsNavigationController, animated: true, completion: nil)
+    }
+
     
     func clearNotifications(){
         let currentInstallation = PFInstallation.currentInstallation()
