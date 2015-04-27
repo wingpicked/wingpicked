@@ -23,6 +23,10 @@ class SPProfileToolBarView: UIView {
     @IBOutlet weak var followingButton: UIButton!
     @IBOutlet weak var notificationsButton: UIButton!
 
+    @IBOutlet weak var postsLabel: UILabel!
+    @IBOutlet weak var followersLabel: UILabel!
+    @IBOutlet weak var followingLabel: UILabel!
+    @IBOutlet weak var notificationLabel: UILabel!
     
     
     var delegate : SPProfileToolBarViewDelegate?

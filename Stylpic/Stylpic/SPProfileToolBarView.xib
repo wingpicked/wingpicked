@@ -21,6 +21,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwQ-aG-lJ6">
                     <rect key="frame" x="16" y="0.0" width="30" height="30"/>
                     <state key="normal" title="28">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -30,6 +31,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbh-LE-ua4">
                     <rect key="frame" x="145" y="0.0" width="30" height="30"/>
                     <state key="normal" title="35">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -39,6 +41,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiw-Cn-MIn">
                     <rect key="frame" x="264" y="0.0" width="30" height="30"/>
                     <state key="normal" title="4">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -48,7 +51,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzO-al-9V9">
                     <rect key="frame" x="17" y="23" width="28" height="15"/>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Following" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxO-eM-drF">
@@ -70,6 +73,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkN-5I-1r9">
                     <rect key="frame" x="81" y="0.0" width="30" height="30"/>
                     <state key="normal" title="43">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -88,9 +92,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="followersButton" destination="dkN-5I-1r9" id="d9b-gk-QSE"/>
+                <outlet property="followersLabel" destination="vlW-tD-CGp" id="FyH-hm-P7t"/>
                 <outlet property="followingButton" destination="nbh-LE-ua4" id="D6L-rF-Elq"/>
+                <outlet property="followingLabel" destination="hxO-eM-drF" id="KyK-FK-hp9"/>
+                <outlet property="notificationLabel" destination="utx-NB-NzP" id="G5w-AP-ybW"/>
                 <outlet property="notificationsButton" destination="oiw-Cn-MIn" id="pUk-M6-UKI"/>
                 <outlet property="postsButton" destination="mwQ-aG-lJ6" id="2dS-G4-4xc"/>
+                <outlet property="postsLabel" destination="JzO-al-9V9" id="iej-Wr-akI"/>
             </connections>
             <point key="canvasLocation" x="170" y="605"/>
         </view>

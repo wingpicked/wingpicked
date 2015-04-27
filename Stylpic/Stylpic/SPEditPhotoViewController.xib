@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uQw-IK-BBn">
-                    <rect key="frame" x="16" y="206" width="288" height="30"/>
+                    <rect key="frame" x="16" y="251" width="288" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -26,14 +26,17 @@
                     </connections>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zby-9X-1Tv">
-                    <rect key="frame" x="16" y="58" width="140" height="140"/>
+                    <rect key="frame" x="16" y="103" width="140" height="140"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jde-vS-Dw9">
-                    <rect key="frame" x="164" y="58" width="140" height="140"/>
+                    <rect key="frame" x="164" y="103" width="140" height="140"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-CI-BrP">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-CI-BrP">
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <color key="backgroundColor" cyan="0.85999999999999999" magenta="0.0" yellow="0.16" black="0.0" alpha="1" colorSpace="custom" customColorSpace="genericCMYKColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="tuV-fo-d3p"/>
+                    </constraints>
                     <state key="normal" title="Share &gt;&gt;">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,6 +47,11 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="tB4-CI-BrP" secondAttribute="trailing" id="8zt-0B-ueS"/>
+                <constraint firstItem="tB4-CI-BrP" firstAttribute="leading" secondItem="Xxf-D2-7WI" secondAttribute="leading" id="M4t-Aa-1dU"/>
+                <constraint firstAttribute="bottom" secondItem="tB4-CI-BrP" secondAttribute="bottom" id="aQV-wB-A0j"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

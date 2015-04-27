@@ -24,6 +24,9 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate {
         self.imageViewOne.image = self.image
         self.imageViewTwo.image = self.imageTwo
 
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "dismissViewController:")
+        
         let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 315, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
         let fbPhoto2 = FBSDKSharePhoto(image: self.imageTwo, userGenerated: true)
@@ -32,6 +35,10 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate {
 
         fbSharePhotoButton.shareContent = fbContent;
         self.view.addSubview(fbSharePhotoButton)
+    }
+    
+    func dismissViewController(sender: AnyObject!){
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func shareImages(sender: AnyObject) {

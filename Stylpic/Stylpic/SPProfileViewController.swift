@@ -18,6 +18,40 @@ enum SPProfileActiveViewState {
 class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate {
 
     var currentViewState = SPProfileActiveViewState.Posts
+        {
+        didSet{
+            switch oldValue{
+            case .Posts:
+                self.toolBarView.postsLabel.textColor = UIColor.darkGrayColor()
+                break
+            case .Followers:
+                self.toolBarView.followersLabel.textColor = UIColor.darkGrayColor()
+                break
+            case .Following:
+                self.toolBarView.followingLabel.textColor = UIColor.darkGrayColor()
+                break
+            case .Notifications:
+                self.toolBarView.notificationLabel.textColor = UIColor.darkGrayColor()
+                break
+            }
+
+            
+            switch currentViewState{
+            case .Posts:
+                self.toolBarView.postsLabel.textColor = primaryAquaColor
+                break
+            case .Followers:
+                self.toolBarView.followersLabel.textColor = primaryAquaColor
+                break
+            case .Following:
+                self.toolBarView.followingLabel.textColor = primaryAquaColor
+                break
+            case .Notifications:
+                self.toolBarView.notificationLabel.textColor = primaryAquaColor
+                break
+            }
+        }
+    }
     var toolBarView : SPProfileToolBarView!
     var headerView : SPProfileHeaderView!
     
@@ -50,6 +84,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateView", name: "RefreshViewControllers", object: nil)
 
+        self.toolBarView.postsLabel.textColor = primaryAquaColor
     }
     
     deinit {
