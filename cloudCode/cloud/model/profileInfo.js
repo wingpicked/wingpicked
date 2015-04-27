@@ -8,9 +8,10 @@ function notificationQueryWithType( user, type ) {
     notificatioQuery.include( 'toUser' );
     notificatioQuery.limit( 1000 );
     notificatioQuery.equalTo( 'toUser', user );
-    notificatioQuery.equalTo( 'notificationViewed', false );
+    //notificatioQuery.equalTo( 'notificationViewed', false );
     notificatioQuery.equalTo( 'isArchiveReady', false );
     notificatioQuery.equalTo( 'type', type );
+    notificatioQuery.descending( 'createdAt' );
     return notificatioQuery;
 }
 
