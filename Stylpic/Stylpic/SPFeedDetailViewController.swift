@@ -138,6 +138,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         if self.feedItem.photos?.user.objectId != SPUser.currentUser().objectId {
             var followButtonName = self.feedItem.isCurrentUserFollowing ? "Button_following_NavBar" : "Button_follow_NavBar"
             var rightButtonImageView = UIImageView(image:UIImage(named:followButtonName))
+            rightButtonImageView.frame = CGRectMake(0,0,90, 25)
             rightButtonImageView.userInteractionEnabled = true
             var tapRecognizer = UITapGestureRecognizer(target: self, action: "followButtonDidTap")
             rightButtonImageView.addGestureRecognizer(tapRecognizer)

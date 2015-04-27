@@ -10,11 +10,12 @@ var queryWithFollowingActivities = function( aUser, type ) {
     notificatioQuery.include( 'photoPair' );
     notificatioQuery.include( 'fromUser' );
     notificatioQuery.include( 'toUser' );
-    notificatioQuery.limit( 1000 );
+    notificatioQuery.limit( 100 );
     notificatioQuery.equalTo( 'fromUser', aUser );
-    notificatioQuery.equalTo( 'notificationViewed', false );
+    //notificatioQuery.equalTo( 'notificationViewed', false );
     notificatioQuery.equalTo( 'isArchiveReady', false );
     notificatioQuery.equalTo( 'type', type );
+    notificatioQuery.descending( 'createdAt' );
     return notificatioQuery;
 };
 
@@ -25,11 +26,12 @@ var queryWithFollowerActivities = function( aUser, type ) {
     notificatioQuery.include( 'photoPair' );
     notificatioQuery.include( 'fromUser' );
     notificatioQuery.include( 'toUser' );
-    notificatioQuery.limit( 1000 );
+    notificatioQuery.limit( 100 );
     notificatioQuery.equalTo( 'toUser', aUser );
-    notificatioQuery.equalTo( 'notificationViewed', false );
+    //notificatioQuery.equalTo( 'notificationViewed', false );
     notificatioQuery.equalTo( 'isArchiveReady', false );
     notificatioQuery.equalTo( 'type', type );
+    notificatioQuery.descending( 'createdAt' );
     return notificatioQuery;
 };
 

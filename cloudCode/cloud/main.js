@@ -299,14 +299,16 @@ Parse.Cloud.define( 'usersWithSearchTerms', function( request, response ) {
 	var searchTerms = request.params.searchTerms;
 	var whenPromises = [];
 	_.each( searchTerms, function( aSearchTerm ) {
+		var regExp = new RegExp( aSearchTerm );
 		var userFirstNameQuery = new Parse.Query(Parse.User);
 		userFirstNameQuery.limit(50);
-		userFirstNameQuery.contains('firstName', aSearchTerm);
+
+		userFirstNameQuery.matches('firstName', regExp, 'i');
 		whenPromises.push( userFirstNameQuery.find() );
 
 		var userLastNameQuery = new Parse.Query(Parse.User);
 		userLastNameQuery.limit(50);
-		userLastNameQuery.contains('lastName', aSearchTerm);
+		userLastNameQuery.matches('lastName', regExp, 'i');
 		whenPromises.push( userLastNameQuery.find() );
 	});
 
