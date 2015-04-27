@@ -9,21 +9,32 @@
 import UIKit
 import Social
 
-class SPEditPhotoViewController: UIViewController, UITextFieldDelegate {
+class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate {
 
     var image : UIImage!
     var imageTwo : UIImage!
     @IBOutlet weak var imageViewOne: UIImageView!
     @IBOutlet weak var imageViewTwo: UIImageView!
     
+    var replaceImage = ImageIdentifier.ImageOne
+    let imagePickerViewController = UIImagePickerController()
+    let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
+    
     @IBOutlet weak var captionTextfield: UITextField!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var imageOneTapRecogniser = UITapGestureRecognizer(target: self, action: "imageOneDidTap")
+        imageOneTapRecogniser.delegate = self
         self.imageViewOne.image = self.image
+        self.imageViewOne.addGestureRecognizer(imageOneTapRecogniser)
+        
+        var imageTwoTapRecogniser = UITapGestureRecognizer(target: self, action: "imageTwoDidTap")
+        imageTwoTapRecogniser.delegate = self
         self.imageViewTwo.image = self.imageTwo
-
+        self.imageViewTwo.addGestureRecognizer(imageTwoTapRecogniser)
+        
         let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 315, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
         let fbPhoto2 = FBSDKSharePhoto(image: self.imageTwo, userGenerated: true)
@@ -32,6 +43,8 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate {
 
         fbSharePhotoButton.shareContent = fbContent;
         self.view.addSubview(fbSharePhotoButton)
+        
+        self.imagePickerViewController.delegate = self
     }
     
     @IBAction func shareImages(sender: AnyObject) {
@@ -47,5 +60,85 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func imageOneDidTap() {
+        println( "didtapimageone" )
+        self.replaceImage = ImageIdentifier.ImageOne
+        self.promptForReplacementChoice()
+    }
+    
+    func imageTwoDidTap() {
+        println( "didtapImageTwo" )
+        self.replaceImage = ImageIdentifier.ImageTwo
+        self.promptForReplacementChoice()
+    }
+    
+    
+    
+    func selectPhotosDidTap() {
+        println("A")
+    }
+    func takePhotoButtonDidTap() {
+        self.imagePickerViewController.takePicture()
+    }
+    
+    func dismissCamera() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    func promptForReplacementChoice() {
+        let alertController = UIAlertController(title: "Replace photo by:", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let takeNewAction = UIAlertAction(title: "Taking New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
+            println( "take new photo tapped " )
+            self.overlayView.titleLabel.text = "Replace With Photo"
+            
+            self.imagePickerViewController.sourceType = .Camera
+            self.imagePickerViewController.showsCameraControls = false;
+            self.overlayView.delegate = self
+            self.imagePickerViewController.cameraOverlayView = self.overlayView
+            self.presentViewController(self.imagePickerViewController, animated: true, completion: nil)
+        }
+        
+        let fromPhotoAlbumnAction = UIAlertAction(title: "Selecting From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
+            println( "photo albumn did select")
+            self.imagePickerViewController.sourceType = .PhotoLibrary
+            self.presentViewController( self.imagePickerViewController, animated: true, completion: nil )
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            
+        }
+        
+        alertController.addAction( takeNewAction )
+        alertController.addAction( fromPhotoAlbumnAction )
+        alertController.addAction( cancelAction )
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
+        let squareRect = CGRectMake( 0, 0, originalImage.size.width, originalImage.size.width )
+        var imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        var squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: UIImageOrientation.Right)
+        
+        //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
+        //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
+        
+        if let squareImage = squareImage{
+            if replaceImage == .ImageOne {
+                self.imageViewOne.image = squareImage
+                self.image = squareImage
+            } else {
+                // must be image two
+                self.imageViewTwo.image = squareImage
+                self.imageTwo = squareImage
+            }
+        }
+        
+        self.dismissCamera()
     }
 }

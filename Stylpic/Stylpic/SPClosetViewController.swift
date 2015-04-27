@@ -136,9 +136,6 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         alertController.addAction( cancelAction )
         
         self.presentViewController(alertController, animated: true, completion: nil)
-
-        
-        
     }
     
 
