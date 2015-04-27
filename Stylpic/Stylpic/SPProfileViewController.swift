@@ -18,6 +18,40 @@ enum SPProfileActiveViewState {
 class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate {
 
     var currentViewState = SPProfileActiveViewState.Posts
+        {
+        didSet{
+            switch oldValue{
+            case .Posts:
+                self.toolBarView.postsLabel.textColor = UIColor.darkGrayColor()
+                break
+            case .Followers:
+                self.toolBarView.followersLabel.textColor = UIColor.darkGrayColor()
+                break
+            case .Following:
+                self.toolBarView.followingLabel.textColor = UIColor.darkGrayColor()
+                break
+            case .Notifications:
+                self.toolBarView.notificationLabel.textColor = UIColor.darkGrayColor()
+                break
+            }
+
+            
+            switch currentViewState{
+            case .Posts:
+                self.toolBarView.postsLabel.textColor = primaryAquaColor
+                break
+            case .Followers:
+                self.toolBarView.followersLabel.textColor = primaryAquaColor
+                break
+            case .Following:
+                self.toolBarView.followingLabel.textColor = primaryAquaColor
+                break
+            case .Notifications:
+                self.toolBarView.notificationLabel.textColor = primaryAquaColor
+                break
+            }
+        }
+    }
     var toolBarView : SPProfileToolBarView!
     var headerView : SPProfileHeaderView!
     
@@ -29,9 +63,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         
         self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
         
-        self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
-//        self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarPublicView", owner: self, options: nil).first as! SPProfileToolBarView
-
+        if self.showForUser?.objectId == SPUser.currentUser().objectId {
+            self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
+        }
+        else{
+            self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarPublicView", owner: self, options: nil).first as! SPProfileToolBarView
+        }
         
         tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")
         tableView.registerNib(UINib(nibName: "SPProfileFollowTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileFollowTableViewCell")
@@ -49,8 +86,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.refreshControl = rc;
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateView", name: "RefreshViewControllers", object: nil)
-        self.toolBarView.notificationsBadge.layer.cornerRadius = 8
-        self.toolBarView.notificationsBadge.clipsToBounds = true
+
+        self.toolBarView.postsLabel.textColor = primaryAquaColor
+        self.toolBarView.postsLabel.textColor = primaryAquaColor
     }
     
     deinit {
@@ -106,12 +144,15 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.toolBarView.postsButton.setTitle("\(self.profileInfoViewModel.postsCount)", forState: .Normal)
         self.toolBarView.followersButton.setTitle("\(self.profileInfoViewModel.followersCount)", forState: .Normal)
         self.toolBarView.followingButton.setTitle("\(self.profileInfoViewModel.followingCount)", forState: .Normal)
-        let badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
-        if badgeNum > 0 {
-            self.toolBarView.notificationsBadge.text = "\(badgeNum)"
-            self.toolBarView.notificationsBadge.hidden = false
-        } else {        
-            self.toolBarView.notificationsBadge.hidden = true
+        
+        if(self.toolBarView.notificationsBadge != nil){
+            let badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
+            if badgeNum > 0 {
+                self.toolBarView.notificationsBadge.text = "\(badgeNum)"
+                self.toolBarView.notificationsBadge.hidden = false
+            } else {        
+                self.toolBarView.notificationsBadge.hidden = true
+            }
         }
     }
     

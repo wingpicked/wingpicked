@@ -25,11 +25,19 @@
                         <outlet property="delegate" destination="-1" id="ocG-BL-aAW"/>
                     </connections>
                 </textField>
+<<<<<<< HEAD
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zby-9X-1Tv">
-                    <rect key="frame" x="16" y="103" width="140" height="140"/>
+                    <rect key="frame" x="16" y="58" width="140" height="140"/>
                 </imageView>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jde-vS-Dw9">
+                    <rect key="frame" x="164" y="58" width="140" height="140"/>
+=======
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zby-9X-1Tv">
+                    <rect key="frame" x="16" y="103" width="140" height="140"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jde-vS-Dw9">
                     <rect key="frame" x="164" y="103" width="140" height="140"/>
+>>>>>>> 834fa3d89814aa75652bc658a3045d1c8e901d7a
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-CI-BrP">
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>

@@ -20,6 +20,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WW0-CQ-H5o">
                     <rect key="frame" x="35" y="0.0" width="30" height="30"/>
                     <state key="normal" title="28">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -35,6 +36,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpU-bJ-Z5L">
                     <rect key="frame" x="145" y="0.0" width="30" height="30"/>
                     <state key="normal" title="43">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -50,6 +52,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6g-dJ-T5H">
                     <rect key="frame" x="249" y="0.0" width="30" height="30"/>
                     <state key="normal" title="35">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -68,8 +71,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="followersButton" destination="xpU-bJ-Z5L" id="cYG-fr-4zN"/>
+                <outlet property="followersLabel" destination="WjA-L3-XaN" id="AIw-dh-gRZ"/>
                 <outlet property="followingButton" destination="l6g-dJ-T5H" id="6gu-kq-ucF"/>
+                <outlet property="followingLabel" destination="pD6-TV-ik0" id="HF4-cf-cMV"/>
                 <outlet property="postsButton" destination="WW0-CQ-H5o" id="ZPG-fZ-Ynw"/>
+                <outlet property="postsLabel" destination="MTS-L8-0hV" id="zTA-8K-aLi"/>
             </connections>
             <point key="canvasLocation" x="170" y="605"/>
         </view>
