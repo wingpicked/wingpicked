@@ -40,8 +40,11 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         
         self.actualContentView.layer.cornerRadius = 3.0
         self.actualContentView.layer.shadowRadius = 2.0
-        self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 2.0);
-        self.actualContentView.layer.shadowOpacity = 0.3;
+        self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 2.0)
+        self.actualContentView.layer.shadowOpacity = 0.3
+        var shadowFrame = actualContentView.layer.bounds
+        var shadowPath = UIBezierPath(rect: shadowFrame).CGPath
+        actualContentView.layer.shadowPath = shadowPath; //performance
         
         profilePictureImageView.userInteractionEnabled = true
         var tap1 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
