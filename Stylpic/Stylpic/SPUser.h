@@ -19,5 +19,4 @@
 @property (nonatomic) NSNumber *isFollowing;
 
 -(NSString *)spDisplayName;
-
 @end

@@ -6,11 +6,12 @@ function notificationQueryWithType( user, type ) {
     notificatioQuery.include( 'photoPair' );
     notificatioQuery.include( 'fromUser' );
     notificatioQuery.include( 'toUser' );
-    notificatioQuery.limit( 1000 );
+    notificatioQuery.limit( 100 );
     notificatioQuery.equalTo( 'toUser', user );
-    notificatioQuery.equalTo( 'notificationViewed', false );
+    //notificatioQuery.equalTo( 'notificationViewed', false );
     notificatioQuery.equalTo( 'isArchiveReady', false );
     notificatioQuery.equalTo( 'type', type );
+    notificatioQuery.descending( 'createdAt' );
     return notificatioQuery;
 }
 

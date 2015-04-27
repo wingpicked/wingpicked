@@ -33,10 +33,13 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         var imageTwoTapRecogniser = UITapGestureRecognizer(target: self, action: "imageTwoDidTap")
         imageTwoTapRecogniser.delegate = self
         self.imageViewTwo.image = self.imageTwo
+<<<<<<< HEAD
         self.imageViewTwo.addGestureRecognizer(imageTwoTapRecogniser)
-        
+=======
+
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "dismissViewController:")
+>>>>>>> 834fa3d89814aa75652bc658a3045d1c8e901d7a
         
         let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 315, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)

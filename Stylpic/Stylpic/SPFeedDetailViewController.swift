@@ -60,7 +60,8 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
-            cell.setupCell(imageFile)
+            cell.setupCell(self.feedItem, imageFile: imageFile)
+            //cell.setupCell(imageFile)
             return cell
         }
         else if(indexPath.row == 1){
@@ -68,13 +69,25 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
             cell.delegate = self
             
-            if self.imageTapped == ImageIdentifier.ImageOne{
-                cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) likes", forState: .Normal)
-                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountOne) comments", forState: .Normal)
+            let noPhotoLiked = self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked
+            let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser().objectId
+            
+            if(!usersOwnPhotoPair && noPhotoLiked){
+                cell.percentageLabel.hidden = true
+                cell.likeCountButton.hidden = true
+                cell.commentCountButton.hidden = true
             }
-            if self.imageTapped == ImageIdentifier.ImageTwo {
-                cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) likes", forState: .Normal)
-                cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountTwo) comments", forState: .Normal)
+            else{
+                if self.imageTapped == ImageIdentifier.ImageOne{
+                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne)%"
+                    cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) likes", forState: .Normal)
+                    cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountOne) comments", forState: .Normal)
+                }
+                if self.imageTapped == ImageIdentifier.ImageTwo {
+                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedTwo)%"
+                    cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) likes", forState: .Normal)
+                    cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountTwo) comments", forState: .Normal)
+                }
             }
             
             
@@ -112,7 +125,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             return 382
         }
         else if(indexPath.row == 1){
-            return 44
+            return 54
         }
         else{
             return 23
@@ -125,6 +138,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         if self.feedItem.photos?.user.objectId != SPUser.currentUser().objectId {
             var followButtonName = self.feedItem.isCurrentUserFollowing ? "Button_following_NavBar" : "Button_follow_NavBar"
             var rightButtonImageView = UIImageView(image:UIImage(named:followButtonName))
+            rightButtonImageView.frame = CGRectMake(0,0,90, 25)
             rightButtonImageView.userInteractionEnabled = true
             var tapRecognizer = UITapGestureRecognizer(target: self, action: "followButtonDidTap")
             rightButtonImageView.addGestureRecognizer(tapRecognizer)
@@ -136,6 +150,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     func showAllComments() {
         var commentsViewController = SPCommentsViewController()
         commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
+        commentsViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
     
@@ -154,7 +169,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         let likesViewController = SPLikesViewController(nibName: "SPLikesViewController", bundle: nil)
         likesViewController.imageTapped = self.imageTapped
         likesViewController.feedItem = self.feedItem
-        
+        likesViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(likesViewController, animated: true)
     }
     

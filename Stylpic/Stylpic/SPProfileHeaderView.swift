@@ -42,7 +42,7 @@ class SPProfileHeaderView: UIView {
     
     func setupCell(following : Bool, user: SPUser ){
         self.isFollowing = following
-        updateIsFollowing(isFollowing)
+        updateIsFollowing(self.isFollowing)
         self.user = user
         self.profilePictureImageView.file = user["profilePicture"] as! PFFile
         self.profilePictureImageView.loadInBackground(nil)

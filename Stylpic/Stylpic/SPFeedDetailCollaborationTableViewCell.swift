@@ -15,14 +15,10 @@ protocol SPFeedDetailCollaborationTableViewCellDelegate{
 
 class SPFeedDetailCollaborationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var commentCountButton: UIButton!
     var delegate : SPFeedDetailCollaborationTableViewCellDelegate?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     @IBAction func likesButtonTapped(sender: AnyObject) {
         self.delegate?.likesButtonTapped()

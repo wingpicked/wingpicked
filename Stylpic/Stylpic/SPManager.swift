@@ -21,6 +21,7 @@ typealias SPPFFilesResultBlock = ( pfFiles: [PFFile]?, error: NSError? ) -> Void
 typealias SPClosetPhotosResultBlock = ( closetPhotos: [SPClosetPhoto]?, error: NSError? ) -> Void
 typealias SPActivityResultBlock = ( activities: [SPActivity]?, error: NSError? ) -> Void
 typealias SPUsersResultBlock = ( users: [SPUser]?, error: NSError? ) -> Void
+typealias SPFileResultBlock = ( file: PFFile?, error: NSError? ) -> Void
 
 class SPManager: NSObject {
     
@@ -125,6 +126,33 @@ class SPManager: NSObject {
     }
 
     
+    func addMyClosetItemWithImage( image:UIImage, resultBlock: PFBooleanResultBlock ) {
+        var imageData = UIImageJPEGRepresentation(image, 0.05)
+        var imageFile = PFFile(name: "Image.jpg", data: imageData)
+        imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                var photoOne = SPPhoto()
+                photoOne.photo = imageFile
+                photoOne.photoThumbnail = imageFile
+                photoOne.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if error == nil {
+                        var closetPhotoOne = SPClosetPhoto()
+                        closetPhotoOne.isVisible = true
+                        closetPhotoOne.user = SPUser.currentUser()
+                        closetPhotoOne.photo = photoOne
+                        closetPhotoOne.saveInBackgroundWithBlock({ (success, error) -> Void in
+                            if error == nil {
+                                resultBlock( true, nil )
+                            }
+                        })
+                    }
+                })
+            }
+        }    
+        
+    }
+    
+    
     func fetchComments(photoPair: PFObject, imageTapped: ActivityType, resultBlock: SPPFObjectArrayResultBlock) {
 
         var commentQuery = PFQuery( className: "Activity" )
@@ -160,6 +188,7 @@ class SPManager: NSObject {
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println( "saved comment activity" )
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock( savedObject: activity, error: error )
                 } else {
                     println( error )
@@ -183,6 +212,7 @@ class SPManager: NSObject {
             activity.type = activityType.rawValue
             activity.saveInBackgroundWithBlock { (success, error) -> Void in
                 if error == nil {
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock(success: success, error: error)
                 } else {
                     println( error )
@@ -209,6 +239,7 @@ class SPManager: NSObject {
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println( "saved follow ativity" )
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock( savedObject: activity, error: error )
                 } else {
                     println( error )
@@ -237,7 +268,11 @@ class SPManager: NSObject {
                     activity.setObject( true, forKey: "isArchiveReady" )
                 }
                 
-                PFObject.saveAllInBackground(payloadObjects, block: resultBlock)
+                PFObject.saveAllInBackground(payloadObjects, block: { (success, errro) -> Void in
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
+                    resultBlock( success, error )
+                })
             })
         } else {
             println( "user was nil" )
@@ -458,10 +493,8 @@ class SPManager: NSObject {
             }
         })
 
-        
-        
-        
     }
+    
     
 
     func saveAndPostImages( imageOne: UIImage?, imageTwo: UIImage?, caption: String, resultsBlock: PFBooleanResultBlock ) {

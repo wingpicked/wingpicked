@@ -28,10 +28,10 @@
 		38160A371AB51E1F005504AD /* SPCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38160A361AB51E1F005504AD /* SPCommentsViewController.swift */; };
 		381B47691ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */; };
 		381B476A1ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */; };
+		382FD7461AEDA7080067CD78 /* SPProfileToolBarPublicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */; };
 		3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7E01A560A5800191BDA /* AppDelegate.swift */; };
 		3845F7E81A560A5800191BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3845F7E61A560A5800191BDA /* Main.storyboard */; };
 		3845F7F91A560A5800191BDA /* StylpicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3845F7F81A560A5800191BDA /* StylpicTests.swift */; };
-		3845F8071A560A8800191BDA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8021A560A8800191BDA /* Bolts.framework */; };
 		3845F8081A560A8800191BDA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8031A560A8800191BDA /* Parse.framework */; };
 		3845F8091A560A8800191BDA /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8041A560A8800191BDA /* ParseCrashReporting.framework */; };
 		3845F80A1A560A8800191BDA /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8051A560A8800191BDA /* ParseFacebookUtils.framework */; };
@@ -48,6 +48,11 @@
 		387463701AA40465002E0565 /* SPFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874636F1AA40465002E0565 /* SPFeedItem.swift */; };
 		387463741AA418AC002E0565 /* SPProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463731AA418AC002E0565 /* SPProfileInfo.swift */; };
 		387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387463751AA418BA002E0565 /* SPPhotosComments.swift */; };
+		387EAA651AEC344A0039BD88 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387EAA641AEC344A0039BD88 /* FBSDKCoreKit.framework */; };
+		387EAA671AEC36450039BD88 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387EAA661AEC36450039BD88 /* Bolts.framework */; };
+		387EAA691AEC3B490039BD88 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */; };
+		387EAA6C1AEC5AEB0039BD88 /* SPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */; };
+		387EAA701AEC5C510039BD88 /* SPSettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */; };
 		389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */; };
 		389A56EB1A564BAC00EB0EFD /* SPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56EA1A564BAC00EB0EFD /* SPBaseTableViewController.swift */; };
 		389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389A56F11A57275E00EB0EFD /* FacebookSDK.framework */; };
@@ -81,7 +86,6 @@
 		38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */; };
 		38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */; };
 		38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B441AD210AB00180602 /* TTTAttributedLabel.m */; };
-		481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481756011A99554D0004E1C8 /* FacebookSDK.framework */; };
 		483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C21ABF8A470076331C /* SPPhotoPair.m */; };
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
 		483097C91ABF8DDB0076331C /* SPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C81ABF8DDB0076331C /* SPActivity.m */; };
@@ -92,6 +96,10 @@
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
+		48B9DE4C1AEC5778008739BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE481AEC5778008739BF /* Bolts.framework */; };
+		48B9DE4D1AEC5778008739BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE491AEC5778008739BF /* FacebookSDK.framework */; };
+		48B9DE4E1AEC5778008739BF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE4A1AEC5778008739BF /* FBSDKCoreKit.framework */; };
+		48B9DE4F1AEC5778008739BF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE4B1AEC5778008739BF /* FBSDKShareKit.framework */; };
 		48BCBACC1AD0939D001A60AB /* SPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACB1AD0939D001A60AB /* SPPhoto.m */; };
 		48BCBACF1AD09448001A60AB /* SPClosetPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACE1AD09448001A60AB /* SPClosetPhoto.m */; };
 		48D5C7211AC3C79B00D3EBA9 /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5C7201AC3C79B00D3EBA9 /* SPFeedTableViewController.swift */; };
@@ -147,6 +155,7 @@
 		38160A361AB51E1F005504AD /* SPCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCommentsViewController.swift; sourceTree = "<group>"; };
 		381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileNotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileNotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileToolBarPublicView.xib; sourceTree = "<group>"; };
 		3845F7DB1A560A5800191BDA /* Stylpic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylpic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F7DF1A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7E01A560A5800191BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,7 +163,6 @@
 		3845F7F21A560A5800191BDA /* StylpicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StylpicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F7F71A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7F81A560A5800191BDA /* StylpicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylpicTests.swift; sourceTree = "<group>"; };
-		3845F8021A560A8800191BDA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		3845F8031A560A8800191BDA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		3845F8041A560A8800191BDA /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		3845F8051A560A8800191BDA /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -176,6 +184,11 @@
 		3874636F1AA40465002E0565 /* SPFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedItem.swift; sourceTree = "<group>"; };
 		387463731AA418AC002E0565 /* SPProfileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileInfo.swift; sourceTree = "<group>"; };
 		387463751AA418BA002E0565 /* SPPhotosComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotosComments.swift; sourceTree = "<group>"; };
+		387EAA641AEC344A0039BD88 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		387EAA661AEC36450039BD88 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPSettingsViewController.swift; sourceTree = "<group>"; };
+		387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPSettingsStoryboard.storyboard; sourceTree = "<group>"; };
 		389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		389A56EA1A564BAC00EB0EFD /* SPBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPBaseTableViewController.swift; sourceTree = "<group>"; };
 		389A56F11A57275E00EB0EFD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -212,7 +225,6 @@
 		38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCommentsSmallTableViewCell.xib; sourceTree = "<group>"; };
 		38F87B431AD210AB00180602 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		38F87B441AD210AB00180602 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
-		481756011A99554D0004E1C8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		483097C11ABF8A470076331C /* SPPhotoPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhotoPair.h; sourceTree = "<group>"; };
 		483097C21ABF8A470076331C /* SPPhotoPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhotoPair.m; sourceTree = "<group>"; };
 		483097C41ABF8B990076331C /* SPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUser.h; sourceTree = "<group>"; };
@@ -226,6 +238,10 @@
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
+		48B9DE481AEC5778008739BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		48B9DE491AEC5778008739BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		48B9DE4A1AEC5778008739BF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		48B9DE4B1AEC5778008739BF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		48BCBACA1AD0939D001A60AB /* SPPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhoto.h; sourceTree = "<group>"; };
 		48BCBACB1AD0939D001A60AB /* SPPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhoto.m; sourceTree = "<group>"; };
 		48BCBACD1AD09448001A60AB /* SPClosetPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPClosetPhoto.h; sourceTree = "<group>"; };
@@ -252,8 +268,8 @@
 			files = (
 				4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */,
 				389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */,
-				481756021A99554D0004E1C8 /* FacebookSDK.framework in Frameworks */,
 				ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */,
+				387EAA651AEC344A0039BD88 /* FBSDKCoreKit.framework in Frameworks */,
 				ECB2C23C1A560E350009FD11 /* libz.dylib in Frameworks */,
 				ECB2C23D1A560E350009FD11 /* MobileCoreServices.framework in Frameworks */,
 				ECB2C23E1A560E350009FD11 /* QuartzCore.framework in Frameworks */,
@@ -262,14 +278,19 @@
 				ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */,
 				ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */,
 				ECB2C2311A560DC30009FD11 /* CoreGraphics.framework in Frameworks */,
+				48B9DE4F1AEC5778008739BF /* FBSDKShareKit.framework in Frameworks */,
+				48B9DE4D1AEC5778008739BF /* FacebookSDK.framework in Frameworks */,
+				48B9DE4E1AEC5778008739BF /* FBSDKCoreKit.framework in Frameworks */,
 				3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */,
 				3845F8101A560AE700191BDA /* AudioToolbox.framework in Frameworks */,
 				3845F80E1A560ADD00191BDA /* Accounts.framework in Frameworks */,
+				387EAA671AEC36450039BD88 /* Bolts.framework in Frameworks */,
 				3845F8081A560A8800191BDA /* Parse.framework in Frameworks */,
+				387EAA691AEC3B490039BD88 /* FBSDKShareKit.framework in Frameworks */,
 				3845F8091A560A8800191BDA /* ParseCrashReporting.framework in Frameworks */,
+				48B9DE4C1AEC5778008739BF /* Bolts.framework in Frameworks */,
 				3845F80B1A560A8800191BDA /* ParseUI.framework in Frameworks */,
 				3845F80A1A560A8800191BDA /* ParseFacebookUtils.framework in Frameworks */,
-				3845F8071A560A8800191BDA /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +427,7 @@
 				38BB44571A66317E004CD444 /* SPProfile */,
 				38BB445A1A6631B8004CD444 /* SPCloset */,
 				3811EA891AD0967300F234AF /* SPTabBarController.swift */,
+				387EAA6E1AEC5AEE0039BD88 /* SPSettings */,
 				380671121AD9F3010074E4FE /* SPLikes */,
 				3806710C1AD9F20C0074E4FE /* SPComment */,
 				3863A7001A7F6D1C00AFE938 /* CustomFonts */,
@@ -448,8 +470,14 @@
 				4877E1101AA3E6D1006587CE /* Social.framework */,
 				ECB2C2341A560E350009FD11 /* libsqlite3.dylib */,
 				ECB2C2351A560E350009FD11 /* libz.dylib */,
+				48B9DE481AEC5778008739BF /* Bolts.framework */,
+				48B9DE491AEC5778008739BF /* FacebookSDK.framework */,
+				48B9DE4A1AEC5778008739BF /* FBSDKCoreKit.framework */,
+				48B9DE4B1AEC5778008739BF /* FBSDKShareKit.framework */,
+				387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */,
+				387EAA661AEC36450039BD88 /* Bolts.framework */,
+				387EAA641AEC344A0039BD88 /* FBSDKCoreKit.framework */,
 				389A56F11A57275E00EB0EFD /* FacebookSDK.framework */,
-				481756011A99554D0004E1C8 /* FacebookSDK.framework */,
 				ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */,
 				ECB2C2371A560E350009FD11 /* QuartzCore.framework */,
 				ECB2C2381A560E350009FD11 /* Security.framework */,
@@ -460,7 +488,6 @@
 				3845F8111A560AF300191BDA /* CFNetwork.framework */,
 				3845F80F1A560AE700191BDA /* AudioToolbox.framework */,
 				3845F80D1A560ADD00191BDA /* Accounts.framework */,
-				3845F8021A560A8800191BDA /* Bolts.framework */,
 				3845F8031A560A8800191BDA /* Parse.framework */,
 				3845F8041A560A8800191BDA /* ParseCrashReporting.framework */,
 				3845F8051A560A8800191BDA /* ParseFacebookUtils.framework */,
@@ -524,6 +551,15 @@
 				387463751AA418BA002E0565 /* SPPhotosComments.swift */,
 			);
 			name = SPViewModels;
+			sourceTree = "<group>";
+		};
+		387EAA6E1AEC5AEE0039BD88 /* SPSettings */ = {
+			isa = PBXGroup;
+			children = (
+				387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */,
+				387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */,
+			);
+			name = SPSettings;
 			sourceTree = "<group>";
 		};
 		389A56EC1A564BB100EB0EFD /* SPFeed */ = {
@@ -605,6 +641,7 @@
 				38EAD4651AB63DF000A6FD81 /* SPProfileHeaderView.xib */,
 				38EAD4631AB63DE700A6FD81 /* SPProfileHeaderView.swift */,
 				38EAD45F1AB63BBB00A6FD81 /* SPProfileToolBarView.xib */,
+				382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */,
 				38EAD4611AB63BCA00A6FD81 /* SPProfileToolBarView.swift */,
 				38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */,
 				38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */,
@@ -745,11 +782,13 @@
 				38F87B3D1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib in Resources */,
 				484770B81AD9DC2F007045E5 /* Images.xcassets in Resources */,
 				38BB444F1A63C077004CD444 /* SPEditPhotoViewController.xib in Resources */,
+				382FD7461AEDA7080067CD78 /* SPProfileToolBarPublicView.xib in Resources */,
 				38CD696C1AD231210003F8A4 /* SPLikeCommentButtonView.xib in Resources */,
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
 				38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */,
+				387EAA701AEC5C510039BD88 /* SPSettingsStoryboard.storyboard in Resources */,
 				380671111AD9F2FB0074E4FE /* SPLikesViewController.xib in Resources */,
 				380671161AD9F7B10074E4FE /* SPLikesTableViewCell.xib in Resources */,
 			);
@@ -792,6 +831,7 @@
 				38160A271AB50F34005504AD /* SLKTextView.m in Sources */,
 				48D5C7211AC3C79B00D3EBA9 /* SPFeedTableViewController.swift in Sources */,
 				387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */,
+				387EAA6C1AEC5AEB0039BD88 /* SPSettingsViewController.swift in Sources */,
 				38160A281AB50F34005504AD /* SLKTextInputbar.m in Sources */,
 				38160A2A1AB50F34005504AD /* SLKInputAccessoryView.m in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
@@ -860,6 +900,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -905,6 +946,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -943,6 +985,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -951,12 +994,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
 					/Users/Neilb/Documents/FacebookSDK,
+					/Users/joshuabell/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6dfaa44f-873e-4a64-be71-28a85c759be2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -967,6 +1011,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -975,12 +1020,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Stylpic",
 					/Users/Neilb/Documents/FacebookSDK,
+					/Users/joshuabell/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6dfaa44f-873e-4a64-be71-28a85c759be2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;

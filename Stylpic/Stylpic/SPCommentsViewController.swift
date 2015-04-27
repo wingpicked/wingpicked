@@ -20,13 +20,8 @@ class SPCommentsViewController: SLKTextViewController {
         // Do any additional setup after loading the view.
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
 
-        self.leftButton.setImage(UIImage(named: "Button_like_selected"), forState: UIControlState.Normal)
     }
 
-    override func didPressLeftButton(sender: AnyObject!) {
-        println("Like")
-    }
-    
     override func didPressRightButton(sender: AnyObject!) {
         
         let comment = self.textView.text

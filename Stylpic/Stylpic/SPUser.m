@@ -19,9 +19,10 @@
     [self registerSubclass];
 }
 
--(NSString *)spDisplayName {
-    NSString *lastInitial = [self.lastName substringToIndex:1];
-    return [NSString stringWithFormat:@"%@ %@.", self.firstName, lastInitial];
+- (NSString *)spDisplayName {
+    //NSString *lastInitial = [self.lastName substringToIndex:1];
+    return [[NSString stringWithFormat:@"%@%@", self.firstName, self.lastName] lowercaseString];
 }
+
 
 @end

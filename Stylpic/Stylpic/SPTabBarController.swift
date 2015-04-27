@@ -36,11 +36,36 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
 
         self.imagePickerViewController.delegate = self
         self.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: "Badges", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: UIApplicationDidBecomeActiveNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.tabBar.bringSubviewToFront(self.centerButton)
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear( animated )
+        self.updateProfileBadgeNumber()
+    }
+    
+    func updateProfileBadgeNumber() {
+        var badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
+        for viewController in self.viewControllers as! [UIViewController] {
+            if viewController.restorationIdentifier == "SPProfileNavigationController" {
+                if badgeNum > 0 {
+                    viewController.tabBarItem.badgeValue = String( badgeNum )
+                } else {
+                    viewController.tabBarItem.badgeValue = nil
+                }
+            }
+        }
     }
     
      func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
