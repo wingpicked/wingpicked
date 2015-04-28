@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPFeedTableViewController: SPBaseTableViewController {
+class SPFeedTableViewController: SPBaseTableViewController, SPFeedEmptyStateViewDelegate {
 
     override func downloadAllImages(){        
         SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
@@ -21,5 +21,15 @@ class SPFeedTableViewController: SPBaseTableViewController {
         })
     }
     
+    func findFriendsButtonDidTap() {
+        let findFriendsController = SPFindFriendsTableViewController()
+        let navigationController = UINavigationController(rootViewController: findFriendsController)
+        let backItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "dismissFindFriendsController")
+        findFriendsController.navigationItem.leftBarButtonItem = backItem
+        self.presentViewController(navigationController, animated: true, completion: nil)
+    }
 
+    func dismissFindFriendsController() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

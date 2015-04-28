@@ -107,6 +107,8 @@
 		4854A9D01A9AC79500164CD0 /* SPCameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */; };
 		4854A9D21A9AC7E800164CD0 /* SPCameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */; };
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
+		4883A46A1AEF391D006B49A2 /* SPFeedEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4883A4691AEF391D006B49A2 /* SPFeedEmptyStateView.xib */; };
+		4883A46C1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4883A46B1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
 		48B9DE4C1AEC5778008739BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE481AEC5778008739BF /* Bolts.framework */; };
 		48B9DE4D1AEC5778008739BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE491AEC5778008739BF /* FacebookSDK.framework */; };
@@ -276,6 +278,8 @@
 		4854A9CF1A9AC79500164CD0 /* SPCameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraOverlay.xib; sourceTree = "<group>"; };
 		4854A9D11A9AC7E800164CD0 /* SPCameraOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraOverlay.swift; sourceTree = "<group>"; };
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		4883A4691AEF391D006B49A2 /* SPFeedEmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedEmptyStateView.xib; sourceTree = "<group>"; };
+		4883A46B1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedEmptyStateView.swift; sourceTree = "<group>"; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
 		48B9DE481AEC5778008739BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		48B9DE491AEC5778008739BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -669,6 +673,7 @@
 				38AA7BF51A883E6600A75FB7 /* SPFeedDetailViewController.xib */,
 				38FBAD411A92D0E100B8905C /* SPFeedTableViewCells */,
 				3806710D1AD9F2A90074E4FE /* SPFeedDetailTableViewCells */,
+				4883A4681AEF38EB006B49A2 /* emptyState */,
 			);
 			name = SPFeed;
 			sourceTree = "<group>";
@@ -780,6 +785,15 @@
 			name = SPCameraOverlay;
 			sourceTree = "<group>";
 		};
+		4883A4681AEF38EB006B49A2 /* emptyState */ = {
+			isa = PBXGroup;
+			children = (
+				4883A46B1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift */,
+				4883A4691AEF391D006B49A2 /* SPFeedEmptyStateView.xib */,
+			);
+			name = emptyState;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -869,6 +883,7 @@
 				380671751AAD6ED00001527F /* OpenSans-Light.ttf in Resources */,
 				380671761AAD6ED00001527F /* OpenSans-Bold.ttf in Resources */,
 				38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */,
+				4883A46A1AEF391D006B49A2 /* SPFeedEmptyStateView.xib in Resources */,
 				38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */,
 				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				38EAD4601AB63BBB00A6FD81 /* SPProfileToolBarView.xib in Resources */,
