@@ -122,10 +122,10 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                     
                     self.updateToolbarUI()
                     
-                    println("-----------")
-                    println(self.profileInfoViewModel.followers)
-                    println(self.profileInfoViewModel.following)
-            
+//                    println("-----------")
+//                    println(self.profileInfoViewModel.followers)
+//                    println(self.profileInfoViewModel.following)
+//            
                     println(profileObject)
                     self.tableView.reloadData()
                 }
@@ -210,6 +210,32 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         case .Followers, .Following, .Notifications:
             return 44
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       switch currentViewState {
+        case .Followers:
+            let user = profileInfoViewModel.followers[indexPath.row]
+            showProfileViewControllerForUser(user)
+            break
+        case .Following:
+            let user = profileInfoViewModel.following[indexPath.row]
+            showProfileViewControllerForUser(user)
+            break
+        case .Notifications:
+            let user = profileInfoViewModel.notifications[indexPath.row].fromUser
+            showProfileViewControllerForUser(user)
+            break
+        default:
+            break
+        }
+    }
+    
+    func showProfileViewControllerForUser(user : SPUser){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
+        profileViewController.showWithUser(user)
+        self.navigationController?.pushViewController(profileViewController, animated: true)
     }
     
     //MARK: SPProfile Toolbar Delegate

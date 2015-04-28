@@ -35,6 +35,7 @@ class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelega
             if(error == nil){
                 self.feedItems = feedItems
                 self.tableView.reloadData()
+                self.isStaleData = false
             }
             self.refreshControl?.endRefreshing()
         })

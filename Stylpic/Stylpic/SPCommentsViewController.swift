@@ -14,12 +14,28 @@ class SPCommentsViewController: SLKTextViewController {
     var imageTapped: ImageIdentifier = ImageIdentifier.ImageOne
     var feedItem: SPFeedItem?
     
+    var timer : NSTimer!
+    var progress : Float = 0.0
+    var progressNavController : MRNavigationBarProgressView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
+        
+        progressNavController = MRNavigationBarProgressView(forNavigationController: self.navigationController)
+    }
+    
+    func updateProgressBar(){
+        println(progress)
+        if(progress >= 1.0){
+            timer.invalidate()
+            progress = 0.0
+        }
 
+        self.progressNavController.progress = progress
+        progress += 0.01
     }
 
     override func didPressRightButton(sender: AnyObject!) {
@@ -35,6 +51,7 @@ class SPCommentsViewController: SLKTextViewController {
         
             SPManager.sharedInstance.postComment(activityType, photoPair: photoPair, comment: comment, resultBlock: { (savedObject, error) -> Void in
                 if error == nil {
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateProgressBar", userInfo: nil, repeats: true)
                     if let savedObject = savedObject {
                         self.tableView.beginUpdates()
                         self.comments.insert(savedObject, atIndex: 0)

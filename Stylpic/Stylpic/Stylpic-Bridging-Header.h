@@ -20,3 +20,4 @@
 #import "SPPhoto.h"
 #import "UIImage+BackgroundImage.h"
 #import "TTTAttributedLabel.h"
+#import "MRProgress.h"
