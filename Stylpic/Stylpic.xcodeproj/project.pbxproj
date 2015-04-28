@@ -39,6 +39,18 @@
 		3845F80E1A560ADD00191BDA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F80D1A560ADD00191BDA /* Accounts.framework */; };
 		3845F8101A560AE700191BDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F80F1A560AE700191BDA /* AudioToolbox.framework */; };
 		3845F8121A560AF300191BDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3845F8111A560AF300191BDA /* CFNetwork.framework */; };
+		385C743E1AEF46C900FBFA62 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C741A1AEF46C900FBFA62 /* MRBlurView.m */; };
+		385C743F1AEF46C900FBFA62 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C741C1AEF46C900FBFA62 /* UIImage+MRImageEffects.m */; };
+		385C74401AEF46C900FBFA62 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C741F1AEF46C900FBFA62 /* MRActivityIndicatorView.m */; };
+		385C74411AEF46C900FBFA62 /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C74211AEF46C900FBFA62 /* MRCircularProgressView.m */; };
+		385C74421AEF46C900FBFA62 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C74231AEF46C900FBFA62 /* MRIconView.m */; };
+		385C74431AEF46C900FBFA62 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C74251AEF46C900FBFA62 /* MRNavigationBarProgressView.m */; };
+		385C74441AEF46C900FBFA62 /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C74271AEF46C900FBFA62 /* MRProgressOverlayView.m */; };
+		385C74451AEF46C900FBFA62 /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C74291AEF46C900FBFA62 /* MRProgressView.m */; };
+		385C74461AEF46C900FBFA62 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C742C1AEF46C900FBFA62 /* MRStopButton.m */; };
+		385C744A1AEF46C900FBFA62 /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C74381AEF46C900FBFA62 /* MRMessageInterceptor.m */; };
+		385C744B1AEF46C900FBFA62 /* MRMethodCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C743A1AEF46C900FBFA62 /* MRMethodCopier.m */; };
+		385C744C1AEF46C900FBFA62 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 385C743D1AEF46C900FBFA62 /* MRWeakProxy.m */; };
 		3862A8001ADB52DC0044C0C8 /* SPSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3862A7FE1ADB52DC0044C0C8 /* SPSearchResultsViewController.swift */; };
 		3862A8011ADB52DC0044C0C8 /* SPSearchResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3862A7FF1ADB52DC0044C0C8 /* SPSearchResultsViewController.xib */; };
 		386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386B7A801AA82ECD00115147 /* SPClosetDetailViewController.swift */; };
@@ -170,6 +182,33 @@
 		3845F80D1A560ADD00191BDA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3845F80F1A560AE700191BDA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3845F8111A560AF300191BDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		385C74191AEF46C900FBFA62 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
+		385C741A1AEF46C900FBFA62 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
+		385C741B1AEF46C900FBFA62 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
+		385C741C1AEF46C900FBFA62 /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
+		385C741E1AEF46C900FBFA62 /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorView.h; sourceTree = "<group>"; };
+		385C741F1AEF46C900FBFA62 /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorView.m; sourceTree = "<group>"; };
+		385C74201AEF46C900FBFA62 /* MRCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressView.h; sourceTree = "<group>"; };
+		385C74211AEF46C900FBFA62 /* MRCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressView.m; sourceTree = "<group>"; };
+		385C74221AEF46C900FBFA62 /* MRIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRIconView.h; sourceTree = "<group>"; };
+		385C74231AEF46C900FBFA62 /* MRIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRIconView.m; sourceTree = "<group>"; };
+		385C74241AEF46C900FBFA62 /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
+		385C74251AEF46C900FBFA62 /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
+		385C74261AEF46C900FBFA62 /* MRProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayView.h; sourceTree = "<group>"; };
+		385C74271AEF46C900FBFA62 /* MRProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayView.m; sourceTree = "<group>"; };
+		385C74281AEF46C900FBFA62 /* MRProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressView.h; sourceTree = "<group>"; };
+		385C74291AEF46C900FBFA62 /* MRProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressView.m; sourceTree = "<group>"; };
+		385C742A1AEF46C900FBFA62 /* MRStopableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopableView.h; sourceTree = "<group>"; };
+		385C742B1AEF46C900FBFA62 /* MRStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButton.h; sourceTree = "<group>"; };
+		385C742C1AEF46C900FBFA62 /* MRStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButton.m; sourceTree = "<group>"; };
+		385C742D1AEF46C900FBFA62 /* MRProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgress.h; sourceTree = "<group>"; };
+		385C74371AEF46C900FBFA62 /* MRMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMessageInterceptor.h; sourceTree = "<group>"; };
+		385C74381AEF46C900FBFA62 /* MRMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMessageInterceptor.m; sourceTree = "<group>"; };
+		385C74391AEF46C900FBFA62 /* MRMethodCopier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMethodCopier.h; sourceTree = "<group>"; };
+		385C743A1AEF46C900FBFA62 /* MRMethodCopier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMethodCopier.m; sourceTree = "<group>"; };
+		385C743B1AEF46C900FBFA62 /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
+		385C743C1AEF46C900FBFA62 /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
+		385C743D1AEF46C900FBFA62 /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		3862A7FE1ADB52DC0044C0C8 /* SPSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPSearchResultsViewController.swift; sourceTree = "<group>"; };
 		3862A7FF1ADB52DC0044C0C8 /* SPSearchResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPSearchResultsViewController.xib; sourceTree = "<group>"; };
 		3863A6FC1A7F6D1800AFE938 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
@@ -352,6 +391,7 @@
 		38160A1A1AB508DC005504AD /* Third Party Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				385C74171AEF46C900FBFA62 /* MRProgress */,
 				38F87B421AD210AB00180602 /* TTTAttributedLabel */,
 				38EAD46A1AB651AA00A6FD81 /* UIVIew+Borders */,
 				38160A2B1AB50F38005504AD /* SlackInputAccessoryView */,
@@ -504,6 +544,64 @@
 				387463721AA412FA002E0565 /* SPViewModels */,
 			);
 			name = SPModels;
+			sourceTree = "<group>";
+		};
+		385C74171AEF46C900FBFA62 /* MRProgress */ = {
+			isa = PBXGroup;
+			children = (
+				385C74181AEF46C900FBFA62 /* Blur */,
+				385C741D1AEF46C900FBFA62 /* Components */,
+				385C742D1AEF46C900FBFA62 /* MRProgress.h */,
+				385C74361AEF46C900FBFA62 /* Utils */,
+			);
+			path = MRProgress;
+			sourceTree = "<group>";
+		};
+		385C74181AEF46C900FBFA62 /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				385C74191AEF46C900FBFA62 /* MRBlurView.h */,
+				385C741A1AEF46C900FBFA62 /* MRBlurView.m */,
+				385C741B1AEF46C900FBFA62 /* UIImage+MRImageEffects.h */,
+				385C741C1AEF46C900FBFA62 /* UIImage+MRImageEffects.m */,
+			);
+			path = Blur;
+			sourceTree = "<group>";
+		};
+		385C741D1AEF46C900FBFA62 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				385C741E1AEF46C900FBFA62 /* MRActivityIndicatorView.h */,
+				385C741F1AEF46C900FBFA62 /* MRActivityIndicatorView.m */,
+				385C74201AEF46C900FBFA62 /* MRCircularProgressView.h */,
+				385C74211AEF46C900FBFA62 /* MRCircularProgressView.m */,
+				385C74221AEF46C900FBFA62 /* MRIconView.h */,
+				385C74231AEF46C900FBFA62 /* MRIconView.m */,
+				385C74241AEF46C900FBFA62 /* MRNavigationBarProgressView.h */,
+				385C74251AEF46C900FBFA62 /* MRNavigationBarProgressView.m */,
+				385C74261AEF46C900FBFA62 /* MRProgressOverlayView.h */,
+				385C74271AEF46C900FBFA62 /* MRProgressOverlayView.m */,
+				385C74281AEF46C900FBFA62 /* MRProgressView.h */,
+				385C74291AEF46C900FBFA62 /* MRProgressView.m */,
+				385C742A1AEF46C900FBFA62 /* MRStopableView.h */,
+				385C742B1AEF46C900FBFA62 /* MRStopButton.h */,
+				385C742C1AEF46C900FBFA62 /* MRStopButton.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		385C74361AEF46C900FBFA62 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				385C74371AEF46C900FBFA62 /* MRMessageInterceptor.h */,
+				385C74381AEF46C900FBFA62 /* MRMessageInterceptor.m */,
+				385C74391AEF46C900FBFA62 /* MRMethodCopier.h */,
+				385C743A1AEF46C900FBFA62 /* MRMethodCopier.m */,
+				385C743B1AEF46C900FBFA62 /* MRProgressHelper.h */,
+				385C743C1AEF46C900FBFA62 /* MRWeakProxy.h */,
+				385C743D1AEF46C900FBFA62 /* MRWeakProxy.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		3863A7001A7F6D1C00AFE938 /* CustomFonts */ = {
@@ -813,6 +911,8 @@
 				38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */,
 				4842AA341ADB56190013C726 /* SPFindFriendsTableViewController.swift in Sources */,
 				389A56EB1A564BAC00EB0EFD /* SPBaseTableViewController.swift in Sources */,
+				385C743F1AEF46C900FBFA62 /* UIImage+MRImageEffects.m in Sources */,
+				385C74431AEF46C900FBFA62 /* MRNavigationBarProgressView.m in Sources */,
 				38F87B3C1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift in Sources */,
 				380671151AD9F7B10074E4FE /* SPLikesTableViewCell.swift in Sources */,
 				3811EA8D1AD09D2700F234AF /* UIImage+BackgroundImage.m in Sources */,
@@ -822,33 +922,43 @@
 				386B7A821AA82ECD00115147 /* SPClosetDetailViewController.swift in Sources */,
 				38160A331AB50F95005504AD /* SLKTextView+SLKAdditions.m in Sources */,
 				38AC45161AA8212700199935 /* SPClosetCollectionViewCell.swift in Sources */,
+				385C74411AEF46C900FBFA62 /* MRCircularProgressView.m in Sources */,
+				385C74451AEF46C900FBFA62 /* MRProgressView.m in Sources */,
 				48BCBACC1AD0939D001A60AB /* SPPhoto.m in Sources */,
 				387463671AA3FA1C002E0565 /* SPManager.swift in Sources */,
 				389A56F91A57405500EB0EFD /* SPLoginViewController.swift in Sources */,
 				38BB44591A66318C004CD444 /* SPClosetViewController.swift in Sources */,
 				3811EA8A1AD0967300F234AF /* SPTabBarController.swift in Sources */,
+				385C744C1AEF46C900FBFA62 /* MRWeakProxy.m in Sources */,
 				483097C61ABF8B990076331C /* SPUser.m in Sources */,
 				38160A271AB50F34005504AD /* SLKTextView.m in Sources */,
 				48D5C7211AC3C79B00D3EBA9 /* SPFeedTableViewController.swift in Sources */,
+				385C743E1AEF46C900FBFA62 /* MRBlurView.m in Sources */,
 				387463761AA418BA002E0565 /* SPPhotosComments.swift in Sources */,
 				387EAA6C1AEC5AEB0039BD88 /* SPSettingsViewController.swift in Sources */,
 				38160A281AB50F34005504AD /* SLKTextInputbar.m in Sources */,
 				38160A2A1AB50F34005504AD /* SLKInputAccessoryView.m in Sources */,
 				3845F7E11A560A5800191BDA /* AppDelegate.swift in Sources */,
 				38EAD4641AB63DE700A6FD81 /* SPProfileHeaderView.swift in Sources */,
+				385C744A1AEF46C900FBFA62 /* MRMessageInterceptor.m in Sources */,
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
 				387463701AA40465002E0565 /* SPFeedItem.swift in Sources */,
 				38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */,
+				385C74421AEF46C900FBFA62 /* MRIconView.m in Sources */,
 				483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */,
 				38160A351AB50F95005504AD /* UIScrollView+SLKAdditions.m in Sources */,
 				38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */,
+				385C74401AEF46C900FBFA62 /* MRActivityIndicatorView.m in Sources */,
 				38EAD46D1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift in Sources */,
+				385C74461AEF46C900FBFA62 /* MRStopButton.m in Sources */,
 				EC3B4BC81ABBC28200E76121 /* SPProfileFollowTableViewCell.swift in Sources */,
 				38160A371AB51E1F005504AD /* SPCommentsViewController.swift in Sources */,
 				38EAD4621AB63BCA00A6FD81 /* SPProfileToolBarView.swift in Sources */,
 				38CD696A1AD231140003F8A4 /* SPLikeCommentButtonView.swift in Sources */,
 				38AA7BFA1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.swift in Sources */,
+				385C744B1AEF46C900FBFA62 /* MRMethodCopier.m in Sources */,
 				38160A291AB50F34005504AD /* SLKTypingIndicatorView.m in Sources */,
+				385C74441AEF46C900FBFA62 /* MRProgressOverlayView.m in Sources */,
 				38EAD4691AB651A500A6FD81 /* UIView+Borders.m in Sources */,
 				48BCBACF1AD09448001A60AB /* SPClosetPhoto.m in Sources */,
 				38AA7BFE1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.swift in Sources */,

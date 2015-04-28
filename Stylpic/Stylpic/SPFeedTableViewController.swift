@@ -10,12 +10,12 @@ import UIKit
 
 class SPFeedTableViewController: SPBaseTableViewController {
 
-    override func downloadAllImages(){
-        
+    override func downloadAllImages(){        
         SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
             if(error == nil){
                 self.feedItems = feedItems
                 self.tableView.reloadData()
+                self.isStaleData = false
             }
             self.refreshControl?.endRefreshing()
         })

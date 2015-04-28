@@ -74,13 +74,14 @@ class SPManager: NSObject {
                 
                 resultsBlock(feedItems:feedItems, error: nil)
             }
-            
         }
     }
     
     func getProfileInfo( user: PFUser?, resultBlock:(SPProfileInfoResultsBlock) ) {
+
         if let user = user {
             var params = [ "userObjectId": user.objectId ]
+            MRProgressOverlayView.showOverlayAddedTo(UIApplication.sharedApplication().delegate?.window!, animated: true)
             PFCloud.callFunctionInBackground( "fetchProfileInfo", withParameters: params) { (payload, error) -> Void in
                 if error == nil {
                     println( payload )
@@ -94,6 +95,7 @@ class SPManager: NSObject {
                     println( error )
                     resultBlock( profileObject: nil, error: error)
                 }
+                MRProgressOverlayView.dismissOverlayForView(UIApplication.sharedApplication().delegate?.window!, animated: true)
                 
                 
             }
@@ -107,8 +109,9 @@ class SPManager: NSObject {
     }
     
     func getMyClosetItemsWithResultBlock( resultBlock:SPClosetPhotosResultBlock ) {
+        self.displayLoadingIndicator(true)
         var usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
-        usersPhotosQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
+        //usersPhotosQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
         usersPhotosQuery.includeKey( "user" )
         usersPhotosQuery.includeKey( "photo" )
         usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser() )
@@ -122,6 +125,7 @@ class SPManager: NSObject {
             } else {
                 resultBlock( closetPhotos: nil, error: anError )
             }
+            self.displayLoadingIndicator(false)
         }
         
     }
@@ -157,7 +161,7 @@ class SPManager: NSObject {
     func fetchComments(photoPair: PFObject, imageTapped: ActivityType, resultBlock: SPPFObjectArrayResultBlock) {
 
         var commentQuery = PFQuery( className: "Activity" )
-        commentQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
+        //commentQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
         commentQuery.whereKey( "type", equalTo: imageTapped.rawValue )
         commentQuery.whereKey( "photoPair", equalTo: photoPair )
         commentQuery.whereKey( "isArchiveReady", equalTo: false )
@@ -607,5 +611,12 @@ class SPManager: NSObject {
         }
     }
     
-    
+    func displayLoadingIndicator(visible: Bool){
+        if(visible){
+            MRProgressOverlayView.showOverlayAddedTo(UIApplication.sharedApplication().delegate?.window!, animated: true)
+        }
+        else{
+            MRProgressOverlayView.dismissOverlayForView(UIApplication.sharedApplication().delegate?.window!, animated: true)
+        }
+    }
 }
