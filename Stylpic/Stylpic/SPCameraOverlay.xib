@@ -33,6 +33,24 @@
                                 <action selector="dismissCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="p3d-s6-df8"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXO-eR-QZD">
+                            <rect key="frame" x="283" y="8" width="31" height="25"/>
+                            <state key="normal" image="Icon_switchCamera">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="switchCameraButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="cfW-nV-4ol"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-yi-NzB">
+                            <rect key="frame" x="250" y="9" width="17" height="25"/>
+                            <state key="normal" image="Icon_flash">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="flashButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="29q-IF-xks"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -91,13 +109,18 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
+                <outlet property="flashButton" destination="jfA-yi-NzB" id="oOg-so-bhX"/>
                 <outlet property="squareCroppingView" destination="tPs-8K-j5q" id="dXu-a3-Lg4"/>
+                <outlet property="switchCameraButton" destination="TXO-eR-QZD" id="piS-IY-7FZ"/>
+                <outlet property="titleBarView" destination="dwS-Ud-AMg" id="28U-fw-9Dz"/>
                 <outlet property="titleLabel" destination="ZSu-bH-3QU" id="9fi-BW-aLS"/>
             </connections>
-            <point key="canvasLocation" x="342.5" y="257"/>
+            <point key="canvasLocation" x="342" y="257"/>
         </view>
     </objects>
     <resources>
         <image name="CameraButton" width="160" height="160"/>
+        <image name="Icon_flash" width="44" height="62"/>
+        <image name="Icon_switchCamera" width="63" height="50"/>
     </resources>
 </document>

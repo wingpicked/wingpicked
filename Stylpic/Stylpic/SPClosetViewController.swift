@@ -138,7 +138,21 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-
+    func switchCameraButtonDidTap() {
+        if self.imagePickerViewController.cameraDevice == .Rear {
+            self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        } else {
+            self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+        }
+    }
+    
+    func flashButtonDidTap() {
+        if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
+            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        } else {
+            self.imagePickerViewController.cameraFlashMode = .On
+        }
+    }
     
     func takePhotoButtonDidTap() {
         self.imagePickerViewController.takePicture()

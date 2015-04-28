@@ -155,7 +155,22 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         }
     }
     
-
+    func switchCameraButtonDidTap() {
+        if self.curImagePickerController?.cameraDevice == .Rear {
+            self.curImagePickerController?.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        } else {
+            self.curImagePickerController?.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+        }
+    }
+    
+    func flashButtonDidTap() {
+        if self.curImagePickerController?.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
+            self.curImagePickerController?.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        } else {
+            self.curImagePickerController?.cameraFlashMode = .On
+        }
+    }
+    
     func selectPhotosDidTap() {
 //        self.dismissViewControllerAnimated(true, completion: nil)
         self.showImageSelectionChoicesActionSheet()
