@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPFeedTableViewController: SPBaseTableViewController, SPFeedEmptyStateViewDelegate {
+class SPFeedTableViewController: SPBaseTableViewController {
 
     override func downloadAllImages(){        
         SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
