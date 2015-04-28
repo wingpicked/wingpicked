@@ -108,6 +108,7 @@ class SPManager: NSObject {
     
     func getMyClosetItemsWithResultBlock( resultBlock:SPClosetPhotosResultBlock ) {
         var usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
+        usersPhotosQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
         usersPhotosQuery.includeKey( "user" )
         usersPhotosQuery.includeKey( "photo" )
         usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser() )
@@ -156,6 +157,7 @@ class SPManager: NSObject {
     func fetchComments(photoPair: PFObject, imageTapped: ActivityType, resultBlock: SPPFObjectArrayResultBlock) {
 
         var commentQuery = PFQuery( className: "Activity" )
+        commentQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
         commentQuery.whereKey( "type", equalTo: imageTapped.rawValue )
         commentQuery.whereKey( "photoPair", equalTo: photoPair )
         commentQuery.whereKey( "isArchiveReady", equalTo: false )
