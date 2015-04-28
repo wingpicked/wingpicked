@@ -10,21 +10,21 @@ import UIKit
 
 class SPFeedTableViewController: SPBaseTableViewController, SPFeedEmptyStateViewDelegate {
 
+    var overlayView: SPFeedEmptyStateView = NSBundle.mainBundle().loadNibNamed("SPFeedEmptyStateView", owner: nil, options: nil)[0] as! SPFeedEmptyStateView
+    
     override func downloadAllImages(){
         
         SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
             if(error == nil){
                 self.feedItems = feedItems
                 if self.feedItems.count == 0 {
-                    if self.view.viewWithTag(1) == nil {
-                        var overlayView = NSBundle.mainBundle().loadNibNamed("SPFeedEmptyStateView", owner: nil, options: nil)[0] as! SPFeedEmptyStateView
-                        overlayView.tag = 1
-                        overlayView.delegate = self
-                        self.view.addSubview(overlayView)
+                    if self.overlayView.superview == nil {
+                        self.overlayView.tag = 1
+                        self.overlayView.delegate = self
+                        self.view.addSubview(self.overlayView)
                     }
                 } else {
-                    let emptyStateView = self.view.viewWithTag(1)
-                    emptyStateView?.removeFromSuperview()
+                    self.overlayView.removeFromSuperview()
                     self.tableView.reloadData()
                 }
             }
