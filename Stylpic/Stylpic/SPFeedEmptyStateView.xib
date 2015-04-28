@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SPFeedEmptyStateView" customModule="Stylpic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get your friends to help you choose what to wear on Stylpic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwO-AQ-g4e">
+                    <rect key="frame" x="60" y="195" width="200" height="89"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="89" id="lzC-Kk-MCr"/>
+                        <constraint firstAttribute="width" constant="200" id="yvB-HK-dLU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsX-Ph-Quh">
+                    <rect key="frame" x="60" y="292" width="200" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="C12-aQ-Zu4"/>
+                        <constraint firstAttribute="height" constant="38" id="kHo-50-DyF"/>
+                    </constraints>
+                    <state key="normal" image="facedbookShare">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="findFriendsButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="At5-cE-L3b"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="YsX-Ph-Quh" secondAttribute="centerX" id="9RR-Ba-29f"/>
+                <constraint firstAttribute="bottom" secondItem="YsX-Ph-Quh" secondAttribute="bottom" constant="150" id="Ap9-Ec-bT8"/>
+                <constraint firstAttribute="centerX" secondItem="bwO-AQ-g4e" secondAttribute="centerX" id="Bvw-Sj-Gz6"/>
+                <constraint firstItem="YsX-Ph-Quh" firstAttribute="top" secondItem="bwO-AQ-g4e" secondAttribute="bottom" constant="8" id="Zs9-zB-SIS"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="findFriendsButton" destination="YsX-Ph-Quh" id="rki-y9-Hgj"/>
+            </connections>
+            <point key="canvasLocation" x="274" y="303.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="facedbookShare" width="200" height="38"/>
+    </resources>
+</document>

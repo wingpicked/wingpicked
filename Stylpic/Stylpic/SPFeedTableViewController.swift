@@ -8,18 +8,39 @@
 
 import UIKit
 
-class SPFeedTableViewController: SPBaseTableViewController {
+class SPFeedTableViewController: SPBaseTableViewController, SPFeedEmptyStateViewDelegate {
 
     override func downloadAllImages(){
         
         SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in
             if(error == nil){
                 self.feedItems = feedItems
-                self.tableView.reloadData()
+                if self.feedItems.count == 0 {
+                    if self.view.viewWithTag(1) == nil {
+                        var overlayView = NSBundle.mainBundle().loadNibNamed("SPFeedEmptyStateView", owner: nil, options: nil)[0] as! SPFeedEmptyStateView
+                        overlayView.tag = 1
+                        overlayView.delegate = self
+                        self.view.addSubview(overlayView)
+                    }
+                } else {
+                    let emptyStateView = self.view.viewWithTag(1)
+                    emptyStateView?.removeFromSuperview()
+                    self.tableView.reloadData()
+                }
             }
             self.refreshControl?.endRefreshing()
         })
     }
     
+    func findFriendsButtonDidTap() {
+        let findFriendsController = SPFindFriendsTableViewController()
+        let navigationController = UINavigationController(rootViewController: findFriendsController)
+        let backItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "dismissFindFriendsController")
+        findFriendsController.navigationItem.leftBarButtonItem = backItem
+        self.presentViewController(navigationController, animated: true, completion: nil)
+    }
 
+    func dismissFindFriendsController() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

@@ -50,6 +50,8 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         userDisplayName.userInteractionEnabled = true
         var tap2 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
         userDisplayName.addGestureRecognizer(tap2)
+        
+        self.postedTimeLabel.preferredMaxLayoutWidth = 72
     }
     
     override func setupWithFeedItem(feedItem: SPFeedItem){
@@ -95,6 +97,8 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         else{
             postedTimeLabel.text = "NA"
         }
+        
+        postedTimeLabel.sizeToFit()
     }
     
     
