@@ -20,7 +20,7 @@ class SPFeedTableViewController: SPBaseTableViewController {
                 if self.feedItems.count == 0 {
                     if self.overlayView.superview == nil {
                         self.overlayView.tag = 1
-                        self.overlayView.delegate = self
+                        //self.overlayView.delegate = self
                         self.view.addSubview(self.overlayView)
                     }
                 } else {

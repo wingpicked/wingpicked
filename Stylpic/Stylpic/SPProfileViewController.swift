@@ -77,7 +77,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         
         self.toolBarView.delegate = self
         toolBarView.addTopBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
-        toolBarView.addBottomBorderWithHeight(1.0, andColor: UIColor.lightGrayColor())
+        toolBarView.addBottomBorderWithHeight(0.5, andColor: UIColor.lightGrayColor())
         
         tableView.tableHeaderView = self.headerView
         
