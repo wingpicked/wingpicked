@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPFeedTableViewController: SPBaseTableViewController, SPFeedEmptyStateViewDelegate {
+class SPFeedTableViewController: SPBaseTableViewController {
 
     let overlayView: SPFeedEmptyStateView = NSBundle.mainBundle().loadNibNamed("SPFeedEmptyStateView", owner: nil, options: nil)[0] as! SPFeedEmptyStateView
     
