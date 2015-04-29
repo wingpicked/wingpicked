@@ -959,6 +959,7 @@
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
 				387463701AA40465002E0565 /* SPFeedItem.swift in Sources */,
 				38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */,
+				4883A46C1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift in Sources */,
 				385C74421AEF46C900FBFA62 /* MRIconView.m in Sources */,
 				483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */,
 				38160A351AB50F95005504AD /* UIScrollView+SLKAdditions.m in Sources */,
