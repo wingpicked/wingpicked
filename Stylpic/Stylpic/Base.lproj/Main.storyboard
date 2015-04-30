@@ -208,16 +208,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mG-hD-qCz">
-                                <rect key="frame" x="139" y="52" width="43" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-Nk-k8L">
-                                <rect key="frame" x="16" y="518" width="288" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Facebook Login">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="CDF-7i-r4K">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-Nk-k8L">
+                                <rect key="frame" x="64" y="417" width="193" height="44"/>
+                                <state key="normal" image="Login_facebook_button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -225,15 +221,11 @@
                                     <action selector="facebookLoginTouchUpInside:" destination="Ntn-B8-6Sf" eventType="touchUpInside" id="KJr-rh-1IU"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo_LoginScreen" translatesAutoresizingMaskIntoConstraints="NO" id="xzl-f0-VR3">
+                                <rect key="frame" x="121" y="96" width="87" height="72"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="SHN-nM-0B7" firstAttribute="top" secondItem="uh7-Nk-k8L" secondAttribute="bottom" constant="20" id="6qt-Dy-Pzi"/>
-                            <constraint firstItem="0mG-hD-qCz" firstAttribute="top" secondItem="ekF-cS-7Gd" secondAttribute="bottom" constant="32" id="HQ2-TI-Ugp"/>
-                            <constraint firstItem="uh7-Nk-k8L" firstAttribute="trailing" secondItem="0eg-qC-f9T" secondAttribute="trailingMargin" id="Ql4-Cn-aBw"/>
-                            <constraint firstItem="uh7-Nk-k8L" firstAttribute="leading" secondItem="0eg-qC-f9T" secondAttribute="leadingMargin" id="m3A-Vy-biq"/>
-                            <constraint firstAttribute="centerX" secondItem="0mG-hD-qCz" secondAttribute="centerX" constant="-0.5" id="tVl-Xf-Cvn"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -242,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vQF-bv-GAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-595" y="230"/>
+            <point key="canvasLocation" x="-633" y="238"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -385,6 +377,9 @@
         <image name="Icon_home" width="64" height="49"/>
         <image name="Icon_home_selected" width="64" height="49"/>
         <image name="Icon_profile" width="32" height="49"/>
+        <image name="Image" width="640" height="960"/>
+        <image name="Login_facebook_button" width="202" height="46"/>
+        <image name="Logo_LoginScreen" width="168" height="166"/>
         <image name="Melanie-Iglesias" width="500" height="600"/>
     </resources>
 </document>
