@@ -102,12 +102,14 @@ class SPProfileInfo: NSObject {
             self.posts.append(feedItem)
         }
         
+        var fetchUsersIfNeeded = [SPUser]()
         let serverFollower = profileInfo.safeArrayForKey( "followers" ) as NSArray as! [[String: AnyObject]]
         for aServerFollower in serverFollower {
             var spUser = aServerFollower[ "user" ] as! SPUser
             var currentUserFollows = aServerFollower[ "isFollowing" ] as! NSNumber
             spUser.isFollowing = currentUserFollows
             self.followers.append( spUser )
+            fetchUsersIfNeeded.append( spUser )
         }
         
 //        [[String: [String: AnyObject]] ]
@@ -120,9 +122,10 @@ class SPProfileInfo: NSObject {
             spUser.isFollowing = currentUserFollows
 //            println( spUser.lastName )
             self.following.append( spUser )
+            fetchUsersIfNeeded.append( spUser )
         }
         
-        
+        PFObject.fetchAllIfNeeded( fetchUsersIfNeeded )
         self.notifications = profileInfo.safeArrayForKey( "notifications" ) as NSArray as! [SPActivity]
         
     }

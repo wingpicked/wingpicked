@@ -204,6 +204,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		profileInfo.postsCount = profileItems.length;
 		var followingQuery = new Parse.Query( Activity );
 		followingQuery.include( 'photoPair' );
+		followingQuery.include( 'photoPair.user' );
 		followingQuery.include( 'fromUser' );
 		followingQuery.include( 'toUser' );
 		followingQuery.limit( MAX_QUERY_LIMIT );
@@ -213,6 +214,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 
 		var followersQuery = new Parse.Query( Activity );
 		followersQuery.include( 'photoPair' );
+		followersQuery.include( 'photoPair.user' );
 		followersQuery.include( 'fromUser' );
 		followersQuery.include( 'toUser' );
 		followersQuery.limit( MAX_QUERY_LIMIT );
