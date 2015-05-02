@@ -72,6 +72,17 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
         return 227
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        //cell.alpha = 0.0
+        cell.transform = CGAffineTransformMakeScale(1.07, 1.07);
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
+                //cell.alpha = 1.0
+                cell.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            }, completion: nil)
+        
+    }
+    
     func didTapPhotoOne(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
         self.navigationController?.pushViewController(detailViewController, animated: true)
