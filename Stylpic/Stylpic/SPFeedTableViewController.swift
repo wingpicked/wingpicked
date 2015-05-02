@@ -12,6 +12,23 @@ class SPFeedTableViewController: SPBaseTableViewController {
 
     let overlayView: SPFeedEmptyStateView = NSBundle.mainBundle().loadNibNamed("SPFeedEmptyStateView", owner: nil, options: nil)[0] as! SPFeedEmptyStateView
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(fromColor: navigationBarColor, forSize: CGSizeMake(320, 64), withCornerRadius: 0.0), forBarMetrics: UIBarMetrics.Default)
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        let titleView = UIView(frame: CGRectMake(16,0, 288, 64))
+        let titleLabel = UILabel(frame: CGRectMake(0,4, 288, 44))
+        titleLabel.backgroundColor = UIColor.clearColor()
+        titleLabel.font = UIFont(name: "Lobster1.4", size: 28)
+        titleLabel.textAlignment = NSTextAlignment.Center
+        //titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.text = "Stylpic"
+        titleView.addSubview(titleLabel)
+        self.navigationItem.titleView = titleView
+        self.navigationController?.navigationBar.translucent = false
+    }
+    
     override func downloadAllImages(){
         
         SPManager.sharedInstance.getFeedItems(0, resultsBlock: { (feedItems, error) -> Void in

@@ -27,6 +27,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         var iconTintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
         var backgroundImage = UIImage(fromColor: backgroundColor, forSize: CGSizeMake(320, 49), withCornerRadius: 0)
         self.tabBar.backgroundImage = backgroundImage
+        self.tabBar.translucent = false
         self.tabBar.tintColor = iconTintColor
         self.addCenterButton(UIImage(named: "Icon_post")!, highlightImage: UIImage(named: "Icon_post")!, target: self, action: Selector("buttonPressed:"))
         

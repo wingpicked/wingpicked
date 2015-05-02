@@ -65,6 +65,7 @@
 		387EAA691AEC3B490039BD88 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */; };
 		387EAA6C1AEC5AEB0039BD88 /* SPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */; };
 		387EAA701AEC5C510039BD88 /* SPSettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */; };
+		388E31881AF5830C00AF7E6A /* Lobster-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 388E31871AF5830200AF7E6A /* Lobster-Regular.otf */; };
 		389A56E91A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */; };
 		389A56EB1A564BAC00EB0EFD /* SPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389A56EA1A564BAC00EB0EFD /* SPBaseTableViewController.swift */; };
 		389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389A56F11A57275E00EB0EFD /* FacebookSDK.framework */; };
@@ -230,6 +231,7 @@
 		387EAA681AEC3B490039BD88 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		387EAA6A1AEC5AEB0039BD88 /* SPSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPSettingsViewController.swift; sourceTree = "<group>"; };
 		387EAA6F1AEC5C510039BD88 /* SPSettingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SPSettingsStoryboard.storyboard; sourceTree = "<group>"; };
+		388E31871AF5830200AF7E6A /* Lobster-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.otf"; sourceTree = "<group>"; };
 		389A56E81A564B4E00EB0EFD /* SPFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		389A56EA1A564BAC00EB0EFD /* SPBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPBaseTableViewController.swift; sourceTree = "<group>"; };
 		389A56F11A57275E00EB0EFD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 		3863A7001A7F6D1C00AFE938 /* CustomFonts */ = {
 			isa = PBXGroup;
 			children = (
+				388E31871AF5830200AF7E6A /* Lobster-Regular.otf */,
 				3863A6FC1A7F6D1800AFE938 /* OpenSans-Semibold.ttf */,
 				3863A6FD1A7F6D1800AFE938 /* OpenSans-Regular.ttf */,
 				3863A6FE1A7F6D1800AFE938 /* OpenSans-Light.ttf */,
@@ -876,6 +879,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				388E31881AF5830C00AF7E6A /* Lobster-Regular.otf in Resources */,
 				3862A8011ADB52DC0044C0C8 /* SPSearchResultsViewController.xib in Resources */,
 				380671731AAD6EC30001527F /* OpenSans-Semibold.ttf in Resources */,
 				380671741AAD6ED00001527F /* OpenSans-Regular.ttf in Resources */,
