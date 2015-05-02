@@ -117,6 +117,7 @@
 		48BCBACC1AD0939D001A60AB /* SPPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACB1AD0939D001A60AB /* SPPhoto.m */; };
 		48BCBACF1AD09448001A60AB /* SPClosetPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BCBACE1AD09448001A60AB /* SPClosetPhoto.m */; };
 		48D5C7211AC3C79B00D3EBA9 /* SPFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5C7201AC3C79B00D3EBA9 /* SPFeedTableViewController.swift */; };
+		48E439FD1AF583F600BA22DF /* SPClosetEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E439FC1AF583F600BA22DF /* SPClosetEmptyStateView.xib */; };
 		EC3B4BC81ABBC28200E76121 /* SPProfileFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */; };
 		EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3B4BC71ABBC28200E76121 /* SPProfileFollowTableViewCell.xib */; };
 		EC3B4BCB1ABBDDF500E76121 /* SPBaseFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3B4BCA1ABBDDF500E76121 /* SPBaseFeedViewTableViewCell.swift */; };
@@ -290,6 +291,7 @@
 		48BCBACD1AD09448001A60AB /* SPClosetPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPClosetPhoto.h; sourceTree = "<group>"; };
 		48BCBACE1AD09448001A60AB /* SPClosetPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPClosetPhoto.m; sourceTree = "<group>"; };
 		48D5C7201AC3C79B00D3EBA9 /* SPFeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedTableViewController.swift; sourceTree = "<group>"; };
+		48E439FC1AF583F600BA22DF /* SPClosetEmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPClosetEmptyStateView.xib; sourceTree = "<group>"; };
 		EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileFollowTableViewCell.swift; sourceTree = "<group>"; };
 		EC3B4BC71ABBC28200E76121 /* SPProfileFollowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileFollowTableViewCell.xib; sourceTree = "<group>"; };
 		EC3B4BCA1ABBDDF500E76121 /* SPBaseFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPBaseFeedViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 		38BB445A1A6631B8004CD444 /* SPCloset */ = {
 			isa = PBXGroup;
 			children = (
+				48E439FB1AF583C400BA22DF /* emptyState */,
 				38BB44581A66318C004CD444 /* SPClosetViewController.swift */,
 				38AC45141AA8212700199935 /* SPClosetCollectionViewCell.swift */,
 				38AC45151AA8212700199935 /* SPClosetCollectionViewCell.xib */,
@@ -790,6 +793,14 @@
 			children = (
 				4883A46B1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift */,
 				4883A4691AEF391D006B49A2 /* SPFeedEmptyStateView.xib */,
+			);
+			name = emptyState;
+			sourceTree = "<group>";
+		};
+		48E439FB1AF583C400BA22DF /* emptyState */ = {
+			isa = PBXGroup;
+			children = (
+				48E439FC1AF583F600BA22DF /* SPClosetEmptyStateView.xib */,
 			);
 			name = emptyState;
 			sourceTree = "<group>";
@@ -882,6 +893,7 @@
 				38EAD4661AB63DF000A6FD81 /* SPProfileHeaderView.xib in Resources */,
 				380671751AAD6ED00001527F /* OpenSans-Light.ttf in Resources */,
 				380671761AAD6ED00001527F /* OpenSans-Bold.ttf in Resources */,
+				48E439FD1AF583F600BA22DF /* SPClosetEmptyStateView.xib in Resources */,
 				38AA7BF71A883E6600A75FB7 /* SPFeedDetailViewController.xib in Resources */,
 				4883A46A1AEF391D006B49A2 /* SPFeedEmptyStateView.xib in Resources */,
 				38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */,

@@ -15,7 +15,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     var lastTappedRow = 0
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
-    
+    let emptyState: UIView = NSBundle.mainBundle().loadNibNamed("SPClosetEmptyStateView", owner: nil, options: nil)[0] as! UIView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,11 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
         findFriendsButton.addTarget(self, action: "addImageButtonDidTap", forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
-        
+        self.imagePickerViewController.delegate = self
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
             if error != nil {
                 println(error)
@@ -38,19 +42,31 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
                 if let someClosetPhotosAgain = someClosetPhotos {
                     self.closetPhotos = someClosetPhotosAgain
                     self.collectionView.reloadData()
+                    self.respondToClosetPhotosChange()
+                    
                 }
                 
             }
         }
-
-        self.imagePickerViewController.delegate = self
+        
     }
-
+    
 //    override func viewWillAppear(animated: Bool) {
 //        super.viewWillAppear(animated)
 //        
 //    }
-    
+    func respondToClosetPhotosChange() {
+        if let someClosetPhotosAgain = self.closetPhotos {
+            if someClosetPhotosAgain.count <= 0 {
+                self.emptyState.frame = self.view.frame
+                self.view.addSubview( self.emptyState )
+            } else {
+                if self.emptyState.superview != nil {
+                    self.emptyState.removeFromSuperview()
+                }
+            }
+        }
+    }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SPClosetCollectionViewCell", forIndexPath: indexPath) as! SPClosetCollectionViewCell
@@ -187,6 +203,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
                             if let someClosetPhotosAgain = someClosetPhotos {
                                 self.closetPhotos = someClosetPhotosAgain
                                 self.collectionView.reloadData()
+                                self.respondToClosetPhotosChange()
                             }
                             
                         }
