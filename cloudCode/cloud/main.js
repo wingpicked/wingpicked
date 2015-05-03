@@ -133,16 +133,21 @@ Parse.Cloud.define( 'photoPairLikes', function( request, response ) {
 
 
 Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
+	Parse.Cloud.useMasterKey();
 	var currentUser = request.user;
 	var queryWithFollowingAndFollowers = userUtils.queryWithFollowingAndFollowers( currentUser, feedItem.ActivityType.Follow );
-	var followersAndFollowing = queryWithFollowingAndFollowers.find();
 	var userObjectId = request.params.userObjectId;
 	var profileInfo = new profileInfoUtils.ProfileInfo();
 	var scopedVars = {};
 	var Activity = Parse.Object.extend('Activity');
-	var mockUser = new Parse.User();
-	mockUser.id = userObjectId;
-	followersAndFollowing.then( function( followersAndFollowing ) {
+	var mockUserTemp = new Parse.User();
+	mockUserTemp.id = userObjectId;
+	var fullUserPromise = mockUserTemp.fetch();
+	var mockUser = null;
+	fullUserPromise.then( function( fullUser ) {
+		mockUser = fullUser;
+		return queryWithFollowingAndFollowers.find();
+	}).then( function( followersAndFollowing ) {
 		scopedVars.followersAndFollowing = followersAndFollowing;
 		var Photos = Parse.Object.extend('PhotoPair');
 		var query = new Parse.Query(Photos);
@@ -259,7 +264,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 
 			profileInfo.notifications = notificationsSortedByCreatedDate
 		}
-
+		
 		response.success( { profileInfo: profileInfo } );
 	}, function( error ) {
 		response.error( error );

@@ -93,7 +93,6 @@ class SPProfileInfo: NSObject {
         self.followersCount = profileInfo.safeIntForKey( "followersCount" )
         self.followingCount = profileInfo.safeIntForKey( "followingCount" )
         self.isFollowing = profileInfo.safeBoolForKey( "isFollowing" )
-        
         var arrayOfServerFeedItem = profileInfo[ "posts" ] as! [[String: AnyObject]]
         var arrayOfFeedItem = [];
         for serverFeeedItem in arrayOfServerFeedItem {
@@ -102,14 +101,14 @@ class SPProfileInfo: NSObject {
             self.posts.append(feedItem)
         }
         
-        var fetchUsersIfNeeded = [SPUser]()
+        var fetchObjectsIfNeeded = [AnyObject]()
         let serverFollower = profileInfo.safeArrayForKey( "followers" ) as NSArray as! [[String: AnyObject]]
         for aServerFollower in serverFollower {
             var spUser = aServerFollower[ "user" ] as! SPUser
             var currentUserFollows = aServerFollower[ "isFollowing" ] as! NSNumber
             spUser.isFollowing = currentUserFollows
             self.followers.append( spUser )
-            fetchUsersIfNeeded.append( spUser )
+            fetchObjectsIfNeeded.append( spUser )
         }
         
 //        [[String: [String: AnyObject]] ]
@@ -122,12 +121,22 @@ class SPProfileInfo: NSObject {
             spUser.isFollowing = currentUserFollows
 //            println( spUser.lastName )
             self.following.append( spUser )
-            fetchUsersIfNeeded.append( spUser )
+            fetchObjectsIfNeeded.append( spUser )
         }
         
-        PFObject.fetchAllIfNeeded( fetchUsersIfNeeded )
         self.notifications = profileInfo.safeArrayForKey( "notifications" ) as NSArray as! [SPActivity]
+        for activity in self.notifications {
+            if let fromUser = activity.fromUser {
+                fetchObjectsIfNeeded.append(fromUser)
+            }
+            
+            if let toUser = activity.toUser {
+                fetchObjectsIfNeeded.append(toUser)
+            }
+            
+        }
         
+        PFObject.fetchAllIfNeeded( fetchObjectsIfNeeded )
     }
     
 }
