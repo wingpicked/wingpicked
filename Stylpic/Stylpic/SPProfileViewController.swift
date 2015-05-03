@@ -121,6 +121,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     func showWithUser( user: SPUser ) {
         self.showForUser = user
+        self.navigationItem.title = user.spDisplayName().uppercaseString
         if self.showForUser?.objectId == SPUser.currentUser()!.objectId {
             let findFriendsButton = UIBarButtonItem(image: UIImage( named: "Icon_invite" ), style: .Plain, target: self, action: "findFriendsButtonDidTap:")
             self.navigationItem.leftBarButtonItem = findFriendsButton
@@ -131,6 +132,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
         }
         
+        
         SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
@@ -140,11 +142,6 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                     self.configureEmptyStateIfNeeded()
                     self.updateToolbarUI()
                     
-//                    println("-----------")
-//                    println(self.profileInfoViewModel.followers)
-//                    println(self.profileInfoViewModel.following)
-//            
-                    println(profileObject)
                     self.tableView.reloadData()
                 }
             }
