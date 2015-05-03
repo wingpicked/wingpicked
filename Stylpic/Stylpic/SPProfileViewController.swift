@@ -97,6 +97,8 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         
         self.emptyStateFollowers.delegate = self
         self.emptyStateFollowing.delegate = self
+        self.tableView.tableFooterView = UIView()
+
     }
     
     deinit {

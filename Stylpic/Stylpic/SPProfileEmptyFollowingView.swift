@@ -19,6 +19,11 @@ class SPProfileEmptyFollowingView: UIView {
         self.delegate?.findFriendsButtonDidTap()
     }
 
+    override func awakeFromNib() {
+        self.button.layer.cornerRadius = 6
+        self.button.clipsToBounds = true
+    }
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

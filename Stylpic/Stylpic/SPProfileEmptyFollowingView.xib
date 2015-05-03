@@ -10,28 +10,40 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You don't have any followers, yet!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hav-b3-Bk4">
-                    <rect key="frame" x="69" y="83" width="192" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="You are not following anyone yet." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hav-b3-Bk4">
+                    <rect key="frame" x="69" y="237" width="182" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="192" id="8it-fe-WZx"/>
+                        <constraint firstAttribute="width" constant="182" id="8it-fe-WZx"/>
                         <constraint firstAttribute="height" constant="21" id="O6J-qp-cPU"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="8it-fe-WZx"/>
+                            <exclude reference="O6J-qp-cPU"/>
+                        </mask>
+                    </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WL-Ez-qsL">
-                    <rect key="frame" x="80" y="134" width="160" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WL-Ez-qsL">
+                    <rect key="frame" x="80" y="290" width="160" height="30"/>
                     <color key="backgroundColor" red="0.37254901959999998" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="52J-tg-bef"/>
                         <constraint firstAttribute="width" constant="160" id="plr-jt-IQI"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                    <state key="normal" title="Invite some friends!">
+                    <state key="normal" title="Find people to follow!">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="52J-tg-bef"/>
+                            <exclude reference="plr-jt-IQI"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <action selector="buttonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="wgo-Vg-EBG"/>
                     </connections>
@@ -39,13 +51,21 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="5WL-Ez-qsL" secondAttribute="centerX" id="29Z-RF-8rt"/>
-                <constraint firstItem="Hav-b3-Bk4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="83" id="2Dv-Fj-X98"/>
+                <constraint firstAttribute="centerX" secondItem="5WL-Ez-qsL" secondAttribute="centerX" constant="5" id="29Z-RF-8rt"/>
+                <constraint firstItem="Hav-b3-Bk4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="237" id="2Dv-Fj-X98"/>
                 <constraint firstAttribute="centerX" secondItem="Hav-b3-Bk4" secondAttribute="centerX" id="3Zd-X3-nPW"/>
-                <constraint firstItem="5WL-Ez-qsL" firstAttribute="top" secondItem="Hav-b3-Bk4" secondAttribute="bottom" constant="30" id="vmS-Ow-7KO"/>
+                <constraint firstItem="5WL-Ez-qsL" firstAttribute="top" secondItem="Hav-b3-Bk4" secondAttribute="bottom" constant="32" id="vmS-Ow-7KO"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2Dv-Fj-X98"/>
+                    <exclude reference="3Zd-X3-nPW"/>
+                    <exclude reference="29Z-RF-8rt"/>
+                    <exclude reference="vmS-Ow-7KO"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="button" destination="5WL-Ez-qsL" id="wdd-1o-FdV"/>
             </connections>
