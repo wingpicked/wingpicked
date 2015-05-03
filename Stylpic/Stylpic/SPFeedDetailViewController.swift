@@ -70,7 +70,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.delegate = self
             
             let noPhotoLiked = self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked
-            let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser().objectId
+            let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser()!.objectId
             
             if(!usersOwnPhotoPair && noPhotoLiked){
                 cell.percentageLabel.hidden = true
@@ -135,7 +135,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func setupFollowButton() {
         
-        if self.feedItem.photos?.user.objectId != SPUser.currentUser().objectId {
+        if self.feedItem.photos?.user.objectId != SPUser.currentUser()!.objectId {
             var followButtonName = self.feedItem.isCurrentUserFollowing ? "Button_following_NavBar" : "Button_follow_NavBar"
             var rightButtonImageView = UIImageView(image:UIImage(named:followButtonName))
             rightButtonImageView.frame = CGRectMake(0,0,90, 25)

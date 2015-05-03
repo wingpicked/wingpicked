@@ -21,7 +21,7 @@ class SPLikesViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
         self.tableView.registerNib(UINib(nibName: "SPLikesTableViewCell", bundle: nil), forCellReuseIdentifier: "SPLikesTableViewCell")
         
-        SPManager.sharedInstance.getPhotoPairLikes(feedItem.photos!.objectId, likesPhotoIdentifier: ActivityType.LikeImageOne) { (activities, error) -> Void in
+        SPManager.sharedInstance.getPhotoPairLikes(feedItem.photos!.objectId!, likesPhotoIdentifier: ActivityType.LikeImageOne) { (activities, error) -> Void in
                         if error == nil {
                             if let activities = activities {
                                 self.likes = activities

@@ -72,7 +72,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
      func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         if viewController.restorationIdentifier == "SPProfileNavigationController" {
             var profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
-            profileViewController.showWithUser(SPUser.currentUser())
+            profileViewController.showWithUser(SPUser.currentUser()!)
         }
     }
     
