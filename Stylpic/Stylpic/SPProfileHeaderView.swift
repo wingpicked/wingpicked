@@ -45,7 +45,7 @@ class SPProfileHeaderView: UIView {
         self.isFollowing = following
         updateIsFollowing(self.isFollowing)
         self.user = user
-        self.profilePictureImageView.file = user["profilePicture"] as! PFFile
+        self.profilePictureImageView.file = user.profilePicture
         self.profilePictureImageView.loadInBackground(nil)
         
         
