@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
-        installation.setObject(PFUser.currentUser(), forKey: "user")
+        installation.setObject(PFUser.currentUser()!, forKey: "user")
         installation.saveInBackgroundWithBlock(nil)
     }
     

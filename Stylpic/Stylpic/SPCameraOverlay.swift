@@ -28,6 +28,8 @@ class SPCameraOverlay: UIView {
     @IBOutlet weak var titleBarView: UIView!
     @IBOutlet weak var flashButton: UIButton!
     
+    var flashEnabled = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,6 +42,9 @@ class SPCameraOverlay: UIView {
     }
     
     @IBAction func flashButtonDidTap(sender: AnyObject) {
+        flashEnabled = !flashEnabled
+        var flashImage = flashEnabled ? UIImage(named: "Icon_flash_on") : UIImage(named: "Icon_flash")
+        self.flashButton.setImage(flashImage, forState: UIControlState.Normal)
         self.delegate?.flashButtonDidTap()
     }
     

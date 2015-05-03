@@ -24,7 +24,7 @@ class SPProfilePostTableViewCell: SPBaseFeedViewTableViewCell {
         super.setupWithFeedItem(feedItem) //Does a lot of heavy lifting that is in common with SPFeedViewTableViewCell and SPProfileFeedTableViewCell
         
         let noPhotoLiked = self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked
-        let viewingOwnProfile = self.feedItem?.photos?.user.objectId == PFUser.currentUser().objectId
+        let viewingOwnProfile = self.feedItem?.photos?.user.objectId == PFUser.currentUser()!.objectId
         let hideUI = !viewingOwnProfile && noPhotoLiked
         self.statsArea.hidden = hideUI
     }

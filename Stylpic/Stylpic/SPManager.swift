@@ -37,7 +37,7 @@ class SPManager: NSObject {
     //MARK: Items
     func getFeedItems( page: UInt, resultsBlock: SPFeedItemsResultBlock ) {
         var params = [ "page": page ]
-        PFCloud.callFunctionInBackground( "getFeedItemsForPageV3", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
+        PFCloud.callFunctionInBackground( "getFeedItemsForPageV3", withParameters: params) { (payload, error) -> Void in
             if error == nil {
                 var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
                 println( payloadObject )
@@ -59,7 +59,7 @@ class SPManager: NSObject {
     
     func getExploreItems( resultsBlock: SPFeedItemsResultBlock ) {
         let params = [NSObject : AnyObject]();
-        PFCloud.callFunctionInBackground( "fetchExploreInfo", withParameters: params) { (payload:AnyObject!, error:NSError!) -> Void in
+        PFCloud.callFunctionInBackground( "fetchExploreInfo", withParameters: params) { (payload:AnyObject?, error:NSError?) -> Void in
             if error == nil {
                 var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
                 println( payloadObject )
@@ -80,13 +80,15 @@ class SPManager: NSObject {
     func getProfileInfo( user: PFUser?, resultBlock:(SPProfileInfoResultsBlock) ) {
 
         if let user = user {
-            var params = [ "userObjectId": user.objectId ]
+            let params = [ "userObjectId": user.objectId! ]
             MRProgressOverlayView.showOverlayAddedTo(UIApplication.sharedApplication().delegate?.window!, animated: true)
+            
+            
             PFCloud.callFunctionInBackground( "fetchProfileInfo", withParameters: params) { (payload, error) -> Void in
                 if error == nil {
                     println( payload )
                     //println( payload as! SPProfileInfo)
-                    var serverProfileInfo = payload[ "profileInfo" ] as! [String: AnyObject]
+                    var serverProfileInfo = payload![ "profileInfo" ] as! [String: AnyObject]
                     var profileInfo = SPProfileInfo()
                     profileInfo.setupWithServerInfo( serverProfileInfo )
                     resultBlock(profileObject: profileInfo, error: nil )
@@ -114,7 +116,7 @@ class SPManager: NSObject {
         //usersPhotosQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
         usersPhotosQuery.includeKey( "user" )
         usersPhotosQuery.includeKey( "photo" )
-        usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser() )
+        usersPhotosQuery.whereKey("user", equalTo: PFUser.currentUser()! )
         usersPhotosQuery.whereKey("isVisible", equalTo: true )
         usersPhotosQuery.limit = 1000;
         usersPhotosQuery.orderByDescending("updatedAt")
@@ -167,8 +169,8 @@ class SPManager: NSObject {
         commentQuery.whereKey( "isArchiveReady", equalTo: false )
         commentQuery.limit = 1000;
         commentQuery.orderByDescending( "createdAt" )
-        commentQuery.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
+        
+        commentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
                 println( objects )
                 var arrayPFObject = objects as! Array<SPActivity>
@@ -265,7 +267,7 @@ class SPManager: NSObject {
         if let user = user {
             var fromUser = SPUser.currentUser()
             var activityQuery = PFQuery( className: "Activity" )
-            activityQuery.whereKey( "fromUser", equalTo: fromUser )
+            activityQuery.whereKey( "fromUser", equalTo: fromUser! )
             activityQuery.whereKey( "toUser", equalTo: user )
             activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
             activityQuery.whereKey( "isArchiveReady", equalTo: false )
@@ -314,7 +316,7 @@ class SPManager: NSObject {
         var params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(unsignedInteger:likesPhotoIdentifier.rawValue) ]
         PFCloud.callFunctionInBackground("photoPairLikes", withParameters: params) { (payload, error) -> Void in
             if error == nil {
-                var likes = payload["likes"] as! [SPActivity]
+                var likes = payload!["likes"] as! [SPActivity]
                 resultBlock(activities: likes, error: nil)
             } else {
                 println( error )
@@ -331,7 +333,7 @@ class SPManager: NSObject {
         var params = [ "searchTerms": seperatedSearchTerms ]
         PFCloud.callFunctionInBackground("usersWithSearchTerms", withParameters: params) { (users, error) -> Void in
             if error == nil {
-                var someUsers = users[ "users" ] as! [SPUser]
+                var someUsers = users![ "users" ] as! [SPUser]
                 println( someUsers );
                 resultBlock( users: someUsers, error: nil )
             } else {
@@ -358,16 +360,16 @@ class SPManager: NSObject {
                     }
                     
                     var userQuery = PFUser.query()
-                    userQuery.limit = facebookIds.count
-                    userQuery.whereKey("facebookId", containedIn:facebookIds)
-                    userQuery.findObjectsInBackgroundWithBlock({ (users, error) -> Void in
+                    userQuery!.limit = facebookIds.count
+                    userQuery!.whereKey("facebookId", containedIn:facebookIds)
+                    userQuery!.findObjectsInBackgroundWithBlock({ (users, error) -> Void in
                         if error == nil {
                             var parseUsers = users as! [SPUser]
                             if parseUsers.count > 0 {
                                 var userForFollowingInfo = [String: SPUser]()
                                 for spUser in parseUsers {
                                     spUser.isFollowing = NSNumber( bool: false )
-                                    userForFollowingInfo[ spUser.objectId ] = spUser
+                                    userForFollowingInfo[ spUser.objectId! ] = spUser
                                 }
                                 
                                 self.followingActivitiesWithCandidateUsers( parseUsers, resultBlock: { (followingActivities, error) -> Void in
@@ -375,7 +377,7 @@ class SPManager: NSObject {
                                         for activity in followingActivities! {
                                             var spActivity = activity
                                             var followingUser = spActivity.toUser
-                                            var aFollowingInfo = userForFollowingInfo[ followingUser.objectId ]
+                                            var aFollowingInfo = userForFollowingInfo[ followingUser.objectId! ]
                                             aFollowingInfo!.isFollowing = NSNumber(bool: true)
                                         }
                                         
@@ -411,7 +413,7 @@ class SPManager: NSObject {
     func followingActivitiesWithCandidateUsers( candidateFollowingUsers: [SPUser], resultBlock: SPActivityResultBlock ) {
         var fromUser = SPUser.currentUser()
         var activityQuery = PFQuery( className: "Activity" )
-        activityQuery.whereKey( "fromUser", equalTo: fromUser )
+        activityQuery.whereKey( "fromUser", equalTo: fromUser! )
         activityQuery.whereKey( "toUser", containedIn: candidateFollowingUsers )
         activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
         activityQuery.whereKey( "isArchiveReady", equalTo: false )
@@ -565,7 +567,7 @@ class SPManager: NSObject {
                 }
             }
             else{
-                self.loadFBDataForUser(user)
+                self.loadFBDataForUser(user!)
                 completionHander(success: true, error: nil)
             }
         })
@@ -591,8 +593,8 @@ class SPManager: NSObject {
             {
                 var userData = result as! NSDictionary
                 var facebookID = userData["id"] as! String
-                user.setObject(userData["first_name"], forKey: "firstName")
-                user.setObject(userData["last_name"], forKey: "lastName")
+                user.setObject(userData["first_name"]!, forKey: "firstName")
+                user.setObject(userData["last_name"]!, forKey: "lastName")
                 user.setObject(facebookID, forKey: "facebookId")
                 var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
                 var request = NSURLRequest(URL: pictureURL!)

@@ -20,7 +20,7 @@ class SPLoginViewController: UIViewController, UIAlertViewDelegate {
         // Check if user is cached and linked to Facebook, if so, bypass login
         
         
-        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()))){
+        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))){
             self.performSegueWithIdentifier("loggedInSegue", sender: self)
             
         }

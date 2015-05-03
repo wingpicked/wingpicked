@@ -229,7 +229,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loggedInSegue" id="LSA-bc-kPR"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loggedInSegue" modalTransitionStyle="crossDissolve" id="LSA-bc-kPR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vQF-bv-GAV" userLabel="First Responder" sceneMemberID="firstResponder"/>

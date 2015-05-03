@@ -68,7 +68,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         
         self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
         
-        if self.showForUser?.objectId == SPUser.currentUser().objectId {
+        if self.showForUser?.objectId == SPUser.currentUser()!.objectId {
             self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
         }
         else{
@@ -113,7 +113,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     func showWithUser( user: SPUser ) {
         self.showForUser = user
-        if self.showForUser?.objectId == SPUser.currentUser().objectId {
+        if self.showForUser?.objectId == SPUser.currentUser()!.objectId {
             let findFriendsButton = UIBarButtonItem(image: UIImage( named: "Icon_invite" ), style: .Plain, target: self, action: "findFriendsButtonDidTap:")
             self.navigationItem.leftBarButtonItem = findFriendsButton
             self.navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
@@ -128,7 +128,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 if let profileObject = profileObject {
                     self.profileInfoViewModel = profileObject as SPProfileInfo
                     self.headerView.setupCell(self.profileInfoViewModel.isFollowing, user: user )
-                    self.headerView.followButton.hidden = ( PFUser.currentUser().objectId == user.objectId)
+                    self.headerView.followButton.hidden = ( PFUser.currentUser()!.objectId == user.objectId)
                     self.configureEmptyStateIfNeeded()
                     self.updateToolbarUI()
                     
@@ -346,7 +346,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             
             if indexToRemove >= 0 {
                 feedPosts.removeAtIndex( indexToRemove )
-                SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId )
+                SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId! )
                 self.tableView.reloadData()
             }
         }
@@ -377,7 +377,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         let currentInstallation = PFInstallation.currentInstallation()
         if(currentInstallation.badge != 0){
             currentInstallation.badge = 0
-            currentInstallation.saveEventually()
+            currentInstallation.saveEventually(nil)
         }
         
         NSNotificationCenter.defaultCenter().postNotificationName("Badges", object: nil)
