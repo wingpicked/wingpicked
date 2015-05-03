@@ -15,7 +15,7 @@ enum SPProfileActiveViewState {
     case Notifications
 }
 
-class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate {
+class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate, SPProfileEmptyFollowersViewDelegate, SPProfileEmptyFollowingViewDelegate {
 
     var currentViewState = SPProfileActiveViewState.Posts
         {
@@ -52,6 +52,11 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             }
         }
     }
+    
+    let emptyStateNoItems: UIView = NSBundle.mainBundle().loadNibNamed("SPProfileEmptyItemsView", owner: nil, options: nil)[0] as! UIView
+    let emptyStateFollowing: SPProfileEmptyFollowingView = NSBundle.mainBundle().loadNibNamed("SPProfileEmptyFollowingView", owner: nil, options: nil)[0] as! SPProfileEmptyFollowingView
+    let emptyStateFollowers: SPProfileEmptyFollowersView = NSBundle.mainBundle().loadNibNamed("SPProfileEmptyFollowersView", owner: nil, options: nil)[0] as! SPProfileEmptyFollowersView
+    
     var toolBarView : SPProfileToolBarView!
     var headerView : SPProfileHeaderView!
     
@@ -89,6 +94,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 
         self.toolBarView.postsLabel.textColor = primaryAquaColor
         self.toolBarView.postsLabel.textColor = primaryAquaColor
+        
+        self.emptyStateFollowers.delegate = self
+        self.emptyStateFollowing.delegate = self
     }
     
     deinit {
@@ -119,7 +127,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                     self.profileInfoViewModel = profileObject as SPProfileInfo
                     self.headerView.setupCell(self.profileInfoViewModel.isFollowing, user: user )
                     self.headerView.followButton.hidden = ( PFUser.currentUser()!.objectId == user.objectId)
-                    
+                    self.configureEmptyStateIfNeeded()
                     self.updateToolbarUI()
                     
 //                    println("-----------")
@@ -135,6 +143,39 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             }
         })
     }
+    
+    func configureEmptyStateIfNeeded() {
+        switch currentViewState {
+            case .Posts:
+                if self.profileInfoViewModel.posts.count > 0 {
+                    self.tableView.backgroundView = nil
+                } else {
+                    self.tableView.backgroundView = self.emptyStateNoItems
+                }
+                
+                break;
+            case .Followers:
+                if self.profileInfoViewModel.followers.count > 0 {
+                    self.tableView.backgroundView = nil
+                } else {
+                    self.tableView.backgroundView = self.emptyStateFollowers
+                }
+                
+                break;
+            case .Following:
+                if self.profileInfoViewModel.following.count > 0 {
+                    self.tableView.backgroundView = nil
+                } else {
+                    self.tableView.backgroundView = self.emptyStateFollowing
+                }
+                break;
+            case .Notifications:
+                self.tableView.backgroundView = nil
+                break;
+        }
+        
+    }
+    
     
     func refreshTableView(){
         self.refreshControl?.endRefreshing()
@@ -243,22 +284,26 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         currentViewState = .Posts
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.reloadData()
+        self.configureEmptyStateIfNeeded()
     }
     func followersButtonTapped() {
         currentViewState = .Followers
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.tableView.reloadData()
+        self.configureEmptyStateIfNeeded()
     }
     func followingButtonTapped() {
         currentViewState = .Following
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.tableView.reloadData()
+        self.configureEmptyStateIfNeeded()
     }
     func notificationsButtonTapped() {
         currentViewState = .Notifications
         self.clearNotifications()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.tableView.reloadData()
+        self.configureEmptyStateIfNeeded()
     }
     
     //MARK: SPProfilePostTableViewCell Delegate Methods
@@ -338,4 +383,10 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         self.toolBarView.notificationsBadge.text = "\(UIApplication.sharedApplication().applicationIconBadgeNumber)"
         
     }
+    
+    
+    func findFriendsButtonDidTap() {
+        self.findFriendsButtonDidTap(NSNull())
+    }
+
 }
