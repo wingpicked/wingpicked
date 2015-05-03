@@ -162,7 +162,9 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
+    //TODO: Need to check if flash exists before setting this.
     func flashButtonDidTap() {
+        
         if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
             self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
         } else {

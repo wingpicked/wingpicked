@@ -15,44 +15,44 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwS-Ud-AMg">
+                <view alpha="0.85000000000000031" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwS-Ud-AMg">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo 1 of 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSu-bH-3QU">
                             <rect key="frame" x="105" y="8" width="110" height="26"/>
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="19"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-s7-0rS">
-                            <rect key="frame" x="8" y="7" width="30" height="30"/>
-                            <state key="normal" title="X">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-s7-0rS">
+                            <rect key="frame" x="9" y="9" width="25" height="25"/>
+                            <state key="normal" image="dismiss_camera">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="dismissCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="p3d-s6-df8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXO-eR-QZD">
-                            <rect key="frame" x="283" y="8" width="31" height="25"/>
-                            <state key="normal" image="Icon_switchCamera">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="switchCameraButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="cfW-nV-4ol"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-yi-NzB">
-                            <rect key="frame" x="250" y="9" width="17" height="25"/>
-                            <state key="normal" image="Icon_flash">
+                            <rect key="frame" x="288" y="9" width="24" height="25"/>
+                            <state key="normal" image="Icon_flash_on">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="flashButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="29q-IF-xks"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXO-eR-QZD">
+                            <rect key="frame" x="249" y="8" width="31" height="25"/>
+                            <state key="normal" image="Reverse_camera_icon">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="switchCameraButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="cfW-nV-4ol"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="ZSu-bH-3QU" secondAttribute="centerX" id="JBR-fs-sNd"/>
                         <constraint firstAttribute="height" constant="44" id="mLI-el-1a9"/>
@@ -68,7 +68,7 @@
                                 <constraint firstAttribute="height" constant="84" id="Emo-wb-EUP"/>
                                 <constraint firstAttribute="width" constant="87" id="FCm-u2-Xxa"/>
                             </constraints>
-                            <state key="normal" image="CameraButton">
+                            <state key="normal" image="CameraButton2">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -119,8 +119,9 @@
         </view>
     </objects>
     <resources>
-        <image name="CameraButton" width="160" height="160"/>
-        <image name="Icon_flash" width="44" height="62"/>
-        <image name="Icon_switchCamera" width="63" height="50"/>
+        <image name="CameraButton2" width="292" height="292"/>
+        <image name="Icon_flash_on" width="360" height="360"/>
+        <image name="Reverse_camera_icon" width="1890" height="1417"/>
+        <image name="dismiss_camera" width="530" height="530"/>
     </resources>
 </document>

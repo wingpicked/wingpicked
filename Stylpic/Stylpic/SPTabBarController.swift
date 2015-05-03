@@ -109,6 +109,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.presentViewController(imagePickerViewController, animated: true, completion: nil)
     }
     
+    //TODO: Have one place for all this common code.
     func switchCameraButtonDidTap() {
         if self.imagePickerViewController.cameraDevice == .Rear {
             self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front

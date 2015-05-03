@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Reverse_camera_icon.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "Icon_flash.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
