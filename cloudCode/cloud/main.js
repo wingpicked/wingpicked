@@ -264,7 +264,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 
 			profileInfo.notifications = notificationsSortedByCreatedDate
 		}
-		
+
 		response.success( { profileInfo: profileInfo } );
 	}, function( error ) {
 		response.error( error );
