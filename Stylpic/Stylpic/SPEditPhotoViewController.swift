@@ -55,8 +55,13 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     @IBAction func shareImages(sender: AnyObject) {
-        SPManager.sharedInstance.saveAndPostImages(self.image, imageTwo: imageTwo, caption: self.captionTextfield.text) { (success, error) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
+        var captionStringWithoutWhitespace = self.captionTextfield.text.stringByTrimmingCharactersInSet( NSCharacterSet.whitespaceCharacterSet())
+        if (captionStringWithoutWhitespace as NSString).length > 0 {
+            SPManager.sharedInstance.saveAndPostImages(self.image, imageTwo: imageTwo, caption: self.captionTextfield.text) { (success, error) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        } else {
+            UIAlertView(title: "Comment missing", message: "You must include a comment to share", delegate: nil, cancelButtonTitle: "Ok").show()
         }
     }
     
