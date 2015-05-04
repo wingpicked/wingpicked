@@ -15,15 +15,11 @@ protocol SPLikeCommentButtonViewDelegate {
 
 class SPLikeCommentButtonView: UIView {
 
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
+
     var delegate : SPLikeCommentButtonViewDelegate?
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
     @IBAction func likeButtonTapped(sender: AnyObject) {
         self.delegate?.likeButtonTapped()
     }

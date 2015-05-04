@@ -14,9 +14,11 @@ class SPFeedTableViewController: SPBaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(fromColor: navigationBarColor, forSize: CGSizeMake(320, 64), withCornerRadius: 0.0), forBarMetrics: UIBarMetrics.Default)
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        
         let titleView = UIView(frame: CGRectMake(16,0, 288, 64))
         let titleLabel = UILabel(frame: CGRectMake(0,4, 288, 44))
         titleLabel.backgroundColor = UIColor.clearColor()

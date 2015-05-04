@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SPCameraOverlayDelegate {
+class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SPCameraOverlayDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var closetPhotos : [SPClosetPhoto]? //= [PFFile]()
@@ -67,6 +67,10 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
             }
         }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(0, 16)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
