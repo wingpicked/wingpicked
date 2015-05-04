@@ -118,7 +118,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         let alertController = UIAlertController(title: "Replace photo by:", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Taking New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
             println( "take new photo tapped " )
-            self.overlayView.titleLabel.text = "Replace With Photo"
+            self.overlayView.titleLabel.text = "Replace"
             
             self.imagePickerViewController.sourceType = .Camera
             self.imagePickerViewController.showsCameraControls = false;

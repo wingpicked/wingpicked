@@ -129,7 +129,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Take New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
             println( "take new photo tapped " )
-            self.overlayView.titleLabel.text = "Take a photo"
+            self.overlayView.titleLabel.text = ""
             
             self.imagePickerViewController.sourceType = .Camera
             self.imagePickerViewController.showsCameraControls = false;
