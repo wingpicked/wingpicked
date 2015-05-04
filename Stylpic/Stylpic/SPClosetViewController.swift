@@ -155,7 +155,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func switchCameraButtonDidTap() {
+    func switchCameraButtonDidTap(overlay: SPCameraOverlay) {
         if self.imagePickerViewController.cameraDevice == .Rear {
             self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
         } else {
@@ -164,7 +164,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     //TODO: Need to check if flash exists before setting this.
-    func flashButtonDidTap() {
+    func flashButtonDidTap(overlay: SPCameraOverlay) {
         
         if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
             self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
@@ -173,7 +173,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    func takePhotoButtonDidTap() {
+    func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
         self.imagePickerViewController.takePicture()
     }
     
@@ -181,7 +181,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func selectPhotosDidTap() {
+    func selectPhotosDidTap(overlay: SPCameraOverlay) {
         
     }
 

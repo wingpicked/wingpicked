@@ -52,7 +52,6 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     
     func dismissViewController(sender: AnyObject!){
         self.navigationController?.popViewControllerAnimated(true)
-        
     }
     
     @IBAction func shareImages(sender: AnyObject) {
@@ -87,7 +86,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.promptForReplacementChoice()
     }
     
-    func switchCameraButtonDidTap() {
+    func switchCameraButtonDidTap(overlay: SPCameraOverlay) {
         if self.imagePickerViewController.cameraDevice == .Rear {
             self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
         } else {
@@ -95,7 +94,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         }
     }
     
-    func flashButtonDidTap() {
+    func flashButtonDidTap(overlay: SPCameraOverlay) {
         if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
         } else {
@@ -103,10 +102,10 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         }
     }
     
-    func selectPhotosDidTap() {
+    func selectPhotosDidTap(overlay: SPCameraOverlay) {
         println("A")
     }
-    func takePhotoButtonDidTap() {
+    func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
         self.imagePickerViewController.takePicture()
     }
     

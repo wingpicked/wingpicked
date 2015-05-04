@@ -114,7 +114,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         imagePickerViewController.showsCameraControls = false;
         overlayView.delegate = self
         imagePickerViewController.cameraOverlayView = overlayView
-        
+        overlayView.pickingTheLastImageFromThePhotoLibrary()
         self.presentViewController(imagePickerViewController, animated: true, completion: nil)
     }
     
@@ -125,45 +125,59 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         imagePickerViewControllerSecondPhoto.showsCameraControls = false;
         overlayViewSecondPhoto.delegate = self
         imagePickerViewControllerSecondPhoto.cameraOverlayView = overlayViewSecondPhoto
-        
+        overlayViewSecondPhoto.pickingTheLastImageFromThePhotoLibrary()
         self.confirmationViewController.presentViewController(imagePickerViewControllerSecondPhoto, animated: true, completion: nil)
         
     }
     
     //TODO: Have one place for all this common code.
-    func switchCameraButtonDidTap() {
-        if self.imagePickerViewController.cameraDevice == .Rear {
-            self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
-        } else {
-            self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Rear
-        }
-        
-        if self.imagePickerViewControllerSecondPhoto.cameraDevice == .Rear {
-            self.imagePickerViewControllerSecondPhoto.cameraDevice = UIImagePickerControllerCameraDevice.Front
-        } else {
-            self.imagePickerViewControllerSecondPhoto.cameraDevice = UIImagePickerControllerCameraDevice.Rear
-        }
-    }
-    
-    func flashButtonDidTap() {
-        if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
-            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
-        } else {
-            self.imagePickerViewController.cameraFlashMode = .On
-        }
-        
-        if self.imagePickerViewControllerSecondPhoto.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
-            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
-        } else {
-            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = .On
+    func switchCameraButtonDidTap(overlay: SPCameraOverlay) {
+        if overlay == self.overlayView {
+            if self.imagePickerViewController.cameraDevice == .Rear {
+                self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            } else {
+                self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+            }
+        } else if overlay == self.overlayViewSecondPhoto {
+            if self.imagePickerViewControllerSecondPhoto.cameraDevice == .Rear {
+                self.imagePickerViewControllerSecondPhoto.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            } else {
+                self.imagePickerViewControllerSecondPhoto.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+            }
         }
     }
     
-    func selectPhotosDidTap() {
-            println("A")
+    func flashButtonDidTap(overlay: SPCameraOverlay) {
+        if overlay == self.overlayView {
+            if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
+                self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+            } else {
+                self.imagePickerViewController.cameraFlashMode = .On
+            }
+        } else if overlay == self.overlayViewSecondPhoto {
+
+            if self.imagePickerViewControllerSecondPhoto.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
+                self.imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+            } else {
+                self.imagePickerViewControllerSecondPhoto.cameraFlashMode = .On
+            }
+        }
     }
-    func takePhotoButtonDidTap() {
-        self.imagePickerViewController.takePicture()
+    
+    func selectPhotosDidTap(overlay: SPCameraOverlay) {
+        if overlay == self.overlayView {
+            self.imagePickerViewController.sourceType = .PhotoLibrary
+        } else if overlay == self.overlayViewSecondPhoto {
+            self.imagePickerViewControllerSecondPhoto.sourceType = .PhotoLibrary
+        }
+    }
+    
+    func takePhotoButtonDidTap( overlay: SPCameraOverlay ) {
+        if overlay == self.overlayView {
+            self.imagePickerViewController.takePicture()
+        } else if overlay == self.overlayViewSecondPhoto {
+            self.imagePickerViewControllerSecondPhoto.takePicture()
+        }
     }
     
     func dismissCamera( overlay: SPCameraOverlay ) {

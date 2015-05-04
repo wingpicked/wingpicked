@@ -155,7 +155,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         }
     }
     
-    func switchCameraButtonDidTap() {
+    func switchCameraButtonDidTap(overlay: SPCameraOverlay) {
         if self.curImagePickerController?.cameraDevice == .Rear {
             self.curImagePickerController?.cameraDevice = UIImagePickerControllerCameraDevice.Front
         } else {
@@ -163,7 +163,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         }
     }
     
-    func flashButtonDidTap() {
+    func flashButtonDidTap(overlay: SPCameraOverlay) {
         if self.curImagePickerController?.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
             self.curImagePickerController?.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
         } else {
@@ -171,13 +171,13 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         }
     }
     
-    func selectPhotosDidTap() {
+    func selectPhotosDidTap(overlay: SPCameraOverlay) {
 //        self.dismissViewControllerAnimated(true, completion: nil)
         self.showImageSelectionChoicesActionSheet()
     }
     
     
-    func takePhotoButtonDidTap() {
+    func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
         self.curImagePickerController?.takePicture()
     }
     
