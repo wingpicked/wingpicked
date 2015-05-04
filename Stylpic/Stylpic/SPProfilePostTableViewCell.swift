@@ -20,6 +20,11 @@ class SPProfilePostTableViewCell: SPBaseFeedViewTableViewCell {
     
     weak var profilePostDelegate : SPProfilePostTableViewCellDelegate?
     
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//
+//    }
+    
     override func setupWithFeedItem(feedItem: SPFeedItem){
         super.setupWithFeedItem(feedItem) //Does a lot of heavy lifting that is in common with SPFeedViewTableViewCell and SPProfileFeedTableViewCell
         

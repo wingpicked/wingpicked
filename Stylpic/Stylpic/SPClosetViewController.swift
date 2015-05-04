@@ -22,8 +22,9 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         collectionView.registerNib(UINib(nibName: "SPClosetCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SPClosetCollectionViewCell")
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
-        
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
+
+        self.navigationItem.title = "MY CLOSET"
         
         var findFriendsImage = UIImage( named: "Icon_addToCloset" )
         var findFriendsButton = UIButton(frame: CGRectMake( 0,0, 20,20))

@@ -23,15 +23,19 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             switch oldValue{
             case .Posts:
                 self.toolBarView.postsLabel.textColor = UIColor.darkGrayColor()
+                self.toolBarView.postsButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
                 break
             case .Followers:
                 self.toolBarView.followersLabel.textColor = UIColor.darkGrayColor()
+                self.toolBarView.followersButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
                 break
             case .Following:
                 self.toolBarView.followingLabel.textColor = UIColor.darkGrayColor()
+                self.toolBarView.followingButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
                 break
             case .Notifications:
                 self.toolBarView.notificationLabel.textColor = UIColor.darkGrayColor()
+                self.toolBarView.notificationBellImageView.image = UIImage(named: "notification_bell")
                 break
             }
 
@@ -39,15 +43,19 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             switch currentViewState{
             case .Posts:
                 self.toolBarView.postsLabel.textColor = primaryAquaColor
+                self.toolBarView.postsButton.setTitleColor(primaryAquaColor, forState: .Normal)
                 break
             case .Followers:
                 self.toolBarView.followersLabel.textColor = primaryAquaColor
+                self.toolBarView.followersButton.setTitleColor(primaryAquaColor, forState: .Normal)
                 break
             case .Following:
                 self.toolBarView.followingLabel.textColor = primaryAquaColor
+                self.toolBarView.followingButton.setTitleColor(primaryAquaColor, forState: .Normal)
                 break
             case .Notifications:
                 self.toolBarView.notificationLabel.textColor = primaryAquaColor
+                self.toolBarView.notificationBellImageView.image = UIImage(named: "notification_bell_selected")
                 break
             }
         }
@@ -93,8 +101,8 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateView", name: "RefreshViewControllers", object: nil)
 
         self.toolBarView.postsLabel.textColor = primaryAquaColor
-        self.toolBarView.postsLabel.textColor = primaryAquaColor
-        
+        self.toolBarView.postsButton.setTitleColor(primaryAquaColor, forState: .Normal)
+
         self.emptyStateFollowers.delegate = self
         self.emptyStateFollowing.delegate = self
         self.tableView.tableFooterView = UIView()
