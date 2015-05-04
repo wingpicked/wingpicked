@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate, SPPhotoConfirmationViewControllerDelegate {
+class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate, SPPhotoConfirmationViewControllerDelegate, SPCameraClosetViewControllerDelegate {
 
     let imagePickerViewController = UIImagePickerController()
     let imagePickerViewControllerSecondPhoto = UIImagePickerController()
@@ -165,11 +165,46 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     }
     
     func selectPhotosDidTap(overlay: SPCameraOverlay) {
-        if overlay == self.overlayView {
-            self.imagePickerViewController.sourceType = .PhotoLibrary
-        } else if overlay == self.overlayViewSecondPhoto {
-            self.imagePickerViewControllerSecondPhoto.sourceType = .PhotoLibrary
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let takeNewAction = UIAlertAction(title: "From My Closet", style: UIAlertActionStyle.Default) { (action) -> Void in
+            let myClosetViewController = SPCameraClosetViewController()
+            myClosetViewController.delegate = self
+            var closetView = myClosetViewController.view
+            myClosetViewController.navigationItem.rightBarButtonItem = nil
+            if overlay == self.overlayView {
+                self.imagePickerViewController.pushViewController(myClosetViewController, animated: true)
+            } else if overlay == self.overlayViewSecondPhoto {
+                self.imagePickerViewControllerSecondPhoto.pushViewController(myClosetViewController, animated: true)
+            }
+            
+            myClosetViewController.navigationController?.setNavigationBarHidden(false, animated: false)
+
         }
+        
+        
+        let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
+            println( "photo albumn did select")
+            if overlay == self.overlayView {
+                self.imagePickerViewController.sourceType = .PhotoLibrary
+            } else if overlay == self.overlayViewSecondPhoto {
+                self.imagePickerViewControllerSecondPhoto.sourceType = .PhotoLibrary
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            
+        }
+        
+        alertController.addAction( takeNewAction )
+        alertController.addAction( fromPhotoAlbumnAction )
+        alertController.addAction( cancelAction )
+        if overlay == self.overlayView {
+            self.imagePickerViewController.presentViewController(alertController, animated: true, completion: nil)
+        } else if overlay == self.overlayViewSecondPhoto {
+            self.imagePickerViewControllerSecondPhoto.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+
     }
     
     func takePhotoButtonDidTap( overlay: SPCameraOverlay ) {
@@ -202,26 +237,31 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
             capturedImages.append(squareImage)
         }
         
-        
+        self.showConfirmationView()
+
+    }
+    
+    func showConfirmationView() {
         if(capturedImages.count >= 2){
             var confirmView = confirmationViewControllerSecondPhoto.view
             confirmationViewControllerSecondPhoto.photo.image = capturedImages[1]
             confirmationViewControllerSecondPhoto.nextCameraButton.hidden = true
             confirmationViewControllerSecondPhoto.nextSendButton.hidden = false
             confirmationViewControllerSecondPhoto.titleText.text = "Photo 2 of 2"
-
+            
             //                self.imagePickerViewController.presentViewController(confirmationStoryboard, animated: true, completion: nil)
             self.imagePickerViewControllerSecondPhoto.pushViewController(confirmationViewControllerSecondPhoto, animated: true)
         } else {
             
-//            self.imagePickerViewController.pushViewController(confirmationStoryboard, animated: true)
-          var confirmView = confirmationViewController.view
+            //            self.imagePickerViewController.pushViewController(confirmationStoryboard, animated: true)
+            var confirmView = confirmationViewController.view
             confirmationViewController.photo.image = capturedImages[0]
-//                self.imagePickerViewController.presentViewController(confirmationStoryboard, animated: true, completion: nil)
+            //                self.imagePickerViewController.presentViewController(confirmationStoryboard, animated: true, completion: nil)
             self.imagePickerViewController.pushViewController(confirmationViewController, animated: true)
-
+            
         }
     }
+    
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         if(viewController.restorationIdentifier == "SPEditPhotoViewController"){
@@ -249,6 +289,17 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         }
         
         capturedImages.removeLast()
+    }
+
+    func userSelectedImage( image: UIImage ) {        
+        capturedImages.append(image)
+        if capturedImages.count <= 1 {
+            self.imagePickerViewController.popViewControllerAnimated(true)
+        } else {
+            self.imagePickerViewControllerSecondPhoto.popViewControllerAnimated(true)
+        }        
+        
+        self.showConfirmationView()
     }
 
 }

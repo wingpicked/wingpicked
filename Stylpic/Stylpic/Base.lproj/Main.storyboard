@@ -195,7 +195,7 @@
         <!--Closet View Controller-->
         <scene sceneID="URl-Y2-SMD">
             <objects>
-                <viewController id="3KQ-uY-pIS" customClass="SPClosetViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SPClosetViewController" id="3KQ-uY-pIS" customClass="SPClosetViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WC5-JG-elC"/>
                         <viewControllerLayoutGuide type="bottom" id="oj7-Ic-dLK"/>
@@ -222,9 +222,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oj7-Ic-dLK" firstAttribute="top" secondItem="GIA-2t-s3d" secondAttribute="bottom" constant="-49" id="3rT-sN-qff"/>
-                            <constraint firstItem="GIA-2t-s3d" firstAttribute="top" secondItem="WC5-JG-elC" secondAttribute="bottom" constant="-64" id="JBp-If-yRF"/>
+                            <constraint firstItem="oj7-Ic-dLK" firstAttribute="top" secondItem="GIA-2t-s3d" secondAttribute="bottom" constant="-49" id="7f9-Nf-OU7"/>
                             <constraint firstItem="GIA-2t-s3d" firstAttribute="leading" secondItem="sMh-xZ-wt7" secondAttribute="leadingMargin" constant="-16" id="bGT-8P-LZh"/>
+                            <constraint firstItem="GIA-2t-s3d" firstAttribute="top" secondItem="WC5-JG-elC" secondAttribute="bottom" constant="-64" id="dHq-HZ-GNu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GIA-2t-s3d" secondAttribute="trailing" constant="-16" id="eYj-DN-YW5"/>
                         </constraints>
                     </view>
