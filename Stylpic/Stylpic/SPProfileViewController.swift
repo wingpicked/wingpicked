@@ -17,6 +17,8 @@ enum SPProfileActiveViewState {
 
 class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate, SPProfileEmptyFollowersViewDelegate, SPProfileEmptyFollowingViewDelegate {
 
+    var isStaleData = true
+    
     var currentViewState = SPProfileActiveViewState.Posts
         {
         didSet{
@@ -132,7 +134,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
         }
         
-        
+        if((user == SPUser.currentUser() && isStaleData) || user != SPUser.currentUser()){
         SPManager.sharedInstance.getProfileInfo(user, resultBlock: { (profileObject, error) -> Void in
             if(error == nil){
                 if let profileObject = profileObject {
@@ -143,12 +145,14 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                     self.updateToolbarUI()
                     
                     self.tableView.reloadData()
+                    self.isStaleData = false
                 }
             }
             else{
                 println(error!.localizedDescription)
             }
         })
+        }
     }
     
     func configureEmptyStateIfNeeded() {
