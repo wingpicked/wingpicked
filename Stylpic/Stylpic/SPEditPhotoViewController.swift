@@ -51,7 +51,8 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     func dismissViewController(sender: AnyObject!){
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
+        
     }
     
     @IBAction func shareImages(sender: AnyObject) {
@@ -109,7 +110,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.imagePickerViewController.takePicture()
     }
     
-    func dismissCamera() {
+    func dismissCamera( overlay: SPCameraOverlay ) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -165,6 +166,6 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
             }
         }
         
-        self.dismissCamera()
+        self.dismissCamera( SPCameraOverlay() )
     }
 }

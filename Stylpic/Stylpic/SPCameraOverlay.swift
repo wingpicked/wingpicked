@@ -11,7 +11,7 @@ import UIKit
 @objc protocol SPCameraOverlayDelegate {
     func selectPhotosDidTap()
     func takePhotoButtonDidTap()
-    func dismissCamera()
+    func dismissCamera( overlay: SPCameraOverlay )
     func switchCameraButtonDidTap()
     func flashButtonDidTap()
 }
@@ -53,7 +53,7 @@ class SPCameraOverlay: UIView {
     }
     
     @IBAction func dismissCamera(sender: AnyObject) {
-        self.delegate?.dismissCamera()
+        self.delegate?.dismissCamera( self )
     }
     
     @IBAction func switchCameraButtonDidTap(sender: AnyObject) {

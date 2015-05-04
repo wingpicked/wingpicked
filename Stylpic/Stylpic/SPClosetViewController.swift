@@ -176,7 +176,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.imagePickerViewController.takePicture()
     }
     
-    func dismissCamera() {
+    func dismissCamera( overlay: SPCameraOverlay ) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

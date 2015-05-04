@@ -8,10 +8,16 @@
 
 import UIKit
 
-class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate {
+class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate, SPPhotoConfirmationViewControllerDelegate {
 
     let imagePickerViewController = UIImagePickerController()
+    let imagePickerViewControllerSecondPhoto = UIImagePickerController()
+    
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
+    let overlayViewSecondPhoto = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
+
+    let confirmationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SPPhotoConfirmationViewController") as! SPPhotoConfirmationViewController
+    let confirmationViewControllerSecondPhoto = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SPPhotoConfirmationViewController") as! SPPhotoConfirmationViewController
     
     var centerButton : UIButton!
     
@@ -35,7 +41,10 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
             vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
         }
 
+        self.confirmationViewController.delegate = self
+        self.confirmationViewControllerSecondPhoto.delegate = self
         self.imagePickerViewController.delegate = self
+        self.imagePickerViewControllerSecondPhoto.delegate = self
         self.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: "Badges", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: UIApplicationDidBecomeActiveNotification, object: nil)
@@ -99,7 +108,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         
         //Reset Camera
         capturedImages = []
-        overlayView.titleLabel.text = "Photo \(capturedImages.count + 1) of 2"
+        overlayView.titleLabel.text = "Photo 1 of 2"
         
         imagePickerViewController.sourceType = .Camera
         imagePickerViewController.showsCameraControls = false;
@@ -109,12 +118,30 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.presentViewController(imagePickerViewController, animated: true, completion: nil)
     }
     
+    func showSecondCamera() {
+        overlayViewSecondPhoto.titleLabel.text = "Photo 2 of 2"
+        
+        imagePickerViewControllerSecondPhoto.sourceType = .Camera
+        imagePickerViewControllerSecondPhoto.showsCameraControls = false;
+        overlayViewSecondPhoto.delegate = self
+        imagePickerViewControllerSecondPhoto.cameraOverlayView = overlayViewSecondPhoto
+        
+        self.confirmationViewController.presentViewController(imagePickerViewControllerSecondPhoto, animated: true, completion: nil)
+        
+    }
+    
     //TODO: Have one place for all this common code.
     func switchCameraButtonDidTap() {
         if self.imagePickerViewController.cameraDevice == .Rear {
             self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
         } else {
             self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+        }
+        
+        if self.imagePickerViewControllerSecondPhoto.cameraDevice == .Rear {
+            self.imagePickerViewControllerSecondPhoto.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        } else {
+            self.imagePickerViewControllerSecondPhoto.cameraDevice = UIImagePickerControllerCameraDevice.Rear
         }
     }
     
@@ -123,6 +150,12 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
             self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
         } else {
             self.imagePickerViewController.cameraFlashMode = .On
+        }
+        
+        if self.imagePickerViewControllerSecondPhoto.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
+            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        } else {
+            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = .On
         }
     }
     
@@ -133,8 +166,13 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.imagePickerViewController.takePicture()
     }
     
-    func dismissCamera() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func dismissCamera( overlay: SPCameraOverlay ) {
+        if overlay == self.overlayView {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else if overlay == self.overlayViewSecondPhoto {
+            self.confirmationViewController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
@@ -150,13 +188,24 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
             capturedImages.append(squareImage)
         }
         
-        overlayView.titleLabel.text = "Photo \(capturedImages.count + 1) of 2"
         
         if(capturedImages.count >= 2){
-            var postPhotoViewController = SPEditPhotoViewController(nibName:"SPEditPhotoViewController", bundle: nil)
-            postPhotoViewController.image = capturedImages[0];
-            postPhotoViewController.imageTwo = capturedImages[1];
-            self.imagePickerViewController.pushViewController(postPhotoViewController, animated: true)
+            var confirmView = confirmationViewControllerSecondPhoto.view
+            confirmationViewControllerSecondPhoto.photo.image = capturedImages[1]
+            confirmationViewControllerSecondPhoto.nextCameraButton.hidden = true
+            confirmationViewControllerSecondPhoto.nextSendButton.hidden = false
+            confirmationViewControllerSecondPhoto.titleText.text = "Photo 2 of 2"
+
+            //                self.imagePickerViewController.presentViewController(confirmationStoryboard, animated: true, completion: nil)
+            self.imagePickerViewControllerSecondPhoto.pushViewController(confirmationViewControllerSecondPhoto, animated: true)
+        } else {
+            
+//            self.imagePickerViewController.pushViewController(confirmationStoryboard, animated: true)
+          var confirmView = confirmationViewController.view
+            confirmationViewController.photo.image = capturedImages[0]
+//                self.imagePickerViewController.presentViewController(confirmationStoryboard, animated: true, completion: nil)
+            self.imagePickerViewController.pushViewController(confirmationViewController, animated: true)
+
         }
     }
     
@@ -165,6 +214,27 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
             return false
         }
         return true
+    }
+    
+    func nextSendButtonDidTap() {
+        var postPhotoViewController = SPEditPhotoViewController(nibName:"SPEditPhotoViewController", bundle: nil)
+        postPhotoViewController.image = capturedImages[0];
+        postPhotoViewController.imageTwo = capturedImages[1];
+        self.imagePickerViewControllerSecondPhoto.pushViewController(postPhotoViewController, animated: true)
+    }
+    
+    func nextCameraButtonDidTap() {
+        self.showSecondCamera()
+    }
+    
+    func confirmationBackButtonDidTap() {
+        if capturedImages.count <= 1 {
+            self.imagePickerViewController.popViewControllerAnimated(true)
+        } else {
+            self.imagePickerViewControllerSecondPhoto.popViewControllerAnimated(true)
+        }
+        
+        capturedImages.removeLast()
     }
 
 }

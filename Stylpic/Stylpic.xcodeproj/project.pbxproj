@@ -100,6 +100,7 @@
 		38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */; };
 		38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */; };
 		38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B441AD210AB00180602 /* TTTAttributedLabel.m */; };
+		482C3EB91AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C3EB81AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift */; };
 		483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C21ABF8A470076331C /* SPPhotoPair.m */; };
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
 		483097C91ABF8DDB0076331C /* SPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C81ABF8DDB0076331C /* SPActivity.m */; };
@@ -276,6 +277,7 @@
 		38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCommentsSmallTableViewCell.xib; sourceTree = "<group>"; };
 		38F87B431AD210AB00180602 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		38F87B441AD210AB00180602 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		482C3EB81AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotoConfirmationViewController.swift; sourceTree = "<group>"; };
 		483097C11ABF8A470076331C /* SPPhotoPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhotoPair.h; sourceTree = "<group>"; };
 		483097C21ABF8A470076331C /* SPPhotoPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhotoPair.m; sourceTree = "<group>"; };
 		483097C41ABF8B990076331C /* SPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUser.h; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */,
 				38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */,
 				48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */,
+				482C3EB81AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift */,
 			);
 			name = SPCamera;
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 				38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */,
 				4883A46C1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift in Sources */,
 				385C74421AEF46C900FBFA62 /* MRIconView.m in Sources */,
+				482C3EB91AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift in Sources */,
 				483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */,
 				38160A351AB50F95005504AD /* UIScrollView+SLKAdditions.m in Sources */,
 				38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */,
