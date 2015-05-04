@@ -133,7 +133,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Take New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
             println( "take new photo tapped " )
-            self.overlayView.titleLabel.text = "Take a photo"
+            self.overlayView.titleLabel.text = ""
             
             self.imagePickerViewController.sourceType = .Camera
             self.imagePickerViewController.showsCameraControls = false;
@@ -159,7 +159,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func switchCameraButtonDidTap() {
+    func switchCameraButtonDidTap(overlay: SPCameraOverlay) {
         if self.imagePickerViewController.cameraDevice == .Rear {
             self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
         } else {
@@ -168,7 +168,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     //TODO: Need to check if flash exists before setting this.
-    func flashButtonDidTap() {
+    func flashButtonDidTap(overlay: SPCameraOverlay) {
         
         if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
             self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
@@ -177,15 +177,15 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    func takePhotoButtonDidTap() {
+    func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
         self.imagePickerViewController.takePicture()
     }
     
-    func dismissCamera() {
+    func dismissCamera( overlay: SPCameraOverlay ) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func selectPhotosDidTap() {
+    func selectPhotosDidTap(overlay: SPCameraOverlay) {
         
     }
 

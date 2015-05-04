@@ -100,6 +100,10 @@
 		38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */; };
 		38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */; };
 		38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B441AD210AB00180602 /* TTTAttributedLabel.m */; };
+		482C3EB91AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C3EB81AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift */; };
+		482C3EBB1AF6FB4D006643D5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 482C3EBA1AF6FB4D006643D5 /* AssetsLibrary.framework */; };
+		482C3EBD1AF70CEA006643D5 /* SPCameraClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C3EBC1AF70CEA006643D5 /* SPCameraClosetViewController.swift */; };
+		482C3EBF1AF7100E006643D5 /* SPCameraClosetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482C3EBE1AF7100E006643D5 /* SPCameraClosetViewController.xib */; };
 		483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C21ABF8A470076331C /* SPPhotoPair.m */; };
 		483097C61ABF8B990076331C /* SPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C51ABF8B990076331C /* SPUser.m */; };
 		483097C91ABF8DDB0076331C /* SPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C81ABF8DDB0076331C /* SPActivity.m */; };
@@ -276,6 +280,10 @@
 		38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCommentsSmallTableViewCell.xib; sourceTree = "<group>"; };
 		38F87B431AD210AB00180602 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		38F87B441AD210AB00180602 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		482C3EB81AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPhotoConfirmationViewController.swift; sourceTree = "<group>"; };
+		482C3EBA1AF6FB4D006643D5 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		482C3EBC1AF70CEA006643D5 /* SPCameraClosetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCameraClosetViewController.swift; sourceTree = "<group>"; };
+		482C3EBE1AF7100E006643D5 /* SPCameraClosetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCameraClosetViewController.xib; sourceTree = "<group>"; };
 		483097C11ABF8A470076331C /* SPPhotoPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPhotoPair.h; sourceTree = "<group>"; };
 		483097C21ABF8A470076331C /* SPPhotoPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPhotoPair.m; sourceTree = "<group>"; };
 		483097C41ABF8B990076331C /* SPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUser.h; sourceTree = "<group>"; };
@@ -325,6 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482C3EBB1AF6FB4D006643D5 /* AssetsLibrary.framework in Frameworks */,
 				4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */,
 				389A56F31A57277800EB0EFD /* FacebookSDK.framework in Frameworks */,
 				ECB2C23B1A560E350009FD11 /* libsqlite3.dylib in Frameworks */,
@@ -528,6 +537,7 @@
 		3845F80C1A560A9000191BDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				482C3EBA1AF6FB4D006643D5 /* AssetsLibrary.framework */,
 				388E31891AF5A59200AF7E6A /* Bolts.framework */,
 				388E318A1AF5A59200AF7E6A /* Parse.framework */,
 				388E318B1AF5A59200AF7E6A /* ParseCrashReporting.framework */,
@@ -714,6 +724,7 @@
 				38BB444E1A63C077004CD444 /* SPEditPhotoViewController.xib */,
 				38BB444A1A63B7E2004CD444 /* SPEditPhotoViewController.swift */,
 				48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */,
+				482C3EB81AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift */,
 			);
 			name = SPCamera;
 			sourceTree = "<group>";
@@ -746,6 +757,8 @@
 				38AC45151AA8212700199935 /* SPClosetCollectionViewCell.xib */,
 				386B7A801AA82ECD00115147 /* SPClosetDetailViewController.swift */,
 				386B7A811AA82ECD00115147 /* SPClosetDetailViewController.xib */,
+				482C3EBC1AF70CEA006643D5 /* SPCameraClosetViewController.swift */,
+				482C3EBE1AF7100E006643D5 /* SPCameraClosetViewController.xib */,
 			);
 			name = SPCloset;
 			sourceTree = "<group>";
@@ -943,6 +956,7 @@
 				382FD7461AEDA7080067CD78 /* SPProfileToolBarPublicView.xib in Resources */,
 				38CD696C1AD231210003F8A4 /* SPLikeCommentButtonView.xib in Resources */,
 				EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */,
+				482C3EBF1AF7100E006643D5 /* SPCameraClosetViewController.xib in Resources */,
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
 				38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */,
@@ -1009,6 +1023,8 @@
 				38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */,
 				4883A46C1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift in Sources */,
 				385C74421AEF46C900FBFA62 /* MRIconView.m in Sources */,
+				482C3EBD1AF70CEA006643D5 /* SPCameraClosetViewController.swift in Sources */,
+				482C3EB91AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift in Sources */,
 				483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */,
 				38160A351AB50F95005504AD /* UIScrollView+SLKAdditions.m in Sources */,
 				38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */,

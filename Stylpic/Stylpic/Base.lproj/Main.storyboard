@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Feed Table View Controller-->
         <scene sceneID="exa-p7-kCf">
@@ -82,6 +87,92 @@
             </objects>
             <point key="canvasLocation" x="2071" y="-473.5"/>
         </scene>
+        <!--Photo Confirmation View Controller-->
+        <scene sceneID="FSK-fR-I2t">
+            <objects>
+                <viewController storyboardIdentifier="SPPhotoConfirmationViewController" id="YMB-IB-KHe" customClass="SPPhotoConfirmationViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LNu-X3-Pab"/>
+                        <viewControllerLayoutGuide type="bottom" id="lEI-mA-6rx"/>
+                    </layoutGuides>
+                    <view key="view" autoresizesSubviews="NO" alpha="0.85000002384185791" contentMode="scaleToFill" id="FcL-TS-H40">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Photo 1 of 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3T-gB-IyA">
+                                <rect key="frame" x="105" y="8" width="110" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="9Id-IQ-JOf"/>
+                                    <constraint firstAttribute="height" constant="26" id="iBY-OC-HOP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUb-gR-3jZ">
+                                <rect key="frame" x="23" y="9" width="16" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="AEA-Pn-m48"/>
+                                    <constraint firstAttribute="width" constant="16" id="xCX-Xr-tCB"/>
+                                </constraints>
+                                <state key="normal" image="Button_back_white">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonDidTap:" destination="YMB-IB-KHe" eventType="touchUpInside" id="yN6-rH-yIw"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QQp-b0-5yG">
+                                <rect key="frame" x="0.0" y="42" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="3Nc-V1-6lJ"/>
+                                    <constraint firstAttribute="height" constant="320" id="OYo-dQ-DNf"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-qZ-zC6">
+                                <rect key="frame" x="132" y="397" width="57" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="T6O-ZR-aMa"/>
+                                    <constraint firstAttribute="width" constant="57" id="zzz-tm-ueG"/>
+                                </constraints>
+                                <state key="normal" image="NextCam3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextCameraButtonDidTap:" destination="YMB-IB-KHe" eventType="touchUpInside" id="YJv-L9-aRr"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqN-ZR-J1q">
+                                <rect key="frame" x="134" y="406" width="52" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="f1a-h3-hqD"/>
+                                    <constraint firstAttribute="width" constant="52" id="yoK-eG-cQc"/>
+                                </constraints>
+                                <state key="normal" image="NextSendPost2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextSendButtonDidTap:" destination="YMB-IB-KHe" eventType="touchUpInside" id="Y0g-p8-nZa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="backButton" destination="bUb-gR-3jZ" id="Hdf-7v-HVS"/>
+                        <outlet property="nextCameraButton" destination="ewg-qZ-zC6" id="X8k-2J-Vjm"/>
+                        <outlet property="nextSendButton" destination="IqN-ZR-J1q" id="RUP-PW-zpu"/>
+                        <outlet property="photo" destination="QQp-b0-5yG" id="GZQ-qy-Wj7"/>
+                        <outlet property="titleText" destination="x3T-gB-IyA" id="FV5-P9-0u9"/>
+                        <outlet property="view" destination="FcL-TS-H40" id="RUI-zO-A1Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EgQ-rn-sjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602" y="164"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="tUW-WW-3l0">
             <objects>
@@ -104,7 +195,7 @@
         <!--Closet View Controller-->
         <scene sceneID="URl-Y2-SMD">
             <objects>
-                <viewController id="3KQ-uY-pIS" customClass="SPClosetViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SPClosetViewController" id="3KQ-uY-pIS" customClass="SPClosetViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WC5-JG-elC"/>
                         <viewControllerLayoutGuide type="bottom" id="oj7-Ic-dLK"/>
@@ -131,9 +222,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oj7-Ic-dLK" firstAttribute="top" secondItem="GIA-2t-s3d" secondAttribute="bottom" constant="-49" id="3rT-sN-qff"/>
-                            <constraint firstItem="GIA-2t-s3d" firstAttribute="top" secondItem="WC5-JG-elC" secondAttribute="bottom" constant="-64" id="JBp-If-yRF"/>
+                            <constraint firstItem="oj7-Ic-dLK" firstAttribute="top" secondItem="GIA-2t-s3d" secondAttribute="bottom" constant="-49" id="7f9-Nf-OU7"/>
                             <constraint firstItem="GIA-2t-s3d" firstAttribute="leading" secondItem="sMh-xZ-wt7" secondAttribute="leadingMargin" constant="-16" id="bGT-8P-LZh"/>
+                            <constraint firstItem="GIA-2t-s3d" firstAttribute="top" secondItem="WC5-JG-elC" secondAttribute="bottom" constant="-64" id="dHq-HZ-GNu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GIA-2t-s3d" secondAttribute="trailing" constant="-16" id="eYj-DN-YW5"/>
                         </constraints>
                     </view>
@@ -372,6 +463,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Button_back_white" width="25" height="41"/>
         <image name="Icon_closet" width="64" height="49"/>
         <image name="Icon_explore" width="64" height="49"/>
         <image name="Icon_home" width="64" height="49"/>
@@ -381,5 +473,7 @@
         <image name="Login_facebook_button" width="202" height="46"/>
         <image name="Logo_LoginScreen" width="168" height="166"/>
         <image name="Melanie-Iglesias" width="500" height="600"/>
+        <image name="NextCam3" width="100" height="141"/>
+        <image name="NextSendPost2" width="100" height="135"/>
     </resources>
 </document>
