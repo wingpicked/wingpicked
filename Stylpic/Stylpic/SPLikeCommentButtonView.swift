@@ -11,14 +11,27 @@ import UIKit
 protocol SPLikeCommentButtonViewDelegate {
     func likeButtonTapped()
     func commentButtonTapped()
+    func deleteButtonDidTap()
 }
 
 class SPLikeCommentButtonView: UIView {
 
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
-
+    
     var delegate : SPLikeCommentButtonViewDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.bringSubviewToFront( self.deleteButton )
+        self.bringSubviewToFront( self.likeButton )
+        self.bringSubviewToFront( self.commentButton )
+    }
+    
+    @IBAction func deleteButtonDidTap(sender: AnyObject) {
+        self.delegate?.deleteButtonDidTap()
+    }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
         self.delegate?.likeButtonTapped()

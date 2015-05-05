@@ -15,7 +15,7 @@ enum SPProfileActiveViewState {
     case Notifications
 }
 
-class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate, SPProfileEmptyFollowersViewDelegate, SPProfileEmptyFollowingViewDelegate {
+class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate, SPProfileEmptyFollowersViewDelegate, SPProfileEmptyFollowingViewDelegate, SPFeedDetailViewControllerDelegate {
 
     var isStaleData = true
     
@@ -320,12 +320,16 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     //MARK: SPProfilePostTableViewCell Delegate Methods
     func didTapPhotoOne(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
+        detailViewController.showDeleteButton = true
+        detailViewController.profileDelegate = self
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
     
     func didTapPhotoTwo(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
+        detailViewController.showDeleteButton = true
+        detailViewController.profileDelegate = self
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 
@@ -339,25 +343,34 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         
     }
     
+    func removeFeedItem(feedItem:SPFeedItem) {
+        var feedPosts = self.profileInfoViewModel.posts
+        var indexToRemove = -1
+        for var i = feedPosts.count - 1; i >= 0; --i {
+            var searchPost = feedPosts[ i ]
+            if searchPost == feedItem {
+                indexToRemove = i
+                break
+            }
+        }
+        
+        if indexToRemove >= 0 {
+            self.navigationController?.popViewControllerAnimated(true)
+            feedPosts.removeAtIndex( indexToRemove )
+            SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId! )
+            self.tableView.reloadData()
+        }
+    }
+    
     func deleteFeedItem( feedItem: SPFeedItem ) {
         
         let alertController = UIAlertController(title: "Are you sure you want to delete this post?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { (action) -> Void in
-            var feedPosts = self.profileInfoViewModel.posts
-            var indexToRemove = -1
-            for var i = feedPosts.count - 1; i >= 0; --i {
-                var searchPost = feedPosts[ i ]
-                if searchPost == feedItem {
-                    indexToRemove = i
-                    break
-                }
-            }
-            
-            if indexToRemove >= 0 {
-                feedPosts.removeAtIndex( indexToRemove )
-                SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId! )
-                self.tableView.reloadData()
-            }
+            var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                // your function here
+                self.removeFeedItem(feedItem)
+            })
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
         }

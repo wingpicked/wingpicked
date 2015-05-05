@@ -8,6 +8,9 @@
 
 import UIKit
 
+@objc protocol SPFeedDetailViewControllerDelegate {
+    optional func deleteFeedItem( feedItem: SPFeedItem )
+}
 
 class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate {
     
@@ -16,6 +19,8 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     var feedItem: SPFeedItem
     var imageTapped : ImageIdentifier
     var tableViewFooterView : SPLikeCommentButtonView!
+    var showDeleteButton = false
+    var profileDelegate : SPFeedDetailViewControllerDelegate?
     
     init(feedItem : SPFeedItem, imageTapped: ImageIdentifier) {
         self.imageTapped = imageTapped
@@ -50,6 +55,9 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
         self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
         println(self.tableViewFooterView)
+        if self.showDeleteButton {
+            self.tableViewFooterView.deleteButton.hidden = false
+        }
         self.setupFollowButton()
         self.setupLikeCommentButtonView()
 
@@ -57,7 +65,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableViewFooterView.delegate = self
         self.tableViewFooterView.userInteractionEnabled = true
         tableViewFooterView.userInteractionEnabled = true
-        self.tableView.tableFooterView = tableViewFooterView
+//        self.tableView.tableFooterView = tableViewFooterView
         //self.tableView.tableFooterView!.frame = CGRectMake(0, 0, 320, 100)
     }
     
@@ -166,6 +174,14 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return self.tableViewFooterView;
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 27.0
+    }
+    
     func setupFollowButton() {
         
         if self.feedItem.photos?.user.objectId != SPUser.currentUser()!.objectId {
@@ -231,5 +247,10 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.feedItem.isCurrentUserFollowing = !self.feedItem.isCurrentUserFollowing
         self.setupFollowButton()
     }
+    
+    func deleteButtonDidTap() {
+        self.profileDelegate?.deleteFeedItem!(self.feedItem)
+    }
+    
     
 }
