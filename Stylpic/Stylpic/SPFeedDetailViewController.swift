@@ -43,20 +43,53 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "PHOTO"
+        
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
         self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
         self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
-        
+        println(self.tableViewFooterView)
         self.setupFollowButton()
+        self.setupLikeCommentButtonView()
 
+        
         self.tableViewFooterView.delegate = self
+        self.tableViewFooterView.userInteractionEnabled = true
+        tableViewFooterView.userInteractionEnabled = true
         self.tableView.tableFooterView = tableViewFooterView
+        //self.tableView.tableFooterView!.frame = CGRectMake(0, 0, 320, 100)
+    }
+    
+    func setupLikeCommentButtonView(){
+        var likeImage : UIImage!
+        if self.imageTapped == ImageIdentifier.ImageOne{
+            if(self.feedItem.photoUserLikes == PhotoUserLikes.FirstPhotoLiked){
+              likeImage = UIImage(named: "likeafterclick")
+            }
+            else if(self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked){
+                likeImage = UIImage(named: "like")
+            }
+            else{
+                likeImage = UIImage(named: "nolike")
+            }
+        }
+        if self.imageTapped == ImageIdentifier.ImageTwo{
+            if(self.feedItem.photoUserLikes == PhotoUserLikes.SecondPhotoLiked){
+                likeImage = UIImage(named: "likeafterclick")
+            }
+            else if(self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked){
+                likeImage = UIImage(named: "like")
+            }
+            else{
+                likeImage = UIImage(named: "nolike")
+            }
+        }
+        
+        self.tableViewFooterView.likeButton.setImage(likeImage, forState: .Normal)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
@@ -198,4 +231,5 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.feedItem.isCurrentUserFollowing = !self.feedItem.isCurrentUserFollowing
         self.setupFollowButton()
     }
+    
 }

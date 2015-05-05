@@ -22,6 +22,7 @@ class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelega
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
         self.tableView.addGestureRecognizer(tapGestureRecognizer)
         
+        self.navigationItem.title = "EXPLORE"
     }
     
     

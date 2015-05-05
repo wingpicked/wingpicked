@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
         UINavigationBar.appearance().tintColor = UIColor.blackColor()
         UIBarButtonItem.appearance().tintColor = UIColor.blackColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 22.0)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 18.0)!]
 
         
         //Facebook stuff

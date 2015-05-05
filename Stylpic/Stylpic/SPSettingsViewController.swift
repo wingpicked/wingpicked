@@ -17,7 +17,7 @@ class SPSettingsViewController: UITableViewController {
         
         let dismissButton = UIBarButtonItem(title: "Dismiss", style: .Plain, target: self, action: "dismissButtonDidTap:")
         self.navigationItem.leftBarButtonItem = dismissButton
-        
+        self.navigationItem.title = "SETTINGS"
         
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
