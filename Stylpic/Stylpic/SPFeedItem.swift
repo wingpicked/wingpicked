@@ -23,8 +23,8 @@ class SPFeedItem: NSObject {
     var likesCountTwo = 0
     var commentsCountOne: Int! = 0
     var commentsCountTwo = 0
-    var percentageLikedOne = 0.0
-    var percentageLikedTwo = 0.0
+    var percentageLikedOne: Int = 0
+    var percentageLikedTwo:Int = 0
     var username = ""
     var userProfilePicture : PFFile?
     var photoUserLikes = PhotoUserLikes.NoPhotoLiked
@@ -45,8 +45,8 @@ class SPFeedItem: NSObject {
         self.commentsCountTwo = serverFeedItem[ "commentsCountTwo" ] as! Int
         self.likesCountOne = serverFeedItem[ "likesCountOne" ] as! Int
         self.likesCountTwo = serverFeedItem[ "likesCountTwo" ] as! Int
-        self.percentageLikedOne = serverFeedItem[ "percentageLikedOne" ] as! Double
-        self.percentageLikedTwo = serverFeedItem[ "percentageLikedTwo" ] as! Double
+        self.percentageLikedOne = Int(serverFeedItem[ "percentageLikedOne" ] as! Float)
+        self.percentageLikedTwo = Int(serverFeedItem[ "percentageLikedTwo" ] as! Float)
         self.username = serverFeedItem[ "username" ] as! String
         self.isCurrentUserFollowing = serverFeedItem[ "isCurrentUserFollowing" ] as! Bool
         let photoUserLikes = serverFeedItem[ "photoUserLikes" ] as! Int

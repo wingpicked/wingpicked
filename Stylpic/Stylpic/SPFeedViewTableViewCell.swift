@@ -170,10 +170,10 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     func updatePercentages() {
         if let feedItem = self.feedItem {
             var totalLikes = Double(feedItem.likesCountOne + feedItem.likesCountTwo)
-            feedItem.percentageLikedOne = 100 * Double(feedItem.likesCountOne) / totalLikes
-            feedItem.percentageLikedTwo = 100 * Double(feedItem.likesCountTwo) / totalLikes
-            self.imageOnePercentLabel.text = NSString( format:"%f", feedItem.percentageLikedOne ) as String
-            self.imageTwoPercentLabel.text = NSString( format:"%f", feedItem.percentageLikedTwo ) as String
+            feedItem.percentageLikedOne = Int(100 * Double(feedItem.likesCountOne) / totalLikes)
+            feedItem.percentageLikedTwo = Int(100 * Double(feedItem.likesCountTwo) / totalLikes)
+            self.imageOnePercentLabel.text = NSString( format:"%d", Int(feedItem.percentageLikedOne) ) as String
+            self.imageTwoPercentLabel.text = NSString( format:"%d", Int(feedItem.percentageLikedTwo ) ) as String
         }
         
     }

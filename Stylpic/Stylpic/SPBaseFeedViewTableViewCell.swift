@@ -57,8 +57,8 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         self.pictureImageView2.loadInBackground(nil)
         self.pictureImageView.loadInBackground(nil)
         
-        self.imageOnePercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedOne ) as String
-        self.imageTwoPercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedTwo ) as String
+        self.imageOnePercentLabel.text = NSString( format:"%d", feedItem.percentageLikedOne ) as String
+        self.imageTwoPercentLabel.text = NSString( format:"%d", feedItem.percentageLikedTwo ) as String
         self.imageOneLikeLabel.text =  String(feedItem.likesCountOne)
         self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
         self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
