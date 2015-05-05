@@ -22,6 +22,8 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
         height = 100
+        self.profilePictureImageView.clipsToBounds = true
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.0
     }
     
     func cellHeight() -> CGFloat{

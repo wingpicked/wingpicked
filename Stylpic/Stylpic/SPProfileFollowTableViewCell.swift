@@ -20,6 +20,8 @@ class SPProfileFollowTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.profilePictureImageView.clipsToBounds = true
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.0
     }
 
     @IBAction func followButtonTouchUpInside(sender: AnyObject) {

@@ -52,6 +52,8 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         userDisplayName.addGestureRecognizer(tap2)
         
         self.postedTimeLabel.preferredMaxLayoutWidth = 72
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.width / 2.0
+        self.profilePictureImageView.clipsToBounds = true
     }
     
     override func setupWithFeedItem(feedItem: SPFeedItem){
