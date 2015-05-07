@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>74C151DC-A8F3-43C4-85D6-97D969E0EF80</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Stylpic</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E7C2CA97B5FBCC3B67B0D2B045A47AF46DD685C0</key>
 		<string>bitbucket.org:elementsrtyte/stylpic.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Stylpic/Stylpic.xcodeproj/project.xcworkspace</string>
+	<string>Stylpic/Stylpic.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E7C2CA97B5FBCC3B67B0D2B045A47AF46DD685C0</key>
