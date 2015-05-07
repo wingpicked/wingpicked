@@ -48,6 +48,8 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: "Badges", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "sharedPost", name: "SharedPost"  , object: nil)
+
     }
     
     deinit {
@@ -63,6 +65,12 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear( animated )
         self.updateProfileBadgeNumber()
+    }
+    
+    func sharedPost() {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+//            self.dismissViewControllerAnimated(true, completion: nil)
+        })
     }
     
     func updateProfileBadgeNumber() {

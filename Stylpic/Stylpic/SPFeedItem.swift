@@ -58,5 +58,15 @@ class SPFeedItem: NSObject {
         if let x = x{
             self.timeintervalSincePost = timeIntervalFormatter.stringForTimeInterval(x)
         }
+        
+        var usersToFetchIfNeeded = [PFUser]()
+        let allComments = commentsPhoto1 + commentsPhoto2
+        for anActivity in allComments {
+            usersToFetchIfNeeded.append( anActivity.fromUser )
+            usersToFetchIfNeeded.append( anActivity.toUser )
+        }
+        
+        PFObject.fetchAllIfNeeded(usersToFetchIfNeeded)
+        
     }
 }

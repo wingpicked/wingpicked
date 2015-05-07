@@ -163,7 +163,10 @@ class SPManager: NSObject {
     func fetchComments(photoPair: PFObject, imageTapped: ActivityType, resultBlock: SPPFObjectArrayResultBlock) {
 
         var commentQuery = PFQuery( className: "Activity" )
-        //commentQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
+        commentQuery.includeKey("fromUser")
+        commentQuery.includeKey("photoPair")
+        commentQuery.includeKey("photoPair.user")
+        commentQuery.includeKey("toUser")
         commentQuery.whereKey( "type", equalTo: imageTapped.rawValue )
         commentQuery.whereKey( "photoPair", equalTo: photoPair )
         commentQuery.whereKey( "isArchiveReady", equalTo: false )
@@ -413,6 +416,10 @@ class SPManager: NSObject {
     func followingActivitiesWithCandidateUsers( candidateFollowingUsers: [SPUser], resultBlock: SPActivityResultBlock ) {
         var fromUser = SPUser.currentUser()
         var activityQuery = PFQuery( className: "Activity" )
+        activityQuery.includeKey("fromUser")
+        activityQuery.includeKey("toUser")
+        activityQuery.includeKey("photoPair")
+        activityQuery.includeKey("photoPair.user")
         activityQuery.whereKey( "fromUser", equalTo: fromUser! )
         activityQuery.whereKey( "toUser", containedIn: candidateFollowingUsers )
         activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
