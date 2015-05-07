@@ -258,7 +258,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch currentViewState {
         case .Posts:
-            return 136
+            return 158
         case .Followers, .Following, .Notifications:
             return 44
         }
