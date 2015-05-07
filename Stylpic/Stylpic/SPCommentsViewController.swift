@@ -39,6 +39,7 @@ class SPCommentsViewController: SLKTextViewController {
     }
 
     override func didPressRightButton(sender: AnyObject!) {
+        //self.feedItem?.commentsCountTwo++
         
         let comment = self.textView.text
         var activityType = ActivityType.CommentImageOne

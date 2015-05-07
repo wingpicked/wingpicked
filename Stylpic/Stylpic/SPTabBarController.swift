@@ -125,6 +125,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         imagePickerViewControllerSecondPhoto.showsCameraControls = false;
         overlayViewSecondPhoto.delegate = self
         imagePickerViewControllerSecondPhoto.cameraOverlayView = overlayViewSecondPhoto
+        imagePickerViewControllerSecondPhoto.modalTransitionStyle = .CrossDissolve
         overlayViewSecondPhoto.pickingTheLastImageFromThePhotoLibrary()
         self.confirmationViewController.presentViewController(imagePickerViewControllerSecondPhoto, animated: true, completion: nil)
         

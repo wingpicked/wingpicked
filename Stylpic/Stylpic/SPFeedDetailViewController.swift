@@ -15,9 +15,9 @@ import UIKit
 class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var imageFile : PFFile
-    var feedItem: SPFeedItem
-    var imageTapped : ImageIdentifier
+    var imageFile : PFFile!
+    var feedItem: SPFeedItem!
+    var imageTapped : ImageIdentifier!
     var tableViewFooterView : SPLikeCommentButtonView!
     var showDeleteButton = false
     var profileDelegate : SPFeedDetailViewControllerDelegate?
@@ -36,14 +36,22 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         self.imageFile = photo.photo
         super.init(nibName: "SPFeedDetailViewController", bundle: nil)
+        
+        //self.feedItem.addObserver(self, forKeyPath: "commentsCountTwo", options: NSKeyValueObservingOptions.New, context: nil)
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.imageFile = PFFile() //TODO: Place default image here.
-        self.feedItem = SPFeedItem()
-        self.imageTapped = ImageIdentifier.ImageOne
+//        self.imageFile = PFFile() //TODO: Place default image here.
+//        self.feedItem = SPFeedItem()
+//        self.imageTapped = ImageIdentifier.ImageOne
         super.init(coder: aDecoder)
     }
+    
+//    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+//        if(keyPath == "commentsCountTwo"){
+//            println("hi")
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,12 +130,12 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                 if self.imageTapped == ImageIdentifier.ImageOne{
                     cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne)%"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) likes", forState: .Normal)
-                    cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountOne) comments", forState: .Normal)
+                    cell.commentCountButton.setTitle("view all \(self.feedItem.commentsCountOne) comments", forState: .Normal)
                 }
                 if self.imageTapped == ImageIdentifier.ImageTwo {
                     cell.percentageLabel.text = "\(self.feedItem.percentageLikedTwo)%"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) likes", forState: .Normal)
-                    cell.commentCountButton.setTitle("view all \(self.feedItem.likesCountTwo) comments", forState: .Normal)
+                    cell.commentCountButton.setTitle("view all \(self.feedItem.commentsCountTwo) comments", forState: .Normal)
                 }
             }
             

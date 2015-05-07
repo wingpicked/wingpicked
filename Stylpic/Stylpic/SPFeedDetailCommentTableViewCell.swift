@@ -15,8 +15,9 @@ class SPFeedDetailCommentTableViewCell: SPBaseTableViewCell {
     var commentActivity: SPActivity?
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.width / 2.0
+        self.profilePictureImageView.clipsToBounds = true
         // Initialization code
-        //height = 200
     }
     
     func setupCell(commentActivity: SPActivity){
