@@ -38,7 +38,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.addCenterButton(UIImage(named: "Icon_post")!, highlightImage: UIImage(named: "Icon_post")!, target: self, action: Selector("buttonPressed:"))
         
         for vc in self.viewControllers as! [UIViewController]{
-            vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+            vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -7, 0);
         }
 
         self.confirmationViewController.delegate = self

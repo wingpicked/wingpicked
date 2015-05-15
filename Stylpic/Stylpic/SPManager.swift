@@ -81,7 +81,7 @@ class SPManager: NSObject {
 
         if let user = user {
             let params = [ "userObjectId": user.objectId! ]
-            MRProgressOverlayView.showOverlayAddedTo(UIApplication.sharedApplication().delegate?.window!, animated: true)
+//            MRProgressOverlayView.showOverlayAddedTo(UIApplication.sharedApplication().delegate?.window!, animated: true)
             
             
             PFCloud.callFunctionInBackground( "fetchProfileInfo", withParameters: params) { (payload, error) -> Void in
@@ -97,7 +97,7 @@ class SPManager: NSObject {
                     println( error )
                     resultBlock( profileObject: nil, error: error)
                 }
-                MRProgressOverlayView.dismissOverlayForView(UIApplication.sharedApplication().delegate?.window!, animated: true)
+//                MRProgressOverlayView.dismissOverlayForView(UIApplication.sharedApplication().delegate?.window!, animated: true)
                 
                 
             }
@@ -111,7 +111,7 @@ class SPManager: NSObject {
     }
     
     func getMyClosetItemsWithResultBlock( resultBlock:SPClosetPhotosResultBlock ) {
-        self.displayLoadingIndicator(true)
+//        self.displayLoadingIndicator(true)
         var usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
         //usersPhotosQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
         usersPhotosQuery.includeKey( "user" )
@@ -127,7 +127,7 @@ class SPManager: NSObject {
             } else {
                 resultBlock( closetPhotos: nil, error: anError )
             }
-            self.displayLoadingIndicator(false)
+//            self.displayLoadingIndicator(false)
         }
         
     }

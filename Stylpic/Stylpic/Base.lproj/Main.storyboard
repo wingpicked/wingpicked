@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -129,25 +129,17 @@
                                     <constraint firstAttribute="height" constant="320" id="OYo-dQ-DNf"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-qZ-zC6">
-                                <rect key="frame" x="132" y="397" width="57" height="81"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="81" id="T6O-ZR-aMa"/>
-                                    <constraint firstAttribute="width" constant="57" id="zzz-tm-ueG"/>
-                                </constraints>
-                                <state key="normal" image="NextCam3">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-qZ-zC6">
+                                <rect key="frame" x="120" y="397" width="81" height="81"/>
+                                <state key="normal" image="nextCam">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="nextCameraButtonDidTap:" destination="YMB-IB-KHe" eventType="touchUpInside" id="YJv-L9-aRr"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqN-ZR-J1q">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqN-ZR-J1q">
                                 <rect key="frame" x="134" y="406" width="52" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="f1a-h3-hqD"/>
-                                    <constraint firstAttribute="width" constant="52" id="yoK-eG-cQc"/>
-                                </constraints>
                                 <state key="normal" image="NextSendPost2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -473,7 +465,7 @@
         <image name="Login_facebook_button" width="202" height="46"/>
         <image name="Logo_LoginScreen" width="168" height="166"/>
         <image name="Melanie-Iglesias" width="500" height="600"/>
-        <image name="NextCam3" width="100" height="141"/>
         <image name="NextSendPost2" width="100" height="135"/>
+        <image name="nextCam" width="568" height="568"/>
     </resources>
 </document>

@@ -35,6 +35,11 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.imageViewTwo.image = self.imageTwo
         self.imageViewTwo.addGestureRecognizer(imageTwoTapRecogniser)
         
+        self.imageViewOne.layer.cornerRadius = 5.0
+        self.imageViewOne.clipsToBounds = true
+        self.imageViewTwo.layer.cornerRadius = 5.0
+        self.imageViewTwo.clipsToBounds = true
+        
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "dismissViewController:")
         

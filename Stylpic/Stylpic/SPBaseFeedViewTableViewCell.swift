@@ -41,10 +41,10 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         var tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
         pictureImageView2.addGestureRecognizer(tap2)
         
-        pictureImageView.layer.cornerRadius = 5.0
-        pictureImageView.layer.masksToBounds = true
-        pictureImageView2.layer.cornerRadius = 5.0
-        pictureImageView2.layer.masksToBounds = true
+//        pictureImageView.layer.cornerRadius = 5.0
+//        pictureImageView.layer.masksToBounds = true
+//        pictureImageView2.layer.cornerRadius = 5.0
+//        pictureImageView2.layer.masksToBounds = true
         
     }
 
