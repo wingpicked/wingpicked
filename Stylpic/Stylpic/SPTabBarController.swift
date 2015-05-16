@@ -190,7 +190,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
 
         }
         
-        
+
         let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
             println( "photo albumn did select")
             if overlay == self.overlayView {
@@ -235,9 +235,17 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
-        let squareRect = CGRectMake( 0, 0, originalImage.size.width, originalImage.size.width )
-        var imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
-        var squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: UIImageOrientation.Right)
+        var imageOrientation = UIImageOrientation.Up
+        let squareDimension = originalImage.size.width > originalImage.size.height ? originalImage.size.height : originalImage.size.width
+        if ( picker.sourceType == UIImagePickerControllerSourceType.Camera ) {
+            // Do something with an image from the camera
+            imageOrientation = UIImageOrientation.Right
+        }
+
+        let photoX = (originalImage.size.width - squareDimension) / 2
+        let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
         
         //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
         //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
