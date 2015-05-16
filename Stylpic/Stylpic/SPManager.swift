@@ -206,8 +206,6 @@ class SPManager: NSObject {
                 }
             })
         }
-        
-        
     }
 
     func likePhoto( activityType: ActivityType, photoPair: PFObject?, resultBlock: SPBoolResultBlock ) {
@@ -234,7 +232,6 @@ class SPManager: NSObject {
             var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( success: false, error: error )
         }
-        
     }
     
     

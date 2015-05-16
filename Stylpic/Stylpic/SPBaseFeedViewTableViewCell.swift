@@ -40,12 +40,6 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         pictureImageView.addGestureRecognizer(tap1)
         var tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
         pictureImageView2.addGestureRecognizer(tap2)
-        
-//        pictureImageView.layer.cornerRadius = 5.0
-//        pictureImageView.layer.masksToBounds = true
-//        pictureImageView2.layer.cornerRadius = 5.0
-//        pictureImageView2.layer.masksToBounds = true
-        
     }
 
     func setupWithFeedItem(feedItem: SPFeedItem){
@@ -63,7 +57,6 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
         self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
         self.imageTwoCommentLabel.text =  String( feedItem.commentsCountTwo )
-
     }
     
     func imageOneTapped(sender: AnyObject) {

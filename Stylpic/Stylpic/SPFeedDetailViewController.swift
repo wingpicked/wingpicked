@@ -61,7 +61,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPLikeCommentButtonView", bundle: nil), forCellReuseIdentifier: "SPLikeCommentButtonView")
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableView", name: "RefreshViewControllers", object: nil)
 
         if self.showDeleteButton {
@@ -175,6 +174,29 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     //MARK - LikeCommentButton Delegate Methods
     func likeButtonTapped() {
         println("Like Button Tapped")
+        
+        var activityType : ActivityType!
+        if(imageTapped == ImageIdentifier.ImageOne){
+            activityType = ActivityType.LikeImageOne
+        }
+        if(imageTapped == ImageIdentifier.ImageTwo){
+            activityType = ActivityType.LikeImageTwo
+        }
+        
+        self.tableView.reloadData()
+        
+        SPManager.sharedInstance.likePhoto(activityType, photoPair: self.feedItem?.photos) { (success, error) -> Void in
+//            if success {
+//                println( "saving like was a success" )
+//            } else {
+//                println( "save like failed" )
+//            }
+//            
+//            if error != nil {
+//                println( error )
+//            }
+        }
+
     }
     
     func commentButtonTapped() {
