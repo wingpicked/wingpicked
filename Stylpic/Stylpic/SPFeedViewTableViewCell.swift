@@ -133,6 +133,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
             self.feedItem?.likesCountOne++
             self.imageOneLikeLabel.text = "\(self.feedItem?.likesCountOne)"
             self.updatePercentages()
+            statsArea.hidden = false
         } else {
             UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
@@ -162,6 +163,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
             }
             
             self.updatePercentages()
+            statsArea.hidden = false
         } else {
             UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
