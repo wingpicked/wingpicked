@@ -199,8 +199,8 @@ class SPManager: NSObject {
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println( "saved comment activity" )
-                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock( savedObject: activity, error: error )
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                 } else {
                     println( error )
                 }

@@ -21,6 +21,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     var tableViewFooterView : SPLikeCommentButtonView!
     var showDeleteButton = false
     var profileDelegate : SPFeedDetailViewControllerDelegate?
+    var commentsCount = 0
     
     init(feedItem : SPFeedItem, imageTapped: ImageIdentifier) {
         self.imageTapped = imageTapped
@@ -36,22 +37,20 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         self.imageFile = photo.photo
         super.init(nibName: "SPFeedDetailViewController", bundle: nil)
-        
-        //self.feedItem.addObserver(self, forKeyPath: "commentsCountTwo", options: NSKeyValueObservingOptions.New, context: nil)
+
+        self.commentsCount = self.feedItem.commentsCountOne
+        if self.imageTapped == ImageIdentifier.ImageTwo {
+            self.commentsCount = self.feedItem.commentsCountTwo
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
-//        self.imageFile = PFFile() //TODO: Place default image here.
-//        self.feedItem = SPFeedItem()
-//        self.imageTapped = ImageIdentifier.ImageOne
         super.init(coder: aDecoder)
     }
     
-//    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-//        if(keyPath == "commentsCountTwo"){
-//            println("hi")
-//        }
-//    }
+    func reloadTableView(){
+        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,52 +60,19 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailPictureTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailPictureTableViewCell")
         self.tableView.registerNib(UINib(nibName:"SPCommentsSmallTableViewCell", bundle: nil), forCellReuseIdentifier: "SPCommentsSmallTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
-        self.tableViewFooterView = NSBundle.mainBundle().loadNibNamed("SPLikeCommentButtonView", owner: self, options: nil).first as! SPLikeCommentButtonView
-        println(self.tableViewFooterView)
+        self.tableView.registerNib(UINib(nibName: "SPLikeCommentButtonView", bundle: nil), forCellReuseIdentifier: "SPLikeCommentButtonView")
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableView", name: "RefreshViewControllers", object: nil)
+
         if self.showDeleteButton {
             self.tableViewFooterView.deleteButton.hidden = false
         }
         self.setupFollowButton()
-        self.setupLikeCommentButtonView()
-
-        
-        self.tableViewFooterView.delegate = self
-        self.tableViewFooterView.userInteractionEnabled = true
-        tableViewFooterView.userInteractionEnabled = true
-//        self.tableView.tableFooterView = tableViewFooterView
-        //self.tableView.tableFooterView!.frame = CGRectMake(0, 0, 320, 100)
-    }
-    
-    func setupLikeCommentButtonView(){
-        var likeImage : UIImage!
-        if self.imageTapped == ImageIdentifier.ImageOne{
-            if(self.feedItem.photoUserLikes == PhotoUserLikes.FirstPhotoLiked){
-              likeImage = UIImage(named: "likeafterclick")
-            }
-            else if(self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked){
-                likeImage = UIImage(named: "like")
-            }
-            else{
-                likeImage = UIImage(named: "nolike")
-            }
-        }
-        if self.imageTapped == ImageIdentifier.ImageTwo{
-            if(self.feedItem.photoUserLikes == PhotoUserLikes.SecondPhotoLiked){
-                likeImage = UIImage(named: "likeafterclick")
-            }
-            else if(self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked){
-                likeImage = UIImage(named: "like")
-            }
-            else{
-                likeImage = UIImage(named: "nolike")
-            }
-        }
-        
-        self.tableViewFooterView.likeButton.setImage(likeImage, forState: .Normal)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
+        println("--Index Path: \(indexPath.row)")
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
             cell.setupCell(self.feedItem, imageFile: imageFile)
@@ -138,11 +104,10 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                     cell.commentCountButton.setTitle("view all \(self.feedItem.commentsCountTwo) comments", forState: .Normal)
                 }
             }
-            
-            
             return cell
         }
-        else {
+        else if(indexPath.row > 1 && indexPath.row < 2 + commentsCount){
+            println("--\(commentsCount)")
             let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
             cell.delegate = self
             
@@ -158,15 +123,16 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.setupCell(comments[indexPath.row - 2] as! SPActivity)
             return cell
         }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPLikeCommentButtonView", forIndexPath: indexPath) as! SPLikeCommentButtonView
+            cell.delegate = self
+            cell.setupCell(self.imageTapped, feedItem: self.feedItem)
+            return cell
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var comments = self.feedItem.comments.commentsPhotoTwo
-        if self.imageTapped == ImageIdentifier.ImageOne {
-            comments = self.feedItem.comments.commentsPhotoOne
-        }
-
-        return comments.count + 2 //for two static cells
+        return commentsCount + 3 //for three static cells
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -176,18 +142,13 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         else if(indexPath.row == 1){
             return 54
         }
-        else{
+        else if(indexPath.row > 1 && indexPath.row < 2 + commentsCount){
             return 23
         }
+        else{
+            return 44
+        }
         
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return self.tableViewFooterView;
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 27.0
     }
     
     func setupFollowButton() {
@@ -258,6 +219,10 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func deleteButtonDidTap() {
         self.profileDelegate?.deleteFeedItem!(self.feedItem)
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     

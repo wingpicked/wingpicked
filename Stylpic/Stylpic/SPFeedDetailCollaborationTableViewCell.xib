@@ -51,7 +51,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_feed" translatesAutoresizingMaskIntoConstraints="NO" id="gQO-GK-D9k">
                         <rect key="frame" x="8" y="4" width="10" height="10"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Button_like_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="cRI-y7-35U">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_heart_feed" translatesAutoresizingMaskIntoConstraints="NO" id="cRI-y7-35U">
                         <rect key="frame" x="8" y="22" width="10" height="10"/>
                     </imageView>
                 </subviews>
@@ -65,7 +65,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Button_like_transparent" width="48" height="44"/>
         <image name="Icon_percent_feed" width="17" height="18"/>
+        <image name="icon_heart_feed" width="147" height="131"/>
     </resources>
 </document>

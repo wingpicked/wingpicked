@@ -14,7 +14,7 @@ protocol SPLikeCommentButtonViewDelegate {
     func deleteButtonDidTap()
 }
 
-class SPLikeCommentButtonView: UIView {
+class SPLikeCommentButtonView: UITableViewCell {
 
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
@@ -24,9 +24,36 @@ class SPLikeCommentButtonView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.bringSubviewToFront( self.deleteButton )
-        self.bringSubviewToFront( self.likeButton )
-        self.bringSubviewToFront( self.commentButton )
+//        self.bringSubviewToFront( self.deleteButton )
+//        self.bringSubviewToFront( self.likeButton )
+//        self.bringSubviewToFront( self.commentButton )
+    }
+    
+    func setupCell(imageTapped : ImageIdentifier, feedItem :SPFeedItem){
+        var likeImage : UIImage!
+        if imageTapped == ImageIdentifier.ImageOne{
+            if(feedItem.photoUserLikes == PhotoUserLikes.FirstPhotoLiked){
+                likeImage = UIImage(named: "likeafterclick")
+            }
+            else if(feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked){
+                likeImage = UIImage(named: "like")
+            }
+            else{
+                likeImage = UIImage(named: "nolike")
+            }
+        }
+        if imageTapped == ImageIdentifier.ImageTwo{
+            if(feedItem.photoUserLikes == PhotoUserLikes.SecondPhotoLiked){
+                likeImage = UIImage(named: "likeafterclick")
+            }
+            else if(feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked){
+                likeImage = UIImage(named: "like")
+            }
+            else{
+                likeImage = UIImage(named: "nolike")
+            }
+        }
+        self.likeButton.setImage(likeImage, forState: .Normal)
     }
     
     @IBAction func deleteButtonDidTap(sender: AnyObject) {

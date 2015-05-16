@@ -50,7 +50,7 @@ class SPCommentsViewController: SLKTextViewController {
         if let photoPair = self.feedItem?.photos {
             
         
-            SPManager.sharedInstance.postComment(activityType, photoPair: photoPair, comment: comment, resultBlock: { (savedObject, error) -> Void in
+            SPManager.sharedInstance.postComment(activityType, photoPair: photoPair, comment: comment, resultBlock: { (savedObject : SPActivity?, error) -> Void in
                 if error == nil {
                     self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateProgressBar", userInfo: nil, repeats: true)
                     if let savedObject = savedObject {
@@ -58,6 +58,15 @@ class SPCommentsViewController: SLKTextViewController {
                         self.comments.insert(savedObject, atIndex: 0)
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.tableView.endUpdates()
+                        
+                        if(activityType == .CommentImageOne){
+                            self.feedItem?.comments.commentsPhotoOne.append(savedObject)
+                            self.feedItem?.commentsCountOne++
+                        }
+                        if(activityType == .CommentImageTwo){
+                            self.feedItem?.comments.commentsPhotoTwo.append(savedObject)
+                            self.feedItem?.commentsCountTwo++
+                        }
                         
                         self.tableView.slk_scrollToTopAnimated(true)
 
