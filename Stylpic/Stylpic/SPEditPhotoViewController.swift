@@ -41,7 +41,12 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.imageViewTwo.clipsToBounds = true
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "dismissViewController:")
+        
+        let backImage = UIImage(named: "Button_back_black" );
+        let backButton = UIButton(frame: CGRect(x: 18, y: 19, width: 15, height: 24))
+        backButton.setImage(backImage, forState: UIControlState.Normal)
+        backButton.addTarget(self, action: "dismissViewController:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
         let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 315, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
