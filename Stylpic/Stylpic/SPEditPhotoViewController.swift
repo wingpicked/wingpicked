@@ -48,6 +48,8 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         backButton.addTarget(self, action: "dismissViewController:", forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPostFlowButtonDidTap")
+        
         let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 315, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
         let fbPhoto2 = FBSDKSharePhoto(image: self.imageTwo, userGenerated: true)
@@ -58,6 +60,25 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.view.addSubview(fbSharePhotoButton)
         
         self.imagePickerViewController.delegate = self
+    }
+    
+    func cancelPostFlowButtonDidTap() {
+        let cancelPostSheet = UIAlertController(title: "Are you sure you want to cancel your post?", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let takeNewAction = UIAlertAction(title: "Cancel Post", style: UIAlertActionStyle.Destructive) { (action) -> Void in
+            //            println( "take new photo tapped " )
+             NSNotificationCenter.defaultCenter().postNotificationName("SharedPost", object: nil)
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            
+        }
+        
+        cancelPostSheet.addAction( takeNewAction )
+        cancelPostSheet.addAction( cancelAction )
+        
+        self.presentViewController(cancelPostSheet, animated: true, completion: nil)
+        
     }
     
     func dismissViewController(sender: AnyObject!){
