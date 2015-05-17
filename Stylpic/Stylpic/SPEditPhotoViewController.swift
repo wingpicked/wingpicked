@@ -41,7 +41,14 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.imageViewTwo.clipsToBounds = true
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "dismissViewController:")
+        
+        let backImage = UIImage(named: "Button_back_black" );
+        let backButton = UIButton(frame: CGRect(x: 18, y: 19, width: 15, height: 24))
+        backButton.setImage(backImage, forState: UIControlState.Normal)
+        backButton.addTarget(self, action: "dismissViewController:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPostFlowButtonDidTap")
         
         let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 315, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
@@ -53,6 +60,25 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.view.addSubview(fbSharePhotoButton)
         
         self.imagePickerViewController.delegate = self
+    }
+    
+    func cancelPostFlowButtonDidTap() {
+        let cancelPostSheet = UIAlertController(title: "Are you sure you want to cancel your post?", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let takeNewAction = UIAlertAction(title: "Cancel Post", style: UIAlertActionStyle.Destructive) { (action) -> Void in
+            //            println( "take new photo tapped " )
+             NSNotificationCenter.defaultCenter().postNotificationName("SharedPost", object: nil)
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            
+        }
+        
+        cancelPostSheet.addAction( takeNewAction )
+        cancelPostSheet.addAction( cancelAction )
+        
+        self.presentViewController(cancelPostSheet, animated: true, completion: nil)
+        
     }
     
     func dismissViewController(sender: AnyObject!){
@@ -155,9 +181,17 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
-        let squareRect = CGRectMake( 0, 0, originalImage.size.width, originalImage.size.width )
-        var imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
-        var squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: UIImageOrientation.Right)
+        var imageOrientation = UIImageOrientation.Up
+        let squareDimension = originalImage.size.width > originalImage.size.height ? originalImage.size.height : originalImage.size.width
+        if ( picker.sourceType == UIImagePickerControllerSourceType.Camera ) {
+            // Do something with an image from the camera
+            imageOrientation = UIImageOrientation.Right
+        }
+
+        let photoX = (originalImage.size.width - squareDimension) / 2
+        let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
         
         //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
         //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)

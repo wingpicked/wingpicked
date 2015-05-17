@@ -19,6 +19,8 @@ class SPProfileNotificationsTableViewCell: UITableViewCell {
         // Initialization code
         self.unseenNotificationDot.clipsToBounds = true
         self.unseenNotificationDot.layer.cornerRadius = 3
+        self.profilePictureImageView.clipsToBounds = true
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.0
     }
 
     func setupCell(activity :SPActivity){
