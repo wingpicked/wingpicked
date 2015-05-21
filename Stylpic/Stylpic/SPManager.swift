@@ -301,13 +301,15 @@ class SPManager: NSObject {
         }
     }
     
-    func removePostWithPhotoPairObjectId( photoPairObjectId: String ) {
+    func removePostWithPhotoPairObjectId( photoPairObjectId: String, resultBlock: SPBoolResultBlock ) {
         var params = [ "photoPairObjectId": photoPairObjectId ]
         PFCloud.callFunctionInBackground( "removeFeedItem", withParameters: params) { (payload, error) -> Void in
             if error == nil {
                 println( payload )
+                resultBlock(success: true, error: nil)
             } else {
                 println( error )
+                resultBlock(success: false, error: error)
             }
         }
     }

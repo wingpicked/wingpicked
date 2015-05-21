@@ -15,7 +15,7 @@ enum SPProfileActiveViewState {
     case Notifications
 }
 
-class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfilePostTableViewCellDelegate, SPProfileEmptyFollowersViewDelegate, SPProfileEmptyFollowingViewDelegate, SPFeedDetailViewControllerDelegate {
+class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelegate, SPFeedViewTableViewCellDelegate, SPProfileEmptyFollowersViewDelegate, SPProfileEmptyFollowingViewDelegate, SPFeedDetailViewControllerDelegate {
 
     var isStaleData = true
     
@@ -71,7 +71,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     var headerView : SPProfileHeaderView!
     
     var profileInfoViewModel = SPProfileInfo()
-    var showForUser : SPUser?
+    var showForUser : SPUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,14 +111,20 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if(self.isStaleData){
+            self.showWithUser(showForUser)
+        }
+
+    }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func updateView() {
-        if let showForUser = self.showForUser {
-            self.showWithUser(showForUser)
-        }
+        self.isStaleData = true
     }
     
     func showWithUser( user: SPUser ) {
@@ -151,7 +157,11 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             else{
                 println(error!.localizedDescription)
             }
+            self.refreshControl?.endRefreshing()
         })
+        }
+        else{
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -189,7 +199,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     
     func refreshTableView(){
-        self.refreshControl?.endRefreshing()
+        self.showWithUser(self.showForUser)
     }
     
     func updateToolbarUI(){
@@ -216,7 +226,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
             cell.setupWithFeedItem(profileInfoViewModel.posts[indexPath.row])
             cell.delegate = self
-            cell.profilePostDelegate = self
+//            cell.profilePostDelegate = self
             return cell
         case .Followers:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
@@ -320,7 +330,6 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     //MARK: SPProfilePostTableViewCell Delegate Methods
     func didTapPhotoOne(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
-        detailViewController.showDeleteButton = true
         detailViewController.profileDelegate = self
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
@@ -328,7 +337,6 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     func didTapPhotoTwo(feedItem: SPFeedItem) {
         var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
-        detailViewController.showDeleteButton = true
         detailViewController.profileDelegate = self
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
@@ -343,45 +351,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         
     }
     
-    func removeFeedItem(feedItem:SPFeedItem) {
-        var feedPosts = self.profileInfoViewModel.posts
-        var indexToRemove = -1
-        for var i = feedPosts.count - 1; i >= 0; --i {
-            var searchPost = feedPosts[ i ]
-            if searchPost == feedItem {
-                indexToRemove = i
-                break
-            }
-        }
-        
-        if indexToRemove >= 0 {
-            self.navigationController?.popViewControllerAnimated(true)
-            feedPosts.removeAtIndex( indexToRemove )
-            SPManager.sharedInstance.removePostWithPhotoPairObjectId( feedItem.photos!.objectId! )
-            self.tableView.reloadData()
-        }
-    }
-    
-    func deleteFeedItem( feedItem: SPFeedItem ) {
-        
-        let alertController = UIAlertController(title: "Are you sure you want to delete this post?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-        let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { (action) -> Void in
-            var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                // your function here
-                self.removeFeedItem(feedItem)
-            })
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
-        }
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-
-    
-    func findFriendsButtonDidTap( sender:AnyObject ) {
+    func findFriendsButtonDidTap(sender:AnyObject?) {
         var findFriendsController = SPFindFriendsTableViewController()
         self.navigationController?.pushViewController(findFriendsController, animated: true)
     }
@@ -410,7 +380,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     
     func findFriendsButtonDidTap() {
-        self.findFriendsButtonDidTap(NSNull())
+        self.findFriendsButtonDidTap(nil)
     }
 
 }

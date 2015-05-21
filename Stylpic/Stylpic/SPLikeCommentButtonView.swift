@@ -54,6 +54,10 @@ class SPLikeCommentButtonView: UITableViewCell {
             }
         }
         self.likeButton.setImage(likeImage, forState: .Normal)
+        
+        if(feedItem.photoUserLikes != PhotoUserLikes.NoPhotoLiked){
+            self.likeButton.userInteractionEnabled = false
+        }
     }
     
     @IBAction func deleteButtonDidTap(sender: AnyObject) {

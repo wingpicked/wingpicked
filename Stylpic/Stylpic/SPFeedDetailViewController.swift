@@ -18,8 +18,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     var imageFile : PFFile!
     var feedItem: SPFeedItem!
     var imageTapped : ImageIdentifier!
-    var tableViewFooterView : SPLikeCommentButtonView!
-    var showDeleteButton = false
     var profileDelegate : SPFeedDetailViewControllerDelegate?
     var commentsCount = 0
     
@@ -63,15 +61,14 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName: "SPLikeCommentButtonView", bundle: nil), forCellReuseIdentifier: "SPLikeCommentButtonView")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableView", name: "RefreshViewControllers", object: nil)
 
-        if self.showDeleteButton {
-            self.tableViewFooterView.deleteButton.hidden = false
-        }
         self.setupFollowButton()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser()!.objectId
+
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
-        println("--Index Path: \(indexPath.row)")
+        //println("--Index Path: \(indexPath.row)")
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
             cell.setupCell(self.feedItem, imageFile: imageFile)
@@ -84,7 +81,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.delegate = self
             
             let noPhotoLiked = self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked
-            let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser()!.objectId
             
             if(!usersOwnPhotoPair && noPhotoLiked){
                 cell.percentageLabel.hidden = true
@@ -126,6 +122,12 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             let cell = tableView.dequeueReusableCellWithIdentifier("SPLikeCommentButtonView", forIndexPath: indexPath) as! SPLikeCommentButtonView
             cell.delegate = self
             cell.setupCell(self.imageTapped, feedItem: self.feedItem)
+            
+            if usersOwnPhotoPair {
+                cell.deleteButton.hidden = false
+            }
+
+            
             return cell
         }
     }
@@ -173,28 +175,27 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     //MARK - LikeCommentButton Delegate Methods
     func likeButtonTapped() {
-        println("Like Button Tapped")
-        
         var activityType : ActivityType!
         if(imageTapped == ImageIdentifier.ImageOne){
             activityType = ActivityType.LikeImageOne
+            feedItem.photoUserLikes = PhotoUserLikes.FirstPhotoLiked
+            feedItem.likesCountOne++
+            feedItem.percentageLikedOne = (feedItem.likesCountOne / (feedItem.likesCountOne + feedItem.likesCountTwo)) * 100
         }
         if(imageTapped == ImageIdentifier.ImageTwo){
             activityType = ActivityType.LikeImageTwo
+            feedItem.photoUserLikes = PhotoUserLikes.SecondPhotoLiked
+            feedItem.likesCountTwo++
+            feedItem.percentageLikedTwo  = (feedItem.likesCountTwo / (feedItem.likesCountOne + feedItem.likesCountTwo)) * 100
         }
         
         self.tableView.reloadData()
         
         SPManager.sharedInstance.likePhoto(activityType, photoPair: self.feedItem?.photos) { (success, error) -> Void in
-//            if success {
-//                println( "saving like was a success" )
-//            } else {
-//                println( "save like failed" )
-//            }
-//            
-//            if error != nil {
-//                println( error )
-//            }
+            if(error == nil){
+                
+                NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
+            }
         }
 
     }
@@ -240,12 +241,22 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func deleteButtonDidTap() {
-        self.profileDelegate?.deleteFeedItem!(self.feedItem)
+        let alertController = UIAlertController(title: "Are you sure you want to delete this post?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { (action) -> Void in
+                SPManager.sharedInstance.removePostWithPhotoPairObjectId(self.feedItem.photos!.objectId!, resultBlock: { (success, error) -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
+                    self.navigationController?.popViewControllerAnimated(true)
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+        }
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
-    
 }
