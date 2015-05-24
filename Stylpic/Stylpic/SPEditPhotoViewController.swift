@@ -65,15 +65,10 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     func cancelPostFlowButtonDidTap() {
         let cancelPostSheet = UIAlertController(title: "Are you sure you want to cancel your post?", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Cancel Post", style: UIAlertActionStyle.Destructive) { (action) -> Void in
-            //            println( "take new photo tapped " )
-             NSNotificationCenter.defaultCenter().postNotificationName("SharedPost", object: nil)
+            self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(false, completion: nil)
         }
-        
-        
-        let cancelAction = UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.Cancel) { (action) -> Void in
-            
-        }
-        
+        let cancelAction = UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.Cancel, handler: nil)
+
         cancelPostSheet.addAction( takeNewAction )
         cancelPostSheet.addAction( cancelAction )
         
@@ -91,8 +86,8 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         var captionStringWithoutWhitespace = self.captionTextfield.text.stringByTrimmingCharactersInSet( NSCharacterSet.whitespaceCharacterSet())
         if (captionStringWithoutWhitespace as NSString).length > 0 {
             SPManager.sharedInstance.saveAndPostImages(self.image, imageTwo: imageTwo, caption: self.captionTextfield.text) { (success, error) -> Void in
-                NSNotificationCenter.defaultCenter().postNotificationName("SharedPost", object: nil)
-                
+                NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
+                self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(false, completion: nil)
             }
         } else {
             UIAlertView(title: "Comment missing", message: "You must include a comment to share", delegate: nil, cancelButtonTitle: "Ok").show()
@@ -109,13 +104,11 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     func imageOneDidTap() {
-        println( "didtapimageone" )
         self.replaceImage = ImageIdentifier.ImageOne
         self.promptForReplacementChoice()
     }
     
     func imageTwoDidTap() {
-        println( "didtapImageTwo" )
         self.replaceImage = ImageIdentifier.ImageTwo
         self.promptForReplacementChoice()
     }

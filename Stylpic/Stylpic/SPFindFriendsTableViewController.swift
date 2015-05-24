@@ -15,6 +15,7 @@ class SPFindFriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerNib(UINib(nibName: "SPProfileFollowTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfileFollowTableViewCell")
+        self.title = "ADD FRIENDS"
 
         SPManager.sharedInstance.getFacebookFriendsWithApp { (facebookFriends, error) -> Void in
             self.facebookFriendsUsingApp = facebookFriends

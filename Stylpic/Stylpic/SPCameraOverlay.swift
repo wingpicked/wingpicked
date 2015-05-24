@@ -38,6 +38,9 @@ class SPCameraOverlay: UIView {
         self.titleBarView.bringSubviewToFront(self.flashButton)
         self.titleBarView.bringSubviewToFront(self.switchCameraButton)
 //        self.pickingTheLastImageFromThePhotoLibrary()
+        
+        photoLibraryButton.layer.cornerRadius = 5.0
+        photoLibraryButton.clipsToBounds = true
 
     }
     

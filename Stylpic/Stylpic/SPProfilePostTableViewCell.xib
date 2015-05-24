@@ -92,10 +92,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="BvZ-GW-Z5p" customClass="PFImageView">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="BvZ-GW-Z5p" customClass="PFImageView">
                         <rect key="frame" x="40" y="24" width="116" height="116"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="pVg-Do-VV0" customClass="PFImageView">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="pVg-Do-VV0" customClass="PFImageView">
                         <rect key="frame" x="164" y="24" width="116" height="116"/>
                     </imageView>
                 </subviews>

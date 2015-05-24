@@ -14,16 +14,9 @@ protocol SPProfilePostTableViewCellDelegate : class {
 
 class SPProfilePostTableViewCell: SPBaseFeedViewTableViewCell {
     @IBOutlet weak var statsArea: UIView!
-
     @IBOutlet weak var optionsButton: UIButton!
-    //Overrides will go here if any.. currently this implementation matches up exactly with the SPBaseFeedViewTableViewCell...
     
     weak var profilePostDelegate : SPProfilePostTableViewCellDelegate?
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//    }
     
     override func setupWithFeedItem(feedItem: SPFeedItem){
         super.setupWithFeedItem(feedItem) //Does a lot of heavy lifting that is in common with SPFeedViewTableViewCell and SPProfileFeedTableViewCell
