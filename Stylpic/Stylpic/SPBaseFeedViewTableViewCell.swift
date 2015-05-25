@@ -45,11 +45,21 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
     func setupWithFeedItem(feedItem: SPFeedItem){
 
         self.feedItem = feedItem
-        
+        self.pictureImageView.image = nil
+        self.pictureImageView2.image = nil
         self.pictureImageView.file = feedItem.photos?.photoOne.photo
         self.pictureImageView2.file = feedItem.photos?.photoTwo.photo
-        self.pictureImageView2.loadInBackground(nil)
-        self.pictureImageView.loadInBackground(nil)
+        self.pictureImageView.loadInBackground { (uiimage, error) -> Void in
+            if error == nil {
+                self.pictureImageView.image = uiimage
+            }
+        }
+
+        self.pictureImageView2.loadInBackground { (uiimage, error) -> Void in
+            if error == nil {
+                self.pictureImageView2.image = uiimage 
+            }
+        }
         
         self.imageOnePercentLabel.text = NSString( format:"%d", feedItem.percentageLikedOne ) as String
         self.imageTwoPercentLabel.text = NSString( format:"%d", feedItem.percentageLikedTwo ) as String
