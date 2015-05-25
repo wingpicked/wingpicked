@@ -76,13 +76,15 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
+        
         
         if self.showForUser?.objectId == SPUser.currentUser()!.objectId {
             self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarView", owner: self, options: nil).first as! SPProfileToolBarView
+            self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderView", owner: self, options: nil).first as! SPProfileHeaderView
         }
         else{
             self.toolBarView = NSBundle.mainBundle().loadNibNamed("SPProfileToolBarPublicView", owner: self, options: nil).first as! SPProfileToolBarView
+            self.headerView = NSBundle.mainBundle().loadNibNamed("SPProfileHeaderOtherUserView", owner: self, options: nil).first as! SPProfileHeaderView
         }
         
         tableView.registerNib(UINib(nibName: "SPProfilePostTableViewCell", bundle: nil), forCellReuseIdentifier: "SPProfilePostTableViewCell")

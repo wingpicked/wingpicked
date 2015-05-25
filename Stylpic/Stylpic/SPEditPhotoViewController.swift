@@ -9,7 +9,7 @@
 import UIKit
 import Social
 
-class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate {
+class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
     var image : UIImage!
     var imageTwo : UIImage!
@@ -20,8 +20,8 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
     
-    @IBOutlet weak var captionTextfield: UITextField!
-
+    @IBOutlet weak var captionTextview: UITextView!
+    let captionPlaceholder = "Write a caption..."
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,16 +41,18 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.imageViewTwo.clipsToBounds = true
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
-        let backImage = UIImage(named: "Button_back_black" );
+        let backImage = UIImage(named: "Button_back_white" );
         let backButton = UIButton(frame: CGRect(x: 18, y: 19, width: 15, height: 24))
         backButton.setImage(backImage, forState: UIControlState.Normal)
         backButton.addTarget(self, action: "dismissViewController:", forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPostFlowButtonDidTap")
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         
-        let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 315, 247, 46)) //TODO: Autolayout this frame
+        let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 350, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
         let fbPhoto2 = FBSDKSharePhoto(image: self.imageTwo, userGenerated: true)
         let fbContent = FBSDKSharePhotoContent()
@@ -60,6 +62,15 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.view.addSubview(fbSharePhotoButton)
         
         self.imagePickerViewController.delegate = self
+        
+        self.captionTextview.text = captionPlaceholder
+        self.captionTextview.layer.cornerRadius = 4
+        self.captionTextview.clipsToBounds = true
+        
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func cancelPostFlowButtonDidTap() {
@@ -83,9 +94,9 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     @IBAction func shareImages(sender: UIButton) {
         sender.userInteractionEnabled = false
         sender.alpha = 0.4
-        var captionStringWithoutWhitespace = self.captionTextfield.text.stringByTrimmingCharactersInSet( NSCharacterSet.whitespaceCharacterSet())
+        var captionStringWithoutWhitespace = self.captionTextview.text.stringByTrimmingCharactersInSet( NSCharacterSet.whitespaceCharacterSet())
         if (captionStringWithoutWhitespace as NSString).length > 0 {
-            SPManager.sharedInstance.saveAndPostImages(self.image, imageTwo: imageTwo, caption: self.captionTextfield.text) { (success, error) -> Void in
+            SPManager.sharedInstance.saveAndPostImages(self.image, imageTwo: imageTwo, caption: self.captionTextview.text) { (success, error) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                 self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(false, completion: nil)
             }
@@ -95,7 +106,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        self.captionTextfield.resignFirstResponder()
+        self.captionTextview.resignFirstResponder()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -202,4 +213,21 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         
         self.dismissCamera( SPCameraOverlay() )
     }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.text == captionPlaceholder {
+            textView.text = ""
+        }
+        
+        textView.becomeFirstResponder()
+     }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text == "" {
+            textView.text = captionPlaceholder
+        }
+        
+        textView.resignFirstResponder()
+    }
+    
 }

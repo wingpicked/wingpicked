@@ -115,6 +115,7 @@
 		4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4877E1101AA3E6D1006587CE /* Social.framework */; };
 		4883A46A1AEF391D006B49A2 /* SPFeedEmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4883A4691AEF391D006B49A2 /* SPFeedEmptyStateView.xib */; };
 		4883A46C1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4883A46B1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift */; };
+		48A8C25D1B12AC64009D7ECB /* SPProfileHeaderOtherUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48A8C25C1B12AC64009D7ECB /* SPProfileHeaderOtherUserView.xib */; };
 		48B4BC911A9AA83300B06E41 /* SPPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */; };
 		48B9DE4C1AEC5778008739BF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE481AEC5778008739BF /* Bolts.framework */; };
 		48B9DE4D1AEC5778008739BF /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B9DE491AEC5778008739BF /* FacebookSDK.framework */; };
@@ -298,6 +299,7 @@
 		4877E1101AA3E6D1006587CE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		4883A4691AEF391D006B49A2 /* SPFeedEmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedEmptyStateView.xib; sourceTree = "<group>"; };
 		4883A46B1AEF3E72006B49A2 /* SPFeedEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedEmptyStateView.swift; sourceTree = "<group>"; };
+		48A8C25C1B12AC64009D7ECB /* SPProfileHeaderOtherUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileHeaderOtherUserView.xib; sourceTree = "<group>"; };
 		48B4BC901A9AA83300B06E41 /* SPPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostViewController.swift; sourceTree = "<group>"; };
 		48B9DE481AEC5778008739BF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		48B9DE491AEC5778008739BF /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -776,6 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				38EAD4651AB63DF000A6FD81 /* SPProfileHeaderView.xib */,
+				48A8C25C1B12AC64009D7ECB /* SPProfileHeaderOtherUserView.xib */,
 				38EAD4631AB63DE700A6FD81 /* SPProfileHeaderView.swift */,
 				38EAD45F1AB63BBB00A6FD81 /* SPProfileToolBarView.xib */,
 				382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */,
@@ -960,6 +963,7 @@
 				38AA7BFF1A88425300A75FB7 /* SPFeedDetailCommentTableViewCell.xib in Resources */,
 				386B7A831AA82ECD00115147 /* SPClosetDetailViewController.xib in Resources */,
 				38AC45171AA8212700199935 /* SPClosetCollectionViewCell.xib in Resources */,
+				48A8C25D1B12AC64009D7ECB /* SPProfileHeaderOtherUserView.xib in Resources */,
 				387EAA701AEC5C510039BD88 /* SPSettingsStoryboard.storyboard in Resources */,
 				380671111AD9F2FB0074E4FE /* SPLikesViewController.xib in Resources */,
 				380671161AD9F7B10074E4FE /* SPLikesTableViewCell.xib in Resources */,
