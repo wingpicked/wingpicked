@@ -15,6 +15,10 @@ function notificationQueryWithType( user, type ) {
     return notificatioQuery;
 }
 
+function removeResultsOriginallyFromUser( aQuery, fromUser ) {
+    aQuery.notEqualTo( 'fromUser', fromUser );
+}
+
 var queryForNotificationsWithUser = function( aUser, feedItem ) {
 
     var followQuery = notificationQueryWithType( aUser, feedItem.ActivityType.Follow );
@@ -22,6 +26,10 @@ var queryForNotificationsWithUser = function( aUser, feedItem ) {
     var commentsOnPhoto2 = notificationQueryWithType( aUser, feedItem.ActivityType.CommentImageTwo );
     var likeOnPhoto1 = notificationQueryWithType( aUser, feedItem.ActivityType.LikeImageOne );
     var likeOnPhoto2 = notificationQueryWithType( aUser, feedItem.ActivityType.LikeImageTwo );
+    removeResultsOriginallyFromUser( commentsOnPhoto1 );
+    removeResultsOriginallyFromUser( commentsOnPhoto2 );
+    removeResultsOriginallyFromUser( likeOnPhoto1 );
+    removeResultsOriginallyFromUser( likeOnPhoto2 );
     return Parse.Query.or( followQuery, commentsOnPhoto1, commentsOnPhoto2, likeOnPhoto1, likeOnPhoto2 );
 };
 
