@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -49,21 +49,21 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-kS-R6e" customClass="PFImageView">
-                                <rect key="frame" x="6" y="40" width="147" height="147"/>
+                                <rect key="frame" x="6" y="40" width="146.5" height="147"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="147" id="ax3-g2-FKj"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j2k-Eb-5oZ" customClass="PFImageView">
-                                <rect key="frame" x="156" y="40" width="146" height="147"/>
+                                <rect key="frame" x="155" y="40" width="146.5" height="147"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="147" id="mBF-pG-uZv"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYK-8x-s5p">
-                                <rect key="frame" x="40" y="4" width="255" height="16"/>
+                                <rect key="frame" x="40" y="4" width="255.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="HLh-sn-1ms"/>
                                 </constraints>
@@ -78,8 +78,8 @@
                                     <constraint firstAttribute="height" constant="12" id="Yxx-lw-XDB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="2d" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-fU-0fX">
-                                <rect key="frame" x="288" y="6" width="12" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" misplaced="YES" text="2d" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-fU-0fX">
+                                <rect key="frame" x="288.5" y="6" width="11.5" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="RTu-5A-Tev"/>
                                     <constraint firstAttribute="width" constant="72" id="tft-7U-cba"/>
@@ -232,10 +232,10 @@
     </objects>
     <resources>
         <image name="Button_like_feed" width="54" height="56"/>
-        <image name="Icon_comments_rounded_grey" width="30" height="31"/>
+        <image name="Icon_comments_rounded_grey" width="35" height="35"/>
         <image name="Icon_defaultPhoto" width="66" height="65"/>
-        <image name="Icon_percent_feed" width="17" height="18"/>
+        <image name="Icon_percent_feed" width="35" height="35"/>
         <image name="Icon_time" width="19" height="19"/>
-        <image name="icon_heart_feed" width="147" height="131"/>
+        <image name="icon_heart_feed" width="35" height="35"/>
     </resources>
 </document>
