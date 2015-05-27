@@ -57,6 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //self.registerForPushNotifications(application, launchOptions: launchOptions)
         
+        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainTabBarVC = storyboard.instantiateViewControllerWithIdentifier("MainIdentifier") as! UIViewController
+            self.window?.rootViewController = mainTabBarVC
+        }
+        
         return true
     }
 

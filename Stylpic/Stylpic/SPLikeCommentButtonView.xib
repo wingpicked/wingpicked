@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -23,7 +23,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-m9-L3K">
                         <rect key="frame" x="8" y="12" width="56" height="21"/>
-                        <state key="normal" image="B025F556-2257-4A74-8A11-FDD4F5AC10D3">
+                        <state key="normal" image="0FBBA7BB-B2FF-4A7C-888B-4B0D227BEBFD">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -52,8 +52,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="3 points" width="127" height="100"/>
-        <image name="B025F556-2257-4A74-8A11-FDD4F5AC10D3" width="133" height="50">
+        <image name="0FBBA7BB-B2FF-4A7C-888B-4B0D227BEBFD" width="133" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -547,6 +546,7 @@ cThxPXFIcVFxZHFocXtxhnGPcZRxnHGfcaRxs3G3cb5xxnHTcdhx2nHcceFx6XHscfFx+XH8cg5yEXIW
 AAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAAchg
 </mutableData>
         </image>
+        <image name="3 points" width="127" height="100"/>
         <image name="comment" width="231" height="50"/>
     </resources>
 </document>

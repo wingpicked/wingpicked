@@ -12,18 +12,19 @@ class SPLoginViewController: UIViewController, UIAlertViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+
     }
 
     override func viewDidAppear(animated: Bool) {
         // Check if user is cached and linked to Facebook, if so, bypass login
+        super.viewDidAppear(animated)
+//        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))){
+//            self.performSegueWithIdentifier("loggedInSegue", sender: self)
+//            
+//        }
         
-        
-        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))){
-            self.performSegueWithIdentifier("loggedInSegue", sender: self)
-            
-        }
     }
         
     @IBAction func facebookLoginTouchUpInside(sender: AnyObject) {
