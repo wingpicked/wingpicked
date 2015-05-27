@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -92,10 +92,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="BvZ-GW-Z5p" customClass="PFImageView">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_default" translatesAutoresizingMaskIntoConstraints="NO" id="BvZ-GW-Z5p" customClass="PFImageView">
                         <rect key="frame" x="40" y="24" width="116" height="116"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Melanie-Iglesias" translatesAutoresizingMaskIntoConstraints="NO" id="pVg-Do-VV0" customClass="PFImageView">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_default" translatesAutoresizingMaskIntoConstraints="NO" id="pVg-Do-VV0" customClass="PFImageView">
                         <rect key="frame" x="164" y="24" width="116" height="116"/>
                     </imageView>
                 </subviews>
@@ -117,9 +117,9 @@
     </objects>
     <resources>
         <image name="3 points" width="127" height="100"/>
-        <image name="Icon_comments_rounded_onPostedPhoto_Profile" width="17" height="16"/>
-        <image name="Icon_likes_onPostedPhoto_Profile" width="21" height="19"/>
-        <image name="Icon_percent_profile" width="17" height="18"/>
-        <image name="Melanie-Iglesias" width="500" height="600"/>
+        <image name="Icon_comments_rounded_onPostedPhoto_Profile" width="35" height="35"/>
+        <image name="Icon_likes_onPostedPhoto_Profile" width="35" height="35"/>
+        <image name="Icon_percent_profile" width="35" height="35"/>
+        <image name="profile_default" width="123" height="123"/>
     </resources>
 </document>
