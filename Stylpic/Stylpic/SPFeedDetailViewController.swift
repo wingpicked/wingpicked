@@ -12,7 +12,7 @@ import UIKit
     optional func deleteFeedItem( feedItem: SPFeedItem )
 }
 
-class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate {
+class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate, SPFeedDetailPictureTableViewCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var imageFile : PFFile!
@@ -72,6 +72,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
             cell.setupCell(self.feedItem, imageFile: imageFile)
+            cell.delegate = self
             //cell.setupCell(imageFile)
             return cell
         }
@@ -127,6 +128,9 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             
             if usersOwnPhotoPair {
                 cell.deleteButton.hidden = false
+            }
+            else{
+                cell.deleteButton.hidden = true
             }
 
             
@@ -221,10 +225,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func didSelectComment(user: SPUser) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
-        self.navigationController?.pushViewController(profileViewController, animated: true)
-        profileViewController.showWithUser(user)
+        self.showUserProfile(user)
     }
     
     func followButtonDidTap() {
@@ -261,4 +262,20 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    
+    func didTapUserProfile() {
+        if let user = feedItem.photos?["user"] as? SPUser {
+            self.showUserProfile(user)
+        }
+
+    }
+    
+    func showUserProfile(user: SPUser){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        profileViewController.showWithUser(user)
+    }
+    
+
 }

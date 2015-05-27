@@ -8,14 +8,20 @@
 
 import UIKit
 
+protocol SPFeedDetailPictureTableViewCellDelegate {
+    func didTapUserProfile()
+}
+
 class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
     
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var usernameButton: UIButton!
+    //@IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timePostedLabel: UILabel!
     @IBOutlet weak var mainImageView: PFImageView!
     @IBOutlet weak var profilePictureImageView: PFImageView!
     @IBOutlet weak var percentLikedLabel: UILabel!
+    var delegate : SPFeedDetailPictureTableViewCellDelegate?
     
     
     override func awakeFromNib() {
@@ -42,7 +48,7 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
         if let user = feedItem.photos?.user {
             user.fetchIfNeededInBackgroundWithBlock({ (obj, error) -> Void in
                 if let profilePicture = user.profilePicture {
-                    self.usernameLabel.text = user.spDisplayName()
+                    self.usernameButton.setTitle(user.spDisplayName(), forState: .Normal)
                     self.profilePictureImageView.file = profilePicture
                     self.profilePictureImageView.loadInBackground(nil)
                 }
@@ -55,4 +61,9 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
 
         mainImageView.file = imageFile
     }
+    
+    @IBAction func didTapUsernameButton(sender: AnyObject) {
+        self.delegate?.didTapUserProfile()
+    }
+    
 }
