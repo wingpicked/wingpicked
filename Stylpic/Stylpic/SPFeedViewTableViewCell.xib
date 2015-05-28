@@ -163,12 +163,15 @@
                                     <action selector="imageOneLiked:" destination="45Z-me-hP9" eventType="touchUpInside" id="8Us-jB-xsQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-7z-4EI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-7z-4EI">
                                 <rect key="frame" x="40" y="-2" width="226" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                                 <state key="normal" title="Username">
-                                    <color key="titleColor" red="0.25793007016181946" green="0.71509498357772827" blue="0.70470136404037476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.27450980392156865" green="0.45882352941176469" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.29803921570000003" green="0.71372549019999998" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="userInfoDidTap:" destination="45Z-me-hP9" eventType="touchUpInside" id="ODv-XI-cXl"/>

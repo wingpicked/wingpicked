@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get your friends to help you choose what to wear on Stylpic" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwO-AQ-g4e">
-                    <rect key="frame" x="60" y="195" width="200" height="89"/>
+                    <rect key="frame" x="60" y="188" width="200" height="89"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="89" id="lzC-Kk-MCr"/>
                         <constraint firstAttribute="width" constant="200" id="yvB-HK-dLU"/>
@@ -21,12 +21,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsX-Ph-Quh">
-                    <rect key="frame" x="60" y="292" width="200" height="38"/>
+                    <rect key="frame" x="57.5" y="285" width="205" height="45"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="C12-aQ-Zu4"/>
-                        <constraint firstAttribute="height" constant="38" id="kHo-50-DyF"/>
+                        <constraint firstAttribute="width" constant="205" id="C12-aQ-Zu4"/>
+                        <constraint firstAttribute="height" constant="45" id="kHo-50-DyF"/>
                     </constraints>
-                    <state key="normal" image="facedbookShare">
+                    <state key="normal" image="fb_button_follow">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -46,10 +46,10 @@
             <connections>
                 <outlet property="findFriendsButton" destination="YsX-Ph-Quh" id="rki-y9-Hgj"/>
             </connections>
-            <point key="canvasLocation" x="274" y="303.5"/>
+            <point key="canvasLocation" x="274" y="303"/>
         </view>
     </objects>
     <resources>
-        <image name="facedbookShare" width="200" height="38"/>
+        <image name="fb_button_follow" width="204" height="45"/>
     </resources>
 </document>
