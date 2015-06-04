@@ -287,8 +287,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
             showProfileViewControllerForUser(user)
             break
         case .Notifications:
-            let user = profileInfoViewModel.notifications[indexPath.row].fromUser
-            showProfileViewControllerForUser(user)
+            let activity:SPActivity = profileInfoViewModel.notifications[indexPath.row]
+            let user = activity.fromUser
+            showProfileViewControllerForUser(user)            
             break
         default:
             break
