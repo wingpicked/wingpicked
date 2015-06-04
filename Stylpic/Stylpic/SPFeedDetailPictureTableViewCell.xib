@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Bold.ttf">
-            <string>OpenSans-Bold</string>
-        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
             <string>OpenSans</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -32,19 +32,36 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dSD-Vd-KFG" customClass="PFImageView">
-                        <rect key="frame" x="-8" y="45" width="336" height="336"/>
+                        <rect key="frame" x="0.0" y="61" width="320" height="320"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="dSD-Vd-KFG" secondAttribute="height" multiplier="1:1" id="9Ko-B9-P3C"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Caption" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-vI-JTJ">
-                        <rect key="frame" x="45" y="22" width="267" height="17"/>
+                        <rect key="frame" x="45" y="22" width="267" height="16.5"/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-0J-jrP">
+                        <rect key="frame" x="46" y="8" width="176" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="PJy-7Z-M5G"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
+                        <state key="normal" title="Username">
+                            <color key="titleColor" red="0.27450980390000002" green="0.45882352939999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="highlighted">
+                            <color key="titleColor" red="0.29803921570000003" green="0.71372549019999998" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="didTapUsernameButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uPX-9s-z7b"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-CE-GBo">
-                        <rect key="frame" x="230" y="8" width="82" height="17"/>
+                        <rect key="frame" x="230" y="8" width="82" height="16.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="82" id="5od-Lo-zx0"/>
                         </constraints>
@@ -52,31 +69,21 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-mu-J8B">
-                        <rect key="frame" x="45" y="8" width="188" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="17" id="NTZ-T1-v3E"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
-                        <color key="textColor" red="0.28235294119999998" green="0.71372549019999998" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="MGF-CE-GBo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="1eA-vd-fx5"/>
-                    <constraint firstItem="fGf-vI-JTJ" firstAttribute="top" secondItem="g3a-mu-J8B" secondAttribute="bottom" constant="-3" id="1lR-HT-mWi"/>
-                    <constraint firstItem="g3a-mu-J8B" firstAttribute="leading" secondItem="UCz-WQ-p2h" secondAttribute="trailing" constant="8" id="68Y-gR-uqK"/>
+                    <constraint firstItem="aRg-0J-jrP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="6D8-SP-k3S"/>
                     <constraint firstItem="fGf-vI-JTJ" firstAttribute="leading" secondItem="UCz-WQ-p2h" secondAttribute="trailing" constant="8" id="GE5-cK-d9f"/>
-                    <constraint firstItem="dSD-Vd-KFG" firstAttribute="top" secondItem="fGf-vI-JTJ" secondAttribute="bottom" constant="6" id="I6D-lf-ZnM"/>
-                    <constraint firstItem="dSD-Vd-KFG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="Ifb-IF-GOh"/>
-                    <constraint firstItem="g3a-mu-J8B" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Rcx-es-wa7"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="dSD-Vd-KFG" secondAttribute="trailing" constant="-16" id="SVD-eu-fGw"/>
+                    <constraint firstItem="dSD-Vd-KFG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ifb-IF-GOh"/>
+                    <constraint firstItem="MGF-CE-GBo" firstAttribute="leading" secondItem="aRg-0J-jrP" secondAttribute="trailing" constant="8" id="NPJ-Q6-lz4"/>
+                    <constraint firstAttribute="trailing" secondItem="dSD-Vd-KFG" secondAttribute="trailing" id="SVD-eu-fGw"/>
                     <constraint firstItem="fGf-vI-JTJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="SW5-tq-uxr"/>
-                    <constraint firstItem="MGF-CE-GBo" firstAttribute="leading" secondItem="g3a-mu-J8B" secondAttribute="trailing" constant="-3" id="TMP-T9-KF2"/>
                     <constraint firstItem="MGF-CE-GBo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="U2k-N9-ESP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="dSD-Vd-KFG" secondAttribute="bottom" constant="-8" id="WQC-H6-2iW"/>
                     <constraint firstItem="UCz-WQ-p2h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="gda-nt-otT"/>
+                    <constraint firstItem="fGf-vI-JTJ" firstAttribute="top" secondItem="aRg-0J-jrP" secondAttribute="bottom" id="h1Z-de-QpH"/>
                     <constraint firstItem="UCz-WQ-p2h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="u2A-ap-O2h"/>
+                    <constraint firstItem="aRg-0J-jrP" firstAttribute="leading" secondItem="UCz-WQ-p2h" secondAttribute="trailing" constant="9" id="yti-oq-Ouo"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -84,7 +91,7 @@
                 <outlet property="profilePictureImageView" destination="UCz-WQ-p2h" id="5o2-aD-ddZ"/>
                 <outlet property="timePostedLabel" destination="MGF-CE-GBo" id="E4n-k0-sPi"/>
                 <outlet property="titleLabel" destination="fGf-vI-JTJ" id="VXO-7D-ud1"/>
-                <outlet property="usernameLabel" destination="g3a-mu-J8B" id="iek-st-uBF"/>
+                <outlet property="usernameButton" destination="aRg-0J-jrP" id="jcR-2Z-pLP"/>
             </connections>
             <point key="canvasLocation" x="139" y="402"/>
         </tableViewCell>

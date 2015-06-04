@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Flash off 1x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Icon_flash.png"
+      "filename" : "Flash off 2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Flash off 3x.png"
     }
   ],
   "info" : {

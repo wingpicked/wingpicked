@@ -32,7 +32,8 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     @IBOutlet weak var postedTimeLabel: UILabel!
     
     @IBOutlet weak var profilePictureImageView: PFImageView!
-    @IBOutlet weak var userDisplayName: UILabel!
+    //@IBOutlet weak var userDisplayName: UILabel!
+    @IBOutlet weak var userDisplayNameButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,10 +48,6 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         var tap1 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
         profilePictureImageView.addGestureRecognizer(tap1)
         
-        userDisplayName.userInteractionEnabled = true
-        var tap2 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
-        userDisplayName.addGestureRecognizer(tap2)
-        
         self.postedTimeLabel.preferredMaxLayoutWidth = 72
         self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.width / 2.0
         self.profilePictureImageView.clipsToBounds = true
@@ -64,7 +61,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         if let user = feedItem.photos?["user"] as? SPUser {
             user.fetchIfNeededInBackgroundWithBlock({ (obj, error) -> Void in
                 if let profilePicture = user.profilePicture {
-                    self.userDisplayName.text = user.spDisplayName()
+                    self.userDisplayNameButton.setTitle(user.spDisplayName(), forState: .Normal)
                     self.profilePictureImageView.file = profilePicture
                     self.profilePictureImageView.loadInBackground(nil)
                 }
@@ -104,7 +101,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     }
     
     
-    func userInfoDidTap( sender: AnyObject ) {
+    @IBAction func userInfoDidTap( sender: AnyObject ) {
         if let feedItem = self.feedItem {
             self.delegate?.didRequestUserProfile(feedItem)
         }

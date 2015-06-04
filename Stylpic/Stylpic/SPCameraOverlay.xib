@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -25,7 +25,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-s7-0rS">
-                            <rect key="frame" x="18" y="10" width="15" height="24"/>
+                            <rect key="frame" x="18" y="10" width="16" height="24"/>
                             <state key="normal" image="Button_back_white">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -34,7 +34,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXO-eR-QZD">
-                            <rect key="frame" x="222" y="6" width="37" height="29"/>
+                            <rect key="frame" x="232" y="6" width="29" height="29"/>
                             <state key="normal" image="Reverse_camera_icon">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -43,7 +43,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-yi-NzB">
-                            <rect key="frame" x="281" y="9" width="22" height="23"/>
+                            <rect key="frame" x="281" y="9" width="23" height="23"/>
                             <state key="normal" image="Icon_flash_on">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -125,7 +125,7 @@
     <resources>
         <image name="Button_back_white" width="25" height="41"/>
         <image name="CameraButton2" width="292" height="292"/>
-        <image name="Icon_flash_on" width="360" height="360"/>
-        <image name="Reverse_camera_icon" width="1890" height="1417"/>
+        <image name="Icon_flash_on" width="35" height="35"/>
+        <image name="Reverse_camera_icon" width="35" height="35"/>
     </resources>
 </document>

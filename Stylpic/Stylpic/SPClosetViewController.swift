@@ -16,6 +16,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
     let emptyState: UIView = NSBundle.mainBundle().loadNibNamed("SPClosetEmptyStateView", owner: nil, options: nil)[0] as! UIView
+    let rc = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,24 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         findFriendsButton.addTarget(self, action: "addImageButtonDidTap", forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
         self.imagePickerViewController.delegate = self
+
+        
+        rc.addTarget(self, action: Selector("refreshCollectionView"), forControlEvents: UIControlEvents.ValueChanged)
+        self.collectionView.addSubview(rc)
+        
+
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.collectionView.contentOffset = CGPointMake(0, -self.rc.frame.size.height);
+        self.rc.beginRefreshing()
+        self.refreshCollectionView()
+        
+    }
+    
+    func refreshCollectionView(){
         SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
             if error != nil {
                 println(error)
@@ -48,14 +63,10 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
                 
             }
+            self.rc.endRefreshing()
         }
-        
     }
     
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//    }
     func respondToClosetPhotosChange() {
         if let someClosetPhotosAgain = self.closetPhotos {
             if someClosetPhotosAgain.count <= 0 {

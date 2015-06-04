@@ -113,12 +113,13 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         if(self.isStaleData){
+            self.tableView.contentOffset = CGPointMake(0, -self.refreshControl!.frame.size.height);
+            self.refreshControl!.beginRefreshing()
             self.showWithUser(showForUser)
         }
-
     }
     
     deinit {
