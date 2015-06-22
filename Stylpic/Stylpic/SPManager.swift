@@ -552,7 +552,7 @@ class SPManager: NSObject {
         } else {
             var errorMessage = "ERROR: one or the other image is nil passed to saveImages so can't save images"
             println( errorMessage )
-            resultsBlock( false, NSError(domain:"com.stylpic", code: -1001, userInfo:[ "error": errorMessage ] ) )
+            resultsBlock( false, NSError(domain:"com.Stylpic", code: -1001, userInfo:[ "error": errorMessage ] ) )
         }
     }
     
