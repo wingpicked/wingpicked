@@ -128,7 +128,8 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     
     func showSecondCamera() {
         overlayViewSecondPhoto.titleLabel.text = "Photo 2 of 2"
-        
+        overlayViewSecondPhoto.dismissOrBackButton.setImage(UIImage(named:"Button_back_white"), forState: UIControlState.Normal)
+        overlayViewSecondPhoto.dismissOrBackButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         imagePickerViewControllerSecondPhoto.sourceType = .Camera
         imagePickerViewControllerSecondPhoto.showsCameraControls = false;
         overlayViewSecondPhoto.delegate = self
