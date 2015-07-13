@@ -33,29 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.blackColor()
         UIBarButtonItem.appearance().tintColor = UIColor.blackColor()
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 18.0)!]
-
-        
-        //Facebook stuff
-        
-//        var permissions = ["user_friends", "email"]
-//        
-//        PFFacebookUtils.logInWithPermissions(permissions, {
-//            (user: PFUser!, error: NSError!) -> Void in
-//            if user == nil {
-//                NSLog("Uh oh. The user cancelled the Facebook login.")
-//            } else if user.isNew {
-//                NSLog("User signed up and logged in through Facebook!")
-//            } else {
-//                NSLog("User logged in through Facebook!")
-//            }
-//        })
-//        
-//    
-//        var isLoggedIn = false
-//        var storyboardId = isLoggedIn ? "MainIdentifier" : "LoginIdentifier"
-//        self.window?.rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier(storyboardId) as UIViewController!
-        
-        //self.registerForPushNotifications(application, launchOptions: launchOptions)
         
         if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
