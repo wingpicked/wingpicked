@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Background_LoginScreen_640x960_IPhone3,4.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Background_LoginScreen_1242x2208_IPhone6Pluscorrect.png"
     },
     {
       "idiom" : "universal",

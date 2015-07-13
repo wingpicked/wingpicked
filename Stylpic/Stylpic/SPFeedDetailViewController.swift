@@ -39,7 +39,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.commentsCount = self.feedItem.commentsCountOne
         if self.imageTapped == ImageIdentifier.ImageTwo {
             self.commentsCount = self.feedItem.commentsCountTwo
-        }
+        }        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -91,20 +91,36 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             else{
                 if self.imageTapped == ImageIdentifier.ImageOne{
                     let likeVerbiage = self.feedItem.likesCountOne == 1 ? "like" : "likes"
-                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne)%"
+                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne) percent"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) \(likeVerbiage)", forState: .Normal)
                     cell.commentCountButton.setTitle("view all \(self.feedItem.commentsCountOne) comments", forState: .Normal)
                 }
                 if self.imageTapped == ImageIdentifier.ImageTwo {
                     let likeVerbiage2 = self.feedItem.likesCountTwo == 1 ? "like" : "likes"
-                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedTwo)%"
+                    cell.percentageLabel.text = "\(self.feedItem.percentageLikedTwo) percent"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) \(likeVerbiage2)", forState: .Normal)
                     cell.commentCountButton.setTitle("view all \(self.feedItem.commentsCountTwo) comments", forState: .Normal)
                 }
             }
             return cell
         }
-        else if(indexPath.row > 1 && indexPath.row < 2 + commentsCount){
+        else if(indexPath.row == commentsCount + 2){
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPLikeCommentButtonView", forIndexPath: indexPath) as! SPLikeCommentButtonView
+            cell.delegate = self
+            cell.setupCell(self.imageTapped, feedItem: self.feedItem)
+            
+            if usersOwnPhotoPair {
+                cell.deleteButton.hidden = false
+            }
+            else{
+                cell.deleteButton.hidden = true
+            }
+            
+            
+            return cell
+        }
+        else // indexPath.row > 1 && indexPath.row < 2 + commentsCount){
+        {
             println("--\(commentsCount)")
             let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
             cell.delegate = self
@@ -119,21 +135,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             }
             
             cell.setupCell(comments[indexPath.row - 2] as! SPActivity)
-            return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("SPLikeCommentButtonView", forIndexPath: indexPath) as! SPLikeCommentButtonView
-            cell.delegate = self
-            cell.setupCell(self.imageTapped, feedItem: self.feedItem)
-            
-            if usersOwnPhotoPair {
-                cell.deleteButton.hidden = false
-            }
-            else{
-                cell.deleteButton.hidden = true
-            }
-
-            
             return cell
         }
     }

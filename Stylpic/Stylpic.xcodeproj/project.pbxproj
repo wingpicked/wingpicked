@@ -143,16 +143,6 @@
 		ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3845F7F31A560A5800191BDA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3845F7D31A560A5800191BDA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3845F7DA1A560A5800191BDA;
-			remoteInfo = Stylpic;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		3806710E1AD9F2FB0074E4FE /* SPLikesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPLikesViewController.swift; sourceTree = "<group>"; };
 		3806710F1AD9F2FB0074E4FE /* SPLikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPLikesViewController.xib; sourceTree = "<group>"; };
@@ -186,7 +176,6 @@
 		3845F7DF1A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3845F7E01A560A5800191BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3845F7E71A560A5800191BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3845F7F21A560A5800191BDA /* StylpicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StylpicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F80D1A560ADD00191BDA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3845F80F1A560AE700191BDA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3845F8111A560AF300191BDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -362,13 +351,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3845F7EF1A560A5800191BDA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -476,7 +458,6 @@
 			isa = PBXGroup;
 			children = (
 				3845F7DB1A560A5800191BDA /* Stylpic.app */,
-				3845F7F21A560A5800191BDA /* StylpicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -851,24 +832,6 @@
 			productReference = 3845F7DB1A560A5800191BDA /* Stylpic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3845F7F11A560A5800191BDA /* StylpicTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3845F7FF1A560A5800191BDA /* Build configuration list for PBXNativeTarget "StylpicTests" */;
-			buildPhases = (
-				3845F7EE1A560A5800191BDA /* Sources */,
-				3845F7EF1A560A5800191BDA /* Frameworks */,
-				3845F7F01A560A5800191BDA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3845F7F41A560A5800191BDA /* PBXTargetDependency */,
-			);
-			name = StylpicTests;
-			productName = StylpicTests;
-			productReference = 3845F7F21A560A5800191BDA /* StylpicTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -881,11 +844,6 @@
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = N822244V2G;
-					};
-					3845F7F11A560A5800191BDA = {
-						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = S9HWZN732E;
-						TestTargetID = 3845F7DA1A560A5800191BDA;
 					};
 				};
 			};
@@ -903,7 +861,6 @@
 			projectRoot = "";
 			targets = (
 				3845F7DA1A560A5800191BDA /* Stylpic */,
-				3845F7F11A560A5800191BDA /* StylpicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -948,13 +905,6 @@
 				380671111AD9F2FB0074E4FE /* SPLikesViewController.xib in Resources */,
 				380671161AD9F7B10074E4FE /* SPLikesTableViewCell.xib in Resources */,
 				48E43A041AF5976800BA22DF /* SPProfileEmptyFollowingView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3845F7F01A560A5800191BDA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,22 +1006,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3845F7EE1A560A5800191BDA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3845F7F41A560A5800191BDA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3845F7DA1A560A5800191BDA /* Stylpic */;
-			targetProxy = 3845F7F31A560A5800191BDA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3845F7E61A560A5800191BDA /* Main.storyboard */ = {
@@ -1220,46 +1155,6 @@
 			};
 			name = Release;
 		};
-		3845F8001A560A5800191BDA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = StylpicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stylpic.app/Stylpic";
-			};
-			name = Debug;
-		};
-		3845F8011A560A5800191BDA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = StylpicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stylpic.app/Stylpic";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1277,15 +1172,6 @@
 			buildConfigurations = (
 				3845F7FD1A560A5800191BDA /* Debug */,
 				3845F7FE1A560A5800191BDA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3845F7FF1A560A5800191BDA /* Build configuration list for PBXNativeTarget "StylpicTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3845F8001A560A5800191BDA /* Debug */,
-				3845F8011A560A5800191BDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
