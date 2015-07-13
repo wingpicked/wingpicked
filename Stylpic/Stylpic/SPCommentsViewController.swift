@@ -16,7 +16,6 @@ class SPCommentsViewController: SLKTextViewController {
     
     var timer : NSTimer!
     var progress : Float = 0.0
-    var progressNavController : MRNavigationBarProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,20 +23,9 @@ class SPCommentsViewController: SLKTextViewController {
         // Do any additional setup after loading the view.
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
         
-        progressNavController = MRNavigationBarProgressView(forNavigationController: self.navigationController)
+        self.title = "COMMENTS"
     }
     
-    func updateProgressBar(){
-        println(progress)
-        if(progress >= 1.0){
-            timer.invalidate()
-            progress = 0.0
-        }
-
-        self.progressNavController.progress = progress
-        progress += 0.01
-    }
-
     override func didPressRightButton(sender: AnyObject!) {
         //self.feedItem?.commentsCountTwo++
         

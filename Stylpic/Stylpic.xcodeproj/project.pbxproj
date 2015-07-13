@@ -843,7 +843,7 @@
 				TargetAttributes = {
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = N822244V2G;
+						DevelopmentTeam = S9HWZN732E;
 					};
 				};
 			};
@@ -1124,7 +1124,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ea17713-5703-471c-942c-6389eb0b041f";
+				PROVISIONING_PROFILE = "6dfaa44f-873e-4a64-be71-28a85c759be2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1150,7 +1150,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ea17713-5703-471c-942c-6389eb0b041f";
+				PROVISIONING_PROFILE = "6dfaa44f-873e-4a64-be71-28a85c759be2";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;
