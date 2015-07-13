@@ -36,8 +36,6 @@ class SPCommentsViewController: SLKTextViewController {
         }
         
         if let photoPair = self.feedItem?.photos {
-            
-        
             SPManager.sharedInstance.postComment(activityType, photoPair: photoPair, comment: comment, resultBlock: { (savedObject : SPActivity?, error) -> Void in
                 if error == nil {
                     self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateProgressBar", userInfo: nil, repeats: true)
@@ -55,7 +53,7 @@ class SPCommentsViewController: SLKTextViewController {
                             self.feedItem?.comments.commentsPhotoTwo.append(savedObject)
                             self.feedItem?.commentsCountTwo++
                         }
-                        
+    
                         self.tableView.slk_scrollToTopAnimated(true)
 
                     }

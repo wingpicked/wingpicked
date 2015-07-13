@@ -66,7 +66,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXO-eR-QZD">
-                            <rect key="frame" x="232" y="6" width="29" height="29"/>
+                            <rect key="frame" x="237" y="9" width="23" height="23"/>
                             <state key="normal" image="Reverse_camera_icon">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -84,7 +84,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-s7-0rS">
-                            <rect key="frame" x="15" y="10" width="23" height="24"/>
+                            <rect key="frame" x="8" y="10" width="23" height="23"/>
                             <state key="normal" image="dismiss_camera">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>

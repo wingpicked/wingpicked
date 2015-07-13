@@ -26,6 +26,7 @@ class SPSearchResultsViewController: UIViewController, UITableViewDataSource, UI
         searchBar.showsCancelButton = true
         searchBar.becomeFirstResponder()
         searchBar.placeholder = "Search for a user..."
+        self.title = "SEARCH"
     }
 
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {

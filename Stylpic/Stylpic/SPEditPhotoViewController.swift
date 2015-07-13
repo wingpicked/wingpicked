@@ -40,6 +40,9 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.imageViewTwo.layer.cornerRadius = 5.0
         self.imageViewTwo.clipsToBounds = true
         
+        self.title = "Share"
+        self.navigationController?.navigationItem
+        
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
@@ -51,6 +54,11 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPostFlowButtonDidTap")
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        let barButtonItemAttributes = [NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 14.0)!]
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes(barButtonItemAttributes, forState: .Normal)
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont(name: "OpenSans-Bold", size: 18.0)! ];
+        
         
         let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 350, 247, 46)) //TODO: Autolayout this frame
         let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)

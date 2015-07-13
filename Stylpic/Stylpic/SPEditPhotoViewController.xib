@@ -3,11 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
-        </mutableArray>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SPEditPhotoViewController" customModule="Stylpic" customModuleProvider="target">
             <connections>
@@ -28,14 +23,13 @@
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jde-vS-Dw9">
                     <rect key="frame" x="164" y="103" width="140" height="140"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-CI-BrP">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-CI-BrP">
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <color key="backgroundColor" red="0.29803921568627451" green="0.71372549019607845" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="tuV-fo-d3p"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
-                    <state key="normal" title="SHARE   &gt;&gt;">
+                    <state key="normal" title="SHARE &gt;">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

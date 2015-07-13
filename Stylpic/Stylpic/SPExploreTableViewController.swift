@@ -17,6 +17,7 @@ class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelega
         
         searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 44))
         searchBar.delegate = self
+        searchBar.placeholder = "Search..."
         self.tableView.tableHeaderView = searchBar
         
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
