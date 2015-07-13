@@ -25,6 +25,7 @@ class SPPhotoConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.backButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
     }
 
     override func viewWillAppear(animated: Bool) {

@@ -60,7 +60,7 @@ Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 			});
 
 			var items = _.values( feedItemValuesForPhotoPairObjectId );
-			_.invoke( items, 'truncateCommentsToThree' );
+			//_.invoke( items, 'truncateCommentsToThree' );
 			var payload = { feedItems: items };
 			response.success( payload );
 		}, function( error ) {

@@ -28,7 +28,7 @@ class SPSettingsViewController: UITableViewController {
         
         UIApplication.sharedApplication().unregisterForRemoteNotifications()
         //TODO: Maybe rework and have a singleton reference to the login controller rather trying to find it by bubblng thru the modal hierarchy.
-        self.dismissViewControllerAnimated(false, completion: nil)
+//        self.dismissViewControllerAnimated(false, completion: nil)
         NSNotificationCenter.defaultCenter().postNotificationName("showLoginScreen", object: nil)
 
     }

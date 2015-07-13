@@ -27,6 +27,7 @@ class SPCameraOverlay: UIView {
     @IBOutlet weak var switchCameraButton: UIButton!
     @IBOutlet weak var squareCroppingView: UIView!
     
+    @IBOutlet weak var dismissOrBackButton: UIButton!
     @IBOutlet weak var titleBarView: UIView!
     @IBOutlet weak var flashButton: UIButton!
     
