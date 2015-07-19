@@ -173,13 +173,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    func showAllComments() {
-        var commentsViewController = SPCommentsViewController()
-        commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
-        commentsViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(commentsViewController, animated: true)
-    }
-    
     //MARK - LikeCommentButton Delegate Methods
     func likeButtonTapped() {
         var activityType : ActivityType!
@@ -208,10 +201,26 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func commentButtonTapped() {
-        println("Comment Button Tapped")
-        self.showAllComments()
+        var commentsViewController = self.createCommentsViewController()
+        commentsViewController.keyboardPresentedOnLoad = true
+        self.navigationController?.pushViewController(commentsViewController, animated: true)
+    }
+    
+    func commentsButtonTapped() {
+        var commentsViewController = self.createCommentsViewController()
+        commentsViewController.keyboardPresentedOnLoad = false
+        self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
 
+    func createCommentsViewController() -> SPCommentsViewController {
+        var commentsViewController = SPCommentsViewController()
+        commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
+        commentsViewController.hidesBottomBarWhenPushed = true
+        return commentsViewController
+
+    }
+
+    
     //MARK - SPFeedDetailCollaboration Delegate Methods
     func likesButtonTapped() {
         let likesViewController = SPLikesViewController(nibName: "SPLikesViewController", bundle: nil)
@@ -219,10 +228,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         likesViewController.feedItem = self.feedItem
         likesViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(likesViewController, animated: true)
-    }
-    
-    func commentsButtonTapped() {
-        showAllComments()
     }
     
     func didSelectComment(user: SPUser) {
