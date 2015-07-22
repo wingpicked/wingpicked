@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Semibold.ttf">
@@ -15,52 +15,31 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwS-Ud-AMg">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo 1 of 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSu-bH-3QU">
-                            <rect key="frame" x="105" y="8" width="110" height="26"/>
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="19"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-s7-0rS">
-                            <rect key="frame" x="8" y="7" width="30" height="30"/>
-                            <state key="normal" title="X">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="dismissCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="p3d-s6-df8"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="centerX" secondItem="ZSu-bH-3QU" secondAttribute="centerX" id="JBR-fs-sNd"/>
-                        <constraint firstAttribute="height" constant="44" id="mLI-el-1a9"/>
-                        <constraint firstItem="ZSu-bH-3QU" firstAttribute="top" secondItem="dwS-Ud-AMg" secondAttribute="top" constant="8" id="u24-pV-pAJ"/>
-                    </constraints>
-                </view>
-                <view alpha="0.89999999999999991" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-8K-j5q">
-                    <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-8K-j5q">
+                    <rect key="frame" x="0.0" y="364" width="320" height="204"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbY-pc-LZE">
-                            <rect key="frame" x="117" y="33" width="87" height="84"/>
+                            <rect key="frame" x="116.5" y="59" width="87" height="87"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="84" id="Emo-wb-EUP"/>
-                                <constraint firstAttribute="width" constant="87" id="FCm-u2-Xxa"/>
+                                <constraint firstAttribute="height" constant="87" id="II6-KF-vad"/>
+                                <constraint firstAttribute="width" constant="87" id="n91-FC-Y8Q"/>
                             </constraints>
-                            <state key="normal" image="CameraButton">
+                            <state key="normal" image="CameraButton2">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="takePhotoButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="ueQ-fu-bW1"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-Qi-MUR">
-                            <rect key="frame" x="31" y="59" width="50" height="33"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                            <state key="normal" title="Photos">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-Qi-MUR">
+                            <rect key="frame" x="35" y="82" width="40" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="Y5c-a1-sGl"/>
+                                <constraint firstAttribute="height" constant="40" id="ZE4-xW-aeb"/>
+                            </constraints>
+                            <color key="tintColor" red="0.37254901959999998" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -71,33 +50,83 @@
                     </subviews>
                     <color key="backgroundColor" red="0.094117647058823528" green="0.14509803921568629" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="centerX" secondItem="hbY-pc-LZE" secondAttribute="centerX" constant="-0.5" id="BaT-2g-UmC"/>
-                        <constraint firstAttribute="centerY" secondItem="IHL-Qi-MUR" secondAttribute="centerY" id="CQ7-En-gbc"/>
-                        <constraint firstItem="IHL-Qi-MUR" firstAttribute="leading" secondItem="tPs-8K-j5q" secondAttribute="leading" constant="31" id="Huw-e4-V6g"/>
-                        <constraint firstAttribute="height" constant="150" id="Slm-6t-kus"/>
-                        <constraint firstAttribute="centerY" secondItem="hbY-pc-LZE" secondAttribute="centerY" id="mrM-65-z6A"/>
+                        <constraint firstAttribute="centerY" secondItem="IHL-Qi-MUR" secondAttribute="centerY" id="1b5-47-0ZQ"/>
+                        <constraint firstAttribute="centerX" secondItem="hbY-pc-LZE" secondAttribute="centerX" id="3Pf-HP-n8k"/>
+                        <constraint firstItem="IHL-Qi-MUR" firstAttribute="leading" secondItem="tPs-8K-j5q" secondAttribute="leading" constant="35" id="emp-X7-MQx"/>
+                        <constraint firstAttribute="centerY" secondItem="hbY-pc-LZE" secondAttribute="centerY" id="lDU-rl-gf3"/>
+                    </constraints>
+                </view>
+                <view alpha="0.85000000000000031" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwS-Ud-AMg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photo 1 of 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSu-bH-3QU">
+                            <rect key="frame" x="55" y="8" width="110" height="26"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXO-eR-QZD">
+                            <rect key="frame" x="237" y="9" width="23" height="23"/>
+                            <state key="normal" image="Reverse_camera_icon">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="switchCameraButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="cfW-nV-4ol"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-yi-NzB">
+                            <rect key="frame" x="281" y="9" width="23" height="23"/>
+                            <state key="normal" image="Icon_flash">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="flashButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="29q-IF-xks"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-s7-0rS">
+                            <rect key="frame" x="8" y="10" width="23" height="23"/>
+                            <state key="normal" image="dismiss_camera">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="dismissCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="p3d-s6-df8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="G3c-d6-khv"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="tPs-8K-j5q" secondAttribute="trailing" id="GZs-Q3-Cyl"/>
-                <constraint firstAttribute="trailing" secondItem="dwS-Ud-AMg" secondAttribute="trailing" id="NG9-O9-7lM"/>
-                <constraint firstItem="dwS-Ud-AMg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aia-oj-QOk"/>
-                <constraint firstItem="tPs-8K-j5q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dmU-bw-URI"/>
-                <constraint firstAttribute="bottom" secondItem="tPs-8K-j5q" secondAttribute="bottom" id="iF3-AB-cmR"/>
-                <constraint firstItem="dwS-Ud-AMg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mrC-pV-H6J"/>
+                <constraint firstItem="dwS-Ud-AMg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0SO-AU-KCX"/>
+                <constraint firstItem="tPs-8K-j5q" firstAttribute="top" secondItem="dwS-Ud-AMg" secondAttribute="bottom" constant="320" id="9mL-8p-Yce"/>
+                <constraint firstAttribute="bottom" secondItem="tPs-8K-j5q" secondAttribute="bottom" id="LbE-JU-9gw"/>
+                <constraint firstAttribute="trailing" secondItem="tPs-8K-j5q" secondAttribute="trailing" id="VZS-Lj-uk4"/>
+                <constraint firstItem="tPs-8K-j5q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZML-Xd-vzh"/>
+                <constraint firstItem="dwS-Ud-AMg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qob-G4-rET"/>
+                <constraint firstAttribute="trailing" secondItem="dwS-Ud-AMg" secondAttribute="trailing" id="tkw-q1-nMU"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
+                <outlet property="dismissOrBackButton" destination="2iQ-s7-0rS" id="Ex1-Mg-Izp"/>
+                <outlet property="flashButton" destination="jfA-yi-NzB" id="oOg-so-bhX"/>
+                <outlet property="photoLibraryButton" destination="IHL-Qi-MUR" id="Fj5-Yb-sVh"/>
                 <outlet property="squareCroppingView" destination="tPs-8K-j5q" id="dXu-a3-Lg4"/>
+                <outlet property="switchCameraButton" destination="TXO-eR-QZD" id="piS-IY-7FZ"/>
+                <outlet property="titleBarView" destination="dwS-Ud-AMg" id="28U-fw-9Dz"/>
                 <outlet property="titleLabel" destination="ZSu-bH-3QU" id="9fi-BW-aLS"/>
             </connections>
-            <point key="canvasLocation" x="342.5" y="257"/>
+            <point key="canvasLocation" x="342" y="257"/>
         </view>
     </objects>
     <resources>
-        <image name="CameraButton" width="160" height="160"/>
+        <image name="CameraButton2" width="292" height="292"/>
+        <image name="Icon_flash" width="35" height="35"/>
+        <image name="Reverse_camera_icon" width="35" height="35"/>
+        <image name="dismiss_camera" width="530" height="530"/>
     </resources>
 </document>

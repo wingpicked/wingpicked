@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        Parse.enableLocalDatastore()
+//        Parse.enableLocalDatastore()
         
         // Initialize Parse.
         Parse.setApplicationId("RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF", clientKey: "GrzuVuRsMePNfdGF0AhyBYvEmjgeHPWfwtTb7EHx")
@@ -32,29 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
         UINavigationBar.appearance().tintColor = UIColor.blackColor()
         UIBarButtonItem.appearance().tintColor = UIColor.blackColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 18.0)!]
         
-        
-        //Facebook stuff
-        
-//        var permissions = ["user_friends", "email"]
-//        
-//        PFFacebookUtils.logInWithPermissions(permissions, {
-//            (user: PFUser!, error: NSError!) -> Void in
-//            if user == nil {
-//                NSLog("Uh oh. The user cancelled the Facebook login.")
-//            } else if user.isNew {
-//                NSLog("User signed up and logged in through Facebook!")
-//            } else {
-//                NSLog("User logged in through Facebook!")
-//            }
-//        })
-//        
-//    
-//        var isLoggedIn = false
-//        var storyboardId = isLoggedIn ? "MainIdentifier" : "LoginIdentifier"
-//        self.window?.rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier(storyboardId) as UIViewController!
-        
-        //self.registerForPushNotifications(application, launchOptions: launchOptions)
+        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainTabBarVC = storyboard.instantiateViewControllerWithIdentifier("MainIdentifier") as! UIViewController
+            self.window?.rootViewController = mainTabBarVC
+        }
         
         return true
     }
@@ -63,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
-        installation.setObject(PFUser.currentUser(), forKey: "user")
+        installation.setObject(PFUser.currentUser()!, forKey: "user")
         installation.saveInBackgroundWithBlock(nil)
     }
     

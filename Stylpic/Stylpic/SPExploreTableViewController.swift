@@ -17,11 +17,13 @@ class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelega
         
         searchBar = UISearchBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 44))
         searchBar.delegate = self
+        searchBar.placeholder = "Search..."
         self.tableView.tableHeaderView = searchBar
         
         var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
         self.tableView.addGestureRecognizer(tapGestureRecognizer)
         
+        self.navigationItem.title = "EXPLORE"
     }
     
     
@@ -35,6 +37,7 @@ class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelega
             if(error == nil){
                 self.feedItems = feedItems
                 self.tableView.reloadData()
+                self.isStaleData = false
             }
             self.refreshControl?.endRefreshing()
         })

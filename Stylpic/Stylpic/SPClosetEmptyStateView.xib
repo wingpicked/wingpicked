@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="HBK-Rr-5n9">
+                    <rect key="frame" x="144" y="301" width="33" height="117"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="33" id="KfM-rn-8yo"/>
+                        <constraint firstAttribute="height" constant="117" id="rbx-1B-Zhg"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UpArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Auy-x3-H8h">
+                    <rect key="frame" x="190" y="77" width="122" height="124"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="124" id="462-UW-OhM"/>
+                        <constraint firstAttribute="width" constant="122" id="F2B-Q7-dEE"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have anything in your closet yet." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwC-Ex-xeY">
+                    <rect key="frame" x="76" y="96" width="154" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="71" id="7ya-hh-JwT"/>
+                        <constraint firstAttribute="width" constant="154" id="zXB-WY-ubY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add here!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-3H-jSn">
+                    <rect key="frame" x="130" y="185" width="61" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="bdo-w1-7Cj"/>
+                        <constraint firstAttribute="height" constant="21" id="wMP-d5-W1K"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos you post will also be added to your closet automatically!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zE1-IP-4oZ">
+                    <rect key="frame" x="61" y="248" width="198" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="198" id="Gjr-VT-ZmA"/>
+                        <constraint firstAttribute="height" constant="45" id="qQb-pn-YwA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="HBK-Rr-5n9" secondAttribute="bottom" constant="62" id="0Ot-A4-JFh"/>
+                <constraint firstItem="HBK-Rr-5n9" firstAttribute="top" secondItem="zE1-IP-4oZ" secondAttribute="bottom" constant="8" id="AeB-a1-RNR"/>
+                <constraint firstAttribute="centerX" secondItem="jwC-Ex-xeY" secondAttribute="centerX" constant="7" id="IvC-lj-EZC"/>
+                <constraint firstItem="Auy-x3-H8h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="77" id="Qd1-VE-YYE"/>
+                <constraint firstAttribute="trailing" secondItem="Auy-x3-H8h" secondAttribute="trailing" constant="8" id="b3b-Zt-ebh"/>
+                <constraint firstItem="Auy-x3-H8h" firstAttribute="leading" secondItem="Gne-3H-jSn" secondAttribute="trailing" constant="-1" id="dKy-fj-fW8"/>
+                <constraint firstAttribute="centerX" secondItem="zE1-IP-4oZ" secondAttribute="centerX" id="jD6-KE-Qf2"/>
+                <constraint firstItem="jwC-Ex-xeY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="96" id="qMS-X5-Osb"/>
+                <constraint firstAttribute="centerX" secondItem="HBK-Rr-5n9" secondAttribute="centerX" id="uWN-fb-a8u"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="DownArrow" width="61" height="172"/>
+        <image name="UpArrow" width="189" height="197"/>
+    </resources>
+</document>

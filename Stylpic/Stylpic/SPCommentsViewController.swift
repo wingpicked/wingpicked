@@ -14,15 +14,29 @@ class SPCommentsViewController: SLKTextViewController {
     var imageTapped: ImageIdentifier = ImageIdentifier.ImageOne
     var feedItem: SPFeedItem?
     
+    var timer : NSTimer!
+    var progress : Float = 0.0
+    var keyboardPresentedOnLoad = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
-
+        
+        self.title = "COMMENTS"
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(keyboardPresentedOnLoad){
+            self.presentKeyboard(true)
+        }
+    }
+    
     override func didPressRightButton(sender: AnyObject!) {
+        //self.feedItem?.commentsCountTwo++
         
         let comment = self.textView.text
         var activityType = ActivityType.CommentImageOne
@@ -31,16 +45,24 @@ class SPCommentsViewController: SLKTextViewController {
         }
         
         if let photoPair = self.feedItem?.photos {
-            
-        
-            SPManager.sharedInstance.postComment(activityType, photoPair: photoPair, comment: comment, resultBlock: { (savedObject, error) -> Void in
+            SPManager.sharedInstance.postComment(activityType, photoPair: photoPair, comment: comment, resultBlock: { (savedObject : SPActivity?, error) -> Void in
                 if error == nil {
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateProgressBar", userInfo: nil, repeats: true)
                     if let savedObject = savedObject {
                         self.tableView.beginUpdates()
                         self.comments.insert(savedObject, atIndex: 0)
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.tableView.endUpdates()
                         
+                        if(activityType == .CommentImageOne){
+                            self.feedItem?.comments.commentsPhotoOne.append(savedObject)
+                            self.feedItem?.commentsCountOne++
+                        }
+                        if(activityType == .CommentImageTwo){
+                            self.feedItem?.comments.commentsPhotoTwo.append(savedObject)
+                            self.feedItem?.commentsCountTwo++
+                        }
+    
                         self.tableView.slk_scrollToTopAnimated(true)
 
                     }

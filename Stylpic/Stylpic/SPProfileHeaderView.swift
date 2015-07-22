@@ -26,16 +26,17 @@ class SPProfileHeaderView: UIView {
     @IBAction func didTapFollowButton(sender: AnyObject) {
         self.isFollowing = !self.isFollowing
         updateIsFollowing(self.isFollowing)
+        self.followButton.userInteractionEnabled = false
         
         if self.isFollowing {
             SPManager.sharedInstance.followUser(self.user, resultBlock: { (savedObject, error) -> Void in
                 println( "followed user with \(error)" )
-                
+                self.followButton.userInteractionEnabled = true
             })
         } else {
             SPManager.sharedInstance.unfollowUser(self.user, resultBlock: { (savedObject, error) -> Void in
                 println( "unfollowed user with error \(error)" )
-                
+                self.followButton.userInteractionEnabled = true                
             })
         }
     }
@@ -44,7 +45,7 @@ class SPProfileHeaderView: UIView {
         self.isFollowing = following
         updateIsFollowing(self.isFollowing)
         self.user = user
-        self.profilePictureImageView.file = user["profilePicture"] as! PFFile
+        self.profilePictureImageView.file = user.profilePicture
         self.profilePictureImageView.loadInBackground(nil)
         
         
@@ -56,12 +57,4 @@ class SPProfileHeaderView: UIView {
         var img = isFollowing ? UIImage(named: "Button_following") : UIImage(named: "Button_follow")
         followButton.setImage(img, forState: .Normal)
     }
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

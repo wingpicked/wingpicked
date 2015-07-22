@@ -17,7 +17,7 @@ class SPSettingsViewController: UITableViewController {
         
         let dismissButton = UIBarButtonItem(title: "Dismiss", style: .Plain, target: self, action: "dismissButtonDidTap:")
         self.navigationItem.leftBarButtonItem = dismissButton
-        
+        self.navigationItem.title = "SETTINGS"
         
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
@@ -25,9 +25,12 @@ class SPSettingsViewController: UITableViewController {
     @IBAction func logoutButtonDidTap(sender: AnyObject) {
         println("logged out!")
         PFUser.logOut()
+        
         UIApplication.sharedApplication().unregisterForRemoteNotifications()
         //TODO: Maybe rework and have a singleton reference to the login controller rather trying to find it by bubblng thru the modal hierarchy.
-        self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+//        self.dismissViewControllerAnimated(false, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("showLoginScreen", object: nil)
+
     }
     
     func dismissButtonDidTap(sender : AnyObject!){

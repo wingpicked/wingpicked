@@ -60,7 +60,7 @@ Parse.Cloud.define( "getFeedItemsForPageV3", function( request, response ) {
 			});
 
 			var items = _.values( feedItemValuesForPhotoPairObjectId );
-			_.invoke( items, 'truncateCommentsToThree' );
+			//_.invoke( items, 'truncateCommentsToThree' );
 			var payload = { feedItems: items };
 			response.success( payload );
 		}, function( error ) {
@@ -133,16 +133,21 @@ Parse.Cloud.define( 'photoPairLikes', function( request, response ) {
 
 
 Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
+	Parse.Cloud.useMasterKey();
 	var currentUser = request.user;
 	var queryWithFollowingAndFollowers = userUtils.queryWithFollowingAndFollowers( currentUser, feedItem.ActivityType.Follow );
-	var followersAndFollowing = queryWithFollowingAndFollowers.find();
 	var userObjectId = request.params.userObjectId;
 	var profileInfo = new profileInfoUtils.ProfileInfo();
 	var scopedVars = {};
 	var Activity = Parse.Object.extend('Activity');
-	var mockUser = new Parse.User();
-	mockUser.id = userObjectId;
-	followersAndFollowing.then( function( followersAndFollowing ) {
+	var mockUserTemp = new Parse.User();
+	mockUserTemp.id = userObjectId;
+	var fullUserPromise = mockUserTemp.fetch();
+	var mockUser = null;
+	fullUserPromise.then( function( fullUser ) {
+		mockUser = fullUser;
+		return queryWithFollowingAndFollowers.find();
+	}).then( function( followersAndFollowing ) {
 		scopedVars.followersAndFollowing = followersAndFollowing;
 		var Photos = Parse.Object.extend('PhotoPair');
 		var query = new Parse.Query(Photos);
@@ -204,6 +209,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 		profileInfo.postsCount = profileItems.length;
 		var followingQuery = new Parse.Query( Activity );
 		followingQuery.include( 'photoPair' );
+		followingQuery.include( 'photoPair.user' );
 		followingQuery.include( 'fromUser' );
 		followingQuery.include( 'toUser' );
 		followingQuery.limit( MAX_QUERY_LIMIT );
@@ -213,6 +219,7 @@ Parse.Cloud.define( "fetchProfileInfo", function( request, response ) {
 
 		var followersQuery = new Parse.Query( Activity );
 		followersQuery.include( 'photoPair' );
+		followersQuery.include( 'photoPair.user' );
 		followersQuery.include( 'fromUser' );
 		followersQuery.include( 'toUser' );
 		followersQuery.limit( MAX_QUERY_LIMIT );

@@ -21,17 +21,25 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        commentLabel.linkAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
+//        commentLabel.activeLinkAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
+        
+//        self.commentLabel.linkAttributes = [NSForegroundColorAttributeName: UIColor.purpleColor(),
+//            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone]
+        
+//                self.commentLabel.linkAttributes = [NSForegroundColorAttributeName: UIColor.purpleColor(),NSUnderlineStyleAttributeName: 0]
+        
+        self.commentLabel.linkAttributes = [kCTForegroundColorAttributeName: primaryAquaColor,kCTUnderlineColorAttributeName: 0, NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 12.0)!]
     }
     
     func setupCell(commentActivity: SPActivity){
         commentLabel.delegate = self
-        var comment : NSString = "\(commentActivity.fromUser.spDisplayName()) | \(commentActivity.content)"
+        var comment : NSString = "\(commentActivity.fromUser.spDisplayName()) \(commentActivity.content)"
         commentLabel.text = comment as String
         
         var range = comment.rangeOfString(commentActivity.fromUser.spDisplayName())
         currentUser = commentActivity.fromUser
         commentLabel.addLinkToURL(NSURL(string: "action://show-user"), withRange: range)
-        
     }
     
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {

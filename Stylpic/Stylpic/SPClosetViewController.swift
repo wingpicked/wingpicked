@@ -8,29 +8,49 @@
 
 import UIKit
 
-class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SPCameraOverlayDelegate {
+class SPClosetViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SPClosetDetailViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SPCameraOverlayDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var closetPhotos : [SPClosetPhoto]? //= [PFFile]()
     var lastTappedRow = 0
     let imagePickerViewController = UIImagePickerController()
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
-    
+    let emptyState: UIView = NSBundle.mainBundle().loadNibNamed("SPClosetEmptyStateView", owner: nil, options: nil)[0] as! UIView
+    let rc = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.registerNib(UINib(nibName: "SPClosetCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SPClosetCollectionViewCell")
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
-        
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
+
+        self.navigationItem.title = "MY CLOSET"
         
         var findFriendsImage = UIImage( named: "Icon_addToCloset" )
         var findFriendsButton = UIButton(frame: CGRectMake( 0,0, 20,20))
         findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
         findFriendsButton.addTarget(self, action: "addImageButtonDidTap", forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
+        self.imagePickerViewController.delegate = self
+
         
+        rc.addTarget(self, action: Selector("refreshCollectionView"), forControlEvents: UIControlEvents.ValueChanged)
+        self.collectionView.addSubview(rc)
+        
+
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.collectionView.contentOffset = CGPointMake(0, -self.rc.frame.size.height);
+        self.rc.beginRefreshing()
+        self.refreshCollectionView()
+        
+    }
+    
+    func refreshCollectionView(){
         SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
             if error != nil {
                 println(error)
@@ -38,19 +58,31 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
                 if let someClosetPhotosAgain = someClosetPhotos {
                     self.closetPhotos = someClosetPhotosAgain
                     self.collectionView.reloadData()
+                    self.respondToClosetPhotosChange()
+                    
                 }
                 
             }
+            self.rc.endRefreshing()
         }
-
-        self.imagePickerViewController.delegate = self
     }
-
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//    }
     
+    func respondToClosetPhotosChange() {
+        if let someClosetPhotosAgain = self.closetPhotos {
+            if someClosetPhotosAgain.count <= 0 {
+                self.emptyState.frame = self.view.frame
+                self.view.addSubview( self.emptyState )
+            } else {
+                if self.emptyState.superview != nil {
+                    self.emptyState.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(0, 16)
+    }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SPClosetCollectionViewCell", forIndexPath: indexPath) as! SPClosetCollectionViewCell
@@ -111,8 +143,8 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         println( "addButtonDidTap" )
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Take New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
-            println( "take new photo tapped " )
-            self.overlayView.titleLabel.text = "Take a photo"
+    //            println( "take new photo tapped " )
+            self.overlayView.titleLabel.text = ""
             
             self.imagePickerViewController.sourceType = .Camera
             self.imagePickerViewController.showsCameraControls = false;
@@ -122,7 +154,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
-            println( "photo albumn did select")
+    //            println( "photo albumn did select")
             self.imagePickerViewController.sourceType = .PhotoLibrary
             self.presentViewController( self.imagePickerViewController, animated: true, completion: nil )
         }
@@ -138,26 +170,50 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-
+    func switchCameraButtonDidTap(overlay: SPCameraOverlay) {
+        if self.imagePickerViewController.cameraDevice == .Rear {
+            self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        } else {
+            self.imagePickerViewController.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+        }
+    }
     
-    func takePhotoButtonDidTap() {
+    //TODO: Need to check if flash exists before setting this.
+    func flashButtonDidTap(overlay: SPCameraOverlay) {
+        
+        if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
+            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        } else {
+            self.imagePickerViewController.cameraFlashMode = .On
+        }
+    }
+    
+    func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
         self.imagePickerViewController.takePicture()
     }
     
-    func dismissCamera() {
+    func dismissCamera( overlay: SPCameraOverlay ) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func selectPhotosDidTap() {
+    func selectPhotosDidTap(overlay: SPCameraOverlay) {
         
     }
 
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
-        let squareRect = CGRectMake( 0, 0, originalImage.size.width, originalImage.size.width )
-        var imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
-        var squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: UIImageOrientation.Right)
+        var imageOrientation = UIImageOrientation.Up
+        let squareDimension = originalImage.size.width > originalImage.size.height ? originalImage.size.height : originalImage.size.width
+        if ( picker.sourceType == UIImagePickerControllerSourceType.Camera ) {
+            // Do something with an image from the camera
+            imageOrientation = UIImageOrientation.Right
+        }
+
+        let photoX = (originalImage.size.width - squareDimension) / 2
+        let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
         
         //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
         //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
@@ -173,6 +229,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
                             if let someClosetPhotosAgain = someClosetPhotos {
                                 self.closetPhotos = someClosetPhotosAgain
                                 self.collectionView.reloadData()
+                                self.respondToClosetPhotosChange()
                             }
                             
                         }

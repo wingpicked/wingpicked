@@ -12,23 +12,24 @@ class SPLoginViewController: UIViewController, UIAlertViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showScreen", name: "showLoginScreen", object: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
         // Check if user is cached and linked to Facebook, if so, bypass login
+        super.viewDidAppear(animated)
+//        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))){
+//            self.performSegueWithIdentifier("loggedInSegue", sender: self)
+//            
+//        }
         
-        
-        if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()))){
-            self.performSegueWithIdentifier("loggedInSegue", sender: self)
-            
-        }
     }
         
     @IBAction func facebookLoginTouchUpInside(sender: AnyObject) {
         SPManager.sharedInstance.loginWithFacebook { (success, error) -> Void in
-            if(error == nil && success == true) {                
+            if(error == nil && success == true) {
                 self.performSegueWithIdentifier("loggedInSegue", sender: self)
                 
                 (UIApplication.sharedApplication().delegate as! AppDelegate).registerForPushNotifications()
@@ -53,5 +54,9 @@ class SPLoginViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
+    func showScreen() {
+            self.dismissViewControllerAnimated(true, completion: nil)
+//        self.navigationController?.popToViewController(self, animated: true)
+    }
 
 }

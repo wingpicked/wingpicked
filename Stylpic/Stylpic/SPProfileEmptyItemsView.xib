@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click here to get your friends' opinion on what to wear!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-ru-TCn">
+                    <rect key="frame" x="70" y="306" width="181" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="181" id="ZJf-qq-zHy"/>
+                        <constraint firstAttribute="height" constant="46" id="tNX-z0-QBv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="kMa-HA-whO">
+                    <rect key="frame" x="147" y="366" width="27" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="27" id="Lt9-FF-r8d"/>
+                        <constraint firstAttribute="height" constant="100" id="bzK-9Q-F0i"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not made any posts, yet!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLZ-zK-Vr5">
+                    <rect key="frame" x="59" y="265" width="203" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="203" id="UMK-R6-csY"/>
+                        <constraint firstAttribute="height" constant="21" id="n58-gy-Ith"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="kMa-HA-whO" secondAttribute="centerX" id="Ehm-AJ-AE6"/>
+                <constraint firstAttribute="centerX" secondItem="gXk-ru-TCn" secondAttribute="centerX" id="WyR-uA-tid"/>
+                <constraint firstItem="mLZ-zK-Vr5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="244" id="ZpN-4R-bDF"/>
+                <constraint firstItem="gXk-ru-TCn" firstAttribute="top" secondItem="mLZ-zK-Vr5" secondAttribute="bottom" constant="20" id="cOq-Fx-25S"/>
+                <constraint firstAttribute="bottom" secondItem="kMa-HA-whO" secondAttribute="bottom" constant="14" id="hQP-bP-vOF"/>
+                <constraint firstAttribute="centerX" secondItem="mLZ-zK-Vr5" secondAttribute="centerX" id="hbV-To-jkO"/>
+                <constraint firstItem="kMa-HA-whO" firstAttribute="top" secondItem="gXk-ru-TCn" secondAttribute="bottom" constant="14" id="reH-nN-pT0"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ZpN-4R-bDF"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="400" y="387"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="DownArrow" width="61" height="172"/>
+    </resources>
+</document>

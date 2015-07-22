@@ -21,10 +21,10 @@ class SPFeedItem: NSObject {
     var caption = ""
     var likesCountOne = 0
     var likesCountTwo = 0
-    var commentsCountOne: Int! = 0
+    var commentsCountOne = 0
     var commentsCountTwo = 0
-    var percentageLikedOne = 0.0
-    var percentageLikedTwo = 0.0
+    var percentageLikedOne: Int = 0
+    var percentageLikedTwo:Int = 0
     var username = ""
     var userProfilePicture : PFFile?
     var photoUserLikes = PhotoUserLikes.NoPhotoLiked
@@ -45,8 +45,8 @@ class SPFeedItem: NSObject {
         self.commentsCountTwo = serverFeedItem[ "commentsCountTwo" ] as! Int
         self.likesCountOne = serverFeedItem[ "likesCountOne" ] as! Int
         self.likesCountTwo = serverFeedItem[ "likesCountTwo" ] as! Int
-        self.percentageLikedOne = serverFeedItem[ "percentageLikedOne" ] as! Double
-        self.percentageLikedTwo = serverFeedItem[ "percentageLikedTwo" ] as! Double
+        self.percentageLikedOne = Int(serverFeedItem[ "percentageLikedOne" ] as! Float)
+        self.percentageLikedTwo = Int(serverFeedItem[ "percentageLikedTwo" ] as! Float)
         self.username = serverFeedItem[ "username" ] as! String
         self.isCurrentUserFollowing = serverFeedItem[ "isCurrentUserFollowing" ] as! Bool
         let photoUserLikes = serverFeedItem[ "photoUserLikes" ] as! Int
@@ -58,5 +58,15 @@ class SPFeedItem: NSObject {
         if let x = x{
             self.timeintervalSincePost = timeIntervalFormatter.stringForTimeInterval(x)
         }
+        
+        var usersToFetchIfNeeded = [PFUser]()
+        let allComments = commentsPhoto1 + commentsPhoto2
+        for anActivity in allComments {
+            usersToFetchIfNeeded.append( anActivity.fromUser )
+            usersToFetchIfNeeded.append( anActivity.toUser )
+        }
+        
+        PFObject.fetchAllIfNeeded(usersToFetchIfNeeded)
+        
     }
 }

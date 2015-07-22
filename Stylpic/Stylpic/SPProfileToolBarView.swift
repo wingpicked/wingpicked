@@ -29,6 +29,7 @@ class SPProfileToolBarView: UIView {
     @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var notificationsBadge: UILabel!
     
+    @IBOutlet weak var notificationBellImageView: UIImageView!
     
     var delegate : SPProfileToolBarViewDelegate?
 

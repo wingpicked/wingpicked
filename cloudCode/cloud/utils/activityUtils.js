@@ -7,7 +7,7 @@ var moment = require( 'moment' );
 
 function exploreQueryWithType( aType ) {
     var currentMoment = moment();
-    var sevenDaysAgo = currentMoment.day( -7 );
+    var sevenDaysAgo = currentMoment.day( -90 ); // -7
 
     var Activity = Parse.Object.extend( 'Activity' );
     var activityQuery = new Parse.Query( Activity );

@@ -32,7 +32,8 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     @IBOutlet weak var postedTimeLabel: UILabel!
     
     @IBOutlet weak var profilePictureImageView: PFImageView!
-    @IBOutlet weak var userDisplayName: UILabel!
+    //@IBOutlet weak var userDisplayName: UILabel!
+    @IBOutlet weak var userDisplayNameButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,9 +51,9 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         var tap1 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
         profilePictureImageView.addGestureRecognizer(tap1)
         
-        userDisplayName.userInteractionEnabled = true
-        var tap2 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
-        userDisplayName.addGestureRecognizer(tap2)
+        self.postedTimeLabel.preferredMaxLayoutWidth = 72
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.width / 2.0
+        self.profilePictureImageView.clipsToBounds = true
     }
     
     override func setupWithFeedItem(feedItem: SPFeedItem){
@@ -63,7 +64,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         if let user = feedItem.photos?["user"] as? SPUser {
             user.fetchIfNeededInBackgroundWithBlock({ (obj, error) -> Void in
                 if let profilePicture = user.profilePicture {
-                    self.userDisplayName.text = user.spDisplayName()
+                    self.userDisplayNameButton.setTitle(user.spDisplayName(), forState: .Normal)
                     self.profilePictureImageView.file = profilePicture
                     self.profilePictureImageView.loadInBackground(nil)
                 }
@@ -74,11 +75,11 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         }
 
         if self.feedItem?.photoUserLikes == PhotoUserLikes.FirstPhotoLiked {
-            imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            imageOneLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
             imageOneLikeButton.hidden = false
         } else if self.feedItem?.photoUserLikes == PhotoUserLikes.SecondPhotoLiked {
-            imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            imageTwoLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = false
             imageOneLikeButton.hidden = true
         } else {
@@ -89,7 +90,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         }
         
         let noPhotoLiked = self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked
-        let usersOwnPhotoPair = self.feedItem?.photos?.user.objectId == PFUser.currentUser().objectId
+        let usersOwnPhotoPair = self.feedItem?.photos?.user.objectId == PFUser.currentUser()!.objectId
         statsArea.hidden = !usersOwnPhotoPair && noPhotoLiked
         
         if let timeIntervalSincePost = feedItem.timeintervalSincePost{
@@ -98,10 +99,12 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         else{
             postedTimeLabel.text = "NA"
         }
+        
+        postedTimeLabel.sizeToFit()
     }
     
     
-    func userInfoDidTap( sender: AnyObject ) {
+    @IBAction func userInfoDidTap( sender: AnyObject ) {
         if let feedItem = self.feedItem {
             self.delegate?.didRequestUserProfile(feedItem)
         }
@@ -111,7 +114,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     @IBAction func imageOneLiked(sender: AnyObject) {
         println( "in imageOneliked" )
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
-            imageOneLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            imageOneLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
 
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageOne, photoPair: self.feedItem?.photos) { (success, error) -> Void in
@@ -130,6 +133,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
             self.feedItem?.likesCountOne++
             self.imageOneLikeLabel.text = "\(self.feedItem?.likesCountOne)"
             self.updatePercentages()
+            statsArea.hidden = false
         } else {
             UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
@@ -138,7 +142,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     @IBAction func imageTwoLiked(sender: AnyObject) {
         println( "in imageTwoliked" )
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
-            self.imageTwoLikeButton.setImage(UIImage(named: "Icon_likes_onSelectedPhoto2"), forState: UIControlState.Normal)
+            self.imageTwoLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             self.imageOneLikeButton.hidden = true
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageTwo, photoPair: self.feedItem?.photos) { (success, error) -> Void in
                 if success {
@@ -159,6 +163,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
             }
             
             self.updatePercentages()
+            statsArea.hidden = false
         } else {
             UIAlertView(title: "Already liked", message: "You already liked a photo in this post", delegate: nil, cancelButtonTitle: "Ok" ).show()
         }
@@ -167,10 +172,10 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     func updatePercentages() {
         if let feedItem = self.feedItem {
             var totalLikes = Double(feedItem.likesCountOne + feedItem.likesCountTwo)
-            feedItem.percentageLikedOne = 100.0 * Double(feedItem.likesCountOne) / totalLikes
-            feedItem.percentageLikedTwo = 100.0 * Double(feedItem.likesCountTwo) / totalLikes
-            self.imageOnePercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedOne ) as String
-            self.imageTwoPercentLabel.text = NSString( format:"%.1f", feedItem.percentageLikedTwo ) as String
+            feedItem.percentageLikedOne = Int(100 * Double(feedItem.likesCountOne) / totalLikes)
+            feedItem.percentageLikedTwo = Int(100 * Double(feedItem.likesCountTwo) / totalLikes)
+            self.imageOnePercentLabel.text = NSString( format:"%d", Int(feedItem.percentageLikedOne) ) as String
+            self.imageTwoPercentLabel.text = NSString( format:"%d", Int(feedItem.percentageLikedTwo ) ) as String
         }
         
     }

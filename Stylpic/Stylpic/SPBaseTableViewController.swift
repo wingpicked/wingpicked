@@ -14,6 +14,7 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
     //var imageDataArray : [SPImage] = [];
     var allPictureObjects : [PFObject] = [];
     var feedItems : [SPFeedItem] = [];
+    var isStaleData = true
     
     //MARK: View Lifecycle    
     override func viewDidLoad() {
@@ -25,13 +26,20 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
         self.refreshControl = rc;
        
         downloadAllImages()
- 
-        //self.refreshControl?.beginRefreshing()
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 52, 0)
-        
+         
         tableView.registerNib(UINib(nibName: "SPFeedViewTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedViewTableViewCell")
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "TopBarWithStylpicTitle"), forBarMetrics: UIBarMetrics.Default)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateViewController", name: "RefreshViewControllers", object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+     
+        if(self.isStaleData){
+            self.tableView.contentOffset = CGPointMake(0, -self.refreshControl!.frame.size.height);
+            self.refreshControl!.beginRefreshing()
+            self.downloadAllImages()
+        }
     }
     
     deinit {
@@ -39,13 +47,11 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
     }
     
     func updateViewController() {
-        self.downloadAllImages()
-        
-        
+        self.isStaleData = true
     }
     
     func downloadAllImages(){
-        
+        //Override by subclasses.
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,6 +70,17 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 227
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        //cell.alpha = 0.0
+        cell.transform = CGAffineTransformMakeScale(1.07, 1.07);
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
+                //cell.alpha = 1.0
+                cell.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            }, completion: nil)
+        
     }
     
     func didTapPhotoOne(feedItem: SPFeedItem) {
