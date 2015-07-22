@@ -60,6 +60,7 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
 
 
         mainImageView.file = imageFile
+        mainImageView.loadInBackground(nil)
     }
     
     @IBAction func didTapUsernameButton(sender: AnyObject) {
