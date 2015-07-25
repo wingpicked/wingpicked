@@ -88,14 +88,27 @@
                             <state key="normal" image="dismiss_camera">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRF-vB-dbz">
+                            <rect key="frame" x="0.0" y="0.0" width="62" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="62" id="8KD-zW-65n"/>
+                                <constraint firstAttribute="height" constant="44" id="tru-XX-Jch"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
-                                <action selector="dismissCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="p3d-s6-df8"/>
+                                <action selector="dismissCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="Vb0-5O-APg"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="nRF-vB-dbz" firstAttribute="leading" secondItem="dwS-Ud-AMg" secondAttribute="leading" id="5IB-XL-1oy"/>
                         <constraint firstAttribute="height" constant="44" id="G3c-d6-khv"/>
+                        <constraint firstItem="nRF-vB-dbz" firstAttribute="top" secondItem="dwS-Ud-AMg" secondAttribute="top" id="XTI-M3-Tru"/>
                     </constraints>
                 </view>
             </subviews>
