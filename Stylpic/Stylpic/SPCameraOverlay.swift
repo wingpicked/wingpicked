@@ -31,7 +31,7 @@ class SPCameraOverlay: UIView {
     @IBOutlet weak var titleBarView: UIView!
     @IBOutlet weak var flashButton: UIButton!
     
-    var flashEnabled = false
+    var flashEnabled = true
 
     override func awakeFromNib() {
         super.awakeFromNib()

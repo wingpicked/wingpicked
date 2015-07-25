@@ -120,7 +120,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         
         imagePickerViewController.sourceType = .Camera
         imagePickerViewController.showsCameraControls = false;
-        imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
         overlayView.delegate = self
         imagePickerViewController.cameraOverlayView = overlayView
         overlayView.pickingTheLastImageFromThePhotoLibrary()
@@ -133,7 +133,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         overlayViewSecondPhoto.dismissOrBackButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         imagePickerViewControllerSecondPhoto.sourceType = .Camera
         imagePickerViewControllerSecondPhoto.showsCameraControls = false
-        imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
         overlayViewSecondPhoto.delegate = self
         imagePickerViewControllerSecondPhoto.cameraOverlayView = overlayViewSecondPhoto
         imagePickerViewControllerSecondPhoto.modalTransitionStyle = .CrossDissolve

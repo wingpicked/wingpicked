@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="364" width="320" height="204"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbY-pc-LZE">
-                            <rect key="frame" x="116.5" y="59" width="87" height="87"/>
+                            <rect key="frame" x="117" y="59" width="87" height="87"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="87" id="II6-KF-vad"/>
                                 <constraint firstAttribute="width" constant="87" id="n91-FC-Y8Q"/>
@@ -76,7 +76,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-yi-NzB">
                             <rect key="frame" x="281" y="9" width="23" height="23"/>
-                            <state key="normal" image="Icon_flash">
+                            <state key="normal" image="Icon_flash_on">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -125,7 +125,7 @@
     </objects>
     <resources>
         <image name="CameraButton2" width="292" height="292"/>
-        <image name="Icon_flash" width="35" height="35"/>
+        <image name="Icon_flash_on" width="35" height="35"/>
         <image name="Reverse_camera_icon" width="35" height="35"/>
         <image name="dismiss_camera" width="530" height="530"/>
     </resources>

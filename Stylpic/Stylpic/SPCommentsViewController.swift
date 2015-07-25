@@ -16,6 +16,7 @@ class SPCommentsViewController: SLKTextViewController {
     
     var timer : NSTimer!
     var progress : Float = 0.0
+    var keyboardPresentedOnLoad = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,14 @@ class SPCommentsViewController: SLKTextViewController {
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
         
         self.title = "COMMENTS"
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(keyboardPresentedOnLoad){
+            self.presentKeyboard(true)
+        }
     }
     
     override func didPressRightButton(sender: AnyObject!) {

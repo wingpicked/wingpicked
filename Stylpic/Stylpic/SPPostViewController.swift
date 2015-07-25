@@ -20,7 +20,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     var userPhotoOne : UIImage?
     var userPhotoTwo : UIImage?
-    var curImagePickerController: UIImagePickerController?
+    let curImagePickerController = UIImagePickerController()
     var overlayView : SPCameraOverlay?
     
     @IBOutlet weak var captionTextField: UITextField!
@@ -30,9 +30,8 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.curImagePickerController = UIImagePickerController()
-        self.curImagePickerController?.delegate = self
-        self.curImagePickerController?.allowsEditing = false
+        self.curImagePickerController.delegate = self
+        self.curImagePickerController.allowsEditing = false
         
         self.overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as? SPCameraOverlay
         overlayView?.delegate = self
@@ -80,23 +79,21 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
             return false;
         }
         
-        self.curImagePickerController?.sourceType = UIImagePickerControllerSourceType.Camera
+        self.curImagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
             
         if(UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear)) {
-            self.curImagePickerController?.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+            self.curImagePickerController.cameraDevice = UIImagePickerControllerCameraDevice.Rear
         } else if(UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front)){
-            self.curImagePickerController?.cameraDevice = UIImagePickerControllerCameraDevice.Front
+            self.curImagePickerController.cameraDevice = UIImagePickerControllerCameraDevice.Front
         }
 
         
         self.overlayView?.titleLabel.text = self.userPhotoOne != nil ? "Photo 2 of 2" : "Photo 1 of 2"
-        self.curImagePickerController?.cameraOverlayView = overlayView
-//        self.curImagePickerController?.allowsEditing = false
-        self.curImagePickerController?.showsCameraControls = false
-        
-//        let presentingController =
+        self.curImagePickerController.cameraOverlayView = overlayView
+        self.curImagePickerController.showsCameraControls = false
+        self.curImagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
         if self.presentedViewController == nil {
-            self.presentViewController(self.curImagePickerController!, animated: true, completion: nil)
+            self.presentViewController(self.curImagePickerController, animated: true, completion: nil)
         }
         
         return true
@@ -108,23 +105,19 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
             return false;
         }
         
-        
-        
         //TODO: add controllersourcetype
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)  {
-            self.curImagePickerController?.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
-            //cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+            self.curImagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
         }
         else if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum)){
-            self.curImagePickerController?.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-            //cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+            self.curImagePickerController.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
         }
         else {
             return false;
         }
         
         if self.presentedViewController == nil {
-            self.presentViewController(self.curImagePickerController!, animated: true, completion: nil)
+            self.presentViewController(self.curImagePickerController, animated: true, completion: nil)
         }
         
         return true
@@ -156,25 +149,25 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        if self.curImagePickerController?.sourceType != UIImagePickerControllerSourceType.Camera {
-            self.shouldStartCameraController()
-        }
-    }
+//    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+//        if self.curImagePickerController.sourceType != UIImagePickerControllerSourceType.Camera {
+//            self.shouldStartCameraController()
+//        }
+//    }
     
     func switchCameraButtonDidTap(overlay: SPCameraOverlay) {
-        if self.curImagePickerController?.cameraDevice == .Rear {
-            self.curImagePickerController?.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        if self.curImagePickerController.cameraDevice == .Rear {
+            self.curImagePickerController.cameraDevice = UIImagePickerControllerCameraDevice.Front
         } else {
-            self.curImagePickerController?.cameraDevice = UIImagePickerControllerCameraDevice.Rear
+            self.curImagePickerController.cameraDevice = UIImagePickerControllerCameraDevice.Rear
         }
     }
     
     func flashButtonDidTap(overlay: SPCameraOverlay) {
-        if self.curImagePickerController?.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
-            self.curImagePickerController?.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        if self.curImagePickerController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
+            self.curImagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
         } else {
-            self.curImagePickerController?.cameraFlashMode = .On
+            self.curImagePickerController.cameraFlashMode = .On
         }
     }
     
@@ -185,47 +178,11 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     
     func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
-        self.curImagePickerController?.takePicture()
-    }
-    
-    
-//    
-    func shareAndPostPhotos( resultsBlock: PFBooleanResultBlock ) {
-//        SPManager.sharedInstance.
-//        SPManager.sharedInstance.save(self.imageViewOne.image, imageTwo: self.imageViewTwo.image) { (imageOne, imageOneThumbnail, imageTwo, imageTwoThumbnail, error) -> Void in
-//            if error == nil {
-//                var photos = SPPhotoPair()
-//                photos.imageOne = imageOne
-//                photos.imageTwo = imageTwo
-//                photos.thumbnailOne = imageOneThumbnail
-//                photos.thumbnailTwo = imageTwoThumbnail
-//                photos.caption = self.captionTextField.text!
-//                photos.user = SPUser.currentUser()
-//                photos.hidePhotoEnum = 0
-//                photos.saveInBackgroundWithBlock({ (success, error) -> Void in
-//                    resultsBlock( success, error )
-//                })
-//            } else {
-//                println( error )
-//            }
-//        }
+        self.curImagePickerController.takePicture()
     }
     
     @IBAction func viewDidTap(sender: AnyObject) {
         self.captionTextField.resignFirstResponder()
-    }
-    
-    @IBAction func shareButtonDidTap(sender: AnyObject) {
-        println( "share button did tap" )
-        self.shareButton.userInteractionEnabled = false
-        self.shareButton.alpha = 0.4
-        self.shareAndPostPhotos { (success, error) -> Void in
-            if error == nil {
-                println( success )
-            } else {
-                println( error )
-            }
-        }
     }
     
     func dismissCamera( overlay: SPCameraOverlay ) {

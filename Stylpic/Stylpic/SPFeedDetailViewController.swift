@@ -12,6 +12,8 @@ import UIKit
     optional func deleteFeedItem( feedItem: SPFeedItem )
 }
 
+let kCommentsCount = 4
+
 class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate, SPFeedDetailPictureTableViewCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +22,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     var imageTapped : ImageIdentifier!
     var profileDelegate : SPFeedDetailViewControllerDelegate?
     var commentsCount = 0
+    var commentsToDisplay = 0
     
     init(feedItem : SPFeedItem, imageTapped: ImageIdentifier) {
         self.imageTapped = imageTapped
@@ -39,7 +42,9 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.commentsCount = self.feedItem.commentsCountOne
         if self.imageTapped == ImageIdentifier.ImageTwo {
             self.commentsCount = self.feedItem.commentsCountTwo
-        }        
+        }
+        commentsToDisplay = self.commentsCount > kCommentsCount ? kCommentsCount : self.commentsCount
+
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -88,6 +93,11 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                 cell.likeCountButton.hidden = true
                 cell.commentCountButton.hidden = true
             }
+                
+            if(self.commentsCount < kCommentsCount){
+                cell.commentCountButton.hidden = true
+            }
+                
             else{
                 if self.imageTapped == ImageIdentifier.ImageOne{
                     let likeVerbiage = self.feedItem.likesCountOne == 1 ? "like" : "likes"
@@ -104,7 +114,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             }
             return cell
         }
-        else if(indexPath.row == commentsCount + 2){
+        else if(indexPath.row == commentsToDisplay + 2){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPLikeCommentButtonView", forIndexPath: indexPath) as! SPLikeCommentButtonView
             cell.delegate = self
             cell.setupCell(self.imageTapped, feedItem: self.feedItem)
@@ -140,7 +150,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentsCount + 3 //for three static cells
+        return commentsToDisplay + 3 //for three static cells
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -173,13 +183,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    func showAllComments() {
-        var commentsViewController = SPCommentsViewController()
-        commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
-        commentsViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(commentsViewController, animated: true)
-    }
-    
     //MARK - LikeCommentButton Delegate Methods
     func likeButtonTapped() {
         var activityType : ActivityType!
@@ -208,10 +211,26 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func commentButtonTapped() {
-        println("Comment Button Tapped")
-        self.showAllComments()
+        var commentsViewController = self.createCommentsViewController()
+        commentsViewController.keyboardPresentedOnLoad = true
+        self.navigationController?.pushViewController(commentsViewController, animated: true)
+    }
+    
+    func commentsButtonTapped() {
+        var commentsViewController = self.createCommentsViewController()
+        commentsViewController.keyboardPresentedOnLoad = false
+        self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
 
+    func createCommentsViewController() -> SPCommentsViewController {
+        var commentsViewController = SPCommentsViewController()
+        commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
+        commentsViewController.hidesBottomBarWhenPushed = true
+        return commentsViewController
+
+    }
+
+    
     //MARK - SPFeedDetailCollaboration Delegate Methods
     func likesButtonTapped() {
         let likesViewController = SPLikesViewController(nibName: "SPLikesViewController", bundle: nil)
@@ -219,10 +238,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         likesViewController.feedItem = self.feedItem
         likesViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(likesViewController, animated: true)
-    }
-    
-    func commentsButtonTapped() {
-        showAllComments()
     }
     
     func didSelectComment(user: SPUser) {
