@@ -14,9 +14,9 @@ import UIKit
 
 let kCommentsCount = 4
 
-class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate, SPFeedDetailPictureTableViewCellDelegate {
+class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, SPLikeCommentButtonViewDelegate, SPCommentsSmallTableViewCellDelegate, SPFeedDetailCollaborationTableViewCellDelegate, SPFeedDetailPictureTableViewCellDelegate, SPCommentsViewControllerDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     var imageFile : PFFile!
     var feedItem: SPFeedItem!
     var imageTapped : ImageIdentifier!
@@ -226,6 +226,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         var commentsViewController = SPCommentsViewController()
         commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
         commentsViewController.hidesBottomBarWhenPushed = true
+        commentsViewController.delegate = self
         return commentsViewController
 
     }
@@ -291,6 +292,17 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
         self.navigationController?.pushViewController(profileViewController, animated: true)
         profileViewController.showWithUser(user)
+    }
+    
+    func didAddCommentToPhotoOne(comment: SPActivity) {
+        self.commentsCount = self.feedItem.commentsCountOne
+        commentsToDisplay = self.commentsCount > kCommentsCount ? kCommentsCount : self.commentsCount
+        self.reloadTableView()
+    }
+    func didAddCommentToPhotoTwo(comment: SPActivity) {
+        self.commentsCount = self.feedItem.commentsCountTwo
+        commentsToDisplay = self.commentsCount > kCommentsCount ? kCommentsCount : self.commentsCount
+        self.reloadTableView()
     }
     
 

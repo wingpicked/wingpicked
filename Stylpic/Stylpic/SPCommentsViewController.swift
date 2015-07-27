@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol SPCommentsViewControllerDelegate {
+    func didAddCommentToPhotoOne(comment : SPActivity) -> Void
+    func didAddCommentToPhotoTwo(comment : SPActivity) -> Void
+}
+
 class SPCommentsViewController: SLKTextViewController {
 
     var comments: Array<SPActivity> = []
@@ -17,6 +22,8 @@ class SPCommentsViewController: SLKTextViewController {
     var timer : NSTimer!
     var progress : Float = 0.0
     var keyboardPresentedOnLoad = false
+    
+    var delegate : SPCommentsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +54,6 @@ class SPCommentsViewController: SLKTextViewController {
         if let photoPair = self.feedItem?.photos {
             SPManager.sharedInstance.postComment(activityType, photoPair: photoPair, comment: comment, resultBlock: { (savedObject : SPActivity?, error) -> Void in
                 if error == nil {
-                    self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateProgressBar", userInfo: nil, repeats: true)
                     if let savedObject = savedObject {
                         self.tableView.beginUpdates()
                         self.comments.insert(savedObject, atIndex: 0)
@@ -57,10 +63,12 @@ class SPCommentsViewController: SLKTextViewController {
                         if(activityType == .CommentImageOne){
                             self.feedItem?.comments.commentsPhotoOne.append(savedObject)
                             self.feedItem?.commentsCountOne++
+                            self.delegate?.didAddCommentToPhotoOne(savedObject)
                         }
                         if(activityType == .CommentImageTwo){
                             self.feedItem?.comments.commentsPhotoTwo.append(savedObject)
                             self.feedItem?.commentsCountTwo++
+                            self.delegate?.didAddCommentToPhotoTwo(savedObject)
                         }
     
                         self.tableView.slk_scrollToTopAnimated(true)
