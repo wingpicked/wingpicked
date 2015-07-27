@@ -8,4 +8,4 @@
 # ITUNES_CONNECT_PASSWORD = "Moun2067"
 # echo ITUNES_CONNECT_PASSWORD
 ipa build
-ipa distribute:itunesconnect -a benjam1.bouaziz@gmail.com -p Moun2067 -i 1010506731 --upload
+ipa distribute:itunesconnect -a benjam1.bouaziz@gmail.com -p Moun2067 -i 1010506731 --upload --verbose

@@ -139,7 +139,6 @@
 		ECB2C23D1A560E350009FD11 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */; };
 		ECB2C23E1A560E350009FD11 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2371A560E350009FD11 /* QuartzCore.framework */; };
 		ECB2C23F1A560E350009FD11 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2381A560E350009FD11 /* Security.framework */; };
-		ECB2C2401A560E350009FD11 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C2391A560E350009FD11 /* StoreKit.framework */; };
 		ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
@@ -312,7 +311,6 @@
 		ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		ECB2C2371A560E350009FD11 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECB2C2381A560E350009FD11 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		ECB2C2391A560E350009FD11 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -332,7 +330,6 @@
 				388E318F1AF5A59200AF7E6A /* Bolts.framework in Frameworks */,
 				ECB2C23E1A560E350009FD11 /* QuartzCore.framework in Frameworks */,
 				ECB2C23F1A560E350009FD11 /* Security.framework in Frameworks */,
-				ECB2C2401A560E350009FD11 /* StoreKit.framework in Frameworks */,
 				ECB2C2411A560E350009FD11 /* SystemConfiguration.framework in Frameworks */,
 				388E31941AF5A59200AF7E6A /* ParseUI.framework in Frameworks */,
 				ECB2C2331A560DFF0009FD11 /* CoreLocation.framework in Frameworks */,
@@ -519,7 +516,6 @@
 				ECB2C2361A560E350009FD11 /* MobileCoreServices.framework */,
 				ECB2C2371A560E350009FD11 /* QuartzCore.framework */,
 				ECB2C2381A560E350009FD11 /* Security.framework */,
-				ECB2C2391A560E350009FD11 /* StoreKit.framework */,
 				ECB2C23A1A560E350009FD11 /* SystemConfiguration.framework */,
 				ECB2C2321A560DFF0009FD11 /* CoreLocation.framework */,
 				ECB2C2301A560DC30009FD11 /* CoreGraphics.framework */,
@@ -843,7 +839,12 @@
 				TargetAttributes = {
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = S9HWZN732E;
+						DevelopmentTeam = N822244V2G;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -922,7 +923,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "branch=${1:-'develop'}\nbuildNumber=$(expr $(git rev-list $branch --count) - $(git rev-list HEAD..$branch --count))\necho \"Updating build number to $buildNumber using branch '$branch'.\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1038,7 +1039,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Benjamin Bouaziz (N822244V2G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
@@ -1057,10 +1058,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Stylpic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3ab92c57-f2e3-42d7-9503-a43e91ce7442";
+				PROVISIONING_PROFILE = "e82689bd-c13b-49b4-9d58-d247ec0bd637";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1084,7 +1086,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Benjamin Bouaziz (N822244V2G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
@@ -1097,8 +1099,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Stylpic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "e82689bd-c13b-49b4-9d58-d247ec0bd637";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1111,8 +1115,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Benjamin Bouaziz (N822244V2G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Benjamin Bouaziz (N822244V2G)";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1121,10 +1125,11 @@
 					/Users/joshuabell/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3bcfa43b-292a-4723-abd8-1c670b5beed2";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1137,8 +1142,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Bhargava (SD5FXQ2U4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Benjamin Bouaziz (N822244V2G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Benjamin Bouaziz (N822244V2G)";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1147,10 +1152,11 @@
 					/Users/joshuabell/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Stylpic/Info.plist;
+				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3bcfa43b-292a-4723-abd8-1c670b5beed2";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;
