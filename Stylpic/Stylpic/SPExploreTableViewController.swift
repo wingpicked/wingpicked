@@ -20,7 +20,7 @@ class SPExploreTableViewController: SPBaseTableViewController, UISearchBarDelega
         searchBar.placeholder = "Search..."
         self.tableView.tableHeaderView = searchBar
         
-        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
         self.tableView.addGestureRecognizer(tapGestureRecognizer)
         
         self.navigationItem.title = "EXPLORE"

@@ -24,7 +24,7 @@ class SPCameraClosetViewController: SPClosetViewController {
 //        self.collectionView.dataSource = self
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -34,7 +34,7 @@ class SPCameraClosetViewController: SPClosetViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
+        print(indexPath.row)
         if let closetPhotos = self.closetPhotos {
             let closetPhoto = closetPhotos[indexPath.row]
             let data = closetPhoto.photo.photo.getData()

@@ -27,8 +27,8 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         self.navigationItem.title = "MY CLOSET"
         
-        var findFriendsImage = UIImage( named: "Icon_addToCloset" )
-        var findFriendsButton = UIButton(frame: CGRectMake( 0,0, 20,20))
+        let findFriendsImage = UIImage( named: "Icon_addToCloset" )
+        let findFriendsButton = UIButton(frame: CGRectMake( 0,0, 20,20))
         findFriendsButton.setImage(findFriendsImage, forState: UIControlState.Normal)
         findFriendsButton.addTarget(self, action: "addImageButtonDidTap", forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem( customView: findFriendsButton )
@@ -53,7 +53,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     func refreshCollectionView(){
         SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             } else {
                 if let someClosetPhotosAgain = someClosetPhotos {
                     self.closetPhotos = someClosetPhotosAgain
@@ -102,7 +102,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
+        print(indexPath.row)
         self.lastTappedRow = indexPath.row
 //        var detailViewController = SPClosetDetailViewController( aPFFile: self.pfFiles![indexPath.row] )
 //        self.navigationController?.pushViewController(detailViewController, animated: true)
@@ -125,7 +125,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     func removeClosetPhoto( closetPhoto: SPClosetPhoto ) {
         var indexToRemove = -1
         for var i = self.closetPhotos!.count - 1; i >= 0; --i {
-            var aClosetPhoto = self.closetPhotos![ i ]
+            let aClosetPhoto = self.closetPhotos![ i ]
             if aClosetPhoto.objectId == closetPhoto.objectId {
                 indexToRemove = i
                 break
@@ -140,7 +140,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     func addImageButtonDidTap() {
-        println( "addButtonDidTap" )
+        print( "addButtonDidTap" )
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Take New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
     //            println( "take new photo tapped " )
@@ -205,7 +205,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
         var imageOrientation = UIImageOrientation.Up
         let squareDimension = originalImage.size.width > originalImage.size.height ? originalImage.size.height : originalImage.size.width
@@ -216,34 +216,30 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         let photoX = (originalImage.size.width - squareDimension) / 2
         let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
-        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect)!;
         let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
         
         //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
         //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
-        
-        if let squareImage = squareImage{
-            SPManager.sharedInstance.addMyClosetItemWithImage(squareImage, resultBlock: { (success, error) -> Void in
-                if error == nil {
-                    println( "success adding closet item" )
-                    SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
-                        if error != nil {
-                            println(error)
-                        } else {
-                            if let someClosetPhotosAgain = someClosetPhotos {
-                                self.closetPhotos = someClosetPhotosAgain
-                                self.collectionView.reloadData()
-                                self.respondToClosetPhotosChange()
-                            }
-                            
+        SPManager.sharedInstance.addMyClosetItemWithImage(squareImage, resultBlock: { (success, error) -> Void in
+            if error == nil {
+                print( "success adding closet item" )
+                SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else {
+                        if let someClosetPhotosAgain = someClosetPhotos {
+                            self.closetPhotos = someClosetPhotosAgain
+                            self.collectionView.reloadData()
+                            self.respondToClosetPhotosChange()
                         }
+                        
                     }
                 }
-            })
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-            
-        }
+            }
+        })
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
         
     }
 }

@@ -34,18 +34,18 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
     
     func setupCell(commentActivity: SPActivity){
         commentLabel.delegate = self
-        var comment : NSString = "\(commentActivity.fromUser.spDisplayName()) \(commentActivity.content)"
+        let comment : NSString = "\(commentActivity.fromUser.spDisplayName()) \(commentActivity.content)"
         commentLabel.text = comment as String
         
-        var range = comment.rangeOfString(commentActivity.fromUser.spDisplayName())
+        let range = comment.rangeOfString(commentActivity.fromUser.spDisplayName())
         currentUser = commentActivity.fromUser
         commentLabel.addLinkToURL(NSURL(string: "action://show-user"), withRange: range)
     }
     
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
-        if(url.scheme!.hasPrefix("action")){
+        if(url.scheme.hasPrefix("action")){
             if(url.host!.hasPrefix("show-user")){
-                println("SHOW USER!")
+                print("SHOW USER!")
                 
                 if let currentUser = self.currentUser{
                     self.delegate?.didSelectComment(currentUser)
@@ -53,7 +53,7 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
                 
             }
             else {
-                println("Unhandled action")
+                print("Unhandled action")
             }
         }
     }

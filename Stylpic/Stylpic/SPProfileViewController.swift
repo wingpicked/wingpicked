@@ -98,7 +98,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         
         tableView.tableHeaderView = self.headerView
         
-        var rc = UIRefreshControl()
+        let rc = UIRefreshControl()
         rc.addTarget(self, action: Selector("refreshTableView"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
 
@@ -158,7 +158,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 }
             }
             else{
-                println(error!.localizedDescription)
+                print(error!.localizedDescription)
             }
             self.refreshControl?.endRefreshing()
         })
@@ -333,14 +333,14 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     //MARK: SPProfilePostTableViewCell Delegate Methods
     func didTapPhotoOne(feedItem: SPFeedItem) {
-        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
+        let detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
         detailViewController.profileDelegate = self
         self.navigationController?.pushViewController(detailViewController, animated: true)
         
     }
     
     func didTapPhotoTwo(feedItem: SPFeedItem) {
-        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
+        let detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
         detailViewController.profileDelegate = self
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
@@ -356,12 +356,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
     
     func findFriendsButtonDidTap(sender:AnyObject?) {
-        var findFriendsController = SPFindFriendsTableViewController()
+        let findFriendsController = SPFindFriendsTableViewController()
         self.navigationController?.pushViewController(findFriendsController, animated: true)
     }
     
     func settingsButtonDidTap(sender: AnyObject!){
-        println("HI!")
+        print("HI!")
         
         let storyboard = UIStoryboard(name: "SPSettingsStoryboard", bundle: nil)
         let settingsNavigationController = storyboard.instantiateViewControllerWithIdentifier("SPSettingsStoryboard") as! UINavigationController

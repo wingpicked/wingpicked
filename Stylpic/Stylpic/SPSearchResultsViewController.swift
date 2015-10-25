@@ -53,7 +53,7 @@ class SPSearchResultsViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        SPManager.sharedInstance.getUsersWithSearchTerms(searchBar.text, resultBlock: { (users, error) -> Void in
+        SPManager.sharedInstance.getUsersWithSearchTerms(searchBar.text!, resultBlock: { (users, error) -> Void in
             
             if(error == nil){
                 if let users = users{

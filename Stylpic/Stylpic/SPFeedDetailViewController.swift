@@ -47,7 +47,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -131,7 +131,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         else // indexPath.row > 1 && indexPath.row < 2 + commentsCount){
         {
-            println("--\(commentsCount)")
+            print("--\(commentsCount)")
             let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
             cell.delegate = self
             
@@ -172,11 +172,11 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     func setupFollowButton() {
         
         if self.feedItem.photos?.user.objectId != SPUser.currentUser()!.objectId {
-            var followButtonName = self.feedItem.isCurrentUserFollowing ? "Button_following_NavBar" : "Button_follow_NavBar"
-            var rightButtonImageView = UIImageView(image:UIImage(named:followButtonName))
+            let followButtonName = self.feedItem.isCurrentUserFollowing ? "Button_following_NavBar" : "Button_follow_NavBar"
+            let rightButtonImageView = UIImageView(image:UIImage(named:followButtonName))
             rightButtonImageView.frame = CGRectMake(0,0,90, 25)
             rightButtonImageView.userInteractionEnabled = true
-            var tapRecognizer = UITapGestureRecognizer(target: self, action: "followButtonDidTap")
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: "followButtonDidTap")
             rightButtonImageView.addGestureRecognizer(tapRecognizer)
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButtonImageView)
             
@@ -211,19 +211,19 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func commentButtonTapped() {
-        var commentsViewController = self.createCommentsViewController()
+        let commentsViewController = self.createCommentsViewController()
         commentsViewController.keyboardPresentedOnLoad = true
         self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
     
     func commentsButtonTapped() {
-        var commentsViewController = self.createCommentsViewController()
+        let commentsViewController = self.createCommentsViewController()
         commentsViewController.keyboardPresentedOnLoad = false
         self.navigationController?.pushViewController(commentsViewController, animated: true)
     }
 
     func createCommentsViewController() -> SPCommentsViewController {
-        var commentsViewController = SPCommentsViewController()
+        let commentsViewController = SPCommentsViewController()
         commentsViewController.setup(self.feedItem, imageTapped:self.imageTapped)
         commentsViewController.hidesBottomBarWhenPushed = true
         commentsViewController.delegate = self
@@ -248,11 +248,11 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     func followButtonDidTap() {
         if self.feedItem.isCurrentUserFollowing {
             SPManager.sharedInstance.unfollowUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                println( "unfollowed User" )
+                print( "unfollowed User" )
             })
         } else {
             SPManager.sharedInstance.followUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                println( "followed User" )
+                print( "followed User" )
             })
         }
         

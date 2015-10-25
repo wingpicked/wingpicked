@@ -84,7 +84,7 @@ class SPCommentsViewController: SLKTextViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCommentTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCommentTableViewCell
         
-        var activity = comments[indexPath.row]
+        let activity = comments[indexPath.row]
         cell.setupCell(activity)
         //cell.commentLabel.text = activity.objectForKey("content") as! String
         cell.transform = self.tableView.transform;
@@ -118,7 +118,7 @@ class SPCommentsViewController: SLKTextViewController {
                         self.tableView.reloadData()
                     }
                 } else {
-                    println( error )
+                    print( error )
                 }
             })
             

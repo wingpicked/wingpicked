@@ -32,9 +32,9 @@ class SPProfileNotificationsTableViewCell: UITableViewCell {
             activity.notificationViewed = NSNumber( bool: true )
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println( "set activity to viewed" )
+                    print( "set activity to viewed" )
                 } else {
-                    println( error )
+                    print( error )
                 }
             })
         }

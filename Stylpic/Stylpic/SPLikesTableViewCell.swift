@@ -14,7 +14,7 @@ class SPLikesTableViewCell: UITableViewCell {
     @IBOutlet weak var followButton: UIButton!
     
     @IBAction func followButtonTapped(sender: AnyObject) {
-        println("Follow button tapped")
+        print("Follow button tapped")
     }
     
     func setupCell(activity : SPActivity){

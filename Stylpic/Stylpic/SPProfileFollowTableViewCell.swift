@@ -31,13 +31,13 @@ class SPProfileFollowTableViewCell: UITableViewCell {
             // then follow user
             SPManager.sharedInstance.followUser(self.spUser, resultBlock: { (savedObject, error) -> Void in
                 if error == nil {
-                    println( "followed user" )
+                    print( "followed user" )
                 }
             })
         } else {
             SPManager.sharedInstance.unfollowUser(self.spUser, resultBlock: { (success, error) -> Void in
                 if error == nil {
-                    println( "unfollowed user")
+                    print( "unfollowed user")
                 }
             })
         }
@@ -53,7 +53,7 @@ class SPProfileFollowTableViewCell: UITableViewCell {
     }
     
     func updateIsFollowing(isFollowing : Bool){
-        var img =  isFollowing ? UIImage(named: "Icon_following") : UIImage(named: "Icon_follow")
+        let img =  isFollowing ? UIImage(named: "Icon_following") : UIImage(named: "Icon_follow")
         followButton.setImage(img, forState: .Normal)
 
     }

@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SPBaseTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, SPFeedViewTableViewCellDelegate {
+class SPBaseTableViewController: UITableViewController, SPFeedViewTableViewCellDelegate {
 
     //var imageDataArray : [SPImage] = [];
     var allPictureObjects : [PFObject] = [];
@@ -21,7 +21,7 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
         super.viewDidLoad()
 
         //Setup Refresh Control
-        var rc = UIRefreshControl()
+        let rc = UIRefreshControl()
         rc.addTarget(self, action: Selector("downloadAllImages"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = rc;
        
@@ -61,7 +61,7 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
     override func tableView(tableView: UITableView , cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedViewTableViewCell", forIndexPath: indexPath) as! SPFeedViewTableViewCell
         
-        var feedItem = self.feedItems[indexPath.row]
+        let feedItem = self.feedItems[indexPath.row]
         cell.delegate = self
         cell.setupWithFeedItem(feedItem)
 
@@ -88,13 +88,13 @@ class SPBaseTableViewController: UITableViewController, UITableViewDataSource, U
     }
     
     func didTapPhotoOne(feedItem: SPFeedItem) {
-        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
+        let detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageOne)
         self.navigationController?.pushViewController(detailViewController, animated: true)
 
     }
     
     func didTapPhotoTwo(feedItem: SPFeedItem) {
-        var detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
+        let detailViewController = SPFeedDetailViewController(feedItem: feedItem, imageTapped: ImageIdentifier.ImageTwo)
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     

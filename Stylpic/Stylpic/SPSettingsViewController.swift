@@ -23,7 +23,7 @@ class SPSettingsViewController: UITableViewController {
     }
     
     @IBAction func logoutButtonDidTap(sender: AnyObject) {
-        println("logged out!")
+        print("logged out!")
         PFUser.logOut()
         
         UIApplication.sharedApplication().unregisterForRemoteNotifications()

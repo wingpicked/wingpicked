@@ -30,12 +30,12 @@ class SPProfileHeaderView: UIView {
         
         if self.isFollowing {
             SPManager.sharedInstance.followUser(self.user, resultBlock: { (savedObject, error) -> Void in
-                println( "followed user with \(error)" )
+                print( "followed user with \(error)" )
                 self.followButton.userInteractionEnabled = true
             })
         } else {
             SPManager.sharedInstance.unfollowUser(self.user, resultBlock: { (savedObject, error) -> Void in
-                println( "unfollowed user with error \(error)" )
+                print( "unfollowed user with error \(error)" )
                 self.followButton.userInteractionEnabled = true                
             })
         }
@@ -54,7 +54,7 @@ class SPProfileHeaderView: UIView {
     func updateIsFollowing(isFollowing : Bool){
 //        var text = isFollowing ? "Following" : "Follow"
 //        followButton.setTitle(text, forState: .Normal)
-        var img = isFollowing ? UIImage(named: "Button_following") : UIImage(named: "Button_follow")
+        let img = isFollowing ? UIImage(named: "Button_following") : UIImage(named: "Button_follow")
         followButton.setImage(img, forState: .Normal)
     }
 }

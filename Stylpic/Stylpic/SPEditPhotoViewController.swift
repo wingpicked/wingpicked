@@ -25,12 +25,12 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var imageOneTapRecogniser = UITapGestureRecognizer(target: self, action: "imageOneDidTap")
+        let imageOneTapRecogniser = UITapGestureRecognizer(target: self, action: "imageOneDidTap")
         imageOneTapRecogniser.delegate = self
         self.imageViewOne.image = self.image
         self.imageViewOne.addGestureRecognizer(imageOneTapRecogniser)
         
-        var imageTwoTapRecogniser = UITapGestureRecognizer(target: self, action: "imageTwoDidTap")
+        let imageTwoTapRecogniser = UITapGestureRecognizer(target: self, action: "imageTwoDidTap")
         imageTwoTapRecogniser.delegate = self
         self.imageViewTwo.image = self.imageTwo
         self.imageViewTwo.addGestureRecognizer(imageTwoTapRecogniser)
@@ -100,7 +100,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     @IBAction func shareImages(sender: UIButton) {        
-        var captionStringWithoutWhitespace = self.captionTextview.text.stringByTrimmingCharactersInSet( NSCharacterSet.whitespaceCharacterSet())
+        let captionStringWithoutWhitespace = self.captionTextview.text.stringByTrimmingCharactersInSet( NSCharacterSet.whitespaceCharacterSet())
         if (captionStringWithoutWhitespace as NSString).length > 0 && self.captionTextview.text != captionPlaceholder {
             SPManager.sharedInstance.saveAndPostImages(self.image, imageTwo: imageTwo, caption: self.captionTextview.text) { (success, error) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
@@ -113,7 +113,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         }
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.captionTextview.resignFirstResponder()
     }
     
@@ -149,7 +149,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     func selectPhotosDidTap(overlay: SPCameraOverlay) {
-        println("A")
+        print("A")
     }
     func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
         self.imagePickerViewController.takePicture()
@@ -163,7 +163,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     func promptForReplacementChoice() {
         let alertController = UIAlertController(title: "Replace photo by:", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Taking New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
-            println( "take new photo tapped " )
+            print( "take new photo tapped " )
             self.overlayView.titleLabel.text = "Replace"
             
             self.imagePickerViewController.sourceType = .Camera
@@ -174,7 +174,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         }
         
         let fromPhotoAlbumnAction = UIAlertAction(title: "Selecting From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
-            println( "photo albumn did select")
+            print( "photo albumn did select")
             self.imagePickerViewController.sourceType = .PhotoLibrary
             self.presentViewController( self.imagePickerViewController, animated: true, completion: nil )
         }
@@ -191,7 +191,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
         var imageOrientation = UIImageOrientation.Up
         let squareDimension = originalImage.size.width > originalImage.size.height ? originalImage.size.height : originalImage.size.width
@@ -202,21 +202,18 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
 
         let photoX = (originalImage.size.width - squareDimension) / 2
         let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
-        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect)!;
         let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
         
         //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
         //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
-        
-        if let squareImage = squareImage{
-            if replaceImage == .ImageOne {
-                self.imageViewOne.image = squareImage
-                self.image = squareImage
-            } else {
-                // must be image two
-                self.imageViewTwo.image = squareImage
-                self.imageTwo = squareImage
-            }
+        if replaceImage == .ImageOne {
+            self.imageViewOne.image = squareImage
+            self.image = squareImage
+        } else {
+            // must be image two
+            self.imageViewTwo.image = squareImage
+            self.imageTwo = squareImage
         }
         
         self.dismissCamera( SPCameraOverlay() )

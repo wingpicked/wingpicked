@@ -36,7 +36,7 @@ class SPFindFriendsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
-        var user = self.facebookFriendsUsingApp?[indexPath.row]
+        let user = self.facebookFriendsUsingApp?[indexPath.row]
         cell.setupCell( user! )
         return cell
     }

@@ -43,12 +43,12 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         self.actualContentView.layer.shadowRadius = 2.0
         self.actualContentView.layer.shadowOffset = CGSizeMake(0.0, 2.0)
         self.actualContentView.layer.shadowOpacity = 0.3
-        var shadowFrame = actualContentView.layer.bounds
-        var shadowPath = UIBezierPath(rect: shadowFrame).CGPath
+        let shadowFrame = actualContentView.layer.bounds
+        let shadowPath = UIBezierPath(rect: shadowFrame).CGPath
         actualContentView.layer.shadowPath = shadowPath; //performance
         
         profilePictureImageView.userInteractionEnabled = true
-        var tap1 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
+        let tap1 = UITapGestureRecognizer(target: self, action: "userInfoDidTap:")
         profilePictureImageView.addGestureRecognizer(tap1)
         
         self.postedTimeLabel.preferredMaxLayoutWidth = 72
@@ -112,20 +112,20 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     
     
     @IBAction func imageOneLiked(sender: AnyObject) {
-        println( "in imageOneliked" )
+        print( "in imageOneliked" )
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
             imageOneLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
 
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageOne, photoPair: self.feedItem?.photos) { (success, error) -> Void in
                 if success {
-                    println( "saving like was a success" )
+                    print( "saving like was a success" )
                 } else {
-                    println( "save like failed" )
+                    print( "save like failed" )
                 }
                 
                 if error != nil {
-                    println( error )
+                    print( error )
                 }
             }
             
@@ -140,19 +140,19 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     }
 
     @IBAction func imageTwoLiked(sender: AnyObject) {
-        println( "in imageTwoliked" )
+        print( "in imageTwoliked" )
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
             self.imageTwoLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             self.imageOneLikeButton.hidden = true
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageTwo, photoPair: self.feedItem?.photos) { (success, error) -> Void in
                 if success {
-                    println( "saving like was a success" )
+                    print( "saving like was a success" )
                 } else {
-                    println( "save like failed" )
+                    print( "save like failed" )
                 }
                 
                 if error != nil {
-                    println( error )
+                    print( error )
                 }
             }
             if let feedItem = self.feedItem {
@@ -171,7 +171,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     
     func updatePercentages() {
         if let feedItem = self.feedItem {
-            var totalLikes = Double(feedItem.likesCountOne + feedItem.likesCountTwo)
+            let totalLikes = Double(feedItem.likesCountOne + feedItem.likesCountTwo)
             feedItem.percentageLikedOne = Int(100 * Double(feedItem.likesCountOne) / totalLikes)
             feedItem.percentageLikedTwo = Int(100 * Double(feedItem.likesCountTwo) / totalLikes)
             self.imageOnePercentLabel.text = NSString( format:"%d", Int(feedItem.percentageLikedOne) ) as String

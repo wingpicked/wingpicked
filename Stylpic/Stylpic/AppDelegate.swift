@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainTabBarVC = storyboard.instantiateViewControllerWithIdentifier("MainIdentifier") as! UIViewController
+            let mainTabBarVC = storyboard.instantiateViewControllerWithIdentifier("MainIdentifier") 
             self.window?.rootViewController = mainTabBarVC
         }
         
@@ -58,12 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var noPushPayload = false;
         
         if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+            let userNotificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
             let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         } else {
-            let notificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+            let notificationType: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
             let settings = UIUserNotificationSettings(forTypes: notificationType, categories: nil)
             application.registerUserNotificationSettings(settings)
         }
@@ -102,9 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         if error.code == 3010 {
-            println("Push notifications are not supported in the iOS Simulator.")
+            print("Push notifications are not supported in the iOS Simulator.")
         } else {
-            println("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
         }
     }
     
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
     }
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     }
 }

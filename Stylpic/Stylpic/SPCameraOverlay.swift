@@ -51,7 +51,7 @@ class SPCameraOverlay: UIView {
     
     @IBAction func flashButtonDidTap(sender: AnyObject) {
         flashEnabled = !flashEnabled
-        var flashImage = flashEnabled ? UIImage(named: "Icon_flash_on") : UIImage(named: "Icon_flash")
+        let flashImage = flashEnabled ? UIImage(named: "Icon_flash_on") : UIImage(named: "Icon_flash")
         self.flashButton.setImage(flashImage, forState: UIControlState.Normal)
         self.delegate?.flashButtonDidTap(self)
     }
@@ -71,7 +71,7 @@ class SPCameraOverlay: UIView {
     func pickingTheLastImageFromThePhotoLibrary() {
         let assetsLibrary: ALAssetsLibrary = ALAssetsLibrary()
         assetsLibrary.enumerateGroupsWithTypes(ALAssetsGroupSavedPhotos,
-            usingBlock: { (let group: ALAssetsGroup!, var stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+            usingBlock: { (let group: ALAssetsGroup!, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
                 if (group != nil) {
                     // Be sure to filter the group so you only get photos
                     group.setAssetsFilter(ALAssetsFilter.allPhotos())
@@ -79,7 +79,7 @@ class SPCameraOverlay: UIView {
                     group.enumerateAssetsWithOptions(NSEnumerationOptions.Reverse,
                         usingBlock: { (let asset: ALAsset!,
                             let index: Int,
-                            var stop: UnsafeMutablePointer<ObjCBool>)
+                            stop: UnsafeMutablePointer<ObjCBool>)
                             -> Void in
                             if(asset != nil) {
                                 /*
@@ -110,7 +110,7 @@ class SPCameraOverlay: UIView {
                 stop.memory = ObjCBool(false)
             })
             { (let error: NSError!) -> Void in
-                println("A problem occurred: \(error.localizedDescription)")
+                print("A problem occurred: \(error.localizedDescription)")
         }
     }
 }

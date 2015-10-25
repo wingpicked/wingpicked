@@ -50,23 +50,23 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     
     func showImageSelectionChoicesActionSheet() {
-        var actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "From My Closet", "From Photo Album")
+        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "From My Closet", "From Photo Album")
         actionSheet.showInView(self.view)
     }
     
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        println("Button Index: \(buttonIndex)")
+        print("Button Index: \(buttonIndex)")
         
         if (buttonIndex == 1) {
             // from my closet selected
-            println( "TODO: ask for mockups of closet image selection method" )
+            print( "TODO: ask for mockups of closet image selection method" )
             
         } else if (buttonIndex == 2) {
             // from camera roll selected
             let libraryPickerDidStart = self.shouldStartPhotoLibraryPickerController()
             if !libraryPickerDidStart {
-                var needsPhotoAccessController = UIAlertView(title: "Error", message: "Access to Photos not granted", delegate: nil, cancelButtonTitle: "Ok")
+                let needsPhotoAccessController = UIAlertView(title: "Error", message: "Access to Photos not granted", delegate: nil, cancelButtonTitle: "Ok")
                 needsPhotoAccessController.show()
             }
         }
@@ -123,7 +123,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         return true
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
         var imageOrientation = UIImageOrientation.Up
         let squareDimension = originalImage.size.width > originalImage.size.height ? originalImage.size.height : originalImage.size.width
@@ -134,11 +134,11 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
 
         let photoX = (originalImage.size.width - squareDimension) / 2
         let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
-        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect)!;
         let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
         if let constUserPhotoOne = self.userPhotoOne {
             self.userPhotoTwo = squareImage;
-            var editPhotoStoryboard = UIStoryboard(name: "SPEditPhotoStoryboard", bundle: nil)
+            let editPhotoStoryboard = UIStoryboard(name: "SPEditPhotoStoryboard", bundle: nil)
             var editPhotoController = editPhotoStoryboard.instantiateViewControllerWithIdentifier("SPEditPhotoViewController") as! SPEditPhotoViewController
             self.imageViewOne.image = self.userPhotoOne
             self.imageViewTwo.image = self.userPhotoTwo
@@ -186,7 +186,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     }
     
     func dismissCamera( overlay: SPCameraOverlay ) {
-        println("AYYY")
+        print("AYYY")
     }
     
     

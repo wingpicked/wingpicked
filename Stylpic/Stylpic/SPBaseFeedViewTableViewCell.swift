@@ -36,9 +36,9 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         
         pictureImageView.userInteractionEnabled = true
         pictureImageView2.userInteractionEnabled = true
-        var tap1 = UITapGestureRecognizer(target: self, action: Selector("imageOneTapped:"))
+        let tap1 = UITapGestureRecognizer(target: self, action: Selector("imageOneTapped:"))
         pictureImageView.addGestureRecognizer(tap1)
-        var tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
+        let tap2 = UITapGestureRecognizer(target: self, action: Selector("imageTwoTapped:"))
         pictureImageView2.addGestureRecognizer(tap2)
     }
 

@@ -36,16 +36,16 @@ class SPManager: NSObject {
     
     //MARK: Items
     func getFeedItems( page: UInt, resultsBlock: SPFeedItemsResultBlock ) {
-        var params = [ "page": page ]
+        let params = [ "page": page ]
         PFCloud.callFunctionInBackground( "getFeedItemsForPageV3", withParameters: params) { (payload, error) -> Void in
             if error == nil {
                 var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
-                println( payloadObject )
+                print( payloadObject )
                 
-                var serverFeedItems: Array = payloadObject[ "feedItems" ]!
+                let serverFeedItems: Array = payloadObject[ "feedItems" ]!
                 var feedItems = Array<SPFeedItem>()
                 for aServerFeedItem in serverFeedItems {                    
-                    var feedItem = SPFeedItem()
+                    let feedItem = SPFeedItem()
                     feedItem.setupWithServerFeedItem( aServerFeedItem )
                     feedItems.append( feedItem )
                 }
@@ -62,12 +62,12 @@ class SPManager: NSObject {
         PFCloud.callFunctionInBackground( "fetchExploreInfo", withParameters: params) { (payload:AnyObject?, error:NSError?) -> Void in
             if error == nil {
                 var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
-                println( payloadObject )
+                print( payloadObject )
                 
-                var serverFeedItems: Array = payloadObject[ "feedItems" ]!
+                let serverFeedItems: Array = payloadObject[ "feedItems" ]!
                 var feedItems = Array<SPFeedItem>()
                 for aServerFeedItem in serverFeedItems {
-                    var feedItem = SPFeedItem()
+                    let feedItem = SPFeedItem()
                     feedItem.setupWithServerFeedItem( aServerFeedItem )
                     feedItems.append( feedItem )
                 }
@@ -86,15 +86,15 @@ class SPManager: NSObject {
             
             PFCloud.callFunctionInBackground( "fetchProfileInfo", withParameters: params) { (payload, error) -> Void in
                 if error == nil {
-                    println( payload )
+                    print( payload )
                     //println( payload as! SPProfileInfo)
-                    var serverProfileInfo = payload![ "profileInfo" ] as! [String: AnyObject]
-                    var profileInfo = SPProfileInfo()
+                    let serverProfileInfo = payload![ "profileInfo" ] as! [String: AnyObject]
+                    let profileInfo = SPProfileInfo()
                     profileInfo.setupWithServerInfo( serverProfileInfo )
                     resultBlock(profileObject: profileInfo, error: nil )
                     
                 } else {
-                    println( error )
+                    print( error )
                     resultBlock( profileObject: nil, error: error)
                 }
 //                MRProgressOverlayView.dismissOverlayForView(UIApplication.sharedApplication().delegate?.window!, animated: true)
@@ -102,9 +102,9 @@ class SPManager: NSObject {
                 
             }
         } else {
-            println( "user was nil" )
-            var userInfo = [ "message": "follow did not happen because user was nil" ]
-            var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
+            print( "user was nil" )
+            let userInfo = [ "message": "follow did not happen because user was nil" ]
+            let error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( profileObject: nil, error:error )
         }
         
@@ -112,7 +112,7 @@ class SPManager: NSObject {
     
     func getMyClosetItemsWithResultBlock( resultBlock:SPClosetPhotosResultBlock ) {
 //        self.displayLoadingIndicator(true)
-        var usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
+        let usersPhotosQuery = PFQuery( className: "ClosetPhoto" )
         //usersPhotosQuery.cachePolicy = kPFCachePolicyCacheThenNetwork
         usersPhotosQuery.includeKey( "user" )
         usersPhotosQuery.includeKey( "photo" )
@@ -122,7 +122,7 @@ class SPManager: NSObject {
         usersPhotosQuery.orderByDescending("updatedAt")
         usersPhotosQuery.findObjectsInBackgroundWithBlock { (someClosetPhotos, anError) -> Void in
             if anError == nil && someClosetPhotos != nil {
-                var spClosetPhotos = someClosetPhotos as! [SPClosetPhoto]
+                let spClosetPhotos = someClosetPhotos as! [SPClosetPhoto]
                 resultBlock( closetPhotos: spClosetPhotos, error: nil )
             } else {
                 resultBlock( closetPhotos: nil, error: anError )
@@ -135,7 +135,7 @@ class SPManager: NSObject {
     
     func addMyClosetItemWithImage( image:UIImage, resultBlock: PFBooleanResultBlock ) {
         var imageData = UIImageJPEGRepresentation(image, 0.05)
-        var imageFile = PFFile(name: "Image.jpg", data: imageData)
+        var imageFile = PFFile(name: "Image.jpg", data: imageData!)
         imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
                 var photoOne = SPPhoto()
@@ -162,7 +162,7 @@ class SPManager: NSObject {
     
     func fetchComments(photoPair: PFObject, imageTapped: ActivityType, resultBlock: SPPFObjectArrayResultBlock) {
 
-        var commentQuery = PFQuery( className: "Activity" )
+        let commentQuery = PFQuery( className: "Activity" )
         commentQuery.includeKey("fromUser")
         commentQuery.includeKey("photoPair")
         commentQuery.includeKey("photoPair.user")
@@ -175,20 +175,20 @@ class SPManager: NSObject {
         
         commentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                println( objects )
-                var arrayPFObject = objects as! Array<SPActivity>
+                print( objects )
+                let arrayPFObject = objects as! Array<SPActivity>
                 resultBlock(comments: arrayPFObject, error: nil)
             } else {
-                println( error )
+                print( error )
             }
         }
     }
     
     func postComment( activityType: ActivityType, photoPair:PFObject?,  comment: String?, resultBlock: SPPFObjectResultsBlock) {
         if let photoPair = photoPair {
-            var photosOwner = photoPair.objectForKey( "user" ) as! SPUser
-            var fromUser = SPUser.currentUser()
-            var activity = SPActivity()
+            let photosOwner = photoPair.objectForKey( "user" ) as! SPUser
+            let fromUser = SPUser.currentUser()
+            let activity = SPActivity()
             activity.fromUser = fromUser
             activity.toUser = photosOwner
             activity.photoPair = photoPair as! SPPhotoPair
@@ -198,11 +198,11 @@ class SPManager: NSObject {
             activity.content = comment
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println( "saved comment activity" )
+                    print( "saved comment activity" )
                     resultBlock( savedObject: activity, error: error )
                     NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                 } else {
-                    println( error )
+                    print( error )
                 }
             })
         }
@@ -210,9 +210,9 @@ class SPManager: NSObject {
 
     func likePhoto( activityType: ActivityType, photoPair: PFObject?, resultBlock: SPBoolResultBlock ) {
         if let photoPair = photoPair {
-            var photosOwner = photoPair.objectForKey( "user" ) as! SPUser
-            var fromUser = SPUser.currentUser()
-            var activity = SPActivity()
+            let photosOwner = photoPair.objectForKey( "user" ) as! SPUser
+            let fromUser = SPUser.currentUser()
+            let activity = SPActivity()
             activity.fromUser = fromUser
             activity.toUser = photosOwner
             activity.photoPair = photoPair as! SPPhotoPair
@@ -224,12 +224,12 @@ class SPManager: NSObject {
                     NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock(success: success, error: error)
                 } else {
-                    println( error )
+                    print( error )
                 }
             }
         } else {
-            var userInfo = [ "message": "could not save photo because photopair did not exist" ]
-            var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
+            let userInfo = [ "message": "could not save photo because photopair did not exist" ]
+            let error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( success: false, error: error )
         }
     }
@@ -237,8 +237,8 @@ class SPManager: NSObject {
     
     func followUser(user: SPUser?, resultBlock: SPPFObjectResultsBlock ) {
         if let user = user {
-            var fromUser = SPUser.currentUser()
-            var activity = SPActivity()
+            let fromUser = SPUser.currentUser()
+            let activity = SPActivity()
             activity.fromUser = fromUser
             activity.toUser = user
             activity.isArchiveReady = false
@@ -246,18 +246,18 @@ class SPManager: NSObject {
             activity.type = ActivityType.Follow.rawValue
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println( "saved follow ativity" )
+                    print( "saved follow ativity" )
                     NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock( savedObject: activity, error: error )
                 } else {
-                    println( error )
+                    print( error )
                     resultBlock( savedObject: nil, error: error )
                 }
             })
         } else {
-            println( "user was nil" )
-            var userInfo = [ "message": "follow did not happen because user was nil" ]
-            var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
+            print( "user was nil" )
+            let userInfo = [ "message": "follow did not happen because user was nil" ]
+            let error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( savedObject: nil, error: error )
         }
     }
@@ -265,8 +265,8 @@ class SPManager: NSObject {
     
     func unfollowUser( user: PFUser?, resultBlock:PFBooleanResultBlock ) {
         if let user = user {
-            var fromUser = SPUser.currentUser()
-            var activityQuery = PFQuery( className: "Activity" )
+            let fromUser = SPUser.currentUser()
+            let activityQuery = PFQuery( className: "Activity" )
             activityQuery.whereKey( "fromUser", equalTo: fromUser! )
             activityQuery.whereKey( "toUser", equalTo: user )
             activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
@@ -283,9 +283,9 @@ class SPManager: NSObject {
                 })
             })
         } else {
-            println( "user was nil" )
-            var userInfo = [ "message": "follow did not happen because user was nil" ]
-            var error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
+            print( "user was nil" )
+            let userInfo = [ "message": "follow did not happen because user was nil" ]
+            let error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( false, error )
         }
     }
@@ -294,34 +294,34 @@ class SPManager: NSObject {
         closetPhoto.isVisible = NSNumber( bool: false )
         closetPhoto.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
-                println( "removed closet photo" )
+                print( "removed closet photo" )
             } else {
-                println( error )
+                print( error )
             }
         }
     }
     
     func removePostWithPhotoPairObjectId( photoPairObjectId: String, resultBlock: SPBoolResultBlock ) {
-        var params = [ "photoPairObjectId": photoPairObjectId ]
+        let params = [ "photoPairObjectId": photoPairObjectId ]
         PFCloud.callFunctionInBackground( "removeFeedItem", withParameters: params) { (payload, error) -> Void in
             if error == nil {
-                println( payload )
+                print( payload )
                 resultBlock(success: true, error: nil)
             } else {
-                println( error )
+                print( error )
                 resultBlock(success: false, error: error)
             }
         }
     }
     
     func getPhotoPairLikes( photoPairObjectId:String, likesPhotoIdentifier:ActivityType, resultBlock:SPActivityResultBlock ) {
-        var params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(unsignedInteger:likesPhotoIdentifier.rawValue) ]
+        let params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(unsignedInteger:likesPhotoIdentifier.rawValue) ]
         PFCloud.callFunctionInBackground("photoPairLikes", withParameters: params) { (payload, error) -> Void in
             if error == nil {
-                var likes = payload!["likes"] as! [SPActivity]
+                let likes = payload!["likes"] as! [SPActivity]
                 resultBlock(activities: likes, error: nil)
             } else {
-                println( error )
+                print( error )
                 resultBlock( activities: nil, error: error)
             }
         }
@@ -331,15 +331,15 @@ class SPManager: NSObject {
     
     // parma searchTerms is a string of all the search terms seperated by spaces
     func getUsersWithSearchTerms( searchTerms:String, resultBlock:SPUsersResultBlock ) {
-        var seperatedSearchTerms = searchTerms.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        var params = [ "searchTerms": seperatedSearchTerms ]
+        let seperatedSearchTerms = searchTerms.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let params = [ "searchTerms": seperatedSearchTerms ]
         PFCloud.callFunctionInBackground("usersWithSearchTerms", withParameters: params) { (users, error) -> Void in
             if error == nil {
-                var someUsers = users![ "users" ] as! [SPUser]
-                println( someUsers );
+                let someUsers = users![ "users" ] as! [SPUser]
+                print( someUsers );
                 resultBlock( users: someUsers, error: nil )
             } else {
-                println( error )
+                print( error )
                 resultBlock( users: nil, error: error )
             }
         }
@@ -349,24 +349,24 @@ class SPManager: NSObject {
     
     //Low priority
     func getFacebookFriendsWithApp( resultBlock:SPUsersResultBlock  ) {
-        var friendsRequest = FBRequest(graphPath: "me/friends", parameters: ["fields":"id,name,installed" ], HTTPMethod: "GET")
+        let friendsRequest = FBRequest(graphPath: "me/friends", parameters: ["fields":"id,name,installed" ], HTTPMethod: "GET")
         friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
             if error == nil {
-                println( result )
+                print( result )
                 var facebookIds = [String]()
-                var friendDatas = result["data"] as! [AnyObject]
+                let friendDatas = result["data"] as! [AnyObject]
                 if friendDatas.count > 0 {
                     for friendData in friendDatas {
-                        var aFacebookId = friendData["id"] as! String
+                        let aFacebookId = friendData["id"] as! String
                         facebookIds.append( aFacebookId )
                     }
                     
-                    var userQuery = PFUser.query()
+                    let userQuery = PFUser.query()
                     userQuery!.limit = facebookIds.count
                     userQuery!.whereKey("facebookId", containedIn:facebookIds)
                     userQuery!.findObjectsInBackgroundWithBlock({ (users, error) -> Void in
                         if error == nil {
-                            var parseUsers = users as! [SPUser]
+                            let parseUsers = users as! [SPUser]
                             if parseUsers.count > 0 {
                                 var userForFollowingInfo = [String: SPUser]()
                                 for spUser in parseUsers {
@@ -377,15 +377,15 @@ class SPManager: NSObject {
                                 self.followingActivitiesWithCandidateUsers( parseUsers, resultBlock: { (followingActivities, error) -> Void in
                                     if error == nil {
                                         for activity in followingActivities! {
-                                            var spActivity = activity
-                                            var followingUser = spActivity.toUser
-                                            var aFollowingInfo = userForFollowingInfo[ followingUser.objectId! ]
+                                            let spActivity = activity
+                                            let followingUser = spActivity.toUser
+                                            let aFollowingInfo = userForFollowingInfo[ followingUser.objectId! ]
                                             aFollowingInfo!.isFollowing = NSNumber(bool: true)
                                         }
                                         
                                         resultBlock( users: parseUsers, error: nil )
                                     } else {
-                                        println( error )
+                                        print( error )
                                         resultBlock( users: nil, error: error)
                                     }
                                 })
@@ -395,7 +395,7 @@ class SPManager: NSObject {
                                 resultBlock( users: [SPUser](), error: nil)
                             }
                         } else {
-                            println( error )
+                            print( error )
                             resultBlock( users: nil, error: error)
                         }
                     })
@@ -404,7 +404,7 @@ class SPManager: NSObject {
                 }
                 
             } else {
-                println( error )
+                print( error )
                 resultBlock( users: nil, error: error)
             }
         }
@@ -413,8 +413,8 @@ class SPManager: NSObject {
     
     
     func followingActivitiesWithCandidateUsers( candidateFollowingUsers: [SPUser], resultBlock: SPActivityResultBlock ) {
-        var fromUser = SPUser.currentUser()
-        var activityQuery = PFQuery( className: "Activity" )
+        let fromUser = SPUser.currentUser()
+        let activityQuery = PFQuery( className: "Activity" )
         activityQuery.includeKey("fromUser")
         activityQuery.includeKey("toUser")
         activityQuery.includeKey("photoPair")
@@ -425,10 +425,10 @@ class SPManager: NSObject {
         activityQuery.whereKey( "isArchiveReady", equalTo: false )
         activityQuery.findObjectsInBackgroundWithBlock { (activities, error) -> Void in
             if error == nil {
-                var foundActivities = activities as! [SPActivity]
+                let foundActivities = activities as! [SPActivity]
                 resultBlock( activities: foundActivities, error: error )
             } else {
-                println( error )
+                print( error )
                 resultBlock( activities: nil, error: error )
             }
         }
@@ -468,42 +468,42 @@ class SPManager: NSObject {
     
     
     func finishPostingWithFileOne( fileOne:PFFile, fileTwo:PFFile, caption: String, resultsBlock:PFBooleanResultBlock ) {
-        var photoOne = SPPhoto()
+        let photoOne = SPPhoto()
         photoOne.photo = fileOne
         photoOne.photoThumbnail = fileOne
         
-        var photoTwo = SPPhoto()
+        let photoTwo = SPPhoto()
         photoTwo.photo = fileTwo
         photoTwo.photoThumbnail = fileTwo
 
         
-        var pfObjects = [photoOne, photoTwo]
+        let pfObjects = [photoOne, photoTwo]
         PFObject.saveAllInBackground(pfObjects, block: { (success, error) -> Void in
             if error == nil {
                 
-                var photoPair = SPPhotoPair()
+                let photoPair = SPPhotoPair()
                 photoPair.photoOne = photoOne
                 photoPair.photoTwo = photoTwo
                 photoPair.caption = caption
                 photoPair.user = SPUser.currentUser()
                 photoPair.isArchiveReady = false
                 
-                var closetPhotoOne = SPClosetPhoto()
+                let closetPhotoOne = SPClosetPhoto()
                 closetPhotoOne.isVisible = true
                 closetPhotoOne.user = SPUser.currentUser()
                 closetPhotoOne.photo = photoOne                
                 
-                var closetPhotoTwo = SPClosetPhoto()
+                let closetPhotoTwo = SPClosetPhoto()
                 closetPhotoTwo.isVisible = true
                 closetPhotoTwo.user = SPUser.currentUser()
                 closetPhotoTwo.photo = photoTwo
                 
-                var morePFObjects = [ photoPair, closetPhotoOne, closetPhotoTwo ]
+                let morePFObjects = [ photoPair, closetPhotoOne, closetPhotoTwo ]
                 PFObject.saveAllInBackground(morePFObjects, block: { (success, error) -> Void in
                     resultsBlock( success, error )
                 })
             } else {
-                println( error )
+                print( error )
             }
         })
 
@@ -516,9 +516,9 @@ class SPManager: NSObject {
             var isImageOneSaved = false
             var isImageTwoSaved = false
             var imageData = UIImageJPEGRepresentation(imageOne, 0.05)
-            var imageFile = PFFile(name: "Image.jpg", data: imageData)
+            var imageFile = PFFile(name: "Image.jpg", data: imageData!)
             var imageDataTwo = UIImageJPEGRepresentation(imageTwo, 0.05)
-            var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo)
+            var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo!)
             
             imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                 if error == nil {
@@ -532,7 +532,7 @@ class SPManager: NSObject {
                         })
                     }
                 } else {
-                    println( error )
+                    print( error )
                 }
             }
 
@@ -546,12 +546,12 @@ class SPManager: NSObject {
                         })
                     }
                 } else {
-                    println( error )
+                    print( error )
                 }
             }
         } else {
             var errorMessage = "ERROR: one or the other image is nil passed to saveImages so can't save images"
-            println( errorMessage )
+            print( errorMessage )
             resultsBlock( false, NSError(domain:"com.Stylpic", code: -1001, userInfo:[ "error": errorMessage ] ) )
         }
     }
@@ -584,16 +584,14 @@ class SPManager: NSObject {
         request.startWithCompletionHandler { (connection, result, error) -> Void in
             //TODO: Need to test this facebook user invalidation testing out.
             if let error = error{
-                if let userInfo = error.userInfo{
-                    if let cError = userInfo["error"] as? NSDictionary{
+                    if let cError = error.userInfo["error"] as? NSDictionary{
                         if let type = cError["type"] as? String{
                             if type == "OAuthException"{
-                                println("FB Session was invalidated.")
+                                print("FB Session was invalidated.")
                                 //self.logoutButtonTouchUpInside(nil)
                             }
                         }
                     }
-                }
             }
             else
             {
@@ -606,11 +604,11 @@ class SPManager: NSObject {
                 var request = NSURLRequest(URL: pictureURL!)
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
                     if (connectionError == nil && data != nil) {
-                        var profilePicture = PFFile(name: "ProfilePicture", data: data)
+                        var profilePicture = PFFile(name: "ProfilePicture", data: data!)
                         user.setObject(profilePicture, forKey: "profilePicture")
                         user.saveInBackgroundWithBlock({ (success, error) -> Void in
                             if(error != nil){
-                                println(error)
+                                print(error)
                             }
                         })
                     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabBarDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate, SPPhotoConfirmationViewControllerDelegate, SPCameraClosetViewControllerDelegate {
+class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate, SPPhotoConfirmationViewControllerDelegate, SPCameraClosetViewControllerDelegate {
 
     let imagePickerViewController = UIImagePickerController()
     let imagePickerViewControllerSecondPhoto = UIImagePickerController()
@@ -37,7 +37,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         self.tabBar.tintColor = iconTintColor
         self.addCenterButton(UIImage(named: "Icon_post")!, highlightImage: UIImage(named: "Icon_post")!, target: self, action: Selector("buttonPressed:"))
         
-        for vc in self.viewControllers as! [UIViewController]{
+        for vc in self.viewControllers! as! [UIViewController]{
             vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -7, 0);
         }
 
@@ -74,8 +74,8 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     }
     
     func updateProfileBadgeNumber() {
-        var badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
-        for viewController in self.viewControllers as! [UIViewController] {
+        let badgeNum = UIApplication.sharedApplication().applicationIconBadgeNumber
+        for viewController in self.viewControllers! as [UIViewController] {
             if viewController.restorationIdentifier == "SPProfileNavigationController" {
                 if badgeNum > 0 {
                     viewController.tabBarItem.badgeValue = String( badgeNum )
@@ -88,14 +88,14 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     
      func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         if viewController.restorationIdentifier == "SPProfileNavigationController" {
-            var profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
+            let profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
             profileViewController.showWithUser(SPUser.currentUser()!)
         }
     }
     
     func addCenterButton(buttonImage: UIImage, highlightImage: UIImage, target:AnyObject, action:Selector){
-        var button = UIButton()
-        button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | .FlexibleLeftMargin | .FlexibleBottomMargin | .FlexibleTopMargin
+        let button = UIButton()
+        button.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, .FlexibleLeftMargin, .FlexibleBottomMargin, .FlexibleTopMargin]
         
         button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height)
         
@@ -195,7 +195,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         
 
         let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
-            println( "photo albumn did select")
+            print( "photo albumn did select")
             if overlay == self.overlayView {
                 self.imagePickerViewController.sourceType = .PhotoLibrary
             } else if overlay == self.overlayViewSecondPhoto {
@@ -236,7 +236,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[ UIImagePickerControllerOriginalImage ] as! UIImage
         var imageOrientation = UIImageOrientation.Up
         let squareDimension = originalImage.size.width > originalImage.size.height ? originalImage.size.height : originalImage.size.width
@@ -247,15 +247,12 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
 
         let photoX = (originalImage.size.width - squareDimension) / 2
         let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
-        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect);
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect)!;
         let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
         
         //TODO: Comment this in when we want photos to save to album.  Really annoying right now..
         //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
-        
-        if let squareImage = squareImage{
-            capturedImages.append(squareImage)
-        }
+        capturedImages.append(squareImage)
         
         self.showConfirmationView()
 
@@ -291,7 +288,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UITabB
     }
     
     func nextSendButtonDidTap() {
-        var postPhotoViewController = SPEditPhotoViewController(nibName:"SPEditPhotoViewController", bundle: nil)
+        let postPhotoViewController = SPEditPhotoViewController(nibName:"SPEditPhotoViewController", bundle: nil)
         postPhotoViewController.image = capturedImages[0];
         postPhotoViewController.imageTwo = capturedImages[1];
         self.imagePickerViewControllerSecondPhoto.pushViewController(postPhotoViewController, animated: true)
