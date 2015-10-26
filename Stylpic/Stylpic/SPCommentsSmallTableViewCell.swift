@@ -22,7 +22,7 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
         super.awakeFromNib()
         // Initialization code
 //        commentLabel.linkAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
-//        commentLabel.activeLinkAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
+//        commentLabel.activeLinkAttributes = [NSForegroundColorAttributeName : UIColor.purpleColor()]
         
 //        self.commentLabel.linkAttributes = [NSForegroundColorAttributeName: UIColor.purpleColor(),
 //            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone]
@@ -40,6 +40,7 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
         let range = comment.rangeOfString(commentActivity.fromUser.spDisplayName())
         currentUser = commentActivity.fromUser
         commentLabel.addLinkToURL(NSURL(string: "action://show-user"), withRange: range)
+        
     }
     
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
