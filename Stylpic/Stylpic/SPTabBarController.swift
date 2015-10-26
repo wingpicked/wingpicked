@@ -30,15 +30,15 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var backgroundColor = UIColor(red: 25/255, green: 37/255, blue: 44/255, alpha: 1.0)
-        var iconTintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
-        var backgroundImage = UIImage(fromColor: backgroundColor, forSize: CGSizeMake(320, 49), withCornerRadius: 0)
+        let backgroundColor = UIColor(red: 25/255, green: 37/255, blue: 44/255, alpha: 1.0)
+        let iconTintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
+        let backgroundImage = UIImage(fromColor: backgroundColor, forSize: CGSizeMake(320, 49), withCornerRadius: 0)
         self.tabBar.backgroundImage = backgroundImage
         self.tabBar.translucent = false
         self.tabBar.tintColor = iconTintColor
         self.addCenterButton(UIImage(named: "Icon_post")!, highlightImage: UIImage(named: "Icon_post")!, target: self, action: Selector("buttonPressed:"))
         
-        for vc in self.viewControllers! as! [UIViewController]{
+        for vc in self.viewControllers!{
             vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -7, 0);
         }
 
@@ -179,7 +179,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         let takeNewAction = UIAlertAction(title: "From My Closet", style: UIAlertActionStyle.Default) { (action) -> Void in
             let myClosetViewController = SPCameraClosetViewController()
             myClosetViewController.delegate = self
-            var closetView = myClosetViewController.view
+//            var closetView = myClosetViewController.view
             myClosetViewController.navigationItem.rightBarButtonItem = nil
             if overlay == self.overlayView {
                 self.imagePickerViewController.pushViewController(myClosetViewController, animated: true)
@@ -258,7 +258,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     
     func showConfirmationView() {
         if(capturedImages.count >= 2){
-            var confirmView = confirmationViewControllerSecondPhoto.view
+//            var confirmView = confirmationViewControllerSecondPhoto.view
             confirmationViewControllerSecondPhoto.photo.image = capturedImages[1]
             confirmationViewControllerSecondPhoto.nextCameraButton.hidden = true
             confirmationViewControllerSecondPhoto.nextSendButton.hidden = false
@@ -269,7 +269,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         } else {
             
             //            self.imagePickerViewController.pushViewController(confirmationStoryboard, animated: true)
-            var confirmView = confirmationViewController.view
+//            var confirmView = confirmationViewController.view
             confirmationViewController.photo.image = capturedImages[0]
             //                self.imagePickerViewController.presentViewController(confirmationStoryboard, animated: true, completion: nil)
             self.imagePickerViewController.pushViewController(confirmationViewController, animated: true)

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="CaviarDreams_Bold.ttf">
+            <string>CaviarDreams-Bold</string>
+            <string>CaviarDreams-Bold</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
         </mutableArray>
@@ -26,6 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="45Z-me-hP9" id="asW-iL-Q99">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="226.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mr3-3f-4JW">
@@ -114,59 +114,23 @@
                                 <rect key="frame" x="0.0" y="191" width="308" height="19"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="555K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYS-qL-hzc">
-                                        <rect key="frame" x="40" y="2" width="26" height="15"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="66K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDO-Kj-14J">
-                                        <rect key="frame" x="124" y="2" width="26" height="15"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <rect key="frame" x="71" y="2" width="26" height="15"/>
+                                        <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="11"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_feed" translatesAutoresizingMaskIntoConstraints="NO" id="uX3-0k-I3W">
-                                        <rect key="frame" x="26" y="5" width="10" height="10"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_heart_feed" translatesAutoresizingMaskIntoConstraints="NO" id="Btd-xq-Br7">
-                                        <rect key="frame" x="69" y="5" width="10" height="10"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_grey" translatesAutoresizingMaskIntoConstraints="NO" id="Y7M-rw-fyJ">
-                                        <rect key="frame" x="110" y="5" width="10" height="10"/>
+                                        <rect key="frame" x="57" y="5" width="10" height="10"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="55K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-yA-xag">
-                                        <rect key="frame" x="197" y="2" width="26" height="15"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="55K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrT-dt-MD7">
-                                        <rect key="frame" x="234" y="2" width="26" height="15"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT2-QU-RrO">
-                                        <rect key="frame" x="274" y="2" width="26" height="15"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
+                                        <rect key="frame" x="229" y="2" width="26" height="15"/>
+                                        <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="11"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_feed" translatesAutoresizingMaskIntoConstraints="NO" id="9PQ-gt-oyG">
-                                        <rect key="frame" x="183" y="5" width="10" height="10"/>
+                                        <rect key="frame" x="215" y="5" width="10" height="10"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_heart_feed" translatesAutoresizingMaskIntoConstraints="NO" id="OxM-NY-kvy">
-                                        <rect key="frame" x="221" y="5" width="10" height="10"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_grey" translatesAutoresizingMaskIntoConstraints="NO" id="FTp-9p-Efi">
-                                        <rect key="frame" x="262" y="5" width="10" height="10"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="55K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxH-m6-ivH">
-                                        <rect key="frame" x="83" y="2" width="26" height="15"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -209,13 +173,9 @@
             <connections>
                 <outlet property="actualContentView" destination="mr3-3f-4JW" id="csS-W1-3Oa"/>
                 <outlet property="caption" destination="JrS-La-wCe" id="Apz-nP-4g9"/>
-                <outlet property="imageOneCommentLabel" destination="sDO-Kj-14J" id="r4j-zE-oXh"/>
                 <outlet property="imageOneLikeButton" destination="Y8j-gi-lM7" id="hXX-dT-Vkx"/>
-                <outlet property="imageOneLikeLabel" destination="yxH-m6-ivH" id="H6m-az-BFi"/>
                 <outlet property="imageOnePercentLabel" destination="zYS-qL-hzc" id="9Wy-LW-yMJ"/>
-                <outlet property="imageTwoCommentLabel" destination="NT2-QU-RrO" id="rdV-qk-HiU"/>
                 <outlet property="imageTwoLikeButton" destination="XDm-O0-Eb2" id="zKV-Rc-aWq"/>
-                <outlet property="imageTwoLikeLabel" destination="wrT-dt-MD7" id="Ico-Dg-R3j"/>
                 <outlet property="imageTwoPercentLabel" destination="5e7-yA-xag" id="Jn7-G3-FgN"/>
                 <outlet property="pictureImageView" destination="BIz-kS-R6e" id="GzA-Xg-Mtc"/>
                 <outlet property="pictureImageView2" destination="j2k-Eb-5oZ" id="CTn-p8-IhW"/>
@@ -229,10 +189,8 @@
     </objects>
     <resources>
         <image name="Button_like_feed" width="54" height="56"/>
-        <image name="Icon_comments_rounded_grey" width="35" height="35"/>
         <image name="Icon_defaultPhoto" width="66" height="65"/>
         <image name="Icon_percent_feed" width="35" height="35"/>
         <image name="Icon_time" width="19" height="19"/>
-        <image name="icon_heart_feed" width="35" height="35"/>
     </resources>
 </document>

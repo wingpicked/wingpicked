@@ -20,12 +20,12 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
     @IBOutlet weak var pictureImageView2: PFImageView!
     
     @IBOutlet weak var imageOnePercentLabel: UILabel!
-    @IBOutlet weak var imageOneLikeLabel: UILabel!
-    @IBOutlet weak var imageOneCommentLabel: UILabel!
+//    @IBOutlet weak var imageOneLikeLabel: UILabel!
+//    @IBOutlet weak var imageOneCommentLabel: UILabel!
     
     @IBOutlet weak var imageTwoPercentLabel: UILabel!
-    @IBOutlet weak var imageTwoLikeLabel: UILabel!
-    @IBOutlet weak var imageTwoCommentLabel: UILabel!
+//    @IBOutlet weak var imageTwoLikeLabel: UILabel!
+//    @IBOutlet weak var imageTwoCommentLabel: UILabel!
     
     var feedItem : SPFeedItem?
     var delegate : SPFeedViewTableViewCellDelegate?
@@ -63,10 +63,10 @@ class SPBaseFeedViewTableViewCell: UITableViewCell {
         
         self.imageOnePercentLabel.text = NSString( format:"%d", feedItem.percentageLikedOne ) as String
         self.imageTwoPercentLabel.text = NSString( format:"%d", feedItem.percentageLikedTwo ) as String
-        self.imageOneLikeLabel.text =  String(feedItem.likesCountOne)
-        self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
-        self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
-        self.imageTwoCommentLabel.text =  String( feedItem.commentsCountTwo )
+//        self.imageOneLikeLabel.text =  String(feedItem.likesCountOne)
+//        self.imageTwoLikeLabel.text =  String(feedItem.likesCountTwo)
+//        self.imageOneCommentLabel.text =  String( feedItem.commentsCountOne )
+//        self.imageTwoCommentLabel.text =  String( feedItem.commentsCountTwo )
     }
     
     func imageOneTapped(sender: AnyObject) {

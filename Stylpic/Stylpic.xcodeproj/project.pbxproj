@@ -15,6 +15,8 @@
 		380671741AAD6ED00001527F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FD1A7F6D1800AFE938 /* OpenSans-Regular.ttf */; };
 		380671751AAD6ED00001527F /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FE1A7F6D1800AFE938 /* OpenSans-Light.ttf */; };
 		380671761AAD6ED00001527F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3863A6FF1A7F6D1800AFE938 /* OpenSans-Bold.ttf */; };
+		380EF9651BDDB6E100CB8859 /* CaviarDreams_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 382C18BD1BDDB2FC008E0D75 /* CaviarDreams_Bold.ttf */; };
+		380EF9661BDDB6E100CB8859 /* CaviarDreams.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 382C18BE1BDDB2FC008E0D75 /* CaviarDreams.ttf */; };
 		3811EA8A1AD0967300F234AF /* SPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811EA891AD0967300F234AF /* SPTabBarController.swift */; };
 		3811EA8D1AD09D2700F234AF /* UIImage+BackgroundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3811EA8C1AD09D2700F234AF /* UIImage+BackgroundImage.m */; };
 		38160A261AB50F34005504AD /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38160A1C1AB50F34005504AD /* SLKTextViewController.m */; };
@@ -170,6 +172,8 @@
 		38160A361AB51E1F005504AD /* SPCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCommentsViewController.swift; sourceTree = "<group>"; };
 		381B47671ABE546F00E5405B /* SPProfileNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileNotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		381B47681ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileNotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		382C18BD1BDDB2FC008E0D75 /* CaviarDreams_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams_Bold.ttf; sourceTree = "<group>"; };
+		382C18BE1BDDB2FC008E0D75 /* CaviarDreams.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CaviarDreams.ttf; sourceTree = "<group>"; };
 		382FD7451AEDA7080067CD78 /* SPProfileToolBarPublicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileToolBarPublicView.xib; sourceTree = "<group>"; };
 		3845F7DB1A560A5800191BDA /* Stylpic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylpic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3845F7DF1A560A5800191BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -596,6 +600,8 @@
 		3863A7001A7F6D1C00AFE938 /* CustomFonts */ = {
 			isa = PBXGroup;
 			children = (
+				382C18BD1BDDB2FC008E0D75 /* CaviarDreams_Bold.ttf */,
+				382C18BE1BDDB2FC008E0D75 /* CaviarDreams.ttf */,
 				388E31871AF5830200AF7E6A /* Lobster-Regular.otf */,
 				3863A6FC1A7F6D1800AFE938 /* OpenSans-Semibold.ttf */,
 				3863A6FD1A7F6D1800AFE938 /* OpenSans-Regular.ttf */,
@@ -872,6 +878,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380EF9651BDDB6E100CB8859 /* CaviarDreams_Bold.ttf in Resources */,
+				380EF9661BDDB6E100CB8859 /* CaviarDreams.ttf in Resources */,
 				388E31881AF5830C00AF7E6A /* Lobster-Regular.otf in Resources */,
 				3862A8011ADB52DC0044C0C8 /* SPSearchResultsViewController.xib in Resources */,
 				380671731AAD6EC30001527F /* OpenSans-Semibold.ttf in Resources */,
