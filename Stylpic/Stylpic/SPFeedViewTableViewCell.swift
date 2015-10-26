@@ -131,7 +131,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
             
             self.feedItem?.photoUserLikes = PhotoUserLikes.FirstPhotoLiked
             self.feedItem?.likesCountOne++
-            self.imageOneLikeLabel.text = "\(self.feedItem?.likesCountOne)"
+//            self.imageOneLikeLabel.text = "\(self.feedItem?.likesCountOne)"
             self.updatePercentages()
             statsArea.hidden = false
         } else {
@@ -159,7 +159,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
                 
                 feedItem.photoUserLikes = PhotoUserLikes.SecondPhotoLiked
                 feedItem.likesCountTwo++
-                self.imageTwoLikeLabel.text = "\(feedItem.likesCountTwo)"
+//                self.imageTwoLikeLabel.text = "\(feedItem.likesCountTwo)"
             }
             
             self.updatePercentages()
