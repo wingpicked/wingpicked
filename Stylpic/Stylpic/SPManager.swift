@@ -315,7 +315,7 @@ class SPManager: NSObject {
     }
     
     func getPhotoPairLikes( photoPairObjectId:String, likesPhotoIdentifier:ActivityType, resultBlock:SPActivityResultBlock ) {
-        let params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(unsignedInteger:likesPhotoIdentifier.rawValue) ]
+        let params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(integer:likesPhotoIdentifier.rawValue) ]
         PFCloud.callFunctionInBackground("photoPairLikes", withParameters: params) { (payload, error) -> Void in
             if error == nil {
                 let likes = payload!["likes"] as! [SPActivity]
