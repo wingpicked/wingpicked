@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
         </mutableArray>
@@ -16,55 +13,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="158" id="KGk-i7-Jjw" customClass="SPProfilePostTableViewCell" customModule="Stylpic" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="158" id="KGk-i7-Jjw" customClass="SPProfilePostTableViewCell" customModule="Wingpicked" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="157.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eq7-1i-u6o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="161"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cB-Nb-m2c">
-                                <rect key="frame" x="16" y="72" width="24" height="15"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_profile" translatesAutoresizingMaskIntoConstraints="NO" id="wBG-d5-2NG">
                                 <rect key="frame" x="7" y="56" width="8" height="8"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="6Z8-IZ-8eY">
-                                <rect key="frame" x="7" y="98" width="8" height="8"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_likes_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="5bo-bR-Km1">
-                                <rect key="frame" x="7" y="76" width="8" height="8"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr2-h4-uhv">
-                                <rect key="frame" x="16" y="94" width="24" height="15"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE7-6s-qaU">
                                 <rect key="frame" x="17" y="53" width="24" height="15"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKq-xX-cIZ">
-                                <rect key="frame" x="292" y="94" width="21" height="15"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_likes_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-Nw-x1I">
-                                <rect key="frame" x="283" y="77" width="8" height="8"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_comments_rounded_onPostedPhoto_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="wl0-Hn-BjZ">
-                                <rect key="frame" x="283" y="98" width="8" height="8"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-jl-8BQ">
                                 <rect key="frame" x="292" y="53" width="24" height="15"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
@@ -74,12 +41,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon_percent_profile" translatesAutoresizingMaskIntoConstraints="NO" id="0fE-b9-7DG">
                                 <rect key="frame" x="283" y="57" width="8" height="8"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="27" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vla-P9-c8a">
-                                <rect key="frame" x="292" y="73" width="19" height="15"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffp-yf-A83">
                                 <rect key="frame" x="283" y="22" width="24" height="17"/>
                                 <state key="normal" image="3 points">
@@ -101,11 +62,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="imageOneCommentLabel" destination="Xr2-h4-uhv" id="e9G-Ly-Vvg"/>
-                <outlet property="imageOneLikeLabel" destination="4cB-Nb-m2c" id="sP6-Sb-opG"/>
                 <outlet property="imageOnePercentLabel" destination="rE7-6s-qaU" id="3Xl-cl-KqC"/>
-                <outlet property="imageTwoCommentLabel" destination="JKq-xX-cIZ" id="wWT-hz-SP5"/>
-                <outlet property="imageTwoLikeLabel" destination="vla-P9-c8a" id="KMR-mL-9bH"/>
                 <outlet property="imageTwoPercentLabel" destination="FBN-jl-8BQ" id="Bkj-Yd-ITT"/>
                 <outlet property="optionsButton" destination="ffp-yf-A83" id="9Ze-9W-W3j"/>
                 <outlet property="pictureImageView" destination="BvZ-GW-Z5p" id="CJU-DD-yct"/>
@@ -117,8 +74,6 @@
     </objects>
     <resources>
         <image name="3 points" width="127" height="100"/>
-        <image name="Icon_comments_rounded_onPostedPhoto_Profile" width="35" height="35"/>
-        <image name="Icon_likes_onPostedPhoto_Profile" width="35" height="35"/>
         <image name="Icon_percent_profile" width="35" height="35"/>
         <image name="profile_default" width="123" height="123"/>
     </resources>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -14,7 +15,7 @@
         <!--Feed Table View Controller-->
         <scene sceneID="exa-p7-kCf">
             <objects>
-                <tableViewController id="vnU-Fa-5SY" customClass="SPFeedTableViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vnU-Fa-5SY" customClass="SPFeedTableViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="227" sectionHeaderHeight="22" sectionFooterHeight="22" id="WXF-e3-XzP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +36,7 @@
         <!--Explore Table View Controller-->
         <scene sceneID="rMT-iP-sMz">
             <objects>
-                <tableViewController id="SPM-7S-1JU" customClass="SPExploreTableViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="SPM-7S-1JU" customClass="SPExploreTableViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oje-U8-gVT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +51,7 @@
         <!--Photo Confirmation View Controller-->
         <scene sceneID="FSK-fR-I2t">
             <objects>
-                <viewController storyboardIdentifier="SPPhotoConfirmationViewController" id="YMB-IB-KHe" customClass="SPPhotoConfirmationViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SPPhotoConfirmationViewController" id="YMB-IB-KHe" customClass="SPPhotoConfirmationViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LNu-X3-Pab"/>
                         <viewControllerLayoutGuide type="bottom" id="lEI-mA-6rx"/>
@@ -149,7 +150,7 @@
         <!--Profile View Controller-->
         <scene sceneID="tUW-WW-3l0">
             <objects>
-                <tableViewController storyboardIdentifier="SPProfileViewController" id="4MW-Og-xax" customClass="SPProfileViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SPProfileViewController" id="4MW-Og-xax" customClass="SPProfileViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CR0-VM-9uk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +169,7 @@
         <!--Closet View Controller-->
         <scene sceneID="URl-Y2-SMD">
             <objects>
-                <viewController storyboardIdentifier="SPClosetViewController" id="3KQ-uY-pIS" customClass="SPClosetViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SPClosetViewController" id="3KQ-uY-pIS" customClass="SPClosetViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WC5-JG-elC"/>
                         <viewControllerLayoutGuide type="bottom" id="oj7-Ic-dLK"/>
@@ -215,7 +216,7 @@
         <!--Closet Detail View Controller-->
         <scene sceneID="Q2y-TC-boY">
             <objects>
-                <viewController id="2sJ-Tt-e3I" customClass="SPClosetDetailViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2sJ-Tt-e3I" customClass="SPClosetDetailViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pKC-oz-gHx"/>
                         <viewControllerLayoutGuide type="bottom" id="fvd-vN-GPi"/>
@@ -263,7 +264,7 @@
         <!--Login View Controller-->
         <scene sceneID="aNF-9j-iAr">
             <objects>
-                <viewController storyboardIdentifier="LoginIdentifier" id="Ntn-B8-6Sf" customClass="SPLoginViewController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginIdentifier" id="Ntn-B8-6Sf" customClass="SPLoginViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ekF-cS-7Gd"/>
                         <viewControllerLayoutGuide type="bottom" id="SHN-nM-0B7"/>
@@ -303,7 +304,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="MainIdentifier" id="49e-Tb-3d3" customClass="SPTabBarController" customModule="Stylpic" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainIdentifier" id="49e-Tb-3d3" customClass="SPTabBarController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="rx2-xQ-mqf"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">

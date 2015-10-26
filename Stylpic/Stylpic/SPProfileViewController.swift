@@ -226,10 +226,9 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
 
         switch currentViewState {
         case .Posts:
-            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("SPProfilePostTableViewCell", forIndexPath: indexPath) as! SPProfilePostTableViewCell
             cell.setupWithFeedItem(profileInfoViewModel.posts[indexPath.row])
             cell.delegate = self
-//            cell.profilePostDelegate = self
             return cell
         case .Followers:
             let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileFollowTableViewCell", forIndexPath: indexPath) as! SPProfileFollowTableViewCell
