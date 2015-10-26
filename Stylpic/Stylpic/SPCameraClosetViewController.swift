@@ -37,7 +37,13 @@ class SPCameraClosetViewController: SPClosetViewController {
         print(indexPath.row)
         if let closetPhotos = self.closetPhotos {
             let closetPhoto = closetPhotos[indexPath.row]
-            let data = closetPhoto.photo.photo.getData()
+            var data: NSData?
+            do {
+               data = try closetPhoto.photo.photo.getData()
+            } catch {
+                print( error )
+            }
+            
             if let data = data {
                 self.delegate?.userSelectedImage(UIImage(data: data)!)
             }

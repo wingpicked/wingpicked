@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ParseFacebookUtilsV4
 
 ///--------------------------------------
 /// @name Blocks
@@ -136,7 +137,7 @@ class SPManager: NSObject {
     func addMyClosetItemWithImage( image:UIImage, resultBlock: PFBooleanResultBlock ) {
         var imageData = UIImageJPEGRepresentation(image, 0.05)
         var imageFile = PFFile(name: "Image.jpg", data: imageData!)
-        imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
+        imageFile!.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
                 var photoOne = SPPhoto()
                 photoOne.photo = imageFile
@@ -272,7 +273,7 @@ class SPManager: NSObject {
             activityQuery.whereKey( "type", equalTo: ActivityType.Follow.rawValue )
             activityQuery.whereKey( "isArchiveReady", equalTo: false )
             activityQuery.findObjectsInBackgroundWithBlock({ (payloadObjects, error) -> Void in
-                for activity in payloadObjects as! [PFObject] {
+                for activity in payloadObjects as [PFObject]! {
                     activity.setObject( true, forKey: "isArchiveReady" )
                 }
                 
@@ -349,8 +350,10 @@ class SPManager: NSObject {
     
     //Low priority
     func getFacebookFriendsWithApp( resultBlock:SPUsersResultBlock  ) {
-        let friendsRequest = FBRequest(graphPath: "me/friends", parameters: ["fields":"id,name,installed" ], HTTPMethod: "GET")
-        friendsRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+//        let friendsRequest = FBRequest(graphPath: "me/friends", parameters: ["fields":"id,name,installed" ], HTTPMethod: "GET")
+        let friendsRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: ["fields":"id,name,installed" ])
+        let connection = FBSDKGraphRequestConnection()
+        connection.addRequest(friendsRequest) { (connection, result, error) -> Void in 
             if error == nil {
                 print( result )
                 var facebookIds = [String]()
@@ -409,6 +412,7 @@ class SPManager: NSObject {
             }
         }
         
+        connection.start()
     }
     
     
@@ -520,14 +524,14 @@ class SPManager: NSObject {
             var imageDataTwo = UIImageJPEGRepresentation(imageTwo, 0.05)
             var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo!)
             
-            imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+            imageFile!.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                 if error == nil {
                     
                     
                     isImageOneSaved = true
                     if isImageTwoSaved {
                         
-                        self.finishPostingWithFileOne(imageFile, fileTwo: imageFileTwo, caption: caption, resultsBlock: { (success, error) -> Void in
+                        self.finishPostingWithFileOne(imageFile!, fileTwo: imageFileTwo!, caption: caption, resultsBlock: { (success, error) -> Void in
                             resultsBlock( success, error );
                         })
                     }
@@ -537,11 +541,11 @@ class SPManager: NSObject {
             }
 
             
-            imageFileTwo.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+            imageFileTwo!.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                 if error == nil {
                     isImageTwoSaved = true
                     if isImageOneSaved {
-                        self.finishPostingWithFileOne(imageFile, fileTwo: imageFileTwo, caption: caption, resultsBlock: { (success, error) -> Void in
+                        self.finishPostingWithFileOne(imageFile!, fileTwo: imageFileTwo!, caption: caption, resultsBlock: { (success, error) -> Void in
                             resultsBlock( success, error );
                         })
                     }
@@ -560,7 +564,7 @@ class SPManager: NSObject {
     
     func loginWithFacebook(completionHander : SPBoolResultBlock){
         let permissions = ["public_profile", "user_friends", "email"]
-        PFFacebookUtils.logInWithPermissions(permissions, block: { (user, error) -> Void in
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: { (user, error) -> Void in
             if(user == nil){
                 if(error == nil){
                     completionHander(success: false, error: nil) //User cancelled facebook login
@@ -580,7 +584,7 @@ class SPManager: NSObject {
     }
     
     func loadFBDataForUser(user: PFUser){
-        var request = FBRequest.requestForMe()
+        let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,name,"])
         request.startWithCompletionHandler { (connection, result, error) -> Void in
             //TODO: Need to test this facebook user invalidation testing out.
             if let error = error{
@@ -605,7 +609,7 @@ class SPManager: NSObject {
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
                     if (connectionError == nil && data != nil) {
                         var profilePicture = PFFile(name: "ProfilePicture", data: data!)
-                        user.setObject(profilePicture, forKey: "profilePicture")
+                        user.setObject(profilePicture!, forKey: "profilePicture")
                         user.saveInBackgroundWithBlock({ (success, error) -> Void in
                             if(error != nil){
                                 print(error)

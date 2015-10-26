@@ -6,7 +6,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import <Parse/Parse.h>
-#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <ParseUI/ParseUI.h>
 #import <Parse/PFObject+Subclass.h>
 #import "TTTTimeIntervalFormatter.h"

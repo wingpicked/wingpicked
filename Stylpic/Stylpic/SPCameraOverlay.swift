@@ -31,7 +31,11 @@ class SPCameraOverlay: UIView {
     @IBOutlet weak var titleBarView: UIView!
     @IBOutlet weak var flashButton: UIButton!
     
-    var flashEnabled = true
+    var flashEnabled = NSNumber(integer:UIImagePickerControllerCameraFlashMode.Off.rawValue) {
+        didSet {
+            self.updateFlashImage()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,9 +54,8 @@ class SPCameraOverlay: UIView {
     }
     
     @IBAction func flashButtonDidTap(sender: AnyObject) {
-        flashEnabled = !flashEnabled
-        let flashImage = flashEnabled ? UIImage(named: "Icon_flash_on") : UIImage(named: "Icon_flash")
-        self.flashButton.setImage(flashImage, forState: UIControlState.Normal)
+        flashEnabled = flashEnabled.integerValue == UIImagePickerControllerCameraFlashMode.On.rawValue ? NSNumber(integer: UIImagePickerControllerCameraFlashMode.Off.rawValue) : NSNumber(integer:UIImagePickerControllerCameraFlashMode.On.rawValue)
+        self.updateFlashImage()
         self.delegate?.flashButtonDidTap(self)
     }
     
@@ -66,6 +69,11 @@ class SPCameraOverlay: UIView {
     
     @IBAction func switchCameraButtonDidTap(sender: AnyObject) {
         self.delegate?.switchCameraButtonDidTap(self)
+    }
+    
+    func updateFlashImage() {
+        let flashImage = flashEnabled.integerValue == UIImagePickerControllerCameraFlashMode.On.rawValue ? UIImage(named: "Icon_flash_on") : UIImage(named: "Icon_flash")
+        self.flashButton.setImage(flashImage, forState: UIControlState.Normal)
     }
     
     func pickingTheLastImageFromThePhotoLibrary() {

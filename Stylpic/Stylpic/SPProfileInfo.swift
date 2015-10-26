@@ -101,7 +101,7 @@ class SPProfileInfo: NSObject {
             self.posts.append(feedItem)
         }
         
-        var fetchObjectsIfNeeded = [AnyObject]()
+        var fetchObjectsIfNeeded = [PFObject]()
         let serverFollower = profileInfo.safeArrayForKey( "followers" ) as NSArray as! [[String: AnyObject]]
         for aServerFollower in serverFollower {
             let spUser = aServerFollower[ "user" ] as! SPUser
@@ -135,8 +135,12 @@ class SPProfileInfo: NSObject {
             }
             
         }
+        do {
+            try PFObject.fetchAllIfNeeded( fetchObjectsIfNeeded )
+        } catch {
+            print( error )
+        }
         
-        PFObject.fetchAllIfNeeded( fetchObjectsIfNeeded )
     }
     
 }

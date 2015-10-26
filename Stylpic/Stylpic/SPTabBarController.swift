@@ -25,6 +25,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     var userPhotoTwo : UIImage?
     
     var capturedImages : [UIImage] = []
+    var flashState = NSNumber( integer: UIImagePickerControllerCameraFlashMode.Off.rawValue )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,10 +118,12 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         //Reset Camera
         capturedImages = []
         overlayView.titleLabel.text = "Photo 1 of 2"
-        
+        overlayView.flashEnabled = self.flashState
         imagePickerViewController.sourceType = .Camera
-        imagePickerViewController.showsCameraControls = false;
-        imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
+        imagePickerViewController.showsCameraControls = false
+        flashState = NSNumber( integer: UIImagePickerControllerCameraFlashMode.Off.rawValue )
+        imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode(rawValue: flashState.integerValue)!
+        overlayView.flashEnabled = flashState.integerValue == UIImagePickerControllerCameraFlashMode.On.rawValue
         overlayView.delegate = self
         imagePickerViewController.cameraOverlayView = overlayView
         overlayView.pickingTheLastImageFromThePhotoLibrary()
@@ -133,8 +136,10 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         overlayViewSecondPhoto.dismissOrBackButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         imagePickerViewControllerSecondPhoto.sourceType = .Camera
         imagePickerViewControllerSecondPhoto.showsCameraControls = false
-        imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
+        imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode(rawValue: flashState
+       .integerValue )!
         overlayViewSecondPhoto.delegate = self
+        overlayViewSecondPhoto.flashEnabled = self.flashState
         imagePickerViewControllerSecondPhoto.cameraOverlayView = overlayViewSecondPhoto
         imagePickerViewControllerSecondPhoto.modalTransitionStyle = .CrossDissolve
         overlayViewSecondPhoto.pickingTheLastImageFromThePhotoLibrary()
@@ -160,19 +165,12 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     }
     
     func flashButtonDidTap(overlay: SPCameraOverlay) {
-        if overlay == self.overlayView {
-            if self.imagePickerViewController.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
-                self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
-            } else {
-                self.imagePickerViewController.cameraFlashMode = .On
-            }
-        } else if overlay == self.overlayViewSecondPhoto {
-
-            if self.imagePickerViewControllerSecondPhoto.cameraFlashMode == UIImagePickerControllerCameraFlashMode.On {
-                self.imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
-            } else {
-                self.imagePickerViewControllerSecondPhoto.cameraFlashMode = .On
-            }
+        if flashState.integerValue == UIImagePickerControllerCameraFlashMode.On.rawValue {
+            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        } else {
+            self.imagePickerViewController.cameraFlashMode = .On
+            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = .On
         }
     }
     
