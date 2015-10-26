@@ -136,10 +136,10 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
         let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
         let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect)!;
         let squareImage = UIImage(CGImage:imageRef, scale: 1, orientation: imageOrientation )
-        if let constUserPhotoOne = self.userPhotoOne {
+        if let _ = self.userPhotoOne {
             self.userPhotoTwo = squareImage;
-            let editPhotoStoryboard = UIStoryboard(name: "SPEditPhotoStoryboard", bundle: nil)
-            var editPhotoController = editPhotoStoryboard.instantiateViewControllerWithIdentifier("SPEditPhotoViewController") as! SPEditPhotoViewController
+//            let editPhotoStoryboard = UIStoryboard(name: "SPEditPhotoStoryboard", bundle: nil)
+//            _ = editPhotoStoryboard.instantiateViewControllerWithIdentifier("SPEditPhotoViewController") as! SPEditPhotoViewController
             self.imageViewOne.image = self.userPhotoOne
             self.imageViewTwo.image = self.userPhotoTwo
             self.dismissViewControllerAnimated(true, completion:nil)

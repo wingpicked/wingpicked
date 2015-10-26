@@ -94,7 +94,6 @@ class SPProfileInfo: NSObject {
         self.followingCount = profileInfo.safeIntForKey( "followingCount" )
         self.isFollowing = profileInfo.safeBoolForKey( "isFollowing" )
         let arrayOfServerFeedItem = profileInfo[ "posts" ] as! [[String: AnyObject]]
-        var arrayOfFeedItem = [];
         for serverFeeedItem in arrayOfServerFeedItem {
             let feedItem = SPFeedItem()
             feedItem.setupWithServerFeedItem( serverFeeedItem )

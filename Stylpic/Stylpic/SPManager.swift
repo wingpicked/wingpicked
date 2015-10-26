@@ -134,16 +134,16 @@ class SPManager: NSObject {
 
     
     func addMyClosetItemWithImage( image:UIImage, resultBlock: PFBooleanResultBlock ) {
-        var imageData = UIImageJPEGRepresentation(image, 0.05)
-        var imageFile = PFFile(name: "Image.jpg", data: imageData!)
+        let imageData = UIImageJPEGRepresentation(image, 0.05)
+        let imageFile = PFFile(name: "Image.jpg", data: imageData!)
         imageFile.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
-                var photoOne = SPPhoto()
+                let photoOne = SPPhoto()
                 photoOne.photo = imageFile
                 photoOne.photoThumbnail = imageFile
                 photoOne.saveInBackgroundWithBlock({ (success, error) -> Void in
                     if error == nil {
-                        var closetPhotoOne = SPClosetPhoto()
+                        let closetPhotoOne = SPClosetPhoto()
                         closetPhotoOne.isVisible = true
                         closetPhotoOne.user = SPUser.currentUser()
                         closetPhotoOne.photo = photoOne
@@ -515,10 +515,10 @@ class SPManager: NSObject {
         if let imageOne = imageOne, imageTwo = imageTwo {
             var isImageOneSaved = false
             var isImageTwoSaved = false
-            var imageData = UIImageJPEGRepresentation(imageOne, 0.05)
-            var imageFile = PFFile(name: "Image.jpg", data: imageData!)
-            var imageDataTwo = UIImageJPEGRepresentation(imageTwo, 0.05)
-            var imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo!)
+            let imageData = UIImageJPEGRepresentation(imageOne, 0.05)
+            let imageFile = PFFile(name: "Image.jpg", data: imageData!)
+            let imageDataTwo = UIImageJPEGRepresentation(imageTwo, 0.05)
+            let imageFileTwo = PFFile(name: "Image.jpg", data: imageDataTwo!)
             
             imageFile.saveInBackgroundWithBlock { (succeeded, error) -> Void in
                 if error == nil {
@@ -550,7 +550,7 @@ class SPManager: NSObject {
                 }
             }
         } else {
-            var errorMessage = "ERROR: one or the other image is nil passed to saveImages so can't save images"
+            let errorMessage = "ERROR: one or the other image is nil passed to saveImages so can't save images"
             print( errorMessage )
             resultsBlock( false, NSError(domain:"com.Stylpic", code: -1001, userInfo:[ "error": errorMessage ] ) )
         }
@@ -580,7 +580,7 @@ class SPManager: NSObject {
     }
     
     func loadFBDataForUser(user: PFUser){
-        var request = FBRequest.requestForMe()
+        let request = FBRequest.requestForMe()
         request.startWithCompletionHandler { (connection, result, error) -> Void in
             //TODO: Need to test this facebook user invalidation testing out.
             if let error = error{
@@ -595,16 +595,16 @@ class SPManager: NSObject {
             }
             else
             {
-                var userData = result as! NSDictionary
-                var facebookID = userData["id"] as! String
+                let userData = result as! NSDictionary
+                let facebookID = userData["id"] as! String
                 user.setObject(userData["first_name"]!, forKey: "firstName")
                 user.setObject(userData["last_name"]!, forKey: "lastName")
                 user.setObject(facebookID, forKey: "facebookId")
-                var pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
-                var request = NSURLRequest(URL: pictureURL!)
+                let pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
+                let request = NSURLRequest(URL: pictureURL!)
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, data, connectionError) -> Void in
                     if (connectionError == nil && data != nil) {
-                        var profilePicture = PFFile(name: "ProfilePicture", data: data!)
+                        let profilePicture = PFFile(name: "ProfilePicture", data: data!)
                         user.setObject(profilePicture, forKey: "profilePicture")
                         user.saveInBackgroundWithBlock({ (success, error) -> Void in
                             if(error != nil){

@@ -53,9 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func registerForPushNotifications(){
         let application = UIApplication.sharedApplication()
-        let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
-        let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
-        var noPushPayload = false;
+        _ = !application.respondsToSelector("backgroundRefreshStatus")
+        _ = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
         
         if application.respondsToSelector("registerUserNotificationSettings:") {
             let userNotificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
