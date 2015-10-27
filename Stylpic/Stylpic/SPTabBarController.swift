@@ -123,7 +123,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         imagePickerViewController.showsCameraControls = false
         flashState = NSNumber( integer: UIImagePickerControllerCameraFlashMode.Off.rawValue )
         imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode(rawValue: flashState.integerValue)!
-        overlayView.flashEnabled = flashState.integerValue == UIImagePickerControllerCameraFlashMode.On.rawValue
+        overlayView.flashEnabled = self.flashState
         overlayView.delegate = self
         imagePickerViewController.cameraOverlayView = overlayView
         overlayView.pickingTheLastImageFromThePhotoLibrary()
@@ -165,13 +165,25 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     }
     
     func flashButtonDidTap(overlay: SPCameraOverlay) {
-        if flashState.integerValue == UIImagePickerControllerCameraFlashMode.On.rawValue {
-            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
-            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        if overlay == self.overlayView {
+            self.updateFlashWithPickerView(self.imagePickerViewController)
         } else {
-            self.imagePickerViewController.cameraFlashMode = .On
-            self.imagePickerViewControllerSecondPhoto.cameraFlashMode = .On
+            self.updateFlashWithPickerView(self.imagePickerViewControllerSecondPhoto)
+            self.overlayView.flashEnabled = self.flashState
         }
+    }
+    
+    func updateFlashWithPickerView( pickerView:UIImagePickerController ) {
+        if flashState.integerValue == UIImagePickerControllerCameraFlashMode.On.rawValue {
+            pickerView.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+            self.flashState = NSNumber(integer: UIImagePickerControllerCameraFlashMode.Off.rawValue)
+            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
+        } else {
+            pickerView.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
+            self.flashState = NSNumber(integer: UIImagePickerControllerCameraFlashMode.On.rawValue)
+            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
+        }
+        
     }
     
     func selectPhotosDidTap(overlay: SPCameraOverlay) {
@@ -258,7 +270,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     
     func showConfirmationView() {
         if(capturedImages.count >= 2){
-//            var confirmView = confirmationViewControllerSecondPhoto.view
+            var confirmView = confirmationViewControllerSecondPhoto.view // view must be created before accessed
             confirmationViewControllerSecondPhoto.photo.image = capturedImages[1]
             confirmationViewControllerSecondPhoto.nextCameraButton.hidden = true
             confirmationViewControllerSecondPhoto.nextSendButton.hidden = false
@@ -269,7 +281,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         } else {
             
             //            self.imagePickerViewController.pushViewController(confirmationStoryboard, animated: true)
-//            var confirmView = confirmationViewController.view
+            var confirmView = confirmationViewController.view // view must be created before accessed
             confirmationViewController.photo.image = capturedImages[0]
             //                self.imagePickerViewController.presentViewController(confirmationStoryboard, animated: true, completion: nil)
             self.imagePickerViewController.pushViewController(confirmationViewController, animated: true)
