@@ -9,13 +9,13 @@
 import UIKit
 
 class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImagePickerControllerDelegate, SPCameraOverlayDelegate, UINavigationControllerDelegate, SPPhotoConfirmationViewControllerDelegate, SPCameraClosetViewControllerDelegate {
-
+    
     let imagePickerViewController = UIImagePickerController()
     let imagePickerViewControllerSecondPhoto = UIImagePickerController()
     
     let overlayView = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
     let overlayViewSecondPhoto = NSBundle.mainBundle().loadNibNamed("SPCameraOverlay", owner: nil, options: nil)[0] as! SPCameraOverlay
-
+    
     let confirmationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SPPhotoConfirmationViewController") as! SPPhotoConfirmationViewController
     let confirmationViewControllerSecondPhoto = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SPPhotoConfirmationViewController") as! SPPhotoConfirmationViewController
     
@@ -29,7 +29,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let backgroundColor = UIColor(red: 25/255, green: 37/255, blue: 44/255, alpha: 1.0)
         let iconTintColor = UIColor(red: 158/255, green: 228/255, blue: 229/255, alpha: 1.0)
         let backgroundImage = UIImage(fromColor: backgroundColor, forSize: CGSizeMake(320, 49), withCornerRadius: 0)
@@ -41,7 +41,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         for vc in self.viewControllers!{
             vc.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -7, 0);
         }
-
+        
         self.confirmationViewController.delegate = self
         self.confirmationViewControllerSecondPhoto.delegate = self
         self.imagePickerViewController.delegate = self
@@ -50,7 +50,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: "Badges", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateProfileBadgeNumber", name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sharedPost", name: "SharedPost"  , object: nil)
-
+        
     }
     
     deinit {
@@ -70,7 +70,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     
     func sharedPost() {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-//            self.dismissViewControllerAnimated(true, completion: nil)
+            //            self.dismissViewControllerAnimated(true, completion: nil)
         })
     }
     
@@ -87,7 +87,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         }
     }
     
-     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         if viewController.restorationIdentifier == "SPProfileNavigationController" {
             let profileViewController = (viewController as! UINavigationController).viewControllers[0] as! SPProfileViewController
             profileViewController.showWithUser(SPUser.currentUser()!)
@@ -105,10 +105,10 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         
         var center = self.tabBar.center;
         center.y = self.tabBar.frame.size.height / 2.0;
-            button.center = center;
+        button.center = center;
         
         button.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchUpInside)
-
+        
         self.tabBar.addSubview(button)
         self.centerButton = button;
     }
@@ -137,7 +137,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         imagePickerViewControllerSecondPhoto.sourceType = .Camera
         imagePickerViewControllerSecondPhoto.showsCameraControls = false
         imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode(rawValue: flashState
-       .integerValue )!
+            .integerValue )!
         overlayViewSecondPhoto.delegate = self
         overlayViewSecondPhoto.flashEnabled = self.flashState
         imagePickerViewControllerSecondPhoto.cameraOverlayView = overlayViewSecondPhoto
@@ -191,7 +191,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         let takeNewAction = UIAlertAction(title: "From My Closet", style: UIAlertActionStyle.Default) { (action) -> Void in
             let myClosetViewController = SPCameraClosetViewController()
             myClosetViewController.delegate = self
-//            var closetView = myClosetViewController.view
+            //            var closetView = myClosetViewController.view
             myClosetViewController.navigationItem.rightBarButtonItem = nil
             if overlay == self.overlayView {
                 self.imagePickerViewController.pushViewController(myClosetViewController, animated: true)
@@ -200,10 +200,10 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
             }
             
             myClosetViewController.navigationController?.setNavigationBarHidden(false, animated: false)
-
+            
         }
         
-
+        
         let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
             print( "photo albumn did select")
             if overlay == self.overlayView {
@@ -226,7 +226,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
             self.imagePickerViewControllerSecondPhoto.presentViewController(alertController, animated: true, completion: nil)
         }
         
-
+        
     }
     
     func takePhotoButtonDidTap( overlay: SPCameraOverlay ) {
@@ -254,7 +254,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
             // Do something with an image from the camera
             imageOrientation = UIImageOrientation.Right
         }
-
+        
         let photoX = (originalImage.size.width - squareDimension) / 2
         let squareRect = CGRectMake( photoX, 0, squareDimension, squareDimension )
         let imageRef: CGImageRef = CGImageCreateWithImageInRect(originalImage.CGImage, squareRect)!;
@@ -265,7 +265,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         capturedImages.append(squareImage)
         
         self.showConfirmationView()
-
+        
     }
     
     func showConfirmationView() {
@@ -317,8 +317,8 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         
         capturedImages.removeLast()
     }
-
-    func userSelectedImage( image: UIImage ) {        
+    
+    func userSelectedImage( image: UIImage ) {
         capturedImages.append(image)
         if capturedImages.count <= 1 {
             self.imagePickerViewController.popViewControllerAnimated(true)
@@ -328,5 +328,5 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         
         self.showConfirmationView()
     }
-
+    
 }
