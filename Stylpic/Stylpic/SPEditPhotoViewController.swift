@@ -46,7 +46,7 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
-        let backImage = UIImage(named: "Button_back_white" );
+        let backImage = UIImage(named: "Camera arrow" );
         let backButton = UIButton(frame: CGRect(x: 18, y: 19, width: 15, height: 24))
         backButton.setImage(backImage, forState: UIControlState.Normal)
         backButton.addTarget(self, action: "dismissViewController:", forControlEvents: UIControlEvents.TouchUpInside)
