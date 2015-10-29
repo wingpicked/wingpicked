@@ -147,10 +147,10 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.overlayView.titleLabel.text = ""
             
             self.imagePickerViewController.sourceType = .Camera
-            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
+            self.imagePickerViewController.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Off
             self.imagePickerViewController.showsCameraControls = false;
             self.overlayView.delegate = self
-            self.overlayView.flashButton.setImage(UIImage(named:"Icon_flash_on"), forState:UIControlState.Normal)
+            self.overlayView.flashEnabled = NSNumber(integer: UIImagePickerControllerCameraFlashMode.Off.rawValue)
             self.imagePickerViewController.cameraOverlayView = self.overlayView
             self.presentViewController(self.imagePickerViewController, animated: true, completion: nil)
         }
