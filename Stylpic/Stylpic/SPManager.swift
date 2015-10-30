@@ -584,7 +584,7 @@ class SPManager: NSObject {
     }
     
     func loadFBDataForUser(user: PFUser){
-        let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,name"])
+        let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,name,first_name,last_name"])
         request.startWithCompletionHandler { (connection, result, error) -> Void in
             //TODO: Need to test this facebook user invalidation testing out.
             if let error = error{
@@ -603,7 +603,7 @@ class SPManager: NSObject {
                 let facebookID = userData["id"] as! String
                 user.setObject(userData["first_name"]!, forKey: "firstName")
                 user.setObject(userData["last_name"]!, forKey: "lastName")
-                user.setObject("\(userData["first_name"]!) \(userData["last_name"]!)", forKey: "fullName")
+                user.setObject(userData["name"]!, forKey: "fullName")
                 user.setObject(facebookID, forKey: "facebookId")
                 let pictureURL = NSURL(string: "https://graph.facebook.com/\(facebookID)/picture?type=large&return_ssl_resources=1")
                 let request = NSURLRequest(URL: pictureURL!)

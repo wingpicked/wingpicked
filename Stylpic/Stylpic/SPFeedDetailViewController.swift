@@ -104,12 +104,15 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                     cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne) Percent"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) \(likeVerbiage)", forState: .Normal)
                     cell.commentCountButton.setTitle("View all \(self.feedItem.commentsCountOne) comments", forState: .Normal)
+                    cell.commentCountButton.hidden = feedItem.commentsCountOne < 4
+                    
                 }
                 if self.imageTapped == ImageIdentifier.ImageTwo {
                     let likeVerbiage2 = self.feedItem.likesCountTwo == 1 ? "Like" : "Likes"
                     cell.percentageLabel.text = "\(self.feedItem.percentageLikedTwo) Percent"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) \(likeVerbiage2)", forState: .Normal)
                     cell.commentCountButton.setTitle("View all \(self.feedItem.commentsCountTwo) comments", forState: .Normal)
+                    cell.commentCountButton.hidden = feedItem.commentsCountTwo < 4
                 }
             }
             return cell
