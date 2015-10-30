@@ -155,6 +155,8 @@
         _rightButton.enabled = NO;
         
         [_rightButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
+        UIColor *primaryAquaColor = [UIColor colorWithRed:72/255.f green:182/255.f blue:179/255.f alpha:1];
+        [_rightButton setTitleColor:primaryAquaColor forState:UIControlStateNormal];
     }
     return _rightButton;
 }

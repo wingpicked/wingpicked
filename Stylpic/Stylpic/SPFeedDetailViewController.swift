@@ -65,7 +65,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCollaborationTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCollaborationTableViewCell")
         self.tableView.registerNib(UINib(nibName: "SPLikeCommentButtonView", bundle: nil), forCellReuseIdentifier: "SPLikeCommentButtonView")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableView", name: "RefreshViewControllers", object: nil)
-
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
         self.setupFollowButton()
     }
     
@@ -104,12 +104,15 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                     cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne) Percent"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountOne) \(likeVerbiage)", forState: .Normal)
                     cell.commentCountButton.setTitle("View all \(self.feedItem.commentsCountOne) comments", forState: .Normal)
+                    cell.commentCountButton.hidden = feedItem.commentsCountOne < 4
+                    
                 }
                 if self.imageTapped == ImageIdentifier.ImageTwo {
                     let likeVerbiage2 = self.feedItem.likesCountTwo == 1 ? "Like" : "Likes"
                     cell.percentageLabel.text = "\(self.feedItem.percentageLikedTwo) Percent"
                     cell.likeCountButton.setTitle("\(self.feedItem.likesCountTwo) \(likeVerbiage2)", forState: .Normal)
                     cell.commentCountButton.setTitle("View all \(self.feedItem.commentsCountTwo) comments", forState: .Normal)
+                    cell.commentCountButton.hidden = feedItem.commentsCountTwo < 4
                 }
             }
             return cell
@@ -158,7 +161,11 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             return 382
         }
         else if(indexPath.row == 1){
-            return 54
+            if commentsCount >= 4 {
+                return 54
+            } else {
+                return 34
+            }
         }
         else if(indexPath.row > 1 && indexPath.row < 2 + commentsCount){
             return 23
@@ -168,6 +175,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         
     }
+    
     
     func setupFollowButton() {
         

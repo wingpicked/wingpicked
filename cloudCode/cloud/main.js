@@ -305,23 +305,38 @@ Parse.Cloud.define( 'removeFeedItem', function( request, response ) {
 Parse.Cloud.define( 'usersWithSearchTerms', function( request, response ) {
 	var searchTerms = request.params.searchTerms;
 	var whenPromises = [];
-	_.each( searchTerms, function( aSearchTerm ) {
-		var regExp = new RegExp( aSearchTerm );
-		var userFirstNameQuery = new Parse.Query(Parse.User);
-		userFirstNameQuery.limit(50);
 
-		userFirstNameQuery.matches('firstName', regExp, 'i');
-		whenPromises.push( userFirstNameQuery.find() );
+	var fullSearchText = searchTerms.join();
+	console.log( 'fullSearchText is -> ' + fullSearchText );
+	var fullSearchTextWithoutCommas = fullSearchText.replace(/,/g, '');
+	console.log( 'fullSearchText without commas is -> ' + fullSearchTextWithoutCommas );
+	var charArrayOfSearchText = fullSearchTextWithoutCommas.split('');
+	var anyWhiteSpaceAcceptingRexEx = charArrayOfSearchText.join( '\\s*' );
+	console.log( 'regex is: ' + anyWhiteSpaceAcceptingRexEx );
+	var regExp = new RegExp( anyWhiteSpaceAcceptingRexEx );
+	var userFullNameQuery = new Parse.Query(Parse.User);
+	userFullNameQuery.limit(50);
+	userFullNameQuery.matches( 'fullName', regExp, 'i' );
+	whenPromises.push( userFullNameQuery.find());
 
-		var userLastNameQuery = new Parse.Query(Parse.User);
-		userLastNameQuery.limit(50);
-		userLastNameQuery.matches('lastName', regExp, 'i');
-		whenPromises.push( userLastNameQuery.find() );
-	});
+	//_.each( searchTerms, function( aSearchTerm ) {
+	//	var regExp = new RegExp( aSearchTerm );
+	//	var userFirstNameQuery = new Parse.Query(Parse.User);
+	//	userFirstNameQuery.limit(50);
+    //
+	//	userFirstNameQuery.matches('firstName', regExp, 'i');
+	//	whenPromises.push( userFirstNameQuery.find() );
+    //
+	//	var userLastNameQuery = new Parse.Query(Parse.User);
+	//	userLastNameQuery.limit(50);
+	//	userLastNameQuery.matches('lastName', regExp, 'i');
+	//	whenPromises.push( userLastNameQuery.find() );
+	//});
 
 	var allResults = Parse.Promise.when( whenPromises );
 	allResults.then( function() {
 		var results = Array.prototype.slice.call(arguments);
+		console.log( 'num results -> ' + results.length);
 		var uniqueUsers = {};
 		_.each( results, function( someUsers ) {
 			_.each( someUsers, function( aUser ) {
