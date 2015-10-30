@@ -36,7 +36,6 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 self.toolBarView.followingButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
                 break
             case .Notifications:
-                self.toolBarView.notificationLabel.textColor = UIColor.darkGrayColor()
                 self.toolBarView.notificationBellImageView.image = UIImage(named: "notification_bell")
                 break
             }
@@ -56,8 +55,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 self.toolBarView.followingButton.setTitleColor(primaryAquaColor, forState: .Normal)
                 break
             case .Notifications:
-                self.toolBarView.notificationLabel.textColor = primaryAquaColor
-                self.toolBarView.notificationBellImageView.image = UIImage(named: "notification_bell_selected")
+                self.toolBarView.notificationBellImageView.image = UIImage(named: "Bell selected")
                 break
             }
         }
@@ -360,8 +358,6 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     }
     
     func settingsButtonDidTap(sender: AnyObject!){
-        print("HI!")
-        
         let storyboard = UIStoryboard(name: "SPSettingsStoryboard", bundle: nil)
         let settingsNavigationController = storyboard.instantiateViewControllerWithIdentifier("SPSettingsStoryboard") as! UINavigationController
         self.presentViewController(settingsNavigationController, animated: true, completion: nil)

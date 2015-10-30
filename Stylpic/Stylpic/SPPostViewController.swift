@@ -56,8 +56,6 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        print("Button Index: \(buttonIndex)")
-        
         if (buttonIndex == 1) {
             // from my closet selected
             print( "TODO: ask for mockups of closet image selection method" )
@@ -186,7 +184,6 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     }
     
     func dismissCamera( overlay: SPCameraOverlay ) {
-        print("AYYY")
     }
     
     

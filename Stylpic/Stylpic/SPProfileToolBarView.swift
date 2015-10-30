@@ -26,7 +26,7 @@ class SPProfileToolBarView: UIView {
     @IBOutlet weak var postsLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
-    @IBOutlet weak var notificationLabel: UILabel!
+    //@IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var notificationsBadge: UILabel!
     
     @IBOutlet weak var notificationBellImageView: UIImageView!

@@ -112,14 +112,12 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     
     
     @IBAction func imageOneLiked(sender: AnyObject) {
-        print( "in imageOneliked" )
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
             imageOneLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
 
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageOne, photoPair: self.feedItem?.photos) { (success, error) -> Void in
                 if success {
-                    print( "saving like was a success" )
                 } else {
                     print( "save like failed" )
                 }
@@ -140,13 +138,11 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     }
 
     @IBAction func imageTwoLiked(sender: AnyObject) {
-        print( "in imageTwoliked" )
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
             self.imageTwoLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
             self.imageOneLikeButton.hidden = true
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageTwo, photoPair: self.feedItem?.photos) { (success, error) -> Void in
                 if success {
-                    print( "saving like was a success" )
                 } else {
                     print( "save like failed" )
                 }

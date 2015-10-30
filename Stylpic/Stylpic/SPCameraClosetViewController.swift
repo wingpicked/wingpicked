@@ -34,7 +34,6 @@ class SPCameraClosetViewController: SPClosetViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         if let closetPhotos = self.closetPhotos {
             let closetPhoto = closetPhotos[indexPath.row]
             var data: NSData?

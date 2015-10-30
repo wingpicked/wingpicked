@@ -102,7 +102,6 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         self.lastTappedRow = indexPath.row
 //        var detailViewController = SPClosetDetailViewController( aPFFile: self.pfFiles![indexPath.row] )
 //        self.navigationController?.pushViewController(detailViewController, animated: true)
@@ -140,10 +139,8 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     func addImageButtonDidTap() {
-        print( "addButtonDidTap" )
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Take New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
-    //            println( "take new photo tapped " )
             self.overlayView.titleLabel.text = ""
             
             self.imagePickerViewController.sourceType = .Camera
@@ -156,7 +153,6 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
-    //            println( "photo albumn did select")
             self.imagePickerViewController.sourceType = .PhotoLibrary
             self.presentViewController( self.imagePickerViewController, animated: true, completion: nil )
         }
@@ -223,7 +219,6 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         //UIImageWriteToSavedPhotosAlbum(squareImage, self, nil, nil)
         SPManager.sharedInstance.addMyClosetItemWithImage(squareImage, resultBlock: { (success, error) -> Void in
             if error == nil {
-                print( "success adding closet item" )
                 SPManager.sharedInstance.getMyClosetItemsWithResultBlock { (someClosetPhotos, error) -> Void in
                     if error != nil {
                         print(error)

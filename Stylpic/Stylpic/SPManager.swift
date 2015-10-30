@@ -41,8 +41,6 @@ class SPManager: NSObject {
         PFCloud.callFunctionInBackground( "getFeedItemsForPageV3", withParameters: params) { (payload, error) -> Void in
             if error == nil {
                 var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
-                print( payloadObject )
-                
                 let serverFeedItems: Array = payloadObject[ "feedItems" ]!
                 var feedItems = Array<SPFeedItem>()
                 for aServerFeedItem in serverFeedItems {                    
@@ -63,8 +61,6 @@ class SPManager: NSObject {
         PFCloud.callFunctionInBackground( "fetchExploreInfo", withParameters: params) { (payload:AnyObject?, error:NSError?) -> Void in
             if error == nil {
                 var payloadObject = payload as! Dictionary<String, Array<Dictionary<String, AnyObject>>>
-                print( payloadObject )
-                
                 let serverFeedItems: Array = payloadObject[ "feedItems" ]!
                 var feedItems = Array<SPFeedItem>()
                 for aServerFeedItem in serverFeedItems {
@@ -87,8 +83,6 @@ class SPManager: NSObject {
             
             PFCloud.callFunctionInBackground( "fetchProfileInfo", withParameters: params) { (payload, error) -> Void in
                 if error == nil {
-                    print( payload )
-                    //println( payload as! SPProfileInfo)
                     let serverProfileInfo = payload![ "profileInfo" ] as! [String: AnyObject]
                     let profileInfo = SPProfileInfo()
                     profileInfo.setupWithServerInfo( serverProfileInfo )
@@ -103,7 +97,6 @@ class SPManager: NSObject {
                 
             }
         } else {
-            print( "user was nil" )
             let userInfo = [ "message": "follow did not happen because user was nil" ]
             let error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( profileObject: nil, error:error )
@@ -176,7 +169,6 @@ class SPManager: NSObject {
         
         commentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                print( objects )
                 let arrayPFObject = objects as! Array<SPActivity>
                 resultBlock(comments: arrayPFObject, error: nil)
             } else {
@@ -247,7 +239,6 @@ class SPManager: NSObject {
             activity.type = ActivityType.Follow.rawValue
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    print( "saved follow ativity" )
                     NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     resultBlock( savedObject: activity, error: error )
                 } else {
@@ -256,7 +247,6 @@ class SPManager: NSObject {
                 }
             })
         } else {
-            print( "user was nil" )
             let userInfo = [ "message": "follow did not happen because user was nil" ]
             let error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( savedObject: nil, error: error )
@@ -284,7 +274,6 @@ class SPManager: NSObject {
                 })
             })
         } else {
-            print( "user was nil" )
             let userInfo = [ "message": "follow did not happen because user was nil" ]
             let error = NSError( domain: "SP", code: -10000, userInfo: userInfo)
             resultBlock( false, error )
@@ -295,7 +284,6 @@ class SPManager: NSObject {
         closetPhoto.isVisible = NSNumber( bool: false )
         closetPhoto.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
-                print( "removed closet photo" )
             } else {
                 print( error )
             }
@@ -306,7 +294,6 @@ class SPManager: NSObject {
         let params = [ "photoPairObjectId": photoPairObjectId ]
         PFCloud.callFunctionInBackground( "removeFeedItem", withParameters: params) { (payload, error) -> Void in
             if error == nil {
-                print( payload )
                 resultBlock(success: true, error: nil)
             } else {
                 print( error )
@@ -337,7 +324,6 @@ class SPManager: NSObject {
         PFCloud.callFunctionInBackground("usersWithSearchTerms", withParameters: params) { (users, error) -> Void in
             if error == nil {
                 let someUsers = users![ "users" ] as! [SPUser]
-                print( someUsers );
                 resultBlock( users: someUsers, error: nil )
             } else {
                 print( error )

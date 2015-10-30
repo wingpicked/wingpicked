@@ -46,8 +46,6 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
         if(url.scheme.hasPrefix("action")){
             if(url.host!.hasPrefix("show-user")){
-                print("SHOW USER!")
-                
                 if let currentUser = self.currentUser{
                     self.delegate?.didSelectComment(currentUser)
                 }

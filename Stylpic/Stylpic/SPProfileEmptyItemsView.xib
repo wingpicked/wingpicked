@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,6 +13,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click here to get your friends' opinion on what to wear!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-ru-TCn">
                     <rect key="frame" x="70" y="306" width="181" height="46"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="181" id="ZJf-qq-zHy"/>
                         <constraint firstAttribute="height" constant="46" id="tNX-z0-QBv"/>
@@ -22,6 +24,7 @@
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="kMa-HA-whO">
                     <rect key="frame" x="147" y="366" width="27" height="100"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="27" id="Lt9-FF-r8d"/>
                         <constraint firstAttribute="height" constant="100" id="bzK-9Q-F0i"/>
@@ -29,6 +32,7 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not made any posts, yet!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLZ-zK-Vr5">
                     <rect key="frame" x="59" y="265" width="203" height="21"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="203" id="UMK-R6-csY"/>
                         <constraint firstAttribute="height" constant="21" id="n58-gy-Ith"/>
@@ -38,6 +42,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="kMa-HA-whO" secondAttribute="centerX" id="Ehm-AJ-AE6"/>

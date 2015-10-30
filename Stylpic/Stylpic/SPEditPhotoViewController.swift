@@ -149,7 +149,6 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     }
     
     func selectPhotosDidTap(overlay: SPCameraOverlay) {
-        print("A")
     }
     func takePhotoButtonDidTap(overlay: SPCameraOverlay) {
         self.imagePickerViewController.takePicture()
@@ -163,7 +162,6 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
     func promptForReplacementChoice() {
         let alertController = UIAlertController(title: "Replace photo by:", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Taking New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
-            print( "take new photo tapped " )
             self.overlayView.titleLabel.text = "Replace"
             
             self.imagePickerViewController.sourceType = .Camera
@@ -174,7 +172,6 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         }
         
         let fromPhotoAlbumnAction = UIAlertAction(title: "Selecting From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
-            print( "photo albumn did select")
             self.imagePickerViewController.sourceType = .PhotoLibrary
             self.presentViewController( self.imagePickerViewController, animated: true, completion: nil )
         }

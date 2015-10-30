@@ -205,7 +205,6 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         
         
         let fromPhotoAlbumnAction = UIAlertAction(title: "From Photo Album", style: UIAlertActionStyle.Default) { (action) -> Void in
-            print( "photo albumn did select")
             if overlay == self.overlayView {
                 self.imagePickerViewController.sourceType = .PhotoLibrary
             } else if overlay == self.overlayViewSecondPhoto {

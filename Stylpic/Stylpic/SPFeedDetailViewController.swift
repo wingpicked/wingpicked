@@ -73,7 +73,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser()!.objectId
 
         //TODO: Refactor this to get a base cell or something out of here so there isn't duplicate code.
-        //println("--Index Path: \(indexPath.row)")
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailPictureTableViewCell", forIndexPath: indexPath) as! SPFeedDetailPictureTableViewCell
             cell.setupCell(self.feedItem, imageFile: imageFile)
@@ -134,7 +133,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         else // indexPath.row > 1 && indexPath.row < 2 + commentsCount){
         {
-            print("--\(commentsCount)")
             let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
             cell.delegate = self
             
@@ -256,11 +254,15 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     func followButtonDidTap() {
         if self.feedItem.isCurrentUserFollowing {
             SPManager.sharedInstance.unfollowUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                print( "unfollowed User" )
+                if(error != nil){
+                    print(error?.localizedDescription)
+                }
             })
         } else {
             SPManager.sharedInstance.followUser(self.feedItem.photos?.user, resultBlock: { (success, error) -> Void in
-                print( "followed User" )
+                if(error != nil){
+                    print(error?.localizedDescription)
+                }
             })
         }
         

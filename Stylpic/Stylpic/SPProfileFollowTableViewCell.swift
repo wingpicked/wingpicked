@@ -31,13 +31,11 @@ class SPProfileFollowTableViewCell: UITableViewCell {
             // then follow user
             SPManager.sharedInstance.followUser(self.spUser, resultBlock: { (savedObject, error) -> Void in
                 if error == nil {
-                    print( "followed user" )
                 }
             })
         } else {
             SPManager.sharedInstance.unfollowUser(self.spUser, resultBlock: { (success, error) -> Void in
                 if error == nil {
-                    print( "unfollowed user")
                 }
             })
         }

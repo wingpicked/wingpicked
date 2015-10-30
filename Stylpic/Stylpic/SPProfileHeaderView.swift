@@ -30,12 +30,10 @@ class SPProfileHeaderView: UIView {
         
         if self.isFollowing {
             SPManager.sharedInstance.followUser(self.user, resultBlock: { (savedObject, error) -> Void in
-                print( "followed user with \(error)" )
                 self.followButton.userInteractionEnabled = true
             })
         } else {
             SPManager.sharedInstance.unfollowUser(self.user, resultBlock: { (savedObject, error) -> Void in
-                print( "unfollowed user with error \(error)" )
                 self.followButton.userInteractionEnabled = true                
             })
         }

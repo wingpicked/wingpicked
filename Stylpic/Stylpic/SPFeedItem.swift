@@ -66,11 +66,6 @@ class SPFeedItem: NSObject {
             usersToFetchIfNeeded.append( anActivity.toUser )
         }
         
-        do {
-            try PFObject.fetchAllIfNeeded(usersToFetchIfNeeded)
-        } catch {
-            print( error )
-        }
-        
+        PFObject.fetchAllIfNeededInBackground(usersToFetchIfNeeded)
     }
 }

@@ -118,7 +118,6 @@ class SPProfileInfo: NSObject {
             let spUser = aServerFollowing[ "user" ] as! SPUser
             let currentUserFollows = aServerFollowing[ "isFollowing" ] as! NSNumber
             spUser.isFollowing = currentUserFollows
-//            println( spUser.lastName )
             self.following.append( spUser )
             fetchObjectsIfNeeded.append( spUser )
         }
@@ -134,12 +133,8 @@ class SPProfileInfo: NSObject {
             }
             
         }
-        do {
-            try PFObject.fetchAllIfNeeded( fetchObjectsIfNeeded )
-        } catch {
-            print( error )
-        }
         
+        PFObject.fetchAllIfNeededInBackground(fetchObjectsIfNeeded)
     }
     
 }
