@@ -96,7 +96,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8j-gi-lM7">
                                         <rect key="frame" x="14" y="104" width="35" height="35"/>
                                         <animations/>
-                                        <state key="normal" image="Button_like_feed">
+                                        <state key="normal" image="feed buton">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -106,7 +106,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDm-O0-Eb2">
                                         <rect key="frame" x="166" y="104" width="35" height="35"/>
                                         <animations/>
-                                        <state key="normal" image="Button_like_feed">
+                                        <state key="normal" image="feed buton">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -206,9 +206,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Button_like_feed" width="54" height="56"/>
         <image name="Icon_defaultPhoto" width="66" height="65"/>
         <image name="Icon_time" width="19" height="19"/>
         <image name="Percent" width="35" height="35"/>
+        <image name="feed buton" width="35" height="35"/>
     </resources>
 </document>

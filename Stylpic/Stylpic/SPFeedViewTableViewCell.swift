@@ -75,16 +75,16 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
         }
 
         if self.feedItem?.photoUserLikes == PhotoUserLikes.FirstPhotoLiked {
-            imageOneLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
+            imageOneLikeButton.setImage(UIImage(named: "H"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
             imageOneLikeButton.hidden = false
         } else if self.feedItem?.photoUserLikes == PhotoUserLikes.SecondPhotoLiked {
-            imageTwoLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
+            imageTwoLikeButton.setImage(UIImage(named: "H"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = false
             imageOneLikeButton.hidden = true
         } else {
-            imageTwoLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
-            imageOneLikeButton.setImage(UIImage(named: "Button_like_feed"), forState: UIControlState.Normal)
+            imageTwoLikeButton.setImage(UIImage(named: "feed buton"), forState: UIControlState.Normal)
+            imageOneLikeButton.setImage(UIImage(named: "feed buton"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = false
             imageOneLikeButton.hidden = false            
         }
@@ -113,7 +113,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
     
     @IBAction func imageOneLiked(sender: AnyObject) {
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
-            imageOneLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
+            imageOneLikeButton.setImage(UIImage(named: "H"), forState: UIControlState.Normal)
             imageTwoLikeButton.hidden = true
 
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageOne, photoPair: self.feedItem?.photos) { (success, error) -> Void in
@@ -139,7 +139,7 @@ class SPFeedViewTableViewCell: SPBaseFeedViewTableViewCell {
 
     @IBAction func imageTwoLiked(sender: AnyObject) {
         if self.feedItem?.photoUserLikes == PhotoUserLikes.NoPhotoLiked {
-            self.imageTwoLikeButton.setImage(UIImage(named: "Icon_likeheartwithborder_feed"), forState: UIControlState.Normal)
+            self.imageTwoLikeButton.setImage(UIImage(named: "H"), forState: UIControlState.Normal)
             self.imageOneLikeButton.hidden = true
             SPManager.sharedInstance.likePhoto(ActivityType.LikeImageTwo, photoPair: self.feedItem?.photos) { (success, error) -> Void in
                 if success {

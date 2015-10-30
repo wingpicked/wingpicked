@@ -32,6 +32,7 @@ class SPCommentsViewController: SLKTextViewController {
         self.tableView.registerNib(UINib(nibName: "SPFeedDetailCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "SPFeedDetailCommentTableViewCell")
         
         self.title = "COMMENTS"
+        self.rightButton.tintColor = primaryAquaColor
     }
     
     override func viewDidAppear(animated: Bool) {
