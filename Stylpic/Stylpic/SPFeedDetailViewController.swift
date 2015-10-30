@@ -97,7 +97,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                 cell.commentCountButton.hidden = true
             }
                 
-            else{
                 if self.imageTapped == ImageIdentifier.ImageOne{
                     let likeVerbiage = self.feedItem.likesCountOne == 1 ? "Like" : "Likes"
                     cell.percentageLabel.text = "\(self.feedItem.percentageLikedOne) Percent"
@@ -113,7 +112,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                     cell.commentCountButton.setTitle("View all \(self.feedItem.commentsCountTwo) comments", forState: .Normal)
                     cell.commentCountButton.hidden = feedItem.commentsCountTwo < 4
                 }
-            }
             return cell
         }
         else if(indexPath.row == commentsToDisplay + 2){

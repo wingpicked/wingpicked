@@ -60,14 +60,14 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName : UIFont(name: "OpenSans-Bold", size: 18.0)! ];
         
         
-        let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 350, 247, 46)) //TODO: Autolayout this frame
-        let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
-        let fbPhoto2 = FBSDKSharePhoto(image: self.imageTwo, userGenerated: true)
-        let fbContent = FBSDKSharePhotoContent()
-        fbContent.photos = [fbPhoto1, fbPhoto2]
-
-        fbSharePhotoButton.shareContent = fbContent;
-        self.view.addSubview(fbSharePhotoButton)
+//        let fbSharePhotoButton = FBSDKShareButton(frame: CGRectMake(37, 350, 247, 46)) //TODO: Autolayout this frame
+//        let fbPhoto1 = FBSDKSharePhoto(image: self.image, userGenerated: true)
+//        let fbPhoto2 = FBSDKSharePhoto(image: self.imageTwo, userGenerated: true)
+//        let fbContent = FBSDKSharePhotoContent()
+//        fbContent.photos = [fbPhoto1, fbPhoto2]
+//
+//        fbSharePhotoButton.shareContent = fbContent;
+//        self.view.addSubview(fbSharePhotoButton)
         
         self.imagePickerViewController.delegate = self
         
