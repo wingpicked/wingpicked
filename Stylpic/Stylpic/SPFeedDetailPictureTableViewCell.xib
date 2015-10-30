@@ -41,13 +41,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Caption" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-vI-JTJ">
-                        <rect key="frame" x="45" y="22" width="267" height="17"/>
+                        <rect key="frame" x="45" y="22" width="267" height="16.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-0J-jrP">
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-0J-jrP">
                         <rect key="frame" x="46" y="8" width="176" height="14"/>
                         <animations/>
                         <constraints>
@@ -65,8 +65,8 @@
                             <action selector="didTapUsernameButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uPX-9s-z7b"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-CE-GBo">
-                        <rect key="frame" x="230" y="8" width="82" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-CE-GBo">
+                        <rect key="frame" x="289" y="8" width="23" height="17"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="82" id="5od-Lo-zx0"/>
@@ -74,7 +74,22 @@
                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5od-Lo-zx0"/>
+                            </mask>
+                        </variation>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon_time" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-y0-Smt">
+                        <rect key="frame" x="269" y="11" width="12" height="12"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="12" id="9y0-lu-WgW"/>
+                            <constraint firstAttribute="width" constant="12" id="IWc-mb-kqR"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="12" id="dV1-8k-m8l"/>
+                            <constraint firstAttribute="height" constant="12" id="r6u-29-7wt"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <animations/>
                 <constraints>
@@ -87,11 +102,18 @@
                     <constraint firstItem="fGf-vI-JTJ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="SW5-tq-uxr"/>
                     <constraint firstItem="MGF-CE-GBo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="U2k-N9-ESP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="dSD-Vd-KFG" secondAttribute="bottom" constant="-8" id="WQC-H6-2iW"/>
+                    <constraint firstItem="lcJ-y0-Smt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="fli-Vj-vxZ"/>
                     <constraint firstItem="UCz-WQ-p2h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="gda-nt-otT"/>
                     <constraint firstItem="fGf-vI-JTJ" firstAttribute="top" secondItem="aRg-0J-jrP" secondAttribute="bottom" id="h1Z-de-QpH"/>
+                    <constraint firstItem="MGF-CE-GBo" firstAttribute="leading" secondItem="lcJ-y0-Smt" secondAttribute="trailing" constant="4" id="stb-5m-Znt"/>
                     <constraint firstItem="UCz-WQ-p2h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="u2A-ap-O2h"/>
                     <constraint firstItem="aRg-0J-jrP" firstAttribute="leading" secondItem="UCz-WQ-p2h" secondAttribute="trailing" constant="9" id="yti-oq-Ouo"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="NPJ-Q6-lz4"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <animations/>
             <connections>
@@ -106,5 +128,6 @@
     </objects>
     <resources>
         <image name="Icon_defaultPhoto" width="66" height="65"/>
+        <image name="Icon_time" width="19" height="19"/>
     </resources>
 </document>

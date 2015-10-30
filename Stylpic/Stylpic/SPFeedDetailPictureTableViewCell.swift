@@ -30,6 +30,7 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
         height = 100
         self.profilePictureImageView.clipsToBounds = true
         self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.0
+        self.timePostedLabel.preferredMaxLayoutWidth = 72
     }
     
     func cellHeight() -> CGFloat{
@@ -44,6 +45,8 @@ class SPFeedDetailPictureTableViewCell: SPBaseTableViewCell {
         else{
             timePostedLabel.text = "NA"
         }
+        
+        timePostedLabel.sizeToFit()
         
         if let user = feedItem.photos?.user {
             user.fetchIfNeededInBackgroundWithBlock({ (obj, error) -> Void in
