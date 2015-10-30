@@ -47,8 +47,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-0J-jrP">
-                        <rect key="frame" x="46" y="8" width="176" height="14"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-0J-jrP">
+                        <rect key="frame" x="46" y="8" width="65" height="14"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="PJy-7Z-M5G"/>
@@ -65,8 +65,8 @@
                             <action selector="didTapUsernameButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uPX-9s-z7b"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-CE-GBo">
-                        <rect key="frame" x="289" y="8" width="23" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-CE-GBo">
+                        <rect key="frame" x="292" y="8" width="19.5" height="16.5"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="82" id="5od-Lo-zx0"/>
@@ -80,8 +80,8 @@
                             </mask>
                         </variation>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon_time" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-y0-Smt">
-                        <rect key="frame" x="269" y="11" width="12" height="12"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_time" translatesAutoresizingMaskIntoConstraints="NO" id="lcJ-y0-Smt">
+                        <rect key="frame" x="276" y="10" width="12" height="12"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="12" id="9y0-lu-WgW"/>
