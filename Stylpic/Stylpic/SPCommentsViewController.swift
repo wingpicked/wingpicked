@@ -126,4 +126,12 @@ class SPCommentsViewController: SLKTextViewController {
         }
     }
     
+//    override func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+//        if (textView.text as NSString).length + ((text as NSString).length - range.length) > 100  {
+//            return false
+//        }
+//        
+//        return super.textView(textView, shouldChangeTextInRange: range, replacementText: text)
+//    }
+    
 }
