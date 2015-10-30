@@ -27,7 +27,7 @@
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-m9-L3K">
                         <rect key="frame" x="8" y="12" width="56" height="21"/>
                         <animations/>
-                        <state key="normal" image="F1F86306-3556-4C60-A703-9E15F5AA4201">
+                        <state key="normal" image="B9B27AE0-C2A2-45B1-B674-80C9FF71ADD7">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -60,7 +60,7 @@
     </objects>
     <resources>
         <image name="3 points" width="127" height="100"/>
-        <image name="F1F86306-3556-4C60-A703-9E15F5AA4201" width="133" height="50">
+        <image name="B9B27AE0-C2A2-45B1-B674-80C9FF71ADD7" width="133" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
