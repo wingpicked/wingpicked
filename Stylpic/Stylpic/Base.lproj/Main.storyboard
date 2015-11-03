@@ -101,23 +101,23 @@
                                     <action selector="nextSendButtonDidTap:" destination="YMB-IB-KHe" eventType="touchUpInside" id="Y0g-p8-nZa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUb-gR-3jZ">
-                                <rect key="frame" x="11" y="3" width="35" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUb-gR-3jZ">
+                                <rect key="frame" x="6" y="6" width="32" height="32"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="AEA-Pn-m48"/>
-                                    <constraint firstAttribute="width" constant="38" id="xCX-Xr-tCB"/>
+                                    <constraint firstAttribute="height" constant="32" id="AEA-Pn-m48"/>
+                                    <constraint firstAttribute="width" constant="32" id="xCX-Xr-tCB"/>
                                 </constraints>
                                 <state key="normal" image="Camera arrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-Qm-kiK">
-                                <rect key="frame" x="0.0" y="0.0" width="58" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-Qm-kiK">
+                                <rect key="frame" x="0.0" y="0.0" width="62" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="KyC-22-B6m"/>
-                                    <constraint firstAttribute="width" constant="67" id="pl9-md-55d"/>
+                                    <constraint firstAttribute="width" constant="62" id="pl9-md-55d"/>
                                 </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,12 +131,12 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QQp-b0-5yG" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="44" id="0Ws-oP-Of7"/>
-                            <constraint firstItem="bUb-gR-3jZ" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="8" id="NBT-jp-5p1"/>
+                            <constraint firstItem="bUb-gR-3jZ" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="6" id="NBT-jp-5p1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QQp-b0-5yG" secondAttribute="trailing" constant="-16" id="S0s-a5-lUZ"/>
                             <constraint firstItem="QQp-b0-5yG" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leadingMargin" constant="-16" id="h2B-7L-Bqr"/>
                             <constraint firstAttribute="centerX" secondItem="x3T-gB-IyA" secondAttribute="centerX" id="mxN-zJ-v67"/>
                             <constraint firstItem="dDt-Qm-kiK" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leading" id="pjF-c4-iZH"/>
-                            <constraint firstItem="bUb-gR-3jZ" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leadingMargin" constant="-7" id="y0R-nc-pHN"/>
+                            <constraint firstItem="bUb-gR-3jZ" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leading" constant="6" id="y0R-nc-pHN"/>
                             <constraint firstItem="x3T-gB-IyA" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="8" id="ybH-Dr-ERb"/>
                             <constraint firstItem="dDt-Qm-kiK" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" id="zym-bJ-t7W"/>
                         </constraints>
