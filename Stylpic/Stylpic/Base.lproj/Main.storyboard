@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ntn-B8-6Sf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -19,6 +19,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="227" sectionHeaderHeight="22" sectionFooterHeight="22" id="WXF-e3-XzP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -40,6 +41,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oje-U8-gVT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                     </tableView>
                     <navigationItem key="navigationItem" id="pqp-DP-1WC"/>
@@ -62,16 +64,18 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo 1 of 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3T-gB-IyA">
                                 <rect key="frame" x="105" y="8" width="110" height="26"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="9Id-IQ-JOf"/>
                                     <constraint firstAttribute="height" constant="26" id="iBY-OC-HOP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QQp-b0-5yG">
-                                <rect key="frame" x="0.0" y="42" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="320"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="3Nc-V1-6lJ"/>
                                     <constraint firstAttribute="height" constant="320" id="OYo-dQ-DNf"/>
@@ -79,6 +83,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-qZ-zC6">
                                 <rect key="frame" x="117" y="413" width="87" height="87"/>
+                                <animations/>
                                 <state key="normal" image="nextCam">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -88,6 +93,7 @@
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqN-ZR-J1q">
                                 <rect key="frame" x="117" y="413" width="87" height="87"/>
+                                <animations/>
                                 <state key="normal" image="nextCam">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -95,18 +101,20 @@
                                     <action selector="nextSendButtonDidTap:" destination="YMB-IB-KHe" eventType="touchUpInside" id="Y0g-p8-nZa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUb-gR-3jZ">
-                                <rect key="frame" x="9" y="8" width="38" height="26"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUb-gR-3jZ">
+                                <rect key="frame" x="11" y="3" width="35" height="35"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="AEA-Pn-m48"/>
                                     <constraint firstAttribute="width" constant="38" id="xCX-Xr-tCB"/>
                                 </constraints>
-                                <state key="normal" image="Button_back_white">
+                                <state key="normal" image="Camera arrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-Qm-kiK">
-                                <rect key="frame" x="0.0" y="0.0" width="67" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-Qm-kiK">
+                                <rect key="frame" x="0.0" y="0.0" width="58" height="44"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="KyC-22-B6m"/>
                                     <constraint firstAttribute="width" constant="67" id="pl9-md-55d"/>
@@ -119,9 +127,10 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QQp-b0-5yG" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="42" id="0Ws-oP-Of7"/>
+                            <constraint firstItem="QQp-b0-5yG" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="44" id="0Ws-oP-Of7"/>
                             <constraint firstItem="bUb-gR-3jZ" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="8" id="NBT-jp-5p1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QQp-b0-5yG" secondAttribute="trailing" constant="-16" id="S0s-a5-lUZ"/>
                             <constraint firstItem="QQp-b0-5yG" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leadingMargin" constant="-16" id="h2B-7L-Bqr"/>
@@ -154,6 +163,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CR0-VM-9uk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="dataSource" destination="4MW-Og-xax" id="xwa-r2-87M"/>
@@ -180,6 +190,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GIA-2t-s3d">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="5Tt-A1-57K">
                                     <size key="itemSize" width="106" height="106"/>
@@ -194,6 +205,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oj7-Ic-dLK" firstAttribute="top" secondItem="GIA-2t-s3d" secondAttribute="bottom" id="7f9-Nf-OU7"/>
@@ -227,6 +239,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_default" translatesAutoresizingMaskIntoConstraints="NO" id="ney-kS-ikC" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="65" width="320" height="320"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ney-kS-ikC" secondAttribute="height" multiplier="1:1" id="e3e-96-Bcb"/>
@@ -234,6 +247,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCC-zX-YXI">
                                 <rect key="frame" x="7" y="401" width="172" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="1" green="0.016378450610000001" blue="0.094208114189999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Remove From Closet">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,6 +258,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ney-kS-ikC" firstAttribute="top" secondItem="pKC-oz-gHx" secondAttribute="bottom" constant="1" id="7T3-wc-U93"/>
@@ -275,12 +290,15 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="CDF-7i-r4K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo_LoginScreen" translatesAutoresizingMaskIntoConstraints="NO" id="xzl-f0-VR3">
                                 <rect key="frame" x="121" y="96" width="87" height="72"/>
+                                <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-Nk-k8L">
                                 <rect key="frame" x="93" y="375" width="143" height="44"/>
+                                <animations/>
                                 <state key="normal" image="fb_button_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,6 +308,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -310,6 +329,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
@@ -336,6 +356,7 @@
                     <view key="view" contentMode="scaleToFill" id="pdM-6d-n8d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <connections>
@@ -364,6 +385,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lfz-e2-vxR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -387,6 +409,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jCA-nf-CBt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -406,6 +429,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SwA-eB-O4k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -425,6 +449,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8mJ-ym-0mK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -437,7 +462,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button_back_white" width="25" height="41"/>
+        <image name="Camera arrow" width="35" height="35"/>
         <image name="Icon_closet" width="64" height="49"/>
         <image name="Icon_explore" width="64" height="49"/>
         <image name="Icon_home" width="64" height="49"/>

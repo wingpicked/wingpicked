@@ -120,29 +120,29 @@
                                     <constraint firstAttribute="height" constant="147" id="XKa-tr-VaS"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKV-SP-X2t">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKV-SP-X2t">
                                 <rect key="frame" x="0.0" y="196.5" width="308" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="555K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYS-qL-hzc">
-                                        <rect key="frame" x="68" y="1" width="50" height="28"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="55" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYS-qL-hzc">
+                                        <rect key="frame" x="77" y="0.0" width="27" height="28"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="14"/>
                                         <color key="textColor" red="0.94117647058823528" green="0.46274509803921571" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Percent" translatesAutoresizingMaskIntoConstraints="NO" id="uX3-0k-I3W">
-                                        <rect key="frame" x="50" y="9" width="12" height="12"/>
+                                        <rect key="frame" x="65" y="10" width="10" height="10"/>
                                         <animations/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="55K" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-yA-xag">
-                                        <rect key="frame" x="225" y="1" width="43" height="28"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-yA-xag">
+                                        <rect key="frame" x="229" y="0.0" width="26" height="28"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="CaviarDreams-Bold" family="Caviar Dreams" pointSize="14"/>
                                         <color key="textColor" red="0.94117647058823528" green="0.46274509803921571" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Percent" translatesAutoresizingMaskIntoConstraints="NO" id="9PQ-gt-oyG">
-                                        <rect key="frame" x="209" y="9" width="12" height="12"/>
+                                        <rect key="frame" x="219" y="10" width="10" height="10"/>
                                         <animations/>
                                     </imageView>
                                 </subviews>

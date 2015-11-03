@@ -25,7 +25,7 @@ class SPFeedTableViewController: SPBaseTableViewController {
         titleLabel.font = UIFont(name: "Lobster1.4", size: 28)
         titleLabel.textAlignment = NSTextAlignment.Center
         //titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.text = "Stylpic"
+        titleLabel.text = "Wingpicked"
         titleView.addSubview(titleLabel)
         self.navigationItem.titleView = titleView
         self.navigationController?.navigationBar.translucent = false
