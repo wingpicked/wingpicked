@@ -13,6 +13,22 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
 
     var image : UIImage!
     var imageTwo : UIImage!
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .Default
+        toolbar.translucent = true
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "toolbarDoneButtonDidTap")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        doneButton.tintColor = primaryAquaColor
+        toolbar.setItems([spaceButton, doneButton], animated: false)
+        toolbar.userInteractionEnabled = true
+        
+        return toolbar
+    }()
+    
     @IBOutlet weak var imageViewOne: UIImageView!
     @IBOutlet weak var imageViewTwo: UIImageView!
     
@@ -71,10 +87,17 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         
         self.imagePickerViewController.delegate = self
         
+        
         self.captionTextview.text = captionPlaceholder
         self.captionTextview.layer.cornerRadius = 4
         self.captionTextview.clipsToBounds = true
         
+        self.captionTextview.inputAccessoryView = inputToolbar
+        
+    }
+    
+    func toolbarDoneButtonDidTap(){
+        self.view.endEditing(true)
     }
     
     override func prefersStatusBarHidden() -> Bool {
