@@ -37,7 +37,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         rc.addTarget(self, action: Selector("refreshCollectionView"), forControlEvents: UIControlEvents.ValueChanged)
         self.collectionView.addSubview(rc)
-        
+        self.overlayView.photoLibraryButton.hidden = true
 
     }
 
