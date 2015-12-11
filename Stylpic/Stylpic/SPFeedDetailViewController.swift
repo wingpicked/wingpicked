@@ -81,6 +81,20 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             return cell
         }
         else if(indexPath.row == 1){
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPLikeCommentButtonView", forIndexPath: indexPath) as! SPLikeCommentButtonView
+            cell.delegate = self
+            cell.setupCell(self.imageTapped, feedItem: self.feedItem)
+            
+            if usersOwnPhotoPair {
+                cell.deleteButton.hidden = false
+            }
+            else{
+                cell.deleteButton.hidden = true
+            }
+            
+            return cell
+        }
+        else if(indexPath.row == 2){
             let cell = tableView.dequeueReusableCellWithIdentifier("SPFeedDetailCollaborationTableViewCell", forIndexPath: indexPath) as! SPFeedDetailCollaborationTableViewCell
 
             cell.delegate = self
@@ -114,21 +128,6 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                 }
             return cell
         }
-        else if(indexPath.row == commentsToDisplay + 2){
-            let cell = tableView.dequeueReusableCellWithIdentifier("SPLikeCommentButtonView", forIndexPath: indexPath) as! SPLikeCommentButtonView
-            cell.delegate = self
-            cell.setupCell(self.imageTapped, feedItem: self.feedItem)
-            
-            if usersOwnPhotoPair {
-                cell.deleteButton.hidden = false
-            }
-            else{
-                cell.deleteButton.hidden = true
-            }
-            
-            
-            return cell
-        }
         else // indexPath.row > 1 && indexPath.row < 2 + commentsCount){
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("SPCommentsSmallTableViewCell", forIndexPath: indexPath) as! SPCommentsSmallTableViewCell
@@ -143,7 +142,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
                 comments = self.feedItem.comments.commentsPhotoOne
             }
             
-            cell.setupCell(comments[indexPath.row - 2] as! SPActivity)
+            cell.setupCell(comments[indexPath.row - 3] as! SPActivity)
             return cell
         }
     }
@@ -156,18 +155,18 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         if(indexPath.row == 0){
             return 382
         }
-        else if(indexPath.row == 1){
+        else if(indexPath.row == 1) {
+            return 44
+        }
+        else if (indexPath.row == 2){
             if commentsCount >= 4 {
-                return 54
+                return 42
             } else {
-                return 34
+                return 23
             }
         }
-        else if(indexPath.row > 1 && indexPath.row < 2 + commentsCount){
-            return 23
-        }
         else{
-            return 44
+            return 23
         }
         
     }
