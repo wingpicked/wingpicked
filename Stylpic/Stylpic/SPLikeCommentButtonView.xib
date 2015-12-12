@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dtG-sU-GST" id="ooc-Vn-IXy">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeT-tV-NBt">
@@ -25,7 +25,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-m9-L3K">
                         <rect key="frame" x="8" y="12" width="56" height="21"/>
-                        <state key="normal" image="92959110-39F2-4A8D-876B-812EACFF9DDE">
+                        <state key="normal" image="2ADC92C8-0735-4A01-B850-2762FA1A1EF2">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -54,8 +54,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="3 points" width="35" height="24"/>
-        <image name="92959110-39F2-4A8D-876B-812EACFF9DDE" width="133" height="50">
+        <image name="2ADC92C8-0735-4A01-B850-2762FA1A1EF2" width="133" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -549,6 +548,7 @@ iXGMcZFxoHGkcatxs3HAccVxx3HJcc5x1nHZcd5x5nHpcftx/nIDAAAAAAAAAgEAAAAAAAAAQQAAAAAA
 AAAAAAAAAAAAcgU
 </mutableData>
         </image>
+        <image name="3 points" width="35" height="24"/>
         <image name="comment" width="220" height="47"/>
     </resources>
 </document>
