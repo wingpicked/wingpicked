@@ -184,7 +184,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     
     func selectPhotosDidTap(overlay: SPCameraOverlay) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let takeNewAction = UIAlertAction(title: "From My Closet", style: UIAlertActionStyle.Default) { (action) -> Void in
+        let takeNewAction = UIAlertAction(title: "From My Stuff", style: UIAlertActionStyle.Default) { (action) -> Void in
             let myClosetViewController = SPCameraClosetViewController()
             myClosetViewController.delegate = self
             //            var closetView = myClosetViewController.view

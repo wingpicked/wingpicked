@@ -50,7 +50,7 @@ class SPPostViewController: UIViewController, UIActionSheetDelegate, UIImagePick
     
     
     func showImageSelectionChoicesActionSheet() {
-        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "From My Closet", "From Photo Album")
+        let actionSheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "From My Stuff", "From Photo Album")
         actionSheet.showInView(self.view)
     }
     

@@ -25,7 +25,7 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
         
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "MyClosetTopBarTitle-Edit"), forBarMetrics: UIBarMetrics.Default)
 
-        self.navigationItem.title = "MY CLOSET"
+        self.navigationItem.title = "MY STUFF"
         
         let findFriendsImage = UIImage( named: "Icon_addToCloset" )
         let findFriendsButton = UIButton(frame: CGRectMake( 0,0, 20,20))
