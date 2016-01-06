@@ -19,14 +19,8 @@ class SPFeedTableViewController: SPBaseTableViewController {
     
     func setupNavigationBar(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(fromColor: navigationBarColor, forSize: CGSizeMake(320, 64), withCornerRadius: 0.0), forBarMetrics: UIBarMetrics.Default)
-        let titleView = UIView(frame: CGRectMake(16,0, 288, 64))
-        let titleLabel = UILabel(frame: CGRectMake(0,4, 288, 44))
-        titleLabel.backgroundColor = UIColor.clearColor()
-        titleLabel.font = UIFont(name: "Lobster1.4", size: 28)
-        titleLabel.textAlignment = NSTextAlignment.Center
-        //titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.text = "Wingpicked"
-        titleView.addSubview(titleLabel)
+        let titleView = UIImageView(frame: CGRectMake(0, 0, 147, 36))
+        titleView.image = UIImage(named: "feed-titleView")
         self.navigationItem.titleView = titleView
         self.navigationController?.navigationBar.translucent = false
     }
