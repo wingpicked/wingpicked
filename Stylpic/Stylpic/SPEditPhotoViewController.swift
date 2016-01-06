@@ -63,10 +63,23 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         let backImage = UIImage(named: "Camera arrow" );
-        let backButton = UIButton(frame: CGRect(x: 18, y: 19, width: 15, height: 24))
+        let backButton = UIButton(frame: CGRect(x: -16, y: 0, width: 32, height: 32))
+        backButton.imageView?.contentMode = .ScaleAspectFit
+        
+        backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -32, 0, 0)
         backButton.setImage(backImage, forState: UIControlState.Normal)
         backButton.addTarget(self, action: "dismissViewController:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
+        let barButtonItem = UIBarButtonItem(customView: backButton)
+//        barButtonItem.imageInsets = UIEdgeInsetsMake(0, -16, 0, 0)
+        
+//        let barButton = UIBarButtonItem(image: backImage, style: .Plain, target: self, action: "dismissViewController:")
+//        barButton.tintColor = UIColor.whiteColor()
+//        barButton.imageInsets = UIEdgeInsetsMake(0, -16, 0, 0)
+//        self.navigationItem.leftBarButtonItem = barButton
+
+        
+        self.navigationItem.leftBarButtonItem = barButtonItem
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPostFlowButtonDidTap")
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()

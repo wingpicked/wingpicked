@@ -60,6 +60,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHn-l8-6jJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="EhT-9Z-Mi1"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo 1 of 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3T-gB-IyA">
                                 <rect key="frame" x="105" y="8" width="110" height="26"/>
                                 <constraints>
@@ -77,8 +84,12 @@
                                     <constraint firstAttribute="height" constant="320" id="OYo-dQ-DNf"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-qZ-zC6">
-                                <rect key="frame" x="117" y="413" width="87" height="87"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ymc-o8-eWL">
+                                <rect key="frame" x="0.0" y="364" width="320" height="204"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-qZ-zC6">
+                                <rect key="frame" x="117" y="422" width="87" height="87"/>
                                 <state key="normal" image="nextCam">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -86,8 +97,12 @@
                                     <action selector="nextCameraButtonDidTap:" destination="YMB-IB-KHe" eventType="touchUpInside" id="YJv-L9-aRr"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqN-ZR-J1q">
-                                <rect key="frame" x="117" y="413" width="87" height="87"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqN-ZR-J1q">
+                                <rect key="frame" x="117" y="422" width="87" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="VtI-Oj-aEe"/>
+                                    <constraint firstAttribute="width" constant="87" id="pFH-0u-fTf"/>
+                                </constraints>
                                 <state key="normal" image="nextCam">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -122,10 +137,23 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QQp-b0-5yG" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="44" id="0Ws-oP-Of7"/>
+                            <constraint firstItem="Ymc-o8-eWL" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leading" id="2SN-ZF-rsa"/>
+                            <constraint firstItem="lEI-mA-6rx" firstAttribute="top" secondItem="Ymc-o8-eWL" secondAttribute="bottom" id="7I0-MR-aeq"/>
+                            <constraint firstAttribute="trailing" secondItem="DHn-l8-6jJ" secondAttribute="trailing" id="8Zr-hd-SeU"/>
+                            <constraint firstAttribute="trailing" secondItem="Ymc-o8-eWL" secondAttribute="trailing" id="A2l-vw-yL4"/>
+                            <constraint firstItem="ewg-qZ-zC6" firstAttribute="centerY" secondItem="IqN-ZR-J1q" secondAttribute="centerY" id="CxI-GS-vgA"/>
+                            <constraint firstItem="DHn-l8-6jJ" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leading" id="FL0-L3-ls2"/>
                             <constraint firstItem="bUb-gR-3jZ" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="6" id="NBT-jp-5p1"/>
+                            <constraint firstItem="DHn-l8-6jJ" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" id="Onw-zN-Y8i"/>
+                            <constraint firstItem="ewg-qZ-zC6" firstAttribute="width" secondItem="IqN-ZR-J1q" secondAttribute="width" id="PHq-Tl-6hK"/>
+                            <constraint firstItem="Ymc-o8-eWL" firstAttribute="top" secondItem="DHn-l8-6jJ" secondAttribute="bottom" constant="320" id="QDW-s2-A3B"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QQp-b0-5yG" secondAttribute="trailing" constant="-16" id="S0s-a5-lUZ"/>
+                            <constraint firstItem="ewg-qZ-zC6" firstAttribute="height" secondItem="IqN-ZR-J1q" secondAttribute="height" id="Y1z-pS-Tnt"/>
                             <constraint firstItem="QQp-b0-5yG" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leadingMargin" constant="-16" id="h2B-7L-Bqr"/>
+                            <constraint firstItem="ewg-qZ-zC6" firstAttribute="centerX" secondItem="IqN-ZR-J1q" secondAttribute="centerX" id="k7G-uP-FPn"/>
+                            <constraint firstItem="IqN-ZR-J1q" firstAttribute="centerY" secondItem="Ymc-o8-eWL" secondAttribute="centerY" id="l42-GT-n0r"/>
                             <constraint firstAttribute="centerX" secondItem="x3T-gB-IyA" secondAttribute="centerX" id="mxN-zJ-v67"/>
+                            <constraint firstItem="IqN-ZR-J1q" firstAttribute="centerX" secondItem="Ymc-o8-eWL" secondAttribute="centerX" id="op4-Q0-bUZ"/>
                             <constraint firstItem="dDt-Qm-kiK" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leading" id="pjF-c4-iZH"/>
                             <constraint firstItem="bUb-gR-3jZ" firstAttribute="leading" secondItem="FcL-TS-H40" secondAttribute="leading" constant="6" id="y0R-nc-pHN"/>
                             <constraint firstItem="x3T-gB-IyA" firstAttribute="top" secondItem="LNu-X3-Pab" secondAttribute="bottom" constant="8" id="ybH-Dr-ERb"/>
@@ -444,7 +472,7 @@
         <image name="Icon_home_selected" width="64" height="49"/>
         <image name="Icon_profile" width="32" height="49"/>
         <image name="Image" width="621" height="1104"/>
-        <image name="Logo_LoginScreen" width="168" height="166"/>
+        <image name="Logo_LoginScreen" width="60" height="60"/>
         <image name="fb_button_login" width="143" height="44"/>
         <image name="nextCam" width="568" height="568"/>
         <image name="profile_default" width="123" height="123"/>

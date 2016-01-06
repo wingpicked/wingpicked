@@ -59,6 +59,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentCountButton" destination="1eg-CR-zvn" id="PD7-Zo-l0H"/>
+                <outlet property="likeCountButton" destination="t4x-Im-XGQ" id="LPW-aR-fvK"/>
                 <outlet property="percentageLabel" destination="5sC-AS-5Np" id="dwx-aD-6CG"/>
             </connections>
             <point key="canvasLocation" x="315" y="252"/>
