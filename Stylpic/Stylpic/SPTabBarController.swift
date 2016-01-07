@@ -130,6 +130,7 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
         overlayViewSecondPhoto.titleLabel.text = "Photo 2 of 2"
         overlayViewSecondPhoto.dismissOrBackButton.setImage(UIImage(named:"Camera arrow"), forState: UIControlState.Normal)
         overlayViewSecondPhoto.dismissOrBackButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        overlayViewSecondPhoto.dismissOrBackButton.hidden = true
         imagePickerViewControllerSecondPhoto.sourceType = .Camera
         imagePickerViewControllerSecondPhoto.showsCameraControls = false
         imagePickerViewControllerSecondPhoto.cameraFlashMode = UIImagePickerControllerCameraFlashMode(rawValue: flashState
