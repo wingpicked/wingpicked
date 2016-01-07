@@ -57,29 +57,21 @@ class SPEditPhotoViewController: UIViewController, UITextFieldDelegate, UIGestur
         self.imageViewTwo.clipsToBounds = true
         
         self.title = "Share"
-        self.navigationController?.navigationItem
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         let backImage = UIImage(named: "Camera arrow" );
-        let backButton = UIButton(frame: CGRect(x: -16, y: 0, width: 32, height: 32))
-        backButton.imageView?.contentMode = .ScaleAspectFit
-        
-        backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -32, 0, 0)
+        let backButton = UIButton(frame: CGRect(x: 6, y: 6, width: 32, height: 32))//-16
+        backButton.imageView?.contentMode = .ScaleAspectFill
         backButton.setImage(backImage, forState: UIControlState.Normal)
         backButton.addTarget(self, action: "dismissViewController:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        let barButtonItem = UIBarButtonItem(customView: backButton)
-//        barButtonItem.imageInsets = UIEdgeInsetsMake(0, -16, 0, 0)
-        
-//        let barButton = UIBarButtonItem(image: backImage, style: .Plain, target: self, action: "dismissViewController:")
-//        barButton.tintColor = UIColor.whiteColor()
-//        barButton.imageInsets = UIEdgeInsetsMake(0, -16, 0, 0)
-//        self.navigationItem.leftBarButtonItem = barButton
+        self.navigationController?.navigationBar.addSubview(backButton)
 
-        
-        self.navigationItem.leftBarButtonItem = barButtonItem
+        // removes default black back button
+        let alphaOutView = UIView()
+        alphaOutView.alpha = 0
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: alphaOutView)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPostFlowButtonDidTap")
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
