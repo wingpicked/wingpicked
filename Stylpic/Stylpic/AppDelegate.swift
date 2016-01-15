@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().tintColor = UIColor.blackColor()
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "OpenSans-Bold", size: 18.0)!]
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLoginScreen", name: "showLoginScreen", object: nil)
+        
         if((PFUser.currentUser() != nil && PFFacebookUtils.isLinkedWithUser(PFUser.currentUser()!))) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainTabBarVC = storyboard.instantiateViewControllerWithIdentifier("MainIdentifier") 
@@ -42,6 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    func showLoginScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarVC = storyboard.instantiateViewControllerWithIdentifier("LoginIdentifier")
+        self.window?.rootViewController = mainTabBarVC
     }
 
     
