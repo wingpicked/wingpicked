@@ -21,15 +21,9 @@ class SPCommentsSmallTableViewCell: UITableViewCell, TTTAttributedLabelDelegate 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        commentLabel.linkAttributes = [NSForegroundColorAttributeName : UIColor.redColor()]
-//        commentLabel.activeLinkAttributes = [NSForegroundColorAttributeName : UIColor.purpleColor()]
-        
-//        self.commentLabel.linkAttributes = [NSForegroundColorAttributeName: UIColor.purpleColor(),
-//            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone]
-        
-//                self.commentLabel.linkAttributes = [NSForegroundColorAttributeName: UIColor.purpleColor(),NSUnderlineStyleAttributeName: 0]
-        
+
         self.commentLabel.linkAttributes = [kCTForegroundColorAttributeName: primaryAquaColor,kCTUnderlineColorAttributeName: 0, NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 12.0)!]
+        self.commentLabel.activeLinkAttributes = [kCTForegroundColorAttributeName: secondaryAquaColor]
     }
     
     func setupCell(commentActivity: SPActivity){

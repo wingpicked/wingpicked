@@ -8,8 +8,8 @@
 
 import UIKit
 
-let primaryAquaColor = UIColor(red: 72/255, green: 182/255, blue: 179/255, alpha: 1.0)
-let secondaryAquaColor = UIColor(red: 155/255, green: 222/255, blue: 222/255, alpha: 1.0)
+let primaryAquaColor = UIColor(red: 0/255, green: 155/255, blue: 180/255, alpha: 1.0)
+let secondaryAquaColor = UIColor(red: 76/255, green: 182/255, blue: 179/255, alpha: 1.0)
 let navigationBarColor = UIColor(red: 182/255, green: 235/255, blue: 214/255, alpha: 1.0)
 
 enum ImageIdentifier : Int {
