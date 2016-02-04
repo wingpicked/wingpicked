@@ -55,7 +55,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 self.toolBarView.followingButton.setTitleColor(primaryAquaColor, forState: .Normal)
                 break
             case .Notifications:
-                self.toolBarView.notificationBellImageView.image = UIImage(named: "Bell selected")
+                self.toolBarView.notificationBellImageView.image = UIImage(named: "notification_bell_selected")
                 break
             }
         }
