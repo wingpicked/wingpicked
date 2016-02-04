@@ -66,7 +66,9 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.registerNib(UINib(nibName: "SPLikeCommentButtonView", bundle: nil), forCellReuseIdentifier: "SPLikeCommentButtonView")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableView", name: "RefreshViewControllers", object: nil)
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0)
+        self.tableView.estimatedRowHeight = 23
         self.setupFollowButton()
+
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -166,7 +168,7 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             }
         }
         else{
-            return 23
+            return UITableViewAutomaticDimension
         }
         
     }

@@ -33,6 +33,8 @@ class SPCommentsViewController: SLKTextViewController {
         
         self.title = "COMMENTS"
         self.rightButton.tintColor = primaryAquaColor
+        self.tableView.estimatedRowHeight = 43
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -125,6 +127,10 @@ class SPCommentsViewController: SLKTextViewController {
             
             self.tableView.reloadData()
         }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
 //    override func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
