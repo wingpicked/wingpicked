@@ -172,7 +172,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 if self.profileInfoViewModel.posts.count > 0 {
                     self.tableView.backgroundView = nil
                 } else {
-                    self.tableView.backgroundView = self.emptyStateNoItems
+                    let currentUserId = SPUser.currentUser()?.objectId
+                    if self.showForUser.objectId == currentUserId {
+                        self.tableView.backgroundView = self.emptyStateNoItems
+                    } else {
+                        self.tableView.backgroundView = nil
+                    }
                 }
                 
                 break;
@@ -180,7 +185,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 if self.profileInfoViewModel.followers.count > 0 {
                     self.tableView.backgroundView = nil
                 } else {
-                    self.tableView.backgroundView = self.emptyStateFollowers
+                    let currentUserId = SPUser.currentUser()?.objectId
+                    if self.showForUser.objectId == currentUserId {
+                        self.tableView.backgroundView = self.emptyStateFollowers
+                    } else {
+                        self.tableView.backgroundView = nil
+                    }
                 }
                 
                 break;
@@ -188,7 +198,12 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
                 if self.profileInfoViewModel.following.count > 0 {
                     self.tableView.backgroundView = nil
                 } else {
-                    self.tableView.backgroundView = self.emptyStateFollowing
+                    let currentUserId = SPUser.currentUser()?.objectId
+                    if self.showForUser.objectId == currentUserId {
+                        self.tableView.backgroundView = self.emptyStateFollowing
+                    } else {
+                        self.tableView.backgroundView = nil
+                    }
                 }
                 break;
             case .Notifications:
