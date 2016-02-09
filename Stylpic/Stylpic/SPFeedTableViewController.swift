@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPFeedTableViewController: SPBaseTableViewController {
+class SPFeedTableViewController: SPBaseTableViewController, SPFeedEmptyStateViewDelegate {
 
     let overlayView: SPFeedEmptyStateView = NSBundle.mainBundle().loadNibNamed("SPFeedEmptyStateView", owner: nil, options: nil)[0] as! SPFeedEmptyStateView
     
@@ -33,7 +33,7 @@ class SPFeedTableViewController: SPBaseTableViewController {
                 if self.feedItems.count == 0 {
                     if self.overlayView.superview == nil {
                         self.overlayView.tag = 1
-                        //self.overlayView.delegate = self
+                        self.overlayView.delegate = self
                         self.view.addSubview(self.overlayView)
                     }
                 } else {

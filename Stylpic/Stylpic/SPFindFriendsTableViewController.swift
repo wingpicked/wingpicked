@@ -40,4 +40,13 @@ class SPFindFriendsTableViewController: UITableViewController {
         cell.setupCell( user! )
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let user = self.facebookFriendsUsingApp?[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("SPProfileViewController") as! SPProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        profileViewController.showWithUser(user!)
+    }
+    
 }
