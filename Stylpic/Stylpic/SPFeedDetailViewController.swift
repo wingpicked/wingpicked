@@ -138,13 +138,14 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             //TODO: Refactor the photo pair model to consist of two individual entities
             var comments = []
             if self.imageTapped == ImageIdentifier.ImageTwo{
-                comments = self.feedItem.comments.commentsPhotoTwo
+                comments = self.feedItem.comments.sortedCommentsPhotoTwo
             }
             if self.imageTapped == ImageIdentifier.ImageOne {
-                comments = self.feedItem.comments.commentsPhotoOne
+                comments = self.feedItem.comments.sortedCommentsPhotoOne
             }
             
-            cell.setupCell(comments[indexPath.row - 3] as! SPActivity)
+            // was indexPath.row - 3 
+            cell.setupCell(comments[indexPath.row] as! SPActivity)
             return cell
         }
     }
