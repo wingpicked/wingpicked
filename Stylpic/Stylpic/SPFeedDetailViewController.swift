@@ -145,7 +145,10 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             }
             
             // was indexPath.row - 3 
-            cell.setupCell(comments[indexPath.row] as! SPActivity)
+            let requestedRow = indexPath.row - 3
+            if requestedRow < comments.count && 0 < comments.count {
+                cell.setupCell(comments[requestedRow] as! SPActivity)
+            }
             return cell
         }
     }

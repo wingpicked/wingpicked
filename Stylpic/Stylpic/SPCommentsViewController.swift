@@ -65,15 +65,18 @@ class SPCommentsViewController: SLKTextViewController {
                         
                         if(activityType == .CommentImageOne){
                             self.feedItem?.comments.commentsPhotoOne.append(savedObject)
+                            self.feedItem?.comments.updateSortedCommentsOne()
                             self.feedItem?.commentsCountOne++
                             self.delegate?.didAddCommentToPhotoOne(savedObject)
                         }
                         if(activityType == .CommentImageTwo){
                             self.feedItem?.comments.commentsPhotoTwo.append(savedObject)
+                            self.feedItem?.comments.updateSortedCommentsTwo()
                             self.feedItem?.commentsCountTwo++
                             self.delegate?.didAddCommentToPhotoTwo(savedObject)
                         }
-    
+                        
+                        
                         self.tableView.slk_scrollToTopAnimated(true)
 
                     }
