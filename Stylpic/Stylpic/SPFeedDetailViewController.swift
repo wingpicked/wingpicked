@@ -103,12 +103,14 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             
             let noPhotoLiked = self.feedItem.photoUserLikes == PhotoUserLikes.NoPhotoLiked
             
-            if(!usersOwnPhotoPair && noPhotoLiked){
-                cell.percentageLabel.hidden = true
-                cell.likeCountButton.hidden = true
-                cell.commentCountButton.hidden = true
-            }
-                
+            
+            let hiddenFlag = !usersOwnPhotoPair && noPhotoLiked
+            cell.percentageLabel.hidden = hiddenFlag
+            cell.likeCountButton.hidden = hiddenFlag
+            cell.commentCountButton.hidden = hiddenFlag
+            cell.heartIcon.hidden = hiddenFlag
+            cell.percentIcon.hidden = hiddenFlag
+
             if(self.commentsCount < kCommentsCount){
                 cell.commentCountButton.hidden = true
             }

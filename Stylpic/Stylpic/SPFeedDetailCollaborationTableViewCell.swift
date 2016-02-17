@@ -15,6 +15,8 @@ protocol SPFeedDetailCollaborationTableViewCellDelegate{
 
 class SPFeedDetailCollaborationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var percentIcon: UIImageView!
+    @IBOutlet weak var heartIcon: UIImageView!
     @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var commentCountButton: UIButton!
