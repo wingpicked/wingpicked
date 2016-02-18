@@ -303,9 +303,10 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         case .Notifications:
             let activity:SPActivity = profileInfoViewModel.notifications[indexPath.row]
             let user = activity.fromUser
-            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileNotificationsTableViewCell", forIndexPath: indexPath) as! SPProfileNotificationsTableViewCell
-            cell.markAsViewed(profileInfoViewModel.notifications[indexPath.row])
-            showProfileViewControllerForUser(user)            
+//            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileNotificationsTableViewCell", forIndexPath: indexPath) as! SPProfileNotificationsTableViewCell
+//            cell.markAsViewed(profileInfoViewModel.notifications[indexPath.row])
+            showProfileViewControllerForUser(user)
+            self.isStaleData = true
             break
         default:
             break
