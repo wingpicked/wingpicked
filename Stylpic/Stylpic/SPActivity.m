@@ -21,6 +21,8 @@
 }
 
 - (NSString *)displayMessage {
+    [self.fromUser fetchIfNeeded];
+    
     NSString *message;
     switch ([self.type intValue]) {
         case CommentImageOne:

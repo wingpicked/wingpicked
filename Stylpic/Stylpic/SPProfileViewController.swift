@@ -215,6 +215,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     
     func refreshTableView(){
+        self.isStaleData = true
         self.showWithUser(self.showForUser)
     }
     
@@ -302,6 +303,8 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         case .Notifications:
             let activity:SPActivity = profileInfoViewModel.notifications[indexPath.row]
             let user = activity.fromUser
+            let cell = tableView.dequeueReusableCellWithIdentifier("SPProfileNotificationsTableViewCell", forIndexPath: indexPath) as! SPProfileNotificationsTableViewCell
+            cell.markAsViewed(profileInfoViewModel.notifications[indexPath.row])
             showProfileViewControllerForUser(user)            
             break
         default:
@@ -383,7 +386,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
         let currentInstallation = PFInstallation.currentInstallation()
         if(currentInstallation.badge != 0){
             currentInstallation.badge = 0
-            currentInstallation.saveEventually(nil)
+            currentInstallation.saveEventually()
         }
         
         NSNotificationCenter.defaultCenter().postNotificationName("Badges", object: nil)
