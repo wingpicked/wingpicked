@@ -215,6 +215,7 @@ class SPProfileViewController: UITableViewController, SPProfileToolBarViewDelega
     
     
     func refreshTableView(){
+        isStaleData = true
         self.showWithUser(self.showForUser)
     }
     

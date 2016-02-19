@@ -54,10 +54,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        // do this ih cloud code
+//        let query = PFInstallation.query()
+//        query!.includeKey("user")
+//        query!.whereKey("user", equalTo: PFUser.currentUser()!);
+//        query!.findObjectsInBackgroundWithBlock { (installations, error) -> Void in
+        let user = PFUser.currentUser()!
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
-        installation.setObject(PFUser.currentUser()!, forKey: "user")
-        installation.saveInBackgroundWithBlock(nil)
+        installation.setObject(user, forKey: "user")
+        installation.saveInBackgroundWithBlock { (success, ErrorType) -> Void in
+            PFCloud.callFunctionInBackground( "purgeInstallations", withParameters:["userObjectId": user.objectId!], block: { (results, error) -> Void in
+                print( results )
+            })
+        }
+//        }
     }
     
     func registerForPushNotifications(){

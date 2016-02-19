@@ -355,9 +355,36 @@ Parse.Cloud.define( 'usersWithSearchTerms', function( request, response ) {
 	});
 });
 
+
+Parse.Cloud.define( 'purgeInstallations', function(request, response) {
+    Parse.Cloud.useMasterKey();
+    var userObjectId = request.params.userObjectId;
+    var mockUser = new Parse.User();
+    mockUser.id = userObjectId;
+    var query = new Parse.Query( Parse.Installation );
+    query.include( 'user' );
+    query.equalTo( 'user', mockUser ); // Set our channel
+    query.descending( 'updatedAt' );
+    query.find().then( function(installations) {
+        if ( 1 < installations.length ) {
+            var purgeList = installations.slice(1);
+            return Parse.Object.destroyAll(purgeList);
+        } else {
+            response.success('no need to purge. there is ' + installation.length + 'installations');
+        }
+    }).then(function(){
+        response.success( 'purged installations' );
+    }, function(error) {
+        response.error( error );
+    });
+});
+
 function sendPushToUser( user, withMessage ) {
 	var query = new Parse.Query( Parse.Installation );
+    query.include( 'user' );
 	query.equalTo( 'user', user ); // Set our channel
+	query.descending( 'updatedAt' );
+    query.limit( 1 );
 	Parse.Push.send({
 		where: query,
 		data: {
