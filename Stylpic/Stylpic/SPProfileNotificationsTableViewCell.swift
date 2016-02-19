@@ -29,14 +29,20 @@ class SPProfileNotificationsTableViewCell: UITableViewCell {
         profilePictureImageView.loadInBackground(nil)
         self.unseenNotificationDot.hidden = activity.notificationViewed.boolValue
         if !activity.notificationViewed.boolValue {
-            activity.notificationViewed = NSNumber( bool: true )
+            activity.notificationViewed = NSNumber(bool: true)
             activity.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
+                    
                 } else {
                     print( error )
                 }
             })
         }
     }
+    
+//    func markAsViewed(activity: SPActivity){
+//        self.unseenNotificationDot.hidden = true
+////        activity.notificationViewed = NSNumber(bool: true)
+//    }
 
 }
