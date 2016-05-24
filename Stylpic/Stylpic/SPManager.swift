@@ -83,9 +83,10 @@ class SPManager: NSObject {
             
             PFCloud.callFunctionInBackground( "fetchProfileInfo", withParameters: params) { (payload, error) -> Void in
                 if error == nil {
-                    let serverProfileInfo = payload![ "profileInfo" ] as! [String: AnyObject]
+                    let serverProfileInfo = (payload as! [String: AnyObject])["profileInfo"] as! NSDictionary
+//                    let serverProfileInfo = payload![ "profileInfo" ] as! [String: AnyObject]
                     let profileInfo = SPProfileInfo()
-                    profileInfo.setupWithServerInfo( serverProfileInfo )
+                    profileInfo.setupWithServerInfo(serverProfileInfo)
                     resultBlock(profileObject: profileInfo, error: nil )
                     
                 } else {
@@ -306,7 +307,9 @@ class SPManager: NSObject {
         let params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(integer:likesPhotoIdentifier.rawValue) ]
         PFCloud.callFunctionInBackground("photoPairLikes", withParameters: params) { (payload, error) -> Void in
             if error == nil {
-                let likes = payload!["likes"] as! [SPActivity]
+                let likes = (payload as! [String: AnyObject])["likes"] as! [SPActivity]
+                
+//                let likes = payload!["likes"] as! [SPActivity]
                 resultBlock(activities: likes, error: nil)
             } else {
                 print( error )
@@ -323,7 +326,8 @@ class SPManager: NSObject {
         let params = [ "searchTerms": seperatedSearchTerms ]
         PFCloud.callFunctionInBackground("usersWithSearchTerms", withParameters: params) { (users, error) -> Void in
             if error == nil {
-                let someUsers = users![ "users" ] as! [SPUser]
+                let someUsers = (users as! [String: AnyObject])["users"] as! [SPUser]
+//                let someUsers = users![ "users" ] as! [SPUser]
                 resultBlock( users: someUsers, error: nil )
             } else {
                 print( error )
@@ -343,10 +347,12 @@ class SPManager: NSObject {
             if error == nil {
                 print( result )
                 var facebookIds = [String]()
-                let friendDatas = result["data"] as! [AnyObject]
+                let friendDatas = (result as! [String: AnyObject])["data"] as! [AnyObject]
+//                let friendDatas = result["data"] as! [AnyObject]
                 if friendDatas.count > 0 {
                     for friendData in friendDatas {
-                        let aFacebookId = friendData["id"] as! String
+                        let aFacebookId = (friendData as! [String: AnyObject])["id"] as! String
+//                        let aFacebookId = friendData["id"] as! String
                         facebookIds.append( aFacebookId )
                     }
                     
