@@ -854,7 +854,7 @@
 				TargetAttributes = {
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = N822244V2G;
+						DevelopmentTeam = 99W56MYH4P;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -1152,7 +1152,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Stylpic;
 				PRODUCT_NAME = Wingpicked;
-				PROVISIONING_PROFILE = "e82689bd-c13b-49b4-9d58-d247ec0bd637";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1181,7 +1181,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Stylpic;
 				PRODUCT_NAME = Wingpicked;
-				PROVISIONING_PROFILE = "e82689bd-c13b-49b4-9d58-d247ec0bd637";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Stylpic/Stylpic-Bridging-Header.h";
 			};
 			name = Release;

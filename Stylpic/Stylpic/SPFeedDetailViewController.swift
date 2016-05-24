@@ -87,12 +87,12 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
             cell.delegate = self
             cell.setupCell(self.imageTapped, feedItem: self.feedItem)
             
-            if usersOwnPhotoPair {
+//            if usersOwnPhotoPair {
                 cell.deleteButton.hidden = false
-            }
-            else{
-                cell.deleteButton.hidden = true
-            }
+//            }
+//            else{
+//                cell.deleteButton.hidden = true
+//            }
             
             return cell
         }
@@ -276,19 +276,35 @@ class SPFeedDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func deleteButtonDidTap() {
-        let alertController = UIAlertController(title: "Are you sure you want to delete this post?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-        let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { (action) -> Void in
+        let usersOwnPhotoPair = self.feedItem.photos?.user.objectId == PFUser.currentUser()!.objectId;
+        if usersOwnPhotoPair {
+            let alertController = UIAlertController(title: "Are you sure you want to delete this post?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive) { (action) -> Void in
                 SPManager.sharedInstance.removePostWithPhotoPairObjectId(self.feedItem.photos!.objectId!, resultBlock: { (success, error) -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName("RefreshViewControllers", object: nil)
                     self.navigationController?.popViewControllerAnimated(true)
-            })
+                })
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            }
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+
+            let alertController = UIAlertController(title: "Are you sure you want to flag this post for inappropriate content?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            let flagAction = UIAlertAction(title: "Flag", style: UIAlertActionStyle.Destructive) { (action) -> Void in
+                let tappedPhoto = self.imageTapped == .ImageOne ? self.feedItem.photos!.photoOne : self.feedItem.photos!.photoTwo
+                SPManager.sharedInstance.flagPhoto(tappedPhoto)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            }
+            alertController.addAction(flagAction)
+            alertController.addAction(cancelAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
-        }
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     deinit{

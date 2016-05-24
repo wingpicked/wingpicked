@@ -12,5 +12,6 @@
 
 @property (nonatomic) PFFile *photo;
 @property (nonatomic) PFFile *photoThumbnail;
+@property (nonatomic) NSNumber *flaggedCount;
 
 @end

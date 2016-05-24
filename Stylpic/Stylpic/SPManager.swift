@@ -303,6 +303,20 @@ class SPManager: NSObject {
         }
     }
     
+    func flagPhoto( photo: SPPhoto ) {
+        if let flagCount = photo.flaggedCount {
+            let curCount = flagCount.integerValue
+            photo.flaggedCount = NSNumber.init( int: curCount + 1 )
+        } else {
+            photo.flaggedCount = NSNumber.init( int: 1 )
+        }
+        
+        photo.saveInBackgroundWithBlock { (success, error) in
+            print( "success? \(success), else there was an error \(error)" )
+        }
+    }
+    
+    
     func getPhotoPairLikes( photoPairObjectId:String, likesPhotoIdentifier:ActivityType, resultBlock:SPActivityResultBlock ) {
         let params = [ "photoPairObjectId": photoPairObjectId, "likesPhotoIdentifier": NSNumber(integer:likesPhotoIdentifier.rawValue) ]
         PFCloud.callFunctionInBackground("photoPairLikes", withParameters: params) { (payload, error) -> Void in

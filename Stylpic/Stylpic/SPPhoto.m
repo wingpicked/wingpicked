@@ -11,7 +11,7 @@
 
 @implementation SPPhoto
 
-@dynamic photo, photoThumbnail;
+@dynamic photo, photoThumbnail, flaggedCount;
     
 + (void)load {
     [self registerSubclass];
