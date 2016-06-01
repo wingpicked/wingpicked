@@ -110,6 +110,11 @@ class SPTabBarController: UITabBarController, UITabBarControllerDelegate, UIImag
     }
     
     func buttonPressed(sender:AnyObject){
+        if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            print( "camera unavailable for device")
+            return;
+        }
+        
         
         //Reset Camera
         capturedImages = []
