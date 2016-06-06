@@ -139,8 +139,18 @@ class SPClosetViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     func addImageButtonDidTap() {
+        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let takeNewAction = UIAlertAction(title: "Take New Photo", style: UIAlertActionStyle.Default) { (action) -> Void in
+            if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                let ac = UIAlertController(title: "Camera Unavailable", message: "This device doesn't appear to have a camera.  Please try using a device with a camera to access this feature.", preferredStyle: .Alert)
+                let action = UIAlertAction(title: "Okay", style: .Cancel, handler: nil)
+                ac.addAction(action)
+                self.presentViewController(ac, animated: true, completion: nil)
+                print( "camera unavailable for device")
+                return;
+            }
+            
             self.overlayView.titleLabel.text = ""
             
             self.imagePickerViewController.sourceType = .Camera
