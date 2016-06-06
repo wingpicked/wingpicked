@@ -305,7 +305,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uh7-Nk-k8L">
-                                <rect key="frame" x="88.5" y="375" width="143" height="44"/>
+                                <rect key="frame" x="88" y="375" width="143" height="44"/>
                                 <state key="normal" image="fb_button_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -321,8 +321,8 @@
                                     <constraint firstAttribute="width" constant="87" id="bxo-ty-blY"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-xs-3rS">
-                                <rect key="frame" x="103" y="539" width="112" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lC6-xs-3rS">
+                                <rect key="frame" x="104" y="541" width="112" height="27"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="11"/>
                                 <state key="normal" title="Terms and Conditions"/>
                                 <connections>
@@ -352,7 +352,6 @@
         <!--Terms View Controller-->
         <scene sceneID="TLj-kj-Cim">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bxf-Ce-jpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="31I-Ba-5Cf" customClass="SPTermsViewController" customModule="Wingpicked" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FAY-xe-JSK"/>
@@ -363,23 +362,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Zq-Nx-N2d">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Zq-Nx-N2d" firstAttribute="top" secondItem="FAY-xe-JSK" secondAttribute="bottom" id="8FW-vU-jyo"/>
+                            <constraint firstItem="8Zq-Nx-N2d" firstAttribute="top" secondItem="FAY-xe-JSK" secondAttribute="bottom" constant="-64" id="8Z4-BP-H72"/>
                             <constraint firstItem="qbg-4g-Luf" firstAttribute="top" secondItem="8Zq-Nx-N2d" secondAttribute="bottom" id="BF5-vp-9f0"/>
                             <constraint firstAttribute="trailing" secondItem="8Zq-Nx-N2d" secondAttribute="trailing" id="Gbm-e6-YYK"/>
                             <constraint firstItem="8Zq-Nx-N2d" firstAttribute="leading" secondItem="PAh-bz-yPX" secondAttribute="leading" id="dDa-mR-Jd8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8FW-vU-jyo"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="xCB-PY-Zkr"/>
                     <connections>
                         <outlet property="webView" destination="8Zq-Nx-N2d" id="K6A-eA-3Jg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxf-Ce-jpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-633" y="1607"/>
         </scene>
