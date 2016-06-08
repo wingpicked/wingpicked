@@ -88,6 +88,8 @@
 		38EAD4691AB651A500A6FD81 /* UIView+Borders.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD4671AB651A500A6FD81 /* UIView+Borders.m */; };
 		38EAD46D1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */; };
 		38EAD46E1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */; };
+		38EDDC2A1D0528470080EE9C /* SPTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDDC291D0528470080EE9C /* SPTermsViewController.swift */; };
+		38EDDC2C1D052C560080EE9C /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 38EDDC2B1D052C560080EE9C /* terms.html */; };
 		38F87B3C1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B3A1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift */; };
 		38F87B3D1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F87B3B1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib */; };
 		38F87B401AD20E9100180602 /* SPCommentsSmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */; };
@@ -260,6 +262,8 @@
 		38EAD4681AB651A500A6FD81 /* UIView+Borders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Borders.h"; sourceTree = "<group>"; };
 		38EAD46B1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfilePostTableViewCell.swift; sourceTree = "<group>"; };
 		38EAD46C1AB66D8F00A6FD81 /* SPProfilePostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfilePostTableViewCell.xib; sourceTree = "<group>"; };
+		38EDDC291D0528470080EE9C /* SPTermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPTermsViewController.swift; sourceTree = "<group>"; };
+		38EDDC2B1D052C560080EE9C /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
 		38F87B3A1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFeedDetailCollaborationTableViewCell.swift; sourceTree = "<group>"; };
 		38F87B3B1AD20D1800180602 /* SPFeedDetailCollaborationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPFeedDetailCollaborationTableViewCell.xib; sourceTree = "<group>"; };
 		38F87B3E1AD20E9100180602 /* SPCommentsSmallTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPCommentsSmallTableViewCell.swift; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 				38160A1A1AB508DC005504AD /* Third Party Libraries */,
 				3845F7DE1A560A5800191BDA /* Supporting Files */,
 				389A56F41A5727C500EB0EFD /* Stylpic-Bridging-Header.h */,
+				38EDDC291D0528470080EE9C /* SPTermsViewController.swift */,
+				38EDDC2B1D052C560080EE9C /* terms.html */,
 			);
 			path = Stylpic;
 			sourceTree = "<group>";
@@ -858,7 +864,7 @@
 				TargetAttributes = {
 					3845F7DA1A560A5800191BDA = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 99W56MYH4P;
+						DevelopmentTeam = N822244V2G;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -907,6 +913,7 @@
 				38AA7BFB1A88423800A75FB7 /* SPFeedDetailPictureTableViewCell.xib in Resources */,
 				38EAD4601AB63BBB00A6FD81 /* SPProfileToolBarView.xib in Resources */,
 				48E43A021AF5974900BA22DF /* SPProfileEmptyFollowersView.xib in Resources */,
+				38EDDC2C1D052C560080EE9C /* terms.html in Resources */,
 				488DC8531BDDB09D00AE6C73 /* FacebookSDKStrings.bundle in Resources */,
 				3845F7E81A560A5800191BDA /* Main.storyboard in Resources */,
 				381B476A1ABE546F00E5405B /* SPProfileNotificationsTableViewCell.xib in Resources */,
@@ -991,6 +998,7 @@
 				38EAD4641AB63DE700A6FD81 /* SPProfileHeaderView.swift in Sources */,
 				385C744A1AEF46C900FBFA62 /* MRMessageInterceptor.m in Sources */,
 				38BB44561A663174004CD444 /* SPProfileViewController.swift in Sources */,
+				38EDDC2A1D0528470080EE9C /* SPTermsViewController.swift in Sources */,
 				387463701AA40465002E0565 /* SPFeedItem.swift in Sources */,
 				38A24C801BE342F200A20D98 /* UIResponder+SLKAdditions.m in Sources */,
 				38BB44511A66313C004CD444 /* SPExploreTableViewController.swift in Sources */,

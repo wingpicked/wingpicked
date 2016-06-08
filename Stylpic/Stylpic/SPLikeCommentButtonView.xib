@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dtG-sU-GST" id="ooc-Vn-IXy">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeT-tV-NBt">
@@ -25,7 +25,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-m9-L3K">
                         <rect key="frame" x="8" y="12" width="56" height="21"/>
-                        <state key="normal" image="251F857A-B7E5-4CCB-B2AF-35EE0FAA7C53">
+                        <state key="normal" image="D0B2262F-927F-4884-A482-B4DBAEE91662">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -54,7 +54,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="251F857A-B7E5-4CCB-B2AF-35EE0FAA7C53" width="133" height="50">
+        <image name="3 points" width="35" height="24"/>
+        <image name="D0B2262F-927F-4884-A482-B4DBAEE91662" width="133" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -548,7 +549,6 @@ iXGMcZFxoHGkcatxs3HAccVxx3HJcc5x1nHZcd5x5nHpcftx/nIDAAAAAAAAAgEAAAAAAAAAQQAAAAAA
 AAAAAAAAAAAAcgU
 </mutableData>
         </image>
-        <image name="3 points" width="35" height="24"/>
         <image name="comment" width="220" height="47"/>
     </resources>
 </document>
