@@ -94,7 +94,7 @@
 		38F87B411AD20E9100180602 /* SPCommentsSmallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F87B3F1AD20E9100180602 /* SPCommentsSmallTableViewCell.xib */; };
 		38F87B451AD210AB00180602 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F87B441AD210AB00180602 /* TTTAttributedLabel.m */; };
 		482C3EB91AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C3EB81AF6D6A6006643D5 /* SPPhotoConfirmationViewController.swift */; };
-		482C3EBB1AF6FB4D006643D5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 482C3EBA1AF6FB4D006643D5 /* AssetsLibrary.framework */; };
+		482C3EBB1AF6FB4D006643D5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 482C3EBA1AF6FB4D006643D5 /* AssetsLibrary.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		482C3EBD1AF70CEA006643D5 /* SPCameraClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482C3EBC1AF70CEA006643D5 /* SPCameraClosetViewController.swift */; };
 		482C3EBF1AF7100E006643D5 /* SPCameraClosetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482C3EBE1AF7100E006643D5 /* SPCameraClosetViewController.xib */; };
 		483097C31ABF8A470076331C /* SPPhotoPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 483097C21ABF8A470076331C /* SPPhotoPair.m */; };
@@ -132,6 +132,7 @@
 		48E43A041AF5976800BA22DF /* SPProfileEmptyFollowingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E43A031AF5976800BA22DF /* SPProfileEmptyFollowingView.xib */; };
 		48E43A061AF5979300BA22DF /* SPProfileEmptyFollowersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E43A051AF5979300BA22DF /* SPProfileEmptyFollowersView.swift */; };
 		48E43A081AF597AA00BA22DF /* SPProfileEmptyFollowingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E43A071AF597AA00BA22DF /* SPProfileEmptyFollowingView.swift */; };
+		48FA1C8C1D07DD1200B7EC26 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48FA1C8B1D07DD1200B7EC26 /* Photos.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EC3B4BC81ABBC28200E76121 /* SPProfileFollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */; };
 		EC3B4BC91ABBC28200E76121 /* SPProfileFollowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3B4BC71ABBC28200E76121 /* SPProfileFollowTableViewCell.xib */; };
 		EC3B4BCB1ABBDDF500E76121 /* SPBaseFeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3B4BCA1ABBDDF500E76121 /* SPBaseFeedViewTableViewCell.swift */; };
@@ -309,6 +310,7 @@
 		48E43A031AF5976800BA22DF /* SPProfileEmptyFollowingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileEmptyFollowingView.xib; sourceTree = "<group>"; };
 		48E43A051AF5979300BA22DF /* SPProfileEmptyFollowersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileEmptyFollowersView.swift; sourceTree = "<group>"; };
 		48E43A071AF597AA00BA22DF /* SPProfileEmptyFollowingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileEmptyFollowingView.swift; sourceTree = "<group>"; };
+		48FA1C8B1D07DD1200B7EC26 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		EC3B4BC61ABBC28200E76121 /* SPProfileFollowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPProfileFollowTableViewCell.swift; sourceTree = "<group>"; };
 		EC3B4BC71ABBC28200E76121 /* SPProfileFollowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPProfileFollowTableViewCell.xib; sourceTree = "<group>"; };
 		EC3B4BCA1ABBDDF500E76121 /* SPBaseFeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPBaseFeedViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48FA1C8C1D07DD1200B7EC26 /* Photos.framework in Frameworks */,
 				488DC8661BDDB24200AE6C73 /* Bolts.framework in Frameworks */,
 				482C3EBB1AF6FB4D006643D5 /* AssetsLibrary.framework in Frameworks */,
 				4877E1111AA3E6D1006587CE /* Social.framework in Frameworks */,
@@ -479,6 +482,7 @@
 		3845F80C1A560A9000191BDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48FA1C8B1D07DD1200B7EC26 /* Photos.framework */,
 				4840DF5D1BDDC552009EF4E1 /* ParseFacebookUtilsV4.framework */,
 				488DC8671BDDB3FD00AE6C73 /* Bolts.framework */,
 				488DC8651BDDB24200AE6C73 /* Bolts.framework */,
