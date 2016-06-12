@@ -95,7 +95,7 @@ class SPCameraOverlay: UIView {
         let fetchOptions = PHFetchOptions.init()
         fetchOptions.sortDescriptors = [NSSortDescriptor.init( key:"creationDate", ascending:true)]
         let fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions )
-        let phAsset = fetchResult.lastObject as! PHAsset
+        guard let phAsset = fetchResult.lastObject as? PHAsset else { return }
         PHImageManager.defaultManager().requestImageForAsset(phAsset, targetSize: CGSizeMake(200, 200), contentMode: PHImageContentMode.AspectFit, options: nil) { (imageThumbnail, arrayOfInfo) in
             self.photoLibraryButton.setImage(imageThumbnail, forState: .Normal)
         
