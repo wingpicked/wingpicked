@@ -24,7 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize Parse.
         Parse.setApplicationId("RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF", clientKey: "GrzuVuRsMePNfdGF0AhyBYvEmjgeHPWfwtTb7EHx")
-
+//harmon added this
+        let parseConfig = ParseClientConfiguration { (ParseMutableClientConfiguration) in
+                                                    
+//harmon - accessing Heroku App via id & keys
+        ParseMutableClientConfiguration.applicationID = "RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF"
+        ParseMutableClientConfiguration.clientkey = "GrzuVuRsMePNfdGF0AhyBYvEmjgeHPWfwtTb7EHx"
+        ParseMutableClientConfiguration.server = "https://wingpicked.herokuapp.com/parse"
+                                                    
+}
+        Parse.initializeWithConfiguration{ParseConfig)
+        
+//harmon - end
+        
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
 //        PFFacebookUtils.ini
         // [Optional] Track statistics around application opens.
