@@ -1334,7 +1334,7 @@
   };
 
   // Set the server for Parse to talk to.
-  Parse.serverURL = "mongodb://heroku_g3j70dcw:9m9t839a394b9uecqdatf8v798@ds137759.mlab.com:37759/heroku_g3j70dcw";
+  Parse.serverURL = "https://wingpicked.herokuapp.com/";
 
   // Check whether we are running in Node.js.
   if (typeof(process) !== "undefined" &&
