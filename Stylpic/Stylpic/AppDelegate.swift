@@ -26,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = ParseClientConfiguration{
         $0.applicationId = "RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF"
         $0.clientKey = "GrzuVuRsMePNfdGF0AhyBYvEmjgeHPWfwtTb7EHx"
-        $0.server = "https://wingpicked.herokuapp.com/"
-    }
+        $0.server = "https://wingpicked.herokuapp.com/parse"
 
 Parse.initializeWithConfiguration(parseConfiguration)
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
