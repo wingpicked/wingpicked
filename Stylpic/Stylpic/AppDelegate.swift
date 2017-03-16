@@ -23,10 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Parse.enableLocalDatastore()
         
         // Initialize Parse.
-let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
-    ParseMutableClientConfiguration.applicationId = "RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF"
-    ParseMutableClientConfiguration.clientKey = "GrzuVuRsMePNfdGF0AhyBYvEmjgeHPWfwtTb7EHx"
-    ParseMutableClientConfiguration.server = "https://wingpicked.herokuapp.com/parse"
+        let configuration = ParseClientConfiguration{
+        $0.applicationId = "RZ1gWX7CNCMhuLFzclDRKknvZIqoSu2tUnI6cmAF"
+        $0.clientKey = "GrzuVuRsMePNfdGF0AhyBYvEmjgeHPWfwtTb7EHx"
+        $0.server = "https://wingpicked.herokuapp.com/"
+    }
 
 Parse.initializeWithConfiguration(parseConfiguration)
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
